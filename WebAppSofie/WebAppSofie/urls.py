@@ -32,6 +32,8 @@ urlpatterns = patterns('',
     url(r'^accounts/logout', 'viaSofie.views.logout'),
     url(r'^accounts/loggedin', 'viaSofie.views.loggedin'),
     url(r'^accounts/invalid', 'viaSofie.views.invalid_login'),
+    url(r'^accounts/register/$', 'viaSofie.views.register_user'),
+    url(r'^accounts/register_success/$', 'viaSofie.views.register_success'),
 )
 
 if not settings.DEBUG:
