@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PROJECT_DIRECTORY = os.getcwd() 
+PROJECT_DIRECTORY = os.getcwd()
 
 
 # Quick-start development settings - unsuitable for production
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'WebAppSofie.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,14 +69,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIRECTORY,'templates/'),
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 
 WSGI_APPLICATION = 'WebAppSofie.wsgi.application'
