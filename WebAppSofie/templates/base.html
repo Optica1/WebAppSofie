@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}ViaSofie{% endblock %}</title>
+    <title>{% block title %}ViaSfie{% endblock %}</title>
 
-
+	
     <script src="{% get_static_prefix %}js/jquery-2.0.0.min.js"></script>
     <script src="{% get_static_prefix %}js/ajax.js"></script>
-
+    
 </head>
 
 <body>
@@ -23,7 +23,7 @@
     </div>
 
     <div id="content">
-
+    
 	{% if messages %}
 	<ul class="messages">
 	    {% for message in messages %}
@@ -31,14 +31,14 @@
 	    {% endfor %}
 	</ul>
 	{% endif %}
-
+        
         {% block content %}This is the content area{% endblock %}
-
+	
 	<div class="clearfix"></div>
 	<img src="{% static "images/python-logo.jpg" %}" width="200"/>
     </div>
-
+	
 	</div>
-
+		
 </body>
 </html>

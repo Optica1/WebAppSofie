@@ -12,7 +12,7 @@ def auth_view(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
-
+    
     if user is not None:
         auth.login(request, user)
         return HttpResponseRedirect('/accounts/loggedin')
@@ -20,10 +20,7 @@ def auth_view(request):
         return HttpResponseRedirect('/accounts/invalid')
 
 def loggedin(request):
-	if not request.user.is_authenticated():
-		return HttpResponseRedirect('/accounts/login')
-	else:
-		return render_to_response('loggedin.html',
+	return render_to_response('loggedin.html',
 								{'full_name': request.user.username}) #passes full_name to template
 
 def invalid_login(request):
