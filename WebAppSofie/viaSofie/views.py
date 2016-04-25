@@ -21,7 +21,7 @@ def auth_view(request):
 
 def loggedin(request):
 	if not request.user.is_authenticated():
-        HttpResponseRedirect('/accounts/login')
+        return HttpResponseRedirect('/accounts/login')
 	else:
 		return render_to_response('loggedin.html',
 								{'full_name': request.user.username}) #passes full_name to template
