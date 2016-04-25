@@ -4,21 +4,28 @@
 <head>
     <title>{% block title %}ViaSofie{% endblock %}</title>
 
-
     <script src="{% get_static_prefix %}js/jquery-2.0.0.min.js"></script>
-    <script src="{% get_static_prefix %}js/ajax.js"></script>
+    <!--<script src="{% get_static_prefix %}js/ajax.js"></script>-->
 
 </head>
 
 <body>
 	<div id="page">
 
-    <div id="sidebar">
-        {% block sidebar %}
+    <div id="header">
+        {% block menubar %}
+        <!--logo-->
         <ul>
-            <li><a href="/articles/all">Articles</a></li>
-            <li><a href="/admin/">Admin</a></li>
+            <li><a href="">Over</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Partners</a></li>
+            <li><a href="">Welkom</a></li>
+            <li><a href="">Kopen</a></li>
+            <li><a href="">Huren</a></li>
+            <li><a href="">Referenties</a></li>
+            <li><a href="">Advies</a></li>
         </ul>
+        <a href="">e_book</a>
         {% endblock %}
     </div>
 
@@ -39,6 +46,17 @@
     </div>
 
 	</div>
+
+    <div id="footer">
+        <p>volg ons op:</p>
+        <ul>
+            <li><a href="">Vastgoed & advies</a></li>
+            <li><a href="">Disclaimer</a></li>
+            <li><a href="">Sitemap</a></li>
+            <li><a href="">Privacybeleid</a></li>
+            <li>Copyright@2016 viaSofie</li>
+        </ul>
+    </div>
 
 </body>
 </html>
