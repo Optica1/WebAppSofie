@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% content block %}
+
+
+	<h2>E-Book</h2>
+	<form action="/accounts/register/" method="post">{% csrf_token %}
+		{{form}}
+		<input type="submit" value="Register" />
+	</form>
+	
+{% endblock %}
