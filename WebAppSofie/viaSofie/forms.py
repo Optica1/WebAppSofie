@@ -15,6 +15,13 @@ class MyRegistrationForm(UserCreationForm):
 		model = User
 		fields = ('email', 'username', 'password1', 'password2', 'phonenumber', 'firstname', 'lastname')
 
+	def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        if password1 and password2:
+            if password1 != password2:
+                raise forms.ValidationError(_("The two password fields didn't match."))
+        return password2
 
 	#overwriting the save method for custom fields
 	def save(self, commit=True):
