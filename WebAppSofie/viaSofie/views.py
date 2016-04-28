@@ -36,7 +36,7 @@ def logout(request):
 
 def register_user(request):
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = MyRegistrationForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/accounts/register_success')
@@ -44,7 +44,7 @@ def register_user(request):
 	args = {}
 	args.update(csrf(request))
 
-	args['form'] = UserCreationForm()
+	args['form'] = MyRegistrationForm()
 
 	return render_to_response('register.html', args)
 
