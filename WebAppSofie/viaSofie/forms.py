@@ -22,7 +22,6 @@ class MyRegistrationForm(UserCreationForm):
 		if password1 and password2:
 			if password1 != password2:
 				raise forms.ValidationError(_("The two password fields didn't match."))
-		return password2
 
 	#overwriting the save method for custom fields
 	def save(self, commit=True):
