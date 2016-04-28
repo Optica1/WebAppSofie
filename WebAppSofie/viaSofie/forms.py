@@ -29,7 +29,7 @@ class MyRegistrationForm(UserCreationForm):
 		user = super(UserCreationForm, self).save(commit=False)# commit false because we do this at end of var assignments
 		user.email = self.cleaned_data['email']#cleaned so all character are valid
 		user.username = self.cleaned_data['username']
-		user.password = sha256_crypt.encrypt(self.cleaned_data['password1'])
+		user.password = sha256_crypt.encrypt(self.cleaned_data['password1'], 24000)
 		user.phonenumber = self.cleaned_data['phonenumber']
 		user.first_name = self.cleaned_data['firstname']
 		user.last_name = self.cleaned_data['lastname']
