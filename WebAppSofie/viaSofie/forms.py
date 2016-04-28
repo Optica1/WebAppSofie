@@ -13,7 +13,7 @@ class MyRegistrationForm(UserCreationForm)
 
 	class Meta
 		model = User
-		field = ('username', 'email', 'password1', 'password2', 'phonenumber', 'firstname', 'lastname')
+		field = ('email', 'username', 'password1', 'password2', 'phonenumber', 'firstname', 'lastname')
 
 
 	#overwriting the save method for custom fields
