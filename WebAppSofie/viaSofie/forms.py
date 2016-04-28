@@ -5,8 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 class MyRegistrationForm(UserCreationForm):
 	email = forms.EmailField(required=True)
 	username = forms.CharField(label='Gebruikersnaam', max_length=20, required=True)
-	password1 = forms.CharField(label='Paswoord', max_length=20, required=True)
-	password2 = forms.CharField(label='Herhalen paswoord', max_length=20, required=True)
+	password1 = forms.CharField(label='Paswoord', max_length=20, required=True, widget=forms.PasswordInput)
+	password2 = forms.CharField(label='Herhalen paswoord', max_length=20, required=True, widget=forms.PasswordInput)
 	phonenumber = forms.CharField(label='Telefoonnummer', max_length=10, required=True)
 	firstname = forms.CharField(label='Voornaam', max_length=15, required=True)
 	lastname = forms.CharField(label='Achternaam', max_length=30, required=True)
