@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
-from passlib.hash import sha256_crypt
+from django.contrib.auth import hashers
+#from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
 	email = forms.EmailField(required=True)
@@ -15,7 +16,7 @@ class MyRegistrationForm(UserCreationForm):
 
 	class Meta(UserCreationForm.Meta):
 		model = User
-		fields = UserCreationForm.Meta.fields + ('email', 'phonenumber', 'firstname', 'lastname')
+		fields =('email', 'username', 'password1', 'password2', 'phonenumber', 'firstname', 'lastname')
 
 	def clean_password2(self):
 		password1 = self.cleaned_data.get('password1')
@@ -28,8 +29,8 @@ class MyRegistrationForm(UserCreationForm):
 	def save(self, commit=True):
 		user = super(UserCreationForm, self).save(commit=False)# commit false because we do this at end of var assignments
 		user.email = self.cleaned_data['email']#cleaned so all character are valid
-		#user.username = self.cleaned_data['username']
-		#user.password = sha256_crypt.encrypt(self.cleaned_data['password1'],rounds=24000)
+		user.username = self.cleaned_data['username']
+		user.password = make_password(self.cleaned_data['password1'])
 		user.phonenumber = self.cleaned_data['phonenumber']
 		user.first_name = self.cleaned_data['firstname']
 		user.last_name = self.cleaned_data['lastname']
