@@ -13,9 +13,9 @@ class MyRegistrationForm(UserCreationForm):
 	firstname = forms.CharField(label='Voornaam', max_length=15, required=True)
 	lastname = forms.CharField(label='Achternaam', max_length=30, required=True)
 
-	class Meta:
+	class Meta(UserCreationForm.Meta):
 		model = User
-		fields = ('email', 'username', 'password1', 'password2', 'phonenumber', 'firstname', 'lastname')
+		fields = UserCreationForm.Meta.fields + ('email', 'phonenumber', 'firstname', 'lastname')
 
 	def clean_password2(self):
 		password1 = self.cleaned_data.get('password1')
