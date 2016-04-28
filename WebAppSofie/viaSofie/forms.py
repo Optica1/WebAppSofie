@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
+from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
 	email = forms.EmailField(required=True)
@@ -21,14 +22,15 @@ class MyRegistrationForm(UserCreationForm):
 		password2 = self.cleaned_data.get('password2')
 		if password1 and password2:
 			if password1 != password2:
-				raise forms.ValidationError(_("The two password fields didn't match."))
+				raise forms.ValidationError(_("De paswoorden kwamen niet overeen."))
 
 	#overwriting the save method for custom fields
 	def save(self, commit=True):
+		password = self.cleaned_data['password1']
 		user = super(UserCreationForm, self).save(commit=False)# commit false because we do this at end of var assignments
 		user.email = self.cleaned_data['email']#cleaned so all character are valid
 		user.username = self.cleaned_data['username']
-		user.password = self.cleaned_data['password1']
+		user.password = sha256_crypt.encrypt(password)
 		user.phonenumber = self.cleaned_data['phonenumber']
 		user.first_name = self.cleaned_data['firstname']
 		user.last_name = self.cleaned_data['lastname']
