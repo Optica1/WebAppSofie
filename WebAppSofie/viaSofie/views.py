@@ -6,7 +6,7 @@ from django.core.context_processors import csrf #anti crosssite scripting
 from forms import MyRegistrationForm
 
 def index(request):
-	return render_to_response('index.html')
+	return render_to_response('base.html')
 
 def login(request):
 	c = {}

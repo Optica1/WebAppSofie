@@ -24,11 +24,12 @@ admin.autodiscover()
 import settings
 
 urlpatterns = patterns('',
+    url(r'^$', 'viaSofie.views.index'),
     url(r'^admin/', include(admin.site.urls)),
-    
+
     # user auth urls
     url(r'^accounts/login',  'viaSofie.views.login'),
-    url(r'^accounts/auth',  'viaSofie.views.auth_view'),    
+    url(r'^accounts/auth',  'viaSofie.views.auth_view'),
     url(r'^accounts/logout', 'viaSofie.views.logout'),
     url(r'^accounts/loggedin', 'viaSofie.views.loggedin'),
     url(r'^accounts/invalid', 'viaSofie.views.invalid_login'),
@@ -38,5 +39,5 @@ urlpatterns = patterns('',
 
 if not settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-   
+
     urlpatterns += staticfiles_urlpatterns()
