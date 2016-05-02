@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
     <title>{% block title %}ViaSofie{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/default.css" />
+    <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/default2.css" />
 
     <script src="{% get_static_prefix %}js/jquery-2.0.0.min.js"></script>
     <!--<script src="{% get_static_prefix %}js/ajax.js"></script>-->
@@ -42,7 +44,7 @@
         {% block content %}This is the content area{% endblock %}
 
 	<div class="clearfix"></div>
-	
+
     </div>
 
 	</div>
