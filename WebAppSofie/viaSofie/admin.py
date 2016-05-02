@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from viaSofie import UserDetails
+from viaSofie.models import UserDetails
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
