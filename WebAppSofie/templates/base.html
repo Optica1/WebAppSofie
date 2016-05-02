@@ -4,7 +4,12 @@
 <head>
     <title>{% block title %}ViaSofie{% endblock %}</title>
 
-    <script src="{% get_static_prefix %}js/jquery-2.0.0.min.js"></script>
+    {% load staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/default2.css" %}" />
+
+    <script src="{% static "jquery-2.0.0.min.js"%}"></script>
     <!--<script src="{% get_static_prefix %}js/ajax.js"></script>-->
 
 </head>
@@ -42,7 +47,7 @@
         {% block content %}This is the content area{% endblock %}
 
 	<div class="clearfix"></div>
-	
+
     </div>
 
 	</div>
