@@ -1,14 +1,14 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default.css" %}" />
-<link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default2.css" %}" />
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>{% block title %}ViaSofie{% endblock %}</title>
 
     {% load staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default2.css" %}" />
 
     <script src="{% static "jquery-2.0.0.min.js"%}"></script>
     <!--<script src="{% get_static_prefix %}js/ajax.js"></script>-->
