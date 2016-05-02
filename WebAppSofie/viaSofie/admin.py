@@ -7,7 +7,7 @@ class UserDetailsInline(admin.StackedInline):
   can_delete = False
 
 class UserAdmin(UserAdmin):
-inlines = (UserDetailsInline, )
+inlines = (UserDetailsInline)
 
 # Re-register UserAdmin
 admin.site.unregister(User)
