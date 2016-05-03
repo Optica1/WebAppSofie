@@ -7,7 +7,10 @@ from forms import MyRegistrationForm
 
 def index(request):
 	return render_to_response('base.html')
-
+def about(request):
+	return render_to_response('about.html')
+def client(request):
+	return render_to_response('client.html')
 def login(request):
 	c = {}
 	c.update(csrf(request))
