@@ -8,5 +8,9 @@ class UserDetails(models.Model):
     phonenumber = models.CharField(max_length=12)
 
 class Client(models.Model):
-    Voornaam = models.CharField(max_length=60)
-    Achternaam = models.CharField(max_length=60)
+    voornaam = models.CharField(max_length=60)
+    achternaam = models.CharField(max_length=60)
+
+class Aboutpage(models.Model):
+    title = models.CharField(max_length=60)
+    text = models.TextField(max_length=1024)

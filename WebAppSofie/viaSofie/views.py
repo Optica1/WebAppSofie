@@ -9,7 +9,13 @@ from .models import *
 def index(request):
 	return render_to_response('base.html')
 def about(request):
-	return render_to_response('about.html')
+	try:
+		page = Aboutpage.objects.get(id=1)
+	except Aboutpage.DoesNotExist:
+		raise Http404('page does not exist')
+	return render_to_response('about.html', {
+		'page': page,
+	})
 def client(request, id):
 	try:
 		client = Client.objects.get(id=id)
