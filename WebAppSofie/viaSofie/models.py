@@ -6,3 +6,7 @@ from django.db import models
 class UserDetails(models.Model):
     user = models.OneToOneField(User)
     phonenumber = models.CharField(max_length=12)
+
+class Client(models.Model):
+    Voornaam = models.CharField(max_length=60)
+    Achternaam = models.CharField(max_length=60)

@@ -4,13 +4,20 @@ from django.contrib import auth #handles the authantication
 from django.contrib.auth.forms import UserCreationForm
 from django.core.context_processors import csrf #anti crosssite scripting
 from forms import MyRegistrationForm
+from .models import *
 
 def index(request):
 	return render_to_response('base.html')
 def about(request):
 	return render_to_response('about.html')
-def client(request):
-	return render_to_response('client.html')
+def client(request, id):
+	try:
+		client = Client.objects.get(id=id)
+	except Client.DoesNotExist:
+		raise Http404('User does not exist')
+	return render_to_response('client.html' , {
+		'client': client,
+	})
 def login(request):
 	c = {}
 	c.update(csrf(request))

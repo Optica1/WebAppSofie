@@ -3,6 +3,10 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
 from viaSofie.models import UserDetails
+from .models import *
+
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ['Voornaam', 'Achternaam']
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
@@ -11,6 +15,7 @@ class UserDetailsInline(admin.StackedInline):
 class UserAdmin(UserAdmin):
 	inlines = (UserDetailsInline, )
 
+admin.site.register(Client,ClientAdmin)
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
