@@ -1,9 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
-from WebAppSofie.viaSofie.models import UserDetails,Client,Aboutpage
-
-from viaSofie.models import UserDetails
 from .models import *
 
 class ClientAdmin(admin.ModelAdmin):
