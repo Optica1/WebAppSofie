@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
+from WebAppSofie.viaSofie.models import UserDetails,Client,Aboutpage
 
 from viaSofie.models import UserDetails
 from .models import *
@@ -21,7 +22,6 @@ class UserAdmin(UserAdmin):
 admin.site.register(Client,ClientAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(UserDetails)
-admin.site.register(Client)
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
