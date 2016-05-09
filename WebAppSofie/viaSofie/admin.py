@@ -22,7 +22,6 @@ admin.site.register(Client,ClientAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(UserDetails)
 admin.site.register(Client)
-admin.site.register(Aboutpage)
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
