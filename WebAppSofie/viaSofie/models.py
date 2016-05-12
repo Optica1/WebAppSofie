@@ -41,7 +41,10 @@ class Properties(models.Model):
 	year =
 	rateable_value =
 	description =
-	heating =
+	heating_type =
+	energy_label = 
+	extra_information =
+	planning_info = #stedenbouwkundige informatie
 	available = models.BooleanField()
 	sold = models.BooleanField()
 
