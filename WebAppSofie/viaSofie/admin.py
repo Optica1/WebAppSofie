@@ -18,7 +18,6 @@ class UserAdmin(UserAdmin):
 
 admin.site.register(Client,ClientAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
-admin.site.register(UserDetails)
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
