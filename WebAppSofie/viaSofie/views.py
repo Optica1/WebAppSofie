@@ -7,13 +7,13 @@ from forms import MyRegistrationForm
 from .models import *
 
 def index(request):
-	return render_to_response('base.html')
+	return render_to_response('templates/base.html')
 def about(request):
 	try:
 		page = Aboutpage.objects.get(id=1)
 	except Aboutpage.DoesNotExist:
 		raise Http404('page does not exist')
-	return render_to_response('about.html', {
+	return render_to_response('templates/about.html', {
 		'page': page,
 	})
 def client(request, id):
@@ -21,13 +21,13 @@ def client(request, id):
 		client = Client.objects.get(id=id)
 	except Client.DoesNotExist:
 		raise Http404('User does not exist')
-	return render_to_response('client.html' , {
+	return render_to_response('templates/client.html' , {
 		'client': client,
 	})
 def login(request):
 	c = {}
 	c.update(csrf(request))
-	return render_to_response('login.html', c)
+	return render_to_response('templates/login.html', c)
 
 def auth_view(request):
     username = request.POST.get('username', '')
@@ -44,15 +44,15 @@ def loggedin(request):
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/accounts/login')
 	else:
-		return render_to_response('loggedin.html',
+		return render_to_response('templates/loggedin.html',
 								{'full_name': request.user.username}) #passes full_name to template
 
 def invalid_login(request):
-	return render_to_response('invalid_login.html')
+	return render_to_response('templates/invalid_login.html')
 
 def logout(request):
 	auth.logout(request)
-	return render_to_response('logout.html')
+	return render_to_response('templates/logout.html')
 
 def register_user(request):
 	if request.method == 'POST':
@@ -66,7 +66,7 @@ def register_user(request):
 
 	args['form'] = MyRegistrationForm()
 
-	return render_to_response('register.html', args)
+	return render_to_response('templates/register.html', args)
 
 def register_success():
-	return render_to_response('register_success.html')
+	return render_to_response('templates/register_success.html')
