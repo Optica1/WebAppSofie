@@ -8,7 +8,7 @@ body{
 .logo {
   display: inline-block;
   max-height: 20%;
-  height: auto;
+  width: auto;
 }
 
 .row li a{ /*container die de containerS midden vast houdt*/
