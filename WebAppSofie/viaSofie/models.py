@@ -3,15 +3,15 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class UserDetails(models.Model):
-    user = models.OneToOneField(User)
-    phonenumber = models.CharField(max_length=12)
+	user = models.OneToOneField(User)
+	phonenumber = models.CharField(max_length=12)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
 	busnumber = models.CharField(max_length=3)
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
-
+	
 class Client(models.Model):
     voornaam = models.CharField(max_length=60)
     achternaam = models.CharField(max_length=60)
