@@ -12,10 +12,6 @@ class UserDetails(models.Model):
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
 
-class Client(models.Model):
-    voornaam = models.CharField(max_length=60)
-    achternaam = models.CharField(max_length=60)
-
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
     text = models.TextField() #max_length isn't implemented on Textfields
