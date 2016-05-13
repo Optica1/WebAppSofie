@@ -45,7 +45,7 @@ class Properties(models.Model):
 		('Half'),
 		('Closed'),
 		('Appartment'),
-		('Mezzanine')
+		('Mezzanine'),
 		('Bungalow'),
 		('Caravan'),
 	)
