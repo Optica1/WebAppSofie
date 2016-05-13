@@ -7,7 +7,7 @@ class UserDetails(models.Model):
 	phonenumber = models.CharField(max_length=12)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
-	busnumber = models.CharField(max_length=3, null=True, blank=True, default='a')
+	busnumber = models.CharField(max_length=3, null=True, blank=True)
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
