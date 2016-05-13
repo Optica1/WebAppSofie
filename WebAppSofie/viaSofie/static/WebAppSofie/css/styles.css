@@ -2,7 +2,11 @@
 /* CSS Document */
 
 body{
-  padding-top: 70px;
+  padding-top: 90px;
+}
+
+.logo {
+  background-image: "static/WebAppSofie/images/def logos via sofie - RGB-01.png";
 }
 
 .row li a{
