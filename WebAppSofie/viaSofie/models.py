@@ -5,6 +5,12 @@ from django.db import models
 class UserDetails(models.Model):
     user = models.OneToOneField(User)
     phonenumber = models.CharField(max_length=12)
+ 	street = models.CharField(max_length=50)
+	housenumber = models.CharField(max_length=4)
+	busnumber = models.CharField(max_length=3)
+	postalcode = models.CharField(max_length=10)
+	city = models.CharField(max_length=30)
+	country = models.CharField(max_length=30)
 
 class Client(models.Model):
     voornaam = models.CharField(max_length=60)
@@ -12,7 +18,7 @@ class Client(models.Model):
 
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
-    text = models.TextField(max_length=1024)
+    text = models.TextField() #max_length isn't implemented on Textfields
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
@@ -26,63 +32,74 @@ class EbookRequests(models.Model):
 	send = models.BooleanField()
 
 class Properties(models.Model):
-	title =
-	address =
-	price =
-	buildingtype = 
+	title = models.CharField(max_length=50)
+	street = models.CharField(max_length=50)
+	housenumber = models.CharField(max_length=4)
+	busnumber = models.CharField(max_length=3)
+	postalcode = models.CharField(max_length=10)
+	city = models.CharField(max_length=30)
+	price = models.CharField(max_length=8)
+	buildingtype = (
+		('Open'),
+		('Half'),
+		('Closed'),
+		('Appartment'),
+		('Mezzanine')
+		('Bungalow'),
+		('Caravan'),
+	)
 	sale = models.BooleanField()
-	area =
-	livingarea =
-	bedrooms =
-	bathrooms =
-	garages =
-	floors =
-	extra_sections = 
-	year =
-	rateable_value =
-	description =
-	heating_type =
-	energy_label = 
-	extra_information =
-	planning_info = #stedenbouwkundige informatie
+	area = models.CharField(max_length=10)
+	livingarea = models.CharField(max_length=10)
+	year = models.CharField(max_length=4) #buildyear
+	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
+	description = models.TextField()
+	heating_type = (
+		('Electric'),
+		('Gas'),
+		('Furnace'),
+		('Heat Pump'),
+		('Special'),
+	)
+	energy_label = models.CharField(max_length=5)
+	extra_information = models.TextField()
 	available = models.BooleanField()
 	sold = models.BooleanField()
 
-
-
-
-
-
-
-	1. naam + korte beschrijving (titel)
-2. adres
-3. oppervlakte
-4. vraagprijs
-5. huis/appartement
-6. verhuren/verkopen
-7. aantal badkamers
-8. aantal slaapkamers
-9. aantal garages
-10. aantal verdiepingen
-11. beschrijving indeling huis
-1. aantal toiletten
-2. zolder (ja of nee)
-3. kelder (ja of nee)
-4. zonnepanelen (ja of nee)
-5. …
-12. omschrijving huis (korte tekst)
-13. soort verwarming (CV / stookolie / ...)
-14. beschrijving tuin/…
-15. energieprestatie en keuringsverslagen.
-16. Stedenbouwkundige voorschriften
-17. ligging (google maps)
-18. oppervlakte (bewoonbare / grond)
-19. Kadastraal inkomen
-20. Bouwjaar
-21. extra informatie
-22. documenten (voor een plan of andere informatie)
-
-class PropertyDocuments (models.Model):
+class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
 	path = models.FilePathField(max_length=100)
 	available = models.BooleanField()
+
+class PlanningInfo(models.Model): #moet nog vertaald worden
+	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	voorkooprecht = models.BooleanField()
+	bouwvergunning = models.BooleanField()
+	dagvaarding = models.BooleanField()
+	verkaveling = models.BooleanField()
+	juridische_beslissing = models.BooleanField()
+	co2_emission = models.CharField(max_length=5)
+	epc = models.CharField(max_length=10)
+	unique_code = models.CharField(max_length=10)
+
+class Room(models.Model):
+	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	area = models.CharField(max_length=8)
+
+	class meta:
+		abstract = True
+
+class Bathroom(Room):
+	bath_type = models.CharField(max_length=15)
+
+class Bedroom(Room):
+
+class Garage(Room):
+
+class Toilet(Room):
+
+class Kitchen(Room):
+
+class Livingroom(Room):
+
+class Storageroom(Room):
