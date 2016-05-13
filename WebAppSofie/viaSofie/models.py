@@ -11,7 +11,7 @@ class UserDetails(models.Model):
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
-	
+
 class Client(models.Model):
     voornaam = models.CharField(max_length=60)
     achternaam = models.CharField(max_length=60)
@@ -108,3 +108,4 @@ class Kitchen(Room):
 class Livingroom(Room):
 
 class Storageroom(Room):
+	
