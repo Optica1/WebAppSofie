@@ -1,44 +1,44 @@
 body {
     margin: 0;
-    
+
     font-family: 'bodyFont', sans-serif;
 }
 
 @font-face {
     font-family: 'bodyFont';
-    src: url("../pictures/RopaSansSCPro-Regular.otf");
-    
+    src: url("pictures/RopaSansSCPro-Regular.otf");
+
 }
 
-#container {    
-    position: relative; 
+#container {
+    position: relative;
     width: 1000px;
    /* height: 500px; */
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
     padding-top: 160px;
     padding-bottom: 50px;
 }
 
 header {
-    
+
     background-color: #e0c8c6;
     width: 100%;
     position: fixed;
-    z-index: 1; 
+    z-index: 1;
     top: 0;
 }
 
 .contentHeader {
     margin-left: auto;
-    margin-right: auto; 
-    height: 153px; 
-    width: 1024px; 
+    margin-right: auto;
+    height: 153px;
+    width: 1024px;
 }
 
 .logo {
     float: left;
-    
+
     font-size: 15px;
 }
 
@@ -63,7 +63,7 @@ ul li {
     font-size: 25px;
     float: left;
     margin-right: 12px;
-   
+
 }
 
 ul li a {
@@ -80,20 +80,20 @@ li {
 }
 
 .loginSticker {
-    position: absolute; 
-    z-index: 1; 
+    position: absolute;
+    z-index: 1;
     /*left: 1200px;*/
-    right: 100px; 
+    right: 100px;
 }
 
 footer {
     background-color: #e0c8c6;
     text-align: center;
-    height: 40px; 
+    height: 40px;
     width: 100%;
     padding-top: 5px;
     z-index: 1;
     position: fixed;
     bottom: 0;
-    
+
 }

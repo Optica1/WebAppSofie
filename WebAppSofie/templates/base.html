@@ -5,47 +5,69 @@
 <head>
     <title>{% block title %}ViaSofie{% endblock %}</title>
 
-
-    <link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default2.css" %}" />
-    <!--<link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default2.css" %}" />-->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "{% static "WebAppSofie/css/bootstrap.min.css" %}" rel ="stylesheet">
+    <link href = "{% static "WebAppSofie/css/styles.css" %}" rel ="stylesheet">
     <script src="{% static "WebAppSofie/jquery-2.0.0.min.js"%}"></script>
-    <!--<script src="{% get_static_prefix %}js/ajax.js"></script>-->
+    <script src="{% get_static_prefix %}js/ajax.js"></script>
+    <script src="{% static "WebAppSofie/js/bootstrap.js"%}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>﻿
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-	<div id="page">
+    <div id="header" class ="navbar navbar-inverse navbar-fixed-top"> <!--hier start de navbar-->
+      <div class = "container">
+        <a href = "#" class = "navbar-brand">Via Sofie</a>
 
-    <header>
-      <div class="contentHeader">
-        <div class="logo">
-         <img src="img/logoformat.jpg"/>
-        </div>
-        <nav>
+        <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+          <span class ="icon-bar"></span>
+          <span class ="icon-bar"></span>
+          <span class ="icon-bar"></span>
+        </button>
+
+        <div class = "collapse navbar-collapse navHeaderCollapse">
           {% block menubar %}
-          <!-- <img src="{% static "images/python-logo.jpg" %}" width="200"/><!--logo--> -->
-          <ul>
-              <li><a href="">Over</a></li>
-              <li><a href="">Contact</a></li>
-              <li><a href="">Partners</a></li>
-              <li><a href="">Welkom</a></li>
-              <li><a href="">Kopen</a></li>
-              <li><a href="">Huren</a></li>
-              <li><a href="">Referenties</a></li>
-              <li><a href="">Advies</a></li>
+          <ul class ="nav navbar-nav navbar-left">
+            <li class = "dropdown">
+              <a href="#" class = "dropdown-toggle" data-toggle="dropdown">Over<b class ="caret"></b></a>
+              <ul class = "dropdown-menu">
+                <li><a href="#">drop1</a></li>
+                <li><a href="#">drop2</a></li>
+                <li><a href="#">drop3</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Welkom</a></li>
+            <li><a href="#">Kopen</a></li>
+            <li><a href="#">Huren</a></li>
+            <li><a href="#">Referenties</a></li>
+            <li><a href="#">Advies</a></li>
+            <li><a href="#">e_book</a></li>
           </ul>
-          <a href="">e_book</a>
           {% endblock %}
-        </nav>
+          <form class="navbar-form navbar-right" role ="form"> <!--hier start de login form-->
+              <div class = "input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="Username"/>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock"></span>
+                </span>
+                <input type="password" class="form-control" placeholder="Password"/>
+              </div>
+              <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+          </form><!--hier eindigt de login form-->
+        </div>
       </div>
-    </header>
-    <div id="container">
-      <p>Sectie 1.10.32 van "de Finibus Bonorum et Malorum", geschreven door Cicero in 45 v.Chr."Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"1914 vertaling door H. Rackham"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"Sectie 1.10.33 van "de Finibus Bonorum et Malorum", geschreven door Cicero in 45 v.Chr."At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."1914 vertaling door H. Rackham"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains." Sectie 1.10.32 van "de Finibus Bonorum et Malorum", geschreven door Cicero in 45 v.Chr."Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"1914 vertaling door H. Rackham"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"Sectie 1.10.33 van "de Finibus Bonorum et Malorum", geschreven door Cicero in 45 v.Chr."At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."1914 vertaling door H. Rackham"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains." </p>
+    </div> <!--hier eindigt de navbar-->
 
-    </div>
-    <div id="content">
-
+    <div id="content" >
     	{% if messages %}
     	<ul class="messages">
     	    {% for message in messages %}
@@ -53,23 +75,72 @@
     	    {% endfor %}
     	</ul>
     	{% endif %}
+      {% block content %}
+      <div class = "container"><!--hier begint de boven content-->
+        <div class = "jumbotron jumbotron-static-top" >
 
-            {% block content %}This is the content area{% endblock %}
+          <center>
+          <img src="images/def logos via sofie - RGB-01.png" width="15%" height="15%"/>
+          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <a class = "btn btn-default">extra button!</a>
+          <a class = "btn btn-default">second extra button!</a>
+        </center>
+        </div>
+      </div><!--hier eindigt de boven content-->
+
+      <div class = "container"><!--hier start midden content-->
+        <div class = "row">
+          <center>
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 1</a></h3>
+            <img src="images/Fotolia_44165827-74936f52.jpg" width="100%"height="10%"  class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href = "#" class = "btn btn-default">Read More</a>
+          </div>
+
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 2</a></h3>
+            <img src="images/architectural-photography-house-heriot.jpg" width="90%" height="10%" class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+             <a href = "#" class = "btn btn-default">Read More</a>
+          </div>
+
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 3</a></h3>
+            <img src="images/light-house-night-photography.jpg" width="90%" height="10%"  class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href = "#" class = "btn btn-default">Read More</a>
+          </div>
+
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 4</a></h3>
+            <img src="images/architecture-photography-houses-charming-brunosilvestrearchitecture.jpg" width="90%" height="10%"  class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href = "#" class = "btn btn-default">Read More</a>
+              </center>
+          </div>
+        </div>
+      </div><!--hier eindigt midden content-->
+      {% endblock %}
 
        <div class="clearfix"></div>
     </div>
 
-    <footer>
-        <p>volg ons op:</p>
+    <div class = "footer navbar-static-bottom"><!--hier start de footer-->
+      <div class = "footbox">
         <ul>
-            <li><a href="">Vastgoed & advies</a></li>
-            <li><a href="">Disclaimer</a></li>
-            <li><a href="">Sitemap</a></li>
-            <li><a href="">Privacybeleid</a></li>
-            <li>Copyright@2016 viaSofie</li>
+          <p class = "navbar-text pull-right">Copyright@2016 viaSofie</p>
+          <p class = "navbar-text pull-right">
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </p>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Sitemap</a>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
+          <p class = "navbar-text pull-right">volg ons op:</p>
         </ul>
-    </footer>
-
-  </div>
+      </div>
+    </div><!--hier eindigt de footer-->
 </body>
 </html>
