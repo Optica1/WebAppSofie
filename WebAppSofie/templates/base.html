@@ -75,8 +75,9 @@
     	    {% endfor %}
     	</ul>
     	{% endif %}
-      {% block content %}
       <div class = "container"><!--hier begint de boven content-->
+      {% block content %}
+
         <div class = "jumbotron jumbotron-static-top" >
 
           <center>
@@ -120,8 +121,8 @@
               </center>
           </div>
         </div>
-      </div><!--hier eindigt midden content-->
       {% endblock %}
+      </div><!--hier eindigt midden content-->
 
        <div class="clearfix"></div>
     </div>
