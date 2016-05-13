@@ -108,4 +108,3 @@ class Kitchen(Room):
 class Livingroom(Room):
 
 class Storageroom(Room):
-	
