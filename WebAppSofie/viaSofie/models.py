@@ -32,6 +32,7 @@ class EbookRequests(models.Model):
 	send = models.BooleanField()
 
 class Properties(models.Model):
+	user = models.ForeignKey(User, on_delete=models.PROTECT)
 	title = models.CharField(max_length=50)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
@@ -70,6 +71,10 @@ class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
 	path = models.FilePathField(max_length=100)
 	available = models.BooleanField()
+
+class PropertyPictures(models.Model):
+	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	path = models.FilePathField(max_length=100)
 
 class PlanningInfo(models.Model): #moet nog vertaald worden
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
