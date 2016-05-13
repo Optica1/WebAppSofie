@@ -2,11 +2,7 @@
 /* CSS Document */
 
 body{
-  padding-top: 90px;
-}
-
-.logo {
-  background-size: contain;
+  padding-top: 15%;
 }
 
 .row li a{
