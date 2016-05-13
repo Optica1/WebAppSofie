@@ -1,47 +1,81 @@
 body {
 	text-align: center;
+    background-color: #e0c8c6; /* dit is niet roze in reality?*/
+
 }
 
-#page {
-	width: 960px;
-	text-align: left;
-	margin: 10px auto 20px auto;
-	background-color: #0c0c0c;
+.body {
+    margin: 0 auto;
+   /* width: 70%;*/
+    clear: both;
 }
 
-#sidebar {
-	float: left;
-	width: 200px;
-	border: 1px solid #000;
+#container {
+
 }
 
-#content {
-	float: left;
-	width: 600px;
-	border: 1px solid #f00;
-	padding: 10px;
-	line-height: 36px;
+.mainHeader {
+    background-color: beige;
 }
 
-label, input {
-	float: left;
+.navigatie {
+    height: 60px;
+    margin-top: 30px;
 }
 
-ul {
-	list-style: none;
+/* navigatie */
+.navigatie ul {
+	padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    list-style-type: none;
+    height: 30px;
+    width: 940px;
+
 }
 
-li {
-	display: inline-block;
-	width: 100%;
+.navigatie ul li {
+	display: inline;
+	font-weight: bold;
+    text-decoration-color: #e8e8e8;
+    font-size: 2rem;
+    float: left; /*horizontale menubar*/
+    height: 30px;
+
 }
 
-.helptext {
-	float: left;
-	width: 100%;
+.navigatie ul li a {
+    display: block;
+    color: #e8e8e8;
+    text-align: center;
+    text-decoration: none;
+    background-image: url("pictures/zeshoek.png");
+    height: 50px;
+    width: 235px;
 }
 
-.clearfix {
-	clear: both;
+.picture {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    width: 100%;
+    height: 40px;
+    float: left;
+    background-color: beige;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+footer p {
+    width: 92%;
+    margin: 1% auto;
+    color: black;
+}

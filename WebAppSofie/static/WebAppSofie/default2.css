@@ -6,20 +6,20 @@ body {
 
 @font-face {
     font-family: 'bodyFont';
-    src: url("../pictures/RopaSansSCPro-Regular.otf");
-    
+    src: url("pictures/RopaSansSCPro-Regular.otf");
+
 }
 
 .body {
-    margin: 0 auto; 
-    clear: both; 
+    margin: 0 auto;
+    clear: both;
 }
 
 #container {
-    width: 940px; 
+    width: 940px;
     max-width: 940px;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
 }
 
 .mainHeader {
@@ -50,7 +50,7 @@ body {
     font-size: 35px;
     float: left; /*horizontale menubar*/
     height: 30px;
-   
+
 }
 
 .navigatie ul li a {
@@ -64,7 +64,7 @@ body {
 }
 
 .navigatie ul li a.main {
-    background-image: url(../pictures/zeshoekkleur.png);
+    background-image: url(pictures/zeshoekkleur.png);
 }
 
 .navigatie ul li:hover > ul{
@@ -73,22 +73,22 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 25px;
-    background-image: url(../pictures/rechthoek.png);
+    background-image: url(pictures/rechthoek.png);
     height: 37px;
     width: 235px;
-    padding-top: 3px; 
+    padding-top: 3px;
     position: relative;
 }
 
 .picture {
     padding-top: 30px;
     padding-bottom: 10px;
-    
+
 }
 
 img {
     max-width: 100%;
-    height: auto; 
+    height: auto;
 }
 
 .icons {
@@ -96,18 +96,17 @@ img {
     width: 940px;
     font-size: 30px;
     right: 0px;
-    width: 1500px; 
-    
+    width: 1500px;
+
 }
 
 footer {
     height: 40px;
     float: left;
-    width: 940px; 
+    width: 940px;
     margin: 30px;
 }
 
 footer p {
-    color: black; 
+    color: black;
 }
-
