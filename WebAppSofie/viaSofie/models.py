@@ -41,13 +41,13 @@ class Properties(models.Model):
 	city = models.CharField(max_length=30)
 	price = models.CharField(max_length=8)
 	buildingtype = (
-		('Open'),
-		('Half'),
-		('Closed'),
-		('Appartment'),
-		('Mezzanine'),
-		('Bungalow'),
-		('Caravan'),
+		('O', 'Open'),
+		('H', 'Half'),
+		('CL', 'Closed'),
+		('A', 'Appartment'),
+		('M', 'Mezzanine'),
+		('B', 'Bungalow'),
+		('CA', 'Caravan'),
 	)
 	sale = models.BooleanField()
 	area = models.CharField(max_length=10)
@@ -56,11 +56,11 @@ class Properties(models.Model):
 	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
 	description = models.TextField()
 	heating_type = (
-		('Electric'),
-		('Gas'),
-		('Furnace'),
-		('Heat Pump'),
-		('Special'),
+		('E', 'Electric'),
+		('G', 'Gas'),
+		('F', 'Furnace'),
+		('H', 'Heat pump'),
+		('S', 'Special'),
 	)
 	energy_label = models.CharField(max_length=5)
 	extra_information = models.TextField()
