@@ -6,33 +6,31 @@ body{
 }
 
 .logo {
-  background-size: contain;
+
+  display: inline-block;
+  max-width: 20%;
+  height: auto;
 }
 
-.row li a{
-
- /*container die de containerS midden vast houdt*/
-color:#000;
+.row li a{ /*container die de containerS midden vast houdt*/
+  color:#000;
 }
 .row p{
-font-family: 'Montserrat', sans-serif;
-margin-top:10px;
-
+  font-family: 'Montserrat', sans-serif;
+  margin-top:10px;
 }
 
 .col-md-3{
-
-
 }
-.btn{
 
+.btn{
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 }
+
 .btn:hover{
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
-
 }
 
 
