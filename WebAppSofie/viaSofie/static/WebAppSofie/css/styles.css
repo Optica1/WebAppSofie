@@ -6,7 +6,11 @@ body{
 }
 
 .logo {
+<<<<<<< HEAD
   background-image: url("static/WebAppSofie/images/def logos via sofie - RGB-01.png");
+=======
+  background-image: "images/def logos via sofie - RGB-01.png";
+>>>>>>> fd6550f1448a89ef1a0bb3d1fbdf1182a508f561
 }
 
 .row li a{
