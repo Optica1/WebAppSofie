@@ -5,63 +5,143 @@
 <head>
     <title>{% block title %}ViaSofie{% endblock %}</title>
 
-
-    <link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default.css" %}" />
-    <!--<link rel="stylesheet" type="text/css" href="{% static "WebAppSofie/default2.css" %}" />-->
-
-    <script src="{% static "jquery-2.0.0.min.js"%}"></script>
-    <!--<script src="{% get_static_prefix %}js/ajax.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "{% static "WebAppSofie/css/bootstrap.min.css" %}" rel ="stylesheet">
+    <link href = "{% static "WebAppSofie/css/styles.css" %}" rel ="stylesheet">
+    <script src="{% static "WebAppSofie/jquery-2.0.0.min.js"%}"></script>
+    <script src="{% get_static_prefix %}js/ajax.js"></script>
+    <script src="{% static "WebAppSofie/js/bootstrap.js"%}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>﻿
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-	<div id="page">
+    <div id="header" class ="navbar navbar-inverse navbar-fixed-top"> <!--hier start de navbar-->
+      <div class = "container">
+        <a href = "#" class = "navbar-brand">Via Sofie</a>
 
-    <div id="header">
-        {% block menubar %}
-        <img src="{% static "images/python-logo.jpg" %}" width="200"/><!--logo-->
+        <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+          <span class ="icon-bar"></span>
+          <span class ="icon-bar"></span>
+          <span class ="icon-bar"></span>
+        </button>
+
+        <div class = "collapse navbar-collapse navHeaderCollapse">
+          {% block menubar %}
+          <ul class ="nav navbar-nav navbar-left">
+            <li class = "dropdown">
+              <a href="#" class = "dropdown-toggle" data-toggle="dropdown">Over<b class ="caret"></b></a>
+              <ul class = "dropdown-menu">
+                <li><a href="#">drop1</a></li>
+                <li><a href="#">drop2</a></li>
+                <li><a href="#">drop3</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Welkom</a></li>
+            <li><a href="#">Kopen</a></li>
+            <li><a href="#">Huren</a></li>
+            <li><a href="#">Referenties</a></li>
+            <li><a href="#">Advies</a></li>
+            <li><a href="#">e_book</a></li>
+          </ul>
+          {% endblock %}
+          <form class="navbar-form navbar-right" role ="form"> <!--hier start de login form-->
+              <div class = "input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="Username"/>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock"></span>
+                </span>
+                <input type="password" class="form-control" placeholder="Password"/>
+              </div>
+              <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+          </form><!--hier eindigt de login form-->
+        </div>
+      </div>
+    </div> <!--hier eindigt de navbar-->
+
+    <div id="content" class="container">
+    	{% if messages %}
+    	<ul class="messages">
+    	    {% for message in messages %}
+    	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    	    {% endfor %}
+    	</ul>
+    	{% endif %}
+      <div class = "container"><!--hier begint de boven content-->
+      {% block content %}
+
+        <div class = "jumbotron jumbotron-static-top" >
+
+          <center>
+          <img src="images/def logos via sofie - RGB-01.png" width="15%" height="15%"/>
+          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <a class = "btn btn-default">extra button!</a>
+          <a class = "btn btn-default">second extra button!</a>
+        </center>
+        </div>
+      </div><!--hier eindigt de boven content-->
+
+      <div class = "container"><!--hier start midden content-->
+        <div class = "row">
+          <center>
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 1</a></h3>
+            <img src="images/Fotolia_44165827-74936f52.jpg" width="100%"height="10%"  class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href = "#" class = "btn btn-default">Read More</a>
+          </div>
+
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 2</a></h3>
+            <img src="images/architectural-photography-house-heriot.jpg" width="90%" height="10%" class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+             <a href = "#" class = "btn btn-default">Read More</a>
+          </div>
+
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 3</a></h3>
+            <img src="images/light-house-night-photography.jpg" width="90%" height="10%"  class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href = "#" class = "btn btn-default">Read More</a>
+          </div>
+
+          <div class ="col-md-3">
+            <h3><a href ="#">Huis 4</a></h3>
+            <img src="images/architecture-photography-houses-charming-brunosilvestrearchitecture.jpg" width="90%" height="10%"  class="img-rounded"/>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <a href = "#" class = "btn btn-default">Read More</a>
+              </center>
+          </div>
+        </div>
+      {% endblock %}
+      </div><!--hier eindigt midden content-->
+
+       <div class="clearfix"></div>
+    </div>
+
+    <div class = "footer navbar-static-bottom"><!--hier start de footer-->
+      <div class = "footbox">
         <ul>
-            <li><a href="">Over</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Partners</a></li>
-            <li><a href="">Welkom</a></li>
-            <li><a href="">Kopen</a></li>
-            <li><a href="">Huren</a></li>
-            <li><a href="">Referenties</a></li>
-            <li><a href="">Advies</a></li>
+          <p class = "navbar-text pull-right">Copyright@2016 viaSofie</p>
+          <p class = "navbar-text pull-right">
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </p>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Sitemap</a>
+          <a class = "navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
+          <p class = "navbar-text pull-right">volg ons op:</p>
         </ul>
-        <a href="">e_book</a>
-        {% endblock %}
-    </div>
-
-    <div id="content">
-
-	{% if messages %}
-	<ul class="messages">
-	    {% for message in messages %}
-	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-	    {% endfor %}
-	</ul>
-	{% endif %}
-
-        {% block content %}This is the content area{% endblock %}
-
-	<div class="clearfix"></div>
-
-    </div>
-
-	</div>
-
-    <div id="footer">
-        <p>volg ons op:</p>
-        <ul>
-            <li><a href="">Vastgoed & advies</a></li>
-            <li><a href="">Disclaimer</a></li>
-            <li><a href="">Sitemap</a></li>
-            <li><a href="">Privacybeleid</a></li>
-            <li>Copyright@2016 viaSofie</li>
-        </ul>
-    </div>
-
+      </div>
+    </div><!--hier eindigt de footer-->
 </body>
 </html>

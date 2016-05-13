@@ -3,18 +3,14 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class UserDetails(models.Model):
-    user = models.OneToOneField(User)
-    phonenumber = models.CharField(max_length=12)
- 	street = models.CharField(max_length=50)
+	user = models.OneToOneField(User)
+	phonenumber = models.CharField(max_length=12)
+	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
-	busnumber = models.CharField(max_length=3)
+	busnumber = models.CharField(max_length=3, null=True, blank=True)
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
-
-class Client(models.Model):
-    voornaam = models.CharField(max_length=60)
-    achternaam = models.CharField(max_length=60)
 
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
@@ -28,7 +24,7 @@ class Ebook(models.Model):
 
 class EbookRequests(models.Model):
 	email = models.EmailField(max_length=70)
-	ebook_id = models.ForeignKey(Reporter, on_delete=models.PROTECT)
+	ebook_id = models.ForeignKey(Ebook, on_delete=models.PROTECT)
 	send = models.BooleanField()
 
 class Properties(models.Model):
@@ -41,13 +37,13 @@ class Properties(models.Model):
 	city = models.CharField(max_length=30)
 	price = models.CharField(max_length=8)
 	buildingtype = (
-		('Open'),
-		('Half'),
-		('Closed'),
-		('Appartment'),
-		('Mezzanine')
-		('Bungalow'),
-		('Caravan'),
+		('O', 'Open'),
+		('H', 'Half'),
+		('CL', 'Closed'),
+		('A', 'Appartment'),
+		('M', 'Mezzanine'),
+		('B', 'Bungalow'),
+		('CA', 'Caravan'),
 	)
 	sale = models.BooleanField()
 	area = models.CharField(max_length=10)
@@ -56,11 +52,11 @@ class Properties(models.Model):
 	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
 	description = models.TextField()
 	heating_type = (
-		('Electric'),
-		('Gas'),
-		('Furnace'),
-		('Heat Pump'),
-		('Special'),
+		('E', 'Electric'),
+		('G', 'Gas'),
+		('F', 'Furnace'),
+		('H', 'Heat pump'),
+		('S', 'Special'),
 	)
 	energy_label = models.CharField(max_length=5)
 	extra_information = models.TextField()
@@ -98,13 +94,19 @@ class Bathroom(Room):
 	bath_type = models.CharField(max_length=15)
 
 class Bedroom(Room):
+	pass
 
 class Garage(Room):
+	pass
 
 class Toilet(Room):
+	pass
 
 class Kitchen(Room):
+	pass
 
 class Livingroom(Room):
+	pass
 
 class Storageroom(Room):
+	pass
