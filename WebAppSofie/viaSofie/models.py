@@ -98,13 +98,19 @@ class Bathroom(Room):
 	bath_type = models.CharField(max_length=15)
 
 class Bedroom(Room):
+	pass
 
 class Garage(Room):
+	pass
 
 class Toilet(Room):
+	pass
 
 class Kitchen(Room):
+	pass
 
 class Livingroom(Room):
+	pass
 
 class Storageroom(Room):
+	pass
