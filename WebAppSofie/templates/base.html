@@ -32,7 +32,24 @@
 
         <div class = "collapse navbar-collapse navHeaderCollapse">
           {% block menubar %}
-          <ul class ="nav navbar-nav navbar-left">
+          <ul class ="nav navbar-nav navbar-right">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class ="caret"></b></a>
+              <form class = "dropdown-menu navbar-form" role="form">
+                <div class = "input-group">
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user"></span>
+                  </span>
+                  <input type="text" class="form-control" placeholder="Username"/>
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-lock"></span>
+                  </span>
+                  <input type="password" class="form-control" placeholder="Password"/>
+                </div>
+                <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+              </form><!--hier eindigt de login form-->
+            </li>
             <li class = "dropdown">
               <a href="#" class = "dropdown-toggle" data-toggle="dropdown">Over<b class ="caret"></b></a>
               <ul class = "dropdown-menu">
@@ -51,21 +68,21 @@
             <li><a href="#">e_book</a></li>
           </ul>
           {% endblock %}
-          <form class="navbar-form navbar-right" role ="form"> <!--hier start de login form-->
-              <div class = "input-group">
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-user"></span>
-                </span>
-                <input type="text" class="form-control" placeholder="Username"/>
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon">
-                <span class="glyphicon glyphicon-lock"></span>
-                </span>
-                <input type="password" class="form-control" placeholder="Password"/>
-              </div>
-              <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
-          </form><!--hier eindigt de login form-->
+          <!-- <form class="navbar-form navbar-right" role ="form"> <!--hier start de login form-->
+              <!-- <div class = "input-group"> -->
+                <!-- <span class="input-group-addon"> -->
+                  <!-- <span class="glyphicon glyphicon-user"></span> -->
+                <!-- </span> -->
+                <!-- <input type="text" class="form-control" placeholder="Username"/> -->
+              <!-- </div> -->
+              <!-- <div class="input-group"> -->
+                <!-- <span class="input-group-addon"> -->
+                <!-- <span class="glyphicon glyphicon-lock"></span> -->
+                <!-- </span> -->
+                <!-- <input type="password" class="form-control" placeholder="Password"/> -->
+              <!-- </div> -->
+              <!-- <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i></button> -->
+          <!-- </form><!--hier eindigt de login form--> --> -->
         </div>
       </div>
     </div> <!--hier eindigt de navbar-->
