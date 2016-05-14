@@ -7,7 +7,7 @@ from forms import MyRegistrationForm
 from .models import *
 
 def index(request):
-	return render_to_response('templates/base.html')
+	return render_to_response('templates/home.html')
 def about(request):
 	try:
 		page = Aboutpage.objects.get(id=1)
