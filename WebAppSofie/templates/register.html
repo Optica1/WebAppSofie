@@ -3,9 +3,21 @@
 {% block content %}
 
 	<h2>Register</h2>
-	<form action="/accounts/register/" method="post">{% csrf_token %}
-		{{form}}
-		<input type="submit" value="Register" />
+	<form action="/accounts/register/" method="post" role="form" class="form-horizontal">{% csrf_token %}
+		<!-- {{form}} -->
+		{% for field in form %}
+			<div class="form-group">
+        <label class="control-label col-sm-2" for="{{ field.name }}">{{ field.label }}</label>
+				<div class="col-sm-10">
+					{{ field }}
+				</div>
+			</div>
+    {% endfor %}
+		<div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+      	<input type="submit" value="Register" class="btn btn-default"/>
+    	</div>
+  	</div>
 	</form>
-	
+
 {% endblock %}
