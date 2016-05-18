@@ -36,7 +36,7 @@ class Properties(models.Model):
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	price = models.CharField(max_length=8)
-	buildingtype = (
+	BUILDINGTYPE = (
 		('O', 'Open'),
 		('H', 'Half'),
 		('CL', 'Closed'),
@@ -45,19 +45,21 @@ class Properties(models.Model):
 		('B', 'Bungalow'),
 		('CA', 'Caravan'),
 	)
+	buildingtype = models.CharField(max_length=1, choices=BUILDINGTYPE)
 	sale = models.BooleanField()
 	area = models.CharField(max_length=10)
 	livingarea = models.CharField(max_length=10)
 	year = models.CharField(max_length=4) #buildyear
 	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
 	description = models.TextField()
-	heating_type = (
+	HEATING_TYPE = (
 		('E', 'Electric'),
 		('G', 'Gas'),
 		('F', 'Furnace'),
 		('H', 'Heat pump'),
 		('S', 'Special'),
 	)
+	heating_type = models.CharField(max_length=1, choices=HEATING_TYPE)
 	energy_label = models.CharField(max_length=5)
 	extra_information = models.TextField()
 	available = models.BooleanField()
