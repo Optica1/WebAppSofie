@@ -26,6 +26,7 @@ import settings
 urlpatterns =[
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^tinymce/', include('tinymce.urls')),
     url(r'^', include('viaSofie.urls')),
     # user auth urls
 

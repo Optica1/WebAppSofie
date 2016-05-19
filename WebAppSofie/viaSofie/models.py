@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
+from tinymce.models import HTMLField
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -14,7 +15,7 @@ class UserDetails(models.Model):
 
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
-    text = models.TextField() #max_length isn't implemented on Textfields
+    text = HTMLField()
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
@@ -44,8 +45,8 @@ class Properties(models.Model):
 		('M', 'Mezzanine'),
 		('B', 'Bungalow'),
 		('CA', 'Caravan'),
-	)
-	buildingtype = models.CharField(max_length=1, choices=BUILDINGTYPE)
+		)
+	buildingtype = models.CharField(max_length=1, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
 	sale = models.BooleanField()
 	area = models.CharField(max_length=10)
 	livingarea = models.CharField(max_length=10)
@@ -59,7 +60,7 @@ class Properties(models.Model):
 		('H', 'Heat pump'),
 		('S', 'Special'),
 	)
-	heating_type = models.CharField(max_length=1, choices=HEATING_TYPE)
+	heating_type = models.CharField(max_length=1, choices=HEATING_TYPE, default=HEATING_TYPE[0][0])
 	energy_label = models.CharField(max_length=5)
 	extra_information = models.TextField()
 	available = models.BooleanField()
