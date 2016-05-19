@@ -70,3 +70,9 @@ def register_user(request):
 
 def register_success():
 	return render_to_response('templates/register_success.html')
+
+def property():
+	return render_to_response('templates/property.html')
+
+def offer_sales():
+	return render_to_response('templates/offer.html')
