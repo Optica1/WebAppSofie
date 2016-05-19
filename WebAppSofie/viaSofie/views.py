@@ -68,11 +68,11 @@ def register_user(request):
 
 	return render_to_response('templates/register.html', args)
 
-def register_success():
+def register_success(request):
 	return render_to_response('templates/register_success.html')
 
-def property():
+def property(request):
 	return render_to_response('templates/property.html')
 
-def offer_sales():
+def offer_sales(request):
 	return render_to_response('templates/offer.html')
