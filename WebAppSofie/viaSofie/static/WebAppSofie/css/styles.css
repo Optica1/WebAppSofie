@@ -1,6 +1,26 @@
 @charset "utf-8";
 /* CSS Document */
 
+@media (min-width:768px) {
+    .inline-block-row {
+        word-spacing: -1em;
+        letter-spacing: -1em;
+        overflow:hidden;
+    }
+    .inline-block-row .col-sm-4 {
+        word-spacing: normal;
+        vertical-align: top;
+        letter-spacing: normal;
+        display: inline-block;
+        float:none;
+    }
+}
+@media (min-width:992px) {
+    .inline-block-row .col-md-3 {
+        float:none;
+    }
+}
+
 body{
   padding-top: 90px;
 }
