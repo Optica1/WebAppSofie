@@ -2,6 +2,11 @@
 
 {% block content %}
 
+	<style>
+      #map {
+        height: 100%;
+      }
+    </style>
 	<h2>huis</h2>
 	<h3>Huis OB, 4slpkrs, 2bdkmrs, rustig gelegen, nieuwbouw</h3>
 
@@ -47,6 +52,30 @@
 					<h3>Documenten</h3>
 					<p>hier zullen documenten opgelijst worden</p>
 			</center>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="map"></div>
+		    <script>
+		      function initMap() {
+		        var myLatLng = {lat: -25.363, lng: 131.044};
+
+		        var map = new google.maps.Map(document.getElementById('map'), {
+		          zoom: 4,
+		          center: myLatLng
+		        });
+
+		        var marker = new google.maps.Marker({
+		          position: myLatLng,
+		          map: map,
+		          title: 'Hello World!'
+		        });
+		      }
+		    </script>
+		    <script async defer
+		    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+		    </script>
+			</div>
 		</div>
 	</div>
 
