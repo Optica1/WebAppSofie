@@ -468,7 +468,7 @@ a.button {
 .button.default:active, input[type=submit].default:active,
 .button.default:focus, input[type=submit].default:focus,
 .button.default:hover, input[type=submit].default:hover {
-    background: #205067;
+    background: #2aa599;
 }
 
 .button[disabled].default,
