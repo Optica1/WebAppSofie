@@ -709,7 +709,7 @@ a.deletelink:focus, a.deletelink:hover {
     display: block;
     float: left;
     padding: 3px 12px;
-    background: #999;
+    background: #2aa599;
     font-weight: 400;
     font-size: 11px;
     text-transform: uppercase;
@@ -718,7 +718,7 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 .object-tools a:focus, .object-tools a:hover {
-    background-color: #417690;
+    background-color: #227c73;
 }
 
 .object-tools a:focus{
