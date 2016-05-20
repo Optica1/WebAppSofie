@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
+from tinymce.models import HTMLField
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -14,7 +15,7 @@ class UserDetails(models.Model):
 
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
-    text = models.TextField() #max_length isn't implemented on Textfields
+    text = HTMLField()
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
@@ -36,7 +37,7 @@ class Properties(models.Model):
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	price = models.CharField(max_length=8)
-	buildingtype = (
+	BUILDINGTYPE = (
 		('O', 'Open'),
 		('H', 'Half'),
 		('CL', 'Closed'),
@@ -45,19 +46,21 @@ class Properties(models.Model):
 		('B', 'Bungalow'),
 		('CA', 'Caravan'),
 	)
+	buildingtype = models.CharField(max_length=1, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
 	sale = models.BooleanField()
 	area = models.CharField(max_length=10)
 	livingarea = models.CharField(max_length=10)
 	year = models.CharField(max_length=4) #buildyear
 	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
 	description = models.TextField()
-	heating_type = (
+	HEATING_TYPE = (
 		('E', 'Electric'),
 		('G', 'Gas'),
 		('F', 'Furnace'),
 		('H', 'Heat pump'),
 		('S', 'Special'),
 	)
+	heating_type = models.CharField(max_length=1, choices=HEATING_TYPE, default=HEATING_TYPE[0][0])
 	energy_label = models.CharField(max_length=5)
 	extra_information = models.TextField()
 	available = models.BooleanField()
@@ -110,3 +113,8 @@ class Livingroom(Room):
 
 class Storageroom(Room):
 	pass
+
+class Translations(models.Model):
+	english = models.CharField(max_length=30)
+	french = models.CharField(max_length=30)
+	dutch = models.CharField(max_length=30)

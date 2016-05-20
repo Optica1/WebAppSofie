@@ -7,7 +7,7 @@ from forms import MyRegistrationForm
 from .models import *
 
 def index(request):
-	return render_to_response('templates/base.html')
+	return render_to_response('templates/home.html')
 def about(request):
 	try:
 		page = Aboutpage.objects.get(id=1)
@@ -68,5 +68,11 @@ def register_user(request):
 
 	return render_to_response('templates/register.html', args)
 
-def register_success():
+def register_success(request):
 	return render_to_response('templates/register_success.html')
+
+def property(request):
+	return render_to_response('templates/property.html')
+
+def offer_sales(request):
+	return render_to_response('templates/offer.html')

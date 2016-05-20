@@ -16,8 +16,8 @@ class UserDetailsInline(admin.StackedInline):
 class UserAdmin(UserAdmin):
 	inlines = (UserDetailsInline, )
 
-admin.site.register(Client,ClientAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
+admin.site.register(Properties)
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
