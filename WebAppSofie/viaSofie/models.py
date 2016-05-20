@@ -65,6 +65,10 @@ class Properties(models.Model):
 	extra_information = models.TextField()
 	available = models.BooleanField()
 	sold = models.BooleanField()
+	date_created = models.DateField(auto_now_add=True)
+	date_modified = models.DateField(auto_now=True)
+	longitude = models.DecimalField() #moet niet ingevuld worden door gebruiker
+	latitude = models..DecimalField() #moet niet ingevuld worden door gebruiker
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
