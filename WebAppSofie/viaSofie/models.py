@@ -30,7 +30,8 @@ class EbookRequests(models.Model):
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
-	title = models.CharField(max_length=50)
+	title_dutch = models.CharField(max_length=50)
+	title_french = models.CharField(max_length=50)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
 	busnumber = models.CharField(max_length=3)
@@ -52,7 +53,8 @@ class Properties(models.Model):
 	livingarea = models.CharField(max_length=10)
 	year = models.CharField(max_length=4) #buildyear
 	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
-	description = models.TextField()
+	description_dutch = models.TextField()
+	description_french = models.TextField()
 	HEATING_TYPE = (
 		('E', 'Electric'),
 		('G', 'Gas'),
@@ -62,7 +64,8 @@ class Properties(models.Model):
 	)
 	heating_type = models.CharField(max_length=1, choices=HEATING_TYPE, default=HEATING_TYPE[0][0])
 	energy_label = models.CharField(max_length=5)
-	extra_information = models.TextField()
+	extra_information_dutch = models.TextField()
+	extra_information_french = models.TextField()
 	available = models.BooleanField()
 	sold = models.BooleanField()
 	date_created = models.DateField(auto_now_add=True)
