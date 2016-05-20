@@ -45,7 +45,7 @@ class Properties(models.Model):
 		('M', 'Mezzanine'),
 		('B', 'Bungalow'),
 		('CA', 'Caravan'),
-		)
+	)
 	buildingtype = models.CharField(max_length=1, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
 	sale = models.BooleanField()
 	area = models.CharField(max_length=10)
@@ -113,3 +113,8 @@ class Livingroom(Room):
 
 class Storageroom(Room):
 	pass
+
+class Translations(models.Model):
+	english = models.CharField(max_length=30)
+	french = models.CharField(max_length=30)
+	dutch = models.CharField(max_length=30)
