@@ -30,13 +30,15 @@ class EbookRequests(models.Model):
 	send = models.BooleanField()
 
 class Properties(models.Model):
-	user = models.ForeignKey(User, on_delete=models.PROTECT, editable=False)
+	user = models.ForeignKey(User, on_delete=models.PROTECT)
 	title = models.CharField(max_length=50)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
 	busnumber = models.CharField(max_length=3)
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
+	longitude = models.CharField(editable=False)
+	latitude = models.CharField(editable=False)
 	price = models.CharField(max_length=8)
 	BUILDINGTYPE = (
 		('O', 'Open'),
