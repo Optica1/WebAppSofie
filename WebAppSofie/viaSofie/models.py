@@ -37,8 +37,8 @@ class Properties(models.Model):
 	busnumber = models.CharField(max_length=3)
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
-	longitude = models.CharField(editable=False)
-	latitude = models.CharField(editable=False)
+	longitude = models.CharField(max_length=10, editable=False)
+	latitude = models.CharField(max_length=10, editable=False)
 	price = models.CharField(max_length=8)
 	BUILDINGTYPE = (
 		('O', 'Open'),
