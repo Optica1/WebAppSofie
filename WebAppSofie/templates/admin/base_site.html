@@ -1,0 +1,12 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Via Sofie administratie' %}{% endblock %}
+
+{% block branding %}
+<!-- <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Via Sofie administration') }}</a></h1> -->
+<!-- <h1 id="site-name"><a href="{% url 'admin:index' %}">Via Sofie administratie</a></h1> -->
+<h1 id="site-name">{% trans 'my cool admin console' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
