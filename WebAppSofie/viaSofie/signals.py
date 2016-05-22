@@ -20,10 +20,11 @@ def model_pre_change(sender, **kwargs):
     # Geocoding an address
     geocode_result = gmaps.geocode(location)
 
-    # query schrijven voor de json die we hebben terug gekregen om dan de longitude en latitude mee in de database te steken.
+    # query json
     latitude = geocode_result[0]["geometry"]["location"]["lat"]
     longitude = geocode_result[0]["geometry"]["location"]["lng"]
 
+    # adding longitude and latitude to the database
     Propertie=viaSofie_properties(longitude=longitude, latitude=latitude)
     Propertie.save()
 
