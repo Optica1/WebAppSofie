@@ -30,7 +30,7 @@ class EbookRequests(models.Model):
 	send = models.BooleanField()
 
 class Properties(models.Model):
-	user = models.ForeignKey(User, on_delete=models.PROTECT)
+	user = models.ForeignKey(User, on_delete=models.PROTECT, editable=False)
 	title = models.CharField(max_length=50)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
