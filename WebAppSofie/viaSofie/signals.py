@@ -24,4 +24,7 @@ def model_pre_change(sender, **kwargs):
     latitude = geocode_result[0]["geometry"]["location"]["lat"]
     longitude = geocode_result[0]["geometry"]["location"]["lng"]
 
+    UserDetails.longitude=longitude
+    UserDetails.latitude=latitude
+
     # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
