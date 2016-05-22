@@ -16,7 +16,7 @@ class UserDetails(models.Model):
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
     text = HTMLField()
-	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
