@@ -1,1 +1,1 @@
-default_app_config = 'polls.apps.PollsConfig'
+default_app_config = 'viaSofie.apps.ViasofieConfig'
