@@ -13,10 +13,25 @@ class UserDetails(models.Model):
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
 
-class Aboutpage(models.Model):
+class AboutPage(models.Model):
     title = models.CharField(max_length=60)
     text = HTMLField()
 	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
+
+class PrivacyPage(models.Model):
+	title = models.CharField(max_length=60)
+	text = HTMLField()
+	language = CharField(max_length=20)
+
+class DisclamerPage(models.Model):
+	title = models.CharField(max_length=60)
+	text = HTMLField()
+	language = CharField(max_length=20)
+
+class AboutSofiePage(models.Model):
+	title = models.CharField(max_length=60)
+	text = HTMLField()
+	language = CharField(max_length=20)
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
@@ -31,7 +46,8 @@ class EbookRequests(models.Model):
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
-	title = models.CharField(max_length=50)
+	title_dutch = models.CharField(max_length=50)
+	title_french = models.CharField(max_length=50)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
 	busnumber = models.CharField(max_length=3)
@@ -55,7 +71,8 @@ class Properties(models.Model):
 	livingarea = models.CharField(max_length=10)
 	year = models.CharField(max_length=4) #buildyear
 	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
-	description = models.TextField()
+	description_dutch = models.TextField()
+	description_french = models.TextField()
 	HEATING_TYPE = (
 		('E', 'Electric'),
 		('G', 'Gas'),
@@ -65,9 +82,14 @@ class Properties(models.Model):
 	)
 	heating_type = models.CharField(max_length=1, choices=HEATING_TYPE, default=HEATING_TYPE[0][0])
 	energy_label = models.CharField(max_length=5)
-	extra_information = models.TextField()
+	extra_information_dutch = models.TextField()
+	extra_information_french = models.TextField()
 	available = models.BooleanField()
 	sold = models.BooleanField()
+	date_created = models.DateField(auto_now_add=True)
+	date_modified = models.DateField(auto_now=True)
+	longitude = models.DecimalField() #moet niet ingevuld worden door gebruiker
+	latitude = models..DecimalField() #moet niet ingevuld worden door gebruiker
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -121,3 +143,11 @@ class Translations(models.Model):
 	english = models.CharField(max_length=30)
 	french = models.CharField(max_length=30)
 	dutch = models.CharField(max_length=30)
+<<<<<<< HEAD
+=======
+
+class Faq(model.Model):
+	question = models.TextField()
+	answer = models.TextField()
+	visible = models.BooleanField()
+>>>>>>> Nick---views
