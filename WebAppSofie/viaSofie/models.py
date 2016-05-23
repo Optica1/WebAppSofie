@@ -95,7 +95,6 @@ class Properties(models.Model):
 	date_created = models.DateField(editable=False)
 	date_modified = models.DateField(editable=False)
 	def save(self, *args, **kwargs):
-        ''' On save, update timestamps '''
         if not self.id:
             self.date_created = timezone.now()
         self.date_modified = timezone.now()
