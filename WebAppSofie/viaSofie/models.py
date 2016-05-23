@@ -95,10 +95,10 @@ class Properties(models.Model):
 	date_created = models.DateField(editable=False)
 	date_modified = models.DateField(editable=False)
 	def save(self, *args, **kwargs):
-        if not self.id:
-            self.date_created = timezone.now()
-        self.date_modified = timezone.now()
-        return super(Properties, self).save(*args, **kwargs)
+		if not self.id:
+			self.date_created = timezone.now()
+			self.date_modified = timezone.now()
+		return super(Properties, self).save(*args, **kwargs)
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
