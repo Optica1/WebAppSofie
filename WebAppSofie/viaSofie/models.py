@@ -92,12 +92,12 @@ class Properties(models.Model):
 	extra_information_french = models.TextField()
 	available = models.BooleanField()
 	sold = models.BooleanField()
-	date_created = models.DateField(editable=False)
-	date_modified = models.DateField(editable=False)
+	date_created = models.DateTimeField(editable=False)
+	date_modified = models.DateTimeField(editable=False)
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.date_created = timezone.now()
-			self.date_modified = timezone.now()
+		self.date_modified = timezone.now()
 		return super(Properties, self).save(*args, **kwargs)
 
 class PropertyDocuments(models.Model):
