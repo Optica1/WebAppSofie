@@ -13,9 +13,24 @@ class UserDetails(models.Model):
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
 
-class Aboutpage(models.Model):
+class AboutPage(models.Model):
     title = models.CharField(max_length=60)
     text = HTMLField()
+
+class PrivacyPage(models.Model):
+	title = models.CharField(max_length=60)
+	text = HTMLField()
+	language = CharField(max_length=20)
+
+class DisclamerPage(models.Model):
+	title = models.CharField(max_length=60)
+	text = HTMLField()
+	language = CharField(max_length=20)
+
+class AboutSofiePage(models.Model):
+	title = models.CharField(max_length=60)
+	text = HTMLField()
+	language = CharField(max_length=20)
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
@@ -125,3 +140,8 @@ class Translations(models.Model):
 	english = models.CharField(max_length=30)
 	french = models.CharField(max_length=30)
 	dutch = models.CharField(max_length=30)
+
+class Faq(model.Model):
+	question = models.TextField()
+	answer = models.TextField()
+	visible = models.BooleanField()
