@@ -76,3 +76,15 @@ def property(request):
 
 def offer_sales(request):
 	return render_to_response('templates/offer.html')
+
+def about_sofie(request):
+	return render_to_response('templates/aboutSofie.html')
+
+def disclamer(request):
+	return render_to_response('templates/disclamer.html')
+
+def faq(request):
+	return render_to_response('templates/faq')
+
+def privacy(request):
+	return render_to_response('templates/privacy.html')
