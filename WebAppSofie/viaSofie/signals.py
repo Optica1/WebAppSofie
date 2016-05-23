@@ -4,10 +4,11 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from .models import *
 
 from my_user_profile_app.models import UserDetails
 
-@receiver(pre_save, sender=User)
+@receiver(pre_save, sender=Properties)
 def model_pre_change(sender, **kwargs):
     Propertie_street=UserDetails.street
     Propertie_streetnumber=UserDetails.housenumber
