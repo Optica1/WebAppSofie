@@ -2,6 +2,11 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from tinymce.models import HTMLField
+import googlemaps
+import json
+from django.db.models.signals import post_save
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -13,7 +18,7 @@ class UserDetails(models.Model):
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
 
-class AboutPage(models.Model):
+class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
     text = HTMLField()
 	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
@@ -21,17 +26,17 @@ class AboutPage(models.Model):
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
-	language = CharField(max_length=20)
+	language = models.CharField(max_length=20)
 
-class DisclamerPage(models.Model):
+class DisclaimerPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
-	language = CharField(max_length=20)
+	language = models.CharField(max_length=20)
 
 class AboutSofiePage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
-	language = CharField(max_length=20)
+	language = models.CharField(max_length=20)
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
@@ -88,8 +93,8 @@ class Properties(models.Model):
 	sold = models.BooleanField()
 	date_created = models.DateField(auto_now_add=True)
 	date_modified = models.DateField(auto_now=True)
-	longitude = models.DecimalField() #moet niet ingevuld worden door gebruiker
-	latitude = models..DecimalField() #moet niet ingevuld worden door gebruiker
+	longitude = models.CharField(max_length=10) #moet niet ingevuld worden door gebruiker
+	latitude = models.CharField(max_length=10) #moet niet ingevuld worden door gebruiker
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -143,11 +148,31 @@ class Translations(models.Model):
 	english = models.CharField(max_length=30)
 	french = models.CharField(max_length=30)
 	dutch = models.CharField(max_length=30)
-<<<<<<< HEAD
-=======
 
-class Faq(model.Model):
+class Faq(models.Model):
 	question = models.TextField()
 	answer = models.TextField()
 	visible = models.BooleanField()
->>>>>>> Nick---views
+
+@receiver(pre_save, sender=Properties)
+def model_pre_change(sender, **kwargs):
+    Property_street=Properties.street
+    Property_streetnumber=Properties.housenumber
+    Property_postalcode=Properties.postalcode
+    Property_city=Properties.city
+    location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
+
+    gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
+
+    # Geocoding an address
+    geocode_result = gmaps.geocode(location)
+
+    # query json
+    latitude = geocode_result[0]["geometry"]["location"]["lat"]
+    longitude = geocode_result[0]["geometry"]["location"]["lng"]
+
+    # adding longitude and latitude to the database
+    Property=viaSofie_Properties(longitude=longitude, latitude=latitude)
+    Property.save()
+
+    # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
