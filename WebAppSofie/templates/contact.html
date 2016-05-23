@@ -1,0 +1,15 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+
+
+	<h2>E-Book</h2>
+	<form  method="post">{% csrf_token %}
+		<input type="text" value="email" /></br>
+    <textarea name="message" rows="10" cols="30">
+    </textarea>
+		<input type="submit" value="versturen" />
+
+	</form>
+
+{% endblock %}

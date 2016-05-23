@@ -91,3 +91,6 @@ def privacy(request):
 
 def ebook(request):
 	return render_to_response('templates/ebook.html')
+
+def contact(request):
+	return render_to_response('templates/contact.html')
