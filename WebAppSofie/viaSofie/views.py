@@ -84,7 +84,7 @@ def disclamer(request):
 	return render_to_response('templates/disclamer.html')
 
 def faq(request):
-	return render_to_response('templates/faq')
+	return render_to_response('templates/faq.html')
 
 def privacy(request):
 	return render_to_response('templates/privacy.html')
