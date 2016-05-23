@@ -7,7 +7,7 @@
         height: 250px;
       }
     </style>
-	<h3>Huis OB, 4slpkrs, 2bdkmrs, rustig gelegen, nieuwbouw</h3>
+	<h3>{{ Title }}</h3>
 
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
@@ -17,36 +17,36 @@
 	          	</div>
 
 	          	<div class ="col-md-3">
-	            	<h3>Eigenschappen</h3>
-	            	<p><span>Type bebouwing:</span> open</p>
-	            	<p><span>Aantal slaapkamers:</span> 4</p>
-	            	<p><span>Aantal badkamers:</span> 2</p>
-	            	<p><span>Oppervlakte:</span> 200m²</p>
-	            	<p><span>Bewoonbare oppervlakte:</span> 150m²</p>
-	            	<p><span>Bouwjaar:</span> 2000</p>
-	            	<p><span>Katastraal inkomen:</span> 800</p>
-	            	<p><span>ID:</span> 251</p>
+	            	<h3>{{ properties }}</h3>
+	            	<p><span>Type bebouwing:</span> {{ buildingtype }}</p>
+	            	<p><span>Aantal slaapkamers:</span> {{ bedrooms }}</p>
+	            	<p><span>Aantal badkamers:</span> {{ bathrooms }}</p>
+	            	<p><span>Oppervlakte:</span> {{ area }}</p>
+	            	<p><span>Bewoonbare oppervlakte:</span> {{ livingarea }}</p>
+	            	<p><span>Bouwjaar:</span> {{ year }}</p>
+	            	<p><span>Katastraal inkomen:</span> {{ rateable_value }}</p>
+	            	<p><span>ID:</span> {{ id }}</p>
 	          	</div>
 			</center>
 		</div>
 		<div class="row">
 			<center>
 				<div class="col-md-12">
-					<h3>Omschrijving</h3>
-					<p>Dit open bebouwing huis dat rustig gelegen is. Het huis is recent gebouwd en er is dus geen renovatie nodig. In het huis zijn 4 slaapkamers en 2 badkamers aanwezig. Er zijn garages voorzien voor 2 wagens en op de oprit kunnen nog eens 2 wagens staan zonder dat ze de garagepoorten blokkeren. Keuken is voorzien van apparatuur.</p>
+					<h3> {{ description }}</h3>
+					<p>{{ description_text }}</p>
 				</div>
 			</center>
 		</div>
 		<div class="row">
 			<center>
 				<div class="col-md-6">
-					<h3>Energy</h3>
-					<p><span>Energie label:</span> A+</p>
-					<p><span>Verwarming:</span> Stookolie</p>
+					<h3>{{ energy }}</h3>
+					<p><span>Energie label:</span> {{ energy_label }}</p>
+					<p><span>Verwarming:</span> {{ heating }}</p>
 				</div>
 				<div class="col-md-6">
-					<h3>Extra informatie</h3>
-					<p>Hier komt extra informatie te staan</p>
+					<h3>{{ extra }}</h3>
+					<p>{{ extra_text }}</p>
 				</div>
 			</center>
 		</div>
