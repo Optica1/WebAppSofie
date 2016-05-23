@@ -80,7 +80,7 @@ def offer_sales(request):
 def about_sofie(request):
 	return render_to_response('templates/aboutSofie.html')
 
-def disclamer(request):
+def disclaimer(request):
 	return render_to_response('templates/disclamer.html')
 
 def faq(request):
