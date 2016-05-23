@@ -5,10 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf #anti crosssite scripting
 from forms import MyRegistrationForm
 from .models import *
-import pdb
 
 def index(request):
-	pdb.set_trace()
 	return render_to_response('templates/home.html')
 def about(request):
 	try:
