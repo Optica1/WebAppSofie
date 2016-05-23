@@ -4,9 +4,14 @@
 
 
 	<h2>E-Book</h2>
-	<form action="/accounts/register/" method="post">{% csrf_token %}
-		{{form}}
-		<input type="submit" value="Register" />
+	<form  method="post">{% csrf_token %}
+		<input type="text" value="email" />
+		<select name="E-book">
+		  <option value="boek1">Volvo</option>
+		  <option value="boek2">Saab</option>
+		</select>
+		<input type="submit" value="aanvragen" />
+
 	</form>
 
 {% endblock %}

@@ -88,3 +88,6 @@ def faq(request):
 
 def privacy(request):
 	return render_to_response('templates/privacy.html')
+
+def ebook(request):
+	return render_to_response('templates/ebook.html')

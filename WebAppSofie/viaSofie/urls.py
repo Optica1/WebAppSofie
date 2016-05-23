@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^sales/properties', views.offer_sales),
     url(r'^sales/property', views.property),
     url(r'^about/sofie', views.about_sofie),
+    url(r'^ebook', views.ebook),
     url(r'^faq', views.faq),
     url(r'^info/privacy', views.privacy),
     url(r'^info/disclaimer', views.disclaimer),
