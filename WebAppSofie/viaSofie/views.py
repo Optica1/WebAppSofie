@@ -7,6 +7,7 @@ from forms import MyRegistrationForm
 from .models import *
 
 def index(request):
+	print "hello world"
 	return render_to_response('templates/home.html')
 def about(request):
 	try:
