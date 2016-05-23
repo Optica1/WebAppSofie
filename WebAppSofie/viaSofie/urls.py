@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^about/sofie', views.about_sofie),
     url(r'^faq', views.faq),
     url(r'^info/privacy', views.privacy),
-    url(r'^info/disclamer', views.disclamer),
+    url(r'^info/disclaimer', views.disclaimer),
 ]
