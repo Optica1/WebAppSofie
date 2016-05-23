@@ -81,7 +81,7 @@ def about_sofie(request):
 	return render_to_response('templates/aboutSofie.html')
 
 def disclaimer(request):
-	return render_to_response('templates/disclamer.html')
+	return render_to_response('templates/disclaimer.html')
 
 def faq(request):
 	return render_to_response('templates/faq.html')
