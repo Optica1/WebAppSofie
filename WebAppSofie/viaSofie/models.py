@@ -92,8 +92,14 @@ class Properties(models.Model):
 	extra_information_french = models.TextField()
 	available = models.BooleanField()
 	sold = models.BooleanField()
-	# date_created = models.DateField(auto_now_add=True)
-	# date_modified = models.DateField(auto_now=True)
+	date_created = models.DateField(editable=False)
+	date_modified = models.DateField(editable=False)
+	def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.date_created = timezone.now()
+        self.date_modified = timezone.now()
+        return super(Properties, self).save(*args, **kwargs)
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
