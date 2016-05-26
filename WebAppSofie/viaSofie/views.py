@@ -80,8 +80,8 @@ def offer_sales(request):
 	return render_to_response('templates/offer.html')
 
 def about_sofie(request):
-	about_sofie = Faq.objects.order_by('-visible')[:5]
-	context = {'about_sofie': about_sofie}
+	faq = Faq.objects.order_by('-visible')[:5]
+	context = {'Faq': faq}
 	return render(request, 'templates/aboutSofie.html', context)
 	# return render_to_response('templates/aboutSofie.html')
 
