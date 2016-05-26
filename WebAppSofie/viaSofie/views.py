@@ -87,8 +87,8 @@ def disclaimer(request):
 def faq(request):
 	faq = Faq.objects
 	context = {'faq': faq}
-	return render(request, 'templates/faq.html', context)
-	# return render_to_response('templates/faq.html')
+	# return render(request, 'templates/faq.html', context)
+	return render_to_response('templates/faq.html', context)
 
 def privacy(request):
 	return render_to_response('templates/privacy.html')
