@@ -87,7 +87,7 @@ def disclaimer(request):
 def faq(request):
 	faq = Faq.objects.order_by('-visible')[:5]
 	context = {'Faq': faq}
-	return render('templates/faq.html', context)
+	return render(request, 'templates/faq.html', context)
 	# return render_to_response('templates/faq.html', context)
 
 def privacy(request):
