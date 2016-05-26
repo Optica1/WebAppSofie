@@ -5,10 +5,10 @@
 
 	<h1>tes123</h1>
 
-		{% for sofie in About_sofie %}
-		<h2>{{ sofie.title }}</h2>
-		<h3>{{ sofie.text }}</h3>
-		</bk>
-		{% endfor %}
+	{% for faq in Faq %}
+	<h2>{{ faq.question }}</h2>
+	<h3>{{ faq.answer }}</h3>
+	</bk>
+	{% endfor %}
 
 {% endblock %}
