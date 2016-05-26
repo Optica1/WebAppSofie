@@ -2,11 +2,11 @@
 
 {% block content %}
 
-	<h1>FAQ</h1>
+	<h1>Sofie</h1>
 
-		{% sofie faq in Sofie %}
-		<h2>{{ sofie.question }}</h2>
-		<h3>{{ sofie.answer }}</h3>
+		{% for sofie in Sofie %}
+		<h2>{{ sofie.title }}</h2>
+		<h3>{{ sofie.text }}</h3>
 		</bk>
 		{% endfor %}
 
