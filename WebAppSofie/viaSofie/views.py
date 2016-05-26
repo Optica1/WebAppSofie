@@ -85,10 +85,10 @@ def disclaimer(request):
 	return render_to_response('templates/disclaimer.html')
 
 def faq(request):
-	faq = Faq.objects
-	context = {'faq': faq}
-	# return render(request, 'templates/faq.html', context)
-	return render_to_response('templates/faq.html', context)
+	faq = Faq.objects.order_by('-visible')[:5]
+	context = {'Faq': faq}
+	return render('templates/faq.html', context)
+	# return render_to_response('templates/faq.html', context)
 
 def privacy(request):
 	return render_to_response('templates/privacy.html')
