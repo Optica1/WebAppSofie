@@ -85,7 +85,7 @@ def disclaimer(request):
 	return render_to_response('templates/disclaimer.html')
 
 def faq(request):
-	return render(request, 'polls/index.html')
+	return render(request, 'templates/faq.html')
 	# return render_to_response('templates/faq.html')
 
 def privacy(request):
