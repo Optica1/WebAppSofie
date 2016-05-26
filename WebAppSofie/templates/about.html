@@ -1,11 +1,14 @@
+
 {% extends "templates/base.html" %}
 
 {% block content %}
 
-	{% for About_sofie in about_sofie %}
-	<h2>{{ about_sofie.title }}</h2>
-	<h3>{{ about_sofie.text }}</h3>
-	</bk>
-	{% endfor %}
+	<h1>tes123</h1>
+
+		{% for sofie in About_sofie %}
+		<h2>{{ sofie.title }}</h2>
+		<h3>{{ sofie.text }}</h3>
+		</bk>
+		{% endfor %}
 
 {% endblock %}
