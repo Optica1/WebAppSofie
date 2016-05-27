@@ -111,7 +111,7 @@ def ebook(request):
 			return HttpResponseRedirect('/')
 
 	else:
-		form = MyEbookForm()
+		# form = MyEbookForm()
 		args = {}
 		args['Ebooks'] = Ebook.objects.filter(available=1)
 	return render(request, 'templates/ebook.html', args)
