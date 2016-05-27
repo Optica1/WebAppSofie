@@ -113,7 +113,7 @@ def ebook(request):
 	else:
 		form = MyEbookForm()
 		args = {}
-		args['ebooks'] = Ebook.objects.filter(available=1)
+		args['Ebooks'] = Ebook.objects.filter(available=1)
 	return render(request, 'templates/ebook.html', args)
 
 def contact(request):

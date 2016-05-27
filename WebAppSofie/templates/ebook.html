@@ -6,7 +6,9 @@
 	<h2>E-Book</h2>
 	<form role="form" action="/ebook" method="POST">
 		{{ field }}
-		{{ form.ebooks }}
+		{% for ebook in Ebooks %}
+		{{ ebook.name }}
+		{% endfor %}
 	</form>
 
 {% endblock %}
