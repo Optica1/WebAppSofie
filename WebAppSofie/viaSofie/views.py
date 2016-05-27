@@ -116,6 +116,7 @@ def ebook(request):
 		args = {}
 		args.update(csrf(request))
 		args['form'] = MyEbookForm()
+		form = Ebook(initial = {'field1': form.name })
 	return render(request, 'templates/ebook.html', args)
 
 def contact(request):
