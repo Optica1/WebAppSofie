@@ -14,10 +14,16 @@ class AboutpageAdmin(admin.ModelAdmin):
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
   can_delete = False
-
+class StatusInline(admin.StackedInline):
+  model = Status
+  can_delete = False
 class UserAdmin(UserAdmin):
-	inlines = (UserDetailsInline, )
+	inlines = (UserDetailsInline,StatusInline, )
 
+class StatusAdmin(admin.ModelAdmin):
+    list_display = ['user']
+
+admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(Properties)
 # Re-register UserAdmin

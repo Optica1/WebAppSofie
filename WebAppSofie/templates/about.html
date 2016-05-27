@@ -2,12 +2,13 @@
 
 {% block content %}
 
-	<h1>tes123</h1>
+	<h1>{{ pageTitle }}</h1>
 
-	{% for faq in Faq %}
-	<h2>{{ faq.question }}</h2>
-	<h3>{{ faq.answer }}</h3>
-	</bk>
-	{% endfor %}
+
+	<div id="aboutcontent" >
+		{{ pageContent | safe}}
+	</div>
+
+
 
 {% endblock %}

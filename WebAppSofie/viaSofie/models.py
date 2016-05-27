@@ -8,6 +8,8 @@ import datetime
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from tinymce import models as tinymce_models
+from tinymce.models import HTMLField
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -21,9 +23,15 @@ class UserDetails(models.Model):
 
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
-    text = HTMLField()
+    text =  tinymce_models.HTMLField()
 	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
-
+class Status(models.Model):
+	user = models.OneToOneField(User)
+	STATUS = (
+			('R', 'Registered'),
+			('H', 'Handled'),
+		)
+	dossierStatus = models.CharField(max_length=1, choices=STATUS, default=STATUS[0][0])
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()

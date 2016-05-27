@@ -1,29 +1,42 @@
 from django.shortcuts import render_to_response #renders pages
 from django.shortcuts import render #renders pages
-from django.http import HttpResponseRedirect #handles redirects
+from django.http import HttpResponseRedirect,Http404 #handles redirects
 from django.contrib import auth #handles the authantication
 from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf #anti crosssite scripting
+from django.utils.translation import ugettext as _ #translation
+from django.contrib.auth.models import User
 from forms import *
 from .models import *
+
 
 def index(request):
 	return render_to_response('templates/home.html')
 def about(request):
 	try:
-		page = Aboutpage.objects.get(id=1)
+		pages = Aboutpage.objects.all()
+		page = pages[0]
 	except Aboutpage.DoesNotExist:
 		raise Http404('page does not exist')
 	return render_to_response('templates/about.html', {
-		'page': page,
+		'pageTitle': _(page.title),
+		'pageContent': _(page.text),
 	})
-def client(request, id):
+def status(request):
 	try:
-		client = Client.objects.get(id=id)
-	except Client.DoesNotExist:
+		if not request.user.is_authenticated():
+			return HttpResponseRedirect('/accounts/login')
+		else:
+			user = request.user
+			userDetail = User.objects.get(id=user.id)
+			userdetail = UserDetails.objects.get(id=user.id)
+			status = Status.objects.get(id=user.id)
+	except Status.DoesNotExist:
 		raise Http404('User does not exist')
-	return render_to_response('templates/client.html' , {
-		'client': client,
+	return render_to_response('templates/status.html' , {
+		'status': status.get_dossierStatus_display,
+
+		'detail': userDetail,
 	})
 def login(request):
 	c = {}
@@ -116,7 +129,7 @@ def ebook(request):
 		args = {}
 		args.update(csrf(request))
 		args['form'] = MyEbookForm()
-		
+
 	return render(request, 'templates/ebook.html', args)
 
 def contact(request):
