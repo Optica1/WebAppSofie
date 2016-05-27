@@ -88,7 +88,10 @@ def about_sofie(request):
 	return render(request, 'templates/aboutSofie.html', context)
 
 def disclaimer(request):
-	return render_to_response('templates/disclaimer.html')
+	disclaimer = DisclaimerPage.objects.order_by('-visible')[:5]
+	context = {'Disclaimer': disclaimer}
+	return render(request, 'templates/disclaimer.html', context)
+	# return render_to_response('templates/disclaimer.html')
 
 def faq(request):
 	faq = Faq.objects.order_by('-visible')[:5]
