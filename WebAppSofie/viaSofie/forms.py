@@ -43,9 +43,9 @@ class MyRegistrationForm(UserCreationForm):
 			user.save()
 		return
 
-class MyEbookForm(ModelForm):
+class MyEbookForm(forms.Form):
 	email = forms.EmailField(required=True)
-	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).only('name'))
+	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).values_list('id', 'name',flat=True))
 	
 	class Meta:
 		model = EbookRequests
