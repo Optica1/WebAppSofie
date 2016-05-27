@@ -101,7 +101,9 @@ def faq(request):
 	return render(request, 'templates/faq.html', context)
 
 def privacy(request):
-	return render_to_response('templates/privacy.html')
+	privacy = privacy.objects.all()
+	context = {'Privacy': privacy}
+	return render(request, 'templates/privacy.html', context)
 
 def ebook(request):
 	if request.method == 'POST':
