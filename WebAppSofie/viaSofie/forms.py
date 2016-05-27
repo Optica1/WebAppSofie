@@ -46,12 +46,12 @@ class MyEbookForm():
 	email = forms.EmailField(required=True)
 
 	class Meta:
-		model = EbookRegistration
+		model = EbookRequests
 		fields =('email')#, 'ebook')
 
 	def save(self, commit=True):
-		EbookRegistration.email = self.cleaned_data['email']
-		EbookRegistration.ebook = self.cleaned_data['ebook']
+		EbookRequests.email = self.cleaned_data['email']
+		EbookRequests.ebook = self.cleaned_data['ebook']
 
 		if commit:
 			EbookRegistration.save()
