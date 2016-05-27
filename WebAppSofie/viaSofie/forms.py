@@ -28,7 +28,7 @@ class MyRegistrationForm(UserCreationForm):
 	#overwriting the save method for custom fields
 	def save(self, commit=True):
 		user = super(UserCreationForm, self).save(commit=False)# commit false because we do this at end of var assignments
-	
+
 		user.email = self.cleaned_data['email']#cleaned so all character are valid
 		user.username = self.cleaned_data['username']
 		user.password = make_password(self.cleaned_data['password1'])
@@ -43,7 +43,7 @@ class MyRegistrationForm(UserCreationForm):
 
 class MyEbookForm():
 	email = forms.EmailField(required=True)
-	ebook =   #forms.ModelChoiceField(queryset=Ebook.objects.get(available='True').order_by('name'), required=True)
+	ebook = forms.ModelChoiceField(required=True)
 
 	class Meta:
 		model = EbookRegistration
