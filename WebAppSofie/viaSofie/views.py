@@ -28,15 +28,14 @@ def status(request):
 			return HttpResponseRedirect('/accounts/login')
 		else:
 			user = request.user
-			userDetail = User.objects.get(id=user.id)
+			userInfo = User.objects.get(id=user.id)
 			userdetail = UserDetails.objects.get(id=user.id)
 			status = Status.objects.get(id=user.id)
 	except Status.DoesNotExist:
 		raise Http404('User does not exist')
 	return render_to_response('templates/status.html' , {
 		'status': status.get_dossierStatus_display,
-
-		'detail': userDetail,
+		'info': userInfo,
 	})
 def login(request):
 	c = {}
