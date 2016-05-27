@@ -105,6 +105,11 @@ def privacy(request):
 	context = {'Privacy': privacy}
 	return render(request, 'templates/privacy.html', context)
 
+def Partner(request):
+	partner = Partner.objects.all()
+	context = {'Partner': partner}
+	return render(request, 'templates/partner.html', context)
+
 def ebook(request):
 	if request.method == 'POST':
 		form = MyEbookForm(request.POST)
@@ -116,7 +121,7 @@ def ebook(request):
 		args = {}
 		args.update(csrf(request))
 		args['form'] = MyEbookForm()
-		
+
 	return render(request, 'templates/ebook.html', args)
 
 def contact(request):
