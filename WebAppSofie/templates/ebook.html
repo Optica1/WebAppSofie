@@ -4,13 +4,13 @@
 
 
 	<h2>E-Book</h2>
-	<form role="form" action="/ebook" method="POST">
-		{{ field }}
-		<select id="id_ebook">
-			{% for ebook in Ebooks %}
-				<option value="{{ebook}}">{{ ebook.name }}</option>
-			{% endfor %}
-		</select>
-	</form>
+	{% for field in form %}
+			<div class="">
+        		<label class="" for="{{ field.name }}">{{ field.label }}</label>
+				<div class="col-sm-10">
+					{{ field }}
+				</div>
+			</div>
+    {% endfor %}
 
 {% endblock %}
