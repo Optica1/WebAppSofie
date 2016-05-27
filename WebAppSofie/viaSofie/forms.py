@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth.hashers import make_password
 from .models import *
+from django.forms import ModelForm
 #from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
