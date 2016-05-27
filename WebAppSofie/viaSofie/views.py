@@ -106,7 +106,7 @@ def privacy(request):
 	return render(request, 'templates/privacy.html', context)
 
 def partner(request):
-	partner = Partner.objects.all()
+	partner = Partner.objects.filter(available=1)
 	context = {'Partner': partner}
 	return render(request, 'templates/partner.html', context)
 
