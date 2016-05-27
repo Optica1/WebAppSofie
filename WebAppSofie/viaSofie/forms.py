@@ -47,7 +47,7 @@ class MyEbookForm(ModelForm):
 	email = forms.EmailField(required=True)
 	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1))
 	
-	class Meta(ModelForm.Meta):
+	class Meta:
 		model = EbookRequests
 		fields =('email', 'ebook')
 
