@@ -74,7 +74,7 @@ def register_success(request):
 def property(request, property_id):
 	try:
 		p = Properties.objects.get(property_id)
-		
+		room = Properties.objects.get(property_id = p.id)
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
 	return render_to_response(request, 'templates/property.html', {'Property':p})
