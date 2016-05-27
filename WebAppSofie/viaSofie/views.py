@@ -122,7 +122,7 @@ def ebook(request):
 		args.update(csrf(request))
 		args['form'] = MyEbookForm()
 
-	return render(request, 'templates/ebook.html', args)
+	return render_to_response('templates/ebook.html', args)
 
 def contact(request):
 	return render_to_response('templates/contact.html')
