@@ -1,11 +1,9 @@
 from django.shortcuts import render_to_response #renders pages
-from django.shortcuts import render #renders pages
 from django.http import HttpResponseRedirect #handles redirects
 from django.contrib import auth #handles the authantication
 from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf #anti crosssite scripting
 from forms import MyRegistrationForm
-from .models import Faq
 from .models import *
 
 def index(request):
@@ -73,8 +71,12 @@ def register_user(request):
 def register_success(request):
 	return render_to_response('templates/register_success.html')
 
-def property(request):
-	return render_to_response('templates/property.html')
+def property(request, property_id):
+	try:
+		p = Properties.objects.get(property_id)
+	except Properties.DoesNotExist:
+		raise Http404("Property does not exist.")
+	return render_to_response(request, 'templates/property.html', {'property':p})
 
 def offer_sales(request):
 	return render_to_response('templates/offer.html')
@@ -83,7 +85,6 @@ def about_sofie(request):
 	sofie = AboutSofiePage.objects.order_by('-language')[:5]
 	context = {'Sofie': sofie}
 	return render(request, 'templates/aboutSofie.html', context)
-	# return render_to_response('templates/aboutSofie.html')
 
 def disclaimer(request):
 	return render_to_response('templates/disclaimer.html')
@@ -92,7 +93,6 @@ def faq(request):
 	faq = Faq.objects.order_by('-visible')[:5]
 	context = {'Faq': faq}
 	return render(request, 'templates/faq.html', context)
-	# return render_to_response('templates/faq.html', context)
 
 def privacy(request):
 	return render_to_response('templates/privacy.html')
