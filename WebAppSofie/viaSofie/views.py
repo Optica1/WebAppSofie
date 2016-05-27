@@ -74,7 +74,7 @@ def register_success(request):
 def property(request, property_id):
 	try:
 		p = Properties.objects.get(property_id)
-		
+
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
 	return render_to_response(request, 'templates/property.html', {'Property':p})
@@ -88,7 +88,10 @@ def about_sofie(request):
 	return render(request, 'templates/aboutSofie.html', context)
 
 def disclaimer(request):
-	return render_to_response('templates/disclaimer.html')
+	disclaimer = DisclaimerPage.objects.order_by('-visible')[:5]
+	context = {'Disclaimer': disclaimer}
+	return render(request, 'templates/disclaimer.html', context)
+	# return render_to_response('templates/disclaimer.html')
 
 def faq(request):
 	faq = Faq.objects.order_by('-visible')[:5]
