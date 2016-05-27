@@ -43,7 +43,7 @@ class MyRegistrationForm(UserCreationForm):
 			user.save()
 		return
 
-class MyEbookForm():
+class MyEbookForm(ModelForm):
 	email = forms.EmailField(required=True)
 	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1)
 
