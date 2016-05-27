@@ -84,7 +84,7 @@ def offer_sales(request):
 	return render_to_response('templates/offer.html')
 
 def about_sofie(request):
-	sofie = AboutSofiePage.objects.order_by('-language')[:5]
+	sofie = AboutSofiePage.objects.all()
 	context = {'Sofie': sofie}
 	return render(request, 'templates/aboutSofie.html', context)
 
@@ -95,7 +95,7 @@ def disclaimer(request):
 	# return render_to_response('templates/disclaimer.html')
 
 def faq(request):
-	faq = Faq.objects.order_by('-visible')[:5]
+	faq = Faq.objects.get(visible=1).order_by('id')
 	context = {'Faq': faq}
 	return render(request, 'templates/faq.html', context)
 
