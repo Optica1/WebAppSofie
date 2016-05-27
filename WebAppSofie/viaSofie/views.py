@@ -95,7 +95,7 @@ def disclaimer(request):
 	# return render_to_response('templates/disclaimer.html')
 
 def faq(request):
-	faq = Faq.objects.get(visible=1).order_by('id')
+	faq = Faq.objects.get(visible=1)
 	context = {'Faq': faq}
 	return render(request, 'templates/faq.html', context)
 
