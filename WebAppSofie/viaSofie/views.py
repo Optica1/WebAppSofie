@@ -116,7 +116,7 @@ def ebook(request):
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/')
-		else: return HttpResponseRedirect('/')
+		else: return HttpResponseRedirect('/partner')
 	else:
 		args = {}
 		args.update(csrf(request))
