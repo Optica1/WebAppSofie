@@ -104,7 +104,17 @@ def privacy(request):
 	return render_to_response('templates/privacy.html')
 
 def ebook(request):
-	return render_to_response('templates/ebook.html')
+	if request.method == 'POST':
+		form = MyEbookForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/')
+
+	else:
+		form = MyEbookForm()
+		args = {}
+		args['ebooks'] = Ebook.objects.filter(available=1)
+	return render_to_response('templates/ebook.html', args)
 
 def contact(request):
 	return render_to_response('templates/contact.html')

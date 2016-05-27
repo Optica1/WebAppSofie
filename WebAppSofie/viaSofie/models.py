@@ -180,3 +180,6 @@ def model_pre_change(sender, **kwargs):
     Property.save()
 
     # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
+
+class Newsletter(models.Model):
+	email = models.EmailField()

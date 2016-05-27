@@ -37,23 +37,23 @@ class MyRegistrationForm(UserCreationForm):
 
 		user.phonenumber = self.cleaned_data['phonenumber']
 
-
 		if commit:
 			user.save()
-
 		return
 
-#class MyEbookForm():
-#	email = forms.EmailField(required=True)
-#
-#	class Meta:
-#		model = EbookRegistration
-#		fields = ('email')
-#
-#	def save(self, commit=True):
-#		EbookRegistration.email = self.cleaned_data['email']
-#
-#		if commit:
-#			EbookRegistration.save()
-#
-#		return
+class MyEbookForm():
+	email = forms.EmailField(required=True)
+	ebook =   #forms.ModelChoiceField(queryset=Ebook.objects.get(available='True').order_by('name'), required=True)
+
+	class Meta:
+		model = EbookRegistration
+		fields =('email', 'ebook')
+
+	def save(self, commit=True):
+		EbookRegistration.email = self.cleaned_data['email']
+		EbookRegistration.ebook = self.cleaned_data['ebook']
+
+		if commit:
+			EbookRegistration.save()
+
+		return
