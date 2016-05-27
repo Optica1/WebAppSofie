@@ -101,7 +101,7 @@ def faq(request):
 	return render(request, 'templates/faq.html', context)
 
 def privacy(request):
-	privacy = privacy.objects.all()
+	privacy = PrivacyPage.objects.all()
 	context = {'Privacy': privacy}
 	return render(request, 'templates/privacy.html', context)
 
