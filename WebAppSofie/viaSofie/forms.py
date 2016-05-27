@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth.hashers import make_password
+from .models import *
 #from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
