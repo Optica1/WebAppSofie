@@ -7,7 +7,8 @@
         height: 250px;
       }
     </style>
-	<h3>{{ Title }}</h3>
+		{% for property in Property %}
+	<h3>{{ property.title_dutch }}</h3>
 
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
@@ -18,7 +19,7 @@
 
 	          	<div class ="col-md-3">
 	            	<h3>{{ properties }}</h3>
-	            	<p><span>Type bebouwing:</span> {{ buildingtype }}</p>
+	            	<p><span>Type bebouwing:</span> {{ property.buildingtype }}</p>
 	            	<p><span>Aantal slaapkamers:</span> {{ bedrooms }}</p>
 	            	<p><span>Aantal badkamers:</span> {{ bathrooms }}</p>
 	            	<p><span>Oppervlakte:</span> {{ area }}</p>
@@ -113,6 +114,7 @@
 			</center>
 		</div>
 	</div>
+	{% endfor %}
 
 
 {% endblock %}
