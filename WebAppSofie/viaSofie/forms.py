@@ -43,11 +43,10 @@ class MyRegistrationForm(UserCreationForm):
 
 class MyEbookForm():
 	email = forms.EmailField(required=True)
-	ebook = forms.ModelChoiceField(required=True)
 
 	class Meta:
 		model = EbookRegistration
-		fields =('email', 'ebook')
+		fields =('email')#, 'ebook')
 
 	def save(self, commit=True):
 		EbookRegistration.email = self.cleaned_data['email']
