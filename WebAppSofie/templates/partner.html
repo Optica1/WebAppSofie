@@ -1,0 +1,11 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+
+		{% for partner in Partner %}
+		<h2>{{ partner.name }}</h2>
+		<h3>{{ partner.text }}</h3>
+		</bk>
+		{% endfor %}
+
+{% endblock %}

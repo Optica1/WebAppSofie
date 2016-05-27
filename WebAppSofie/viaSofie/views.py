@@ -118,19 +118,25 @@ def privacy(request):
 	context = {'Privacy': privacy}
 	return render(request, 'templates/privacy.html', context)
 
+def partner(request):
+	partner = Partner.objects.filter(available=1)
+	context = {'Partner': partner}
+	return render(request, 'templates/partner.html', context)
+
 def ebook(request):
 	if request.method == 'POST':
 		form = MyEbookForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect('/')
-
+		else:
+			return HttpResponseRedirect('/partner')
 	else:
 		args = {}
 		args.update(csrf(request))
 		args['form'] = MyEbookForm()
 
-	return render(request, 'templates/ebook.html', args)
+	return render_to_response('templates/ebook.html', args)
 
 def contact(request):
 	return render_to_response('templates/contact.html')

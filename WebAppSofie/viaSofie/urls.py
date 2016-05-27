@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^about/sofie', views.about_sofie),
     url(r'^ebook', views.ebook),
     url(r'^contact', views.contact),
+    url(r'^partner', views.partner),
     url(r'^faq', views.faq),
     url(r'^info/privacy', views.privacy),
     url(r'^info/disclaimer', views.disclaimer),
