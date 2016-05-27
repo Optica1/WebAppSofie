@@ -42,7 +42,7 @@ class MyRegistrationForm(UserCreationForm):
 			user.save()
 		return
 
-class MyEbookForm():
+class MyEbookForm(ModelForm):
 	email = forms.EmailField(required=True)
 
 	class Meta:
