@@ -105,6 +105,11 @@ class PropertyDocuments(models.Model):
 	path = models.FilePathField(max_length=100)
 	available = models.BooleanField()
 
+class Partner(models.Model):
+	name = models.CharField(max_length=30)
+	text = models.TextField()
+	available = models.BooleanField()
+
 class PropertyPictures(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
 	path = models.FilePathField(max_length=100)
