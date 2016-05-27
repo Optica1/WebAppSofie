@@ -5,7 +5,12 @@
 
 	<h2>E-Book</h2>
 	<form role="form" action="/ebook" method="POST">
-		{{ form.ebooks }}		
+		{{ field }}
+		<select id="id_ebook">
+			{% for ebook in Ebooks %}
+				<option value="{{ebook}}">{{ ebook.name }}</option>
+			{% endfor %}
+		</select>
 	</form>
 
 {% endblock %}

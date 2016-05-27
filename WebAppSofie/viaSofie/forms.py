@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth.hashers import make_password
+from .models import *
 #from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
@@ -28,7 +29,7 @@ class MyRegistrationForm(UserCreationForm):
 	#overwriting the save method for custom fields
 	def save(self, commit=True):
 		user = super(UserCreationForm, self).save(commit=False)# commit false because we do this at end of var assignments
-	
+
 		user.email = self.cleaned_data['email']#cleaned so all character are valid
 		user.username = self.cleaned_data['username']
 		user.password = make_password(self.cleaned_data['password1'])
@@ -43,15 +44,14 @@ class MyRegistrationForm(UserCreationForm):
 
 class MyEbookForm():
 	email = forms.EmailField(required=True)
-	ebook =   #forms.ModelChoiceField(queryset=Ebook.objects.get(available='True').order_by('name'), required=True)
 
 	class Meta:
-		model = EbookRegistration
-		fields =('email', 'ebook')
+		model = EbookRequests
+		fields =('email')#, 'ebook')
 
 	def save(self, commit=True):
-		EbookRegistration.email = self.cleaned_data['email']
-		EbookRegistration.ebook = self.cleaned_data['ebook']
+		EbookRequests.email = self.cleaned_data['email']
+		EbookRequests.ebook = self.cleaned_data['ebook']
 
 		if commit:
 			EbookRegistration.save()

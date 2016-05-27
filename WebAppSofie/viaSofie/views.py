@@ -1,9 +1,10 @@
 from django.shortcuts import render_to_response #renders pages
+from django.shortcuts import render #renders pages
 from django.http import HttpResponseRedirect #handles redirects
 from django.contrib import auth #handles the authantication
 from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf #anti crosssite scripting
-from forms import MyRegistrationForm
+from forms import *
 from .models import *
 
 def index(request):
@@ -74,23 +75,28 @@ def register_success(request):
 def property(request, property_id):
 	try:
 		p = Properties.objects.get(property_id)
+		room = Properties.objects.get(property_id = p.id)
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
-	return render_to_response(request, 'templates/property.html', {'property':p})
+	return render_to_response(request, 'templates/property.html', {'Property':p})
 
 def offer_sales(request):
 	return render_to_response('templates/offer.html')
 
 def about_sofie(request):
-	sofie = AboutSofiePage.objects.order_by('-language')[:5]
+	sofie = AboutSofiePage.objects.all()
 	context = {'Sofie': sofie}
 	return render(request, 'templates/aboutSofie.html', context)
 
 def disclaimer(request):
-	return render_to_response('templates/disclaimer.html')
+	disclaimer = DisclaimerPage.objects.all()
+	context = {'Disclaimer': disclaimer}
+	return render(request, 'templates/disclaimer.html', context)
+	# return render_to_response('templates/disclaimer.html')
 
 def faq(request):
-	faq = Faq.objects.order_by('-visible')[:5]
+	# faq = Faq.objects.get(visible=1) can onlly retrieve one not more.
+	faq = Faq.objects.filter(visible=1)
 	context = {'Faq': faq}
 	return render(request, 'templates/faq.html', context)
 
@@ -105,10 +111,10 @@ def ebook(request):
 			return HttpResponseRedirect('/')
 
 	else:
-		form = MyEbookForm()
+		# form = MyEbookForm()
 		args = {}
-		args['ebooks'] = Ebook.objects.filter(available=1)
-	return render_to_response('templates/ebook.html', args)
+		args['Ebooks'] = Ebook.objects.filter(available=1)
+	return render(request, 'templates/ebook.html', args)
 
 def contact(request):
 	return render_to_response('templates/contact.html')
