@@ -6,6 +6,8 @@
       #map {
         height: 250px;
       }
+  </style>
+	<h2>huis</h2>
     </style>
 	<h3>Huis OB, 4slpkrs, 2bdkmrs, rustig gelegen, nieuwbouw</h3>
 
@@ -90,6 +92,10 @@
 					      function initMap() {
 					        var myLatLng = {lat: 51.0493098, lng: 4.304124};
 
+		        var map = new google.maps.Map(document.getElementById('map'), {
+		          zoom: 16,
+		          center: myLatLng
+		        });
 					        var map = new google.maps.Map(document.getElementById('map'), {
 					          zoom: 10,
 					          center: myLatLng

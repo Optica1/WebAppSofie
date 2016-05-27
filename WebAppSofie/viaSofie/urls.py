@@ -16,5 +16,11 @@ urlpatterns = [
     url(r'^accounts/register', views.register_user),
     url(r'^accounts/register_success', views.register_success),
     url(r'^sales/properties', views.offer_sales),
-    url(r'^sales/property', views.property),
+    url(r'^sales/property(?P<property_id>[0-9]+)/$', views.property),
+    url(r'^about/sofie', views.about_sofie),
+    url(r'^ebook', views.ebook),
+    url(r'^contact', views.contact),
+    url(r'^faq', views.faq),
+    url(r'^info/privacy', views.privacy),
+    url(r'^info/disclaimer', views.disclaimer),
 ]

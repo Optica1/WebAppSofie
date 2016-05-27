@@ -16,21 +16,26 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf.urls import patterns, include, url
+# from viaSofie.admin import admin_site
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+admin.site.site_header = 'Via Sofie Administratie'
 
 import settings
 
 urlpatterns =[
 
     url(r'^admin', include(admin.site.urls)),
+    # url(r'^myadmin', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^', include('viaSofie.urls')),
     # user auth urls
 
 ]
+
+
 
 if not settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns

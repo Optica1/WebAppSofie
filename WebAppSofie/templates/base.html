@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href = "{% static "WebAppSofie/css/bootstrap.min.css" %}" rel ="stylesheet">
     <link href = "{% static "WebAppSofie/css/styles.css" %}" rel ="stylesheet">
-    <script src="{% static "WebAppSofie/jquery-2.0.0.min.js"%}"></script>
+    <script src="{% static "WebAppSofie/css/jquery-2.0.0.min.js"%}"></script>
     <script src="{% get_static_prefix %}js/ajax.js"></script>
     <script src="{% static "WebAppSofie/js/bootstrap.js"%}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>﻿
@@ -20,7 +20,7 @@
     <div id="header" class ="navbar navbar-inverse navbar-fixed-top"> <!--hier start de navbar-->
       <div class = "container">
         <!--<a href="http://193.191.187.253:8093/" class="pull-left"><img src="/static/WebAppSofie/images/def_logos_via_sofie-RGB-01.png" width="15%" height="15%"></a>-->
-          <a href = "http://193.191.187.253:8093/" class="navbar-brand">
+          <a href = "/" class="navbar-brand">
             <img src="{% static "WebAppSofie/images/ViaSofie-horizontal.png" %}" style="max-height: 90%" class="img-rounded">
           </a>
 
@@ -37,18 +37,18 @@
             <li class = "dropdown">
               <a href="#" class = "dropdown-toggle" data-toggle="dropdown">Over<b class ="caret"></b></a>
               <ul class = "dropdown-menu">
-                <li><a href="#">drop1</a></li>
-                <li><a href="#">drop2</a></li>
-                <li><a href="#">drop3</a></li>
+                <li><a href="#">ViaSofie</a></li>
+                <li><a href="/about/sofie">Sofie</a></li>
+                <li><a href="/faq">Faq</a></li>
               </ul>
             </li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/contact">Contact</a></li>
             <li><a href="#">Partners</a></li>
-            <li><a href="http://193.191.187.253:8093/sales/properties/">Kopen</a></li>
-            <li><a href="http://193.191.187.253:8093/sales/properties/">Huren</a></li>
+            <li><a href="/sales/properties">Kopen</a></li>
+            <li><a href="/sales/properties">Huren</a></li>
             <li><a href="#">Referenties</a></li>
             <li><a href="#">Advies</a></li>
-            <li><a href="#">e_book</a></li>
+            <li><a href="/ebook">E_book</a></li>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class ="caret"></b></a>
               <form class = "dropdown-menu navbar-form" role="form">
                 <div class = "input-group">
@@ -63,26 +63,11 @@
                   </span>
                   <input type="password" class="form-control" placeholder="Password"/>
                 </div>
-                <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                <button type="submit" class ="btn btn-succes btn-sm"><i class="fa fa-sign-in" aria-hidden="true"></i>login</button>
               </form><!--hier eindigt de login form-->
             </li>
           </ul>
           {% endblock %}
-          <!-- <form class="navbar-form navbar-right" role ="form"> <!--hier start de login form-->
-              <!-- <div class = "input-group"> -->
-                <!-- <span class="input-group-addon"> -->
-                  <!-- <span class="glyphicon glyphicon-user"></span> -->
-                <!-- </span> -->
-                <!-- <input type="text" class="form-control" placeholder="Username"/> -->
-              <!-- </div> -->
-              <!-- <div class="input-group"> -->
-                <!-- <span class="input-group-addon"> -->
-                <!-- <span class="glyphicon glyphicon-lock"></span> -->
-                <!-- </span> -->
-                <!-- <input type="password" class="form-control" placeholder="Password"/> -->
-              <!-- </div> -->
-              <!-- <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i></button> -->
-          <!-- </form><!--hier eindigt de login form--> --> -->
         </div>
       </div>
     </div> <!--hier eindigt de navbar-->
@@ -104,10 +89,10 @@
       <div class = "footbox">
         <ul>
           <p class = "navbar-text pull-right">Copyright@2016 Via Sofie</p>
-          <a class = "navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
-          <a class = "navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
-          <a class = "navbar-btn btn btn-default pull-right btn-xs">Sitemap</a>
-          <a class = "navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
+          <a href="" class = "navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
+          <a href="/info/disclaimer" class = "navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
+          <a href="" class = "navbar-btn btn btn-default pull-right btn-xs">Sitemap</a>
+          <a href="/info/privacy" class = "navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
         </ul>
       </div>
     </div><!--hier eindigt de footer-->

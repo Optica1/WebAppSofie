@@ -71,8 +71,34 @@ def register_user(request):
 def register_success(request):
 	return render_to_response('templates/register_success.html')
 
-def property(request):
-	return render_to_response('templates/property.html')
+def property(request, property_id):
+	try:
+		p = Properties.objects.get(property_id)
+	except Properties.DoesNotExist:
+		raise Http404("Property does not exist.")
+	return render_to_response(request, 'templates/property.html', {'property':p})
 
 def offer_sales(request):
 	return render_to_response('templates/offer.html')
+
+def about_sofie(request):
+	sofie = AboutSofiePage.objects.order_by('-language')[:5]
+	context = {'Sofie': sofie}
+	return render(request, 'templates/aboutSofie.html', context)
+
+def disclaimer(request):
+	return render_to_response('templates/disclaimer.html')
+
+def faq(request):
+	faq = Faq.objects.order_by('-visible')[:5]
+	context = {'Faq': faq}
+	return render(request, 'templates/faq.html', context)
+
+def privacy(request):
+	return render_to_response('templates/privacy.html')
+
+def ebook(request):
+	return render_to_response('templates/ebook.html')
+
+def contact(request):
+	return render_to_response('templates/contact.html')

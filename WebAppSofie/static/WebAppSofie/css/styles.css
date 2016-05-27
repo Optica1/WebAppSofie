@@ -1,6 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
 
+body{
+  padding-top: 90px;
+}
+
+.logo {
+	background-image: url("static/WebAppSofie/images/def_logos_via_sofie-RGB-01.png");
+}
 
 .row li a{
 
@@ -27,7 +34,6 @@ margin-top:10px;
   -webkit-transition-duration:0.4s;
 
 }
-
 
 .col-md-3 h3 a{
 color:#000;
@@ -68,6 +74,12 @@ margin-left:5px;
   -webkit-box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
   -moz-box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
   box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
+}
+
+.navbar-brand {
+  padding: 0px;
+  padding-top: 5px;
+  
 }
 
 .nav li{
@@ -115,11 +127,6 @@ background-color:#fff;
 font-family: 'Montserrat', sans-serif;
 
 }
-.input-group{
-width:130px;
-
-
-}
 
 
 @media (max-width:768px){
@@ -130,7 +137,7 @@ width:130px;
 }
 
 .brand{
-max-height:25px;
+max-height: 50px;
 
 }
 .footbox{}
