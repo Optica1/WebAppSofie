@@ -95,7 +95,8 @@ def disclaimer(request):
 	# return render_to_response('templates/disclaimer.html')
 
 def faq(request):
-	faq = Faq.objects.get(visible=1)
+	# faq = Faq.objects.get(visible=1) can onlly retrieve one not more.
+	faq = Faq.objects.filter(visible=1)
 	context = {'Faq': faq}
 	return render(request, 'templates/faq.html', context)
 
