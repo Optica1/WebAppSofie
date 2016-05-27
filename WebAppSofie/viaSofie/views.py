@@ -89,7 +89,7 @@ def about_sofie(request):
 	return render(request, 'templates/aboutSofie.html', context)
 
 def disclaimer(request):
-	disclaimer = DisclaimerPage.objects.order_by('-language')[:5]
+	disclaimer = DisclaimerPage.objects.all()
 	context = {'Disclaimer': disclaimer}
 	return render(request, 'templates/disclaimer.html', context)
 	# return render_to_response('templates/disclaimer.html')
