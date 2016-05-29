@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from tinymce.models import HTMLField
+from datetime import datetime
+import time
 import googlemaps
 import json
 import datetime
@@ -9,7 +11,6 @@ from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
-from tinymce.models import HTMLField
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -104,8 +105,8 @@ class Properties(models.Model):
 	date_modified = models.DateTimeField(editable=False)
 	def save(self, *args, **kwargs):
 		if not self.id:
-			self.date_created = timezone.now()
-		self.date_modified = timezone.now()
+			self.date_created = datetime.datetime.now()
+		self.date_modified = datetime.datetime.now()
 		return super(Properties, self).save(*args, **kwargs)
 
 class PropertyDocuments(models.Model):
