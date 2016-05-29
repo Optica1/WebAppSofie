@@ -172,7 +172,7 @@ class Faq(models.Model):
 	answer = models.TextField()
 	visible = models.BooleanField()
 
-@receiver(pre_save, sender=Properties)
+@receiver(post_save, sender=Properties)
 def model_pre_change(sender, **kwargs):
     Property_street=Properties.street
     Property_streetnumber=Properties.housenumber
