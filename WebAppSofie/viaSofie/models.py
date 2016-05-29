@@ -174,7 +174,6 @@ class Faq(models.Model):
 
 @receiver(post_save, sender=Properties)
 def model_pre_change(sender, **kwargs):
-	Property_id=Properties.id
     Property_street=Properties.street
     Property_streetnumber=Properties.housenumber
     Property_postalcode=Properties.postalcode
