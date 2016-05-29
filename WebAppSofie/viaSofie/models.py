@@ -174,13 +174,11 @@ class Faq(models.Model):
 
 @receiver(post_save, sender=Properties)
 def model_pre_change(sender, **kwargs):
-
-	Property_id=Properties.id
-
+	# Property_id=Properties.id
     Property_street=Properties.street
-    # Property_streetnumber=Properties.housenumber
-    # Property_postalcode=Properties.postalcode
-    # Property_city=Properties.city
+    Property_streetnumber=Properties.housenumber
+    Property_postalcode=Properties.postalcode
+    Property_city=Properties.city
     location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
 
     gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
