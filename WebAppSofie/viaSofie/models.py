@@ -175,7 +175,7 @@ class Faq(models.Model):
 class Newsletter(models.Model):
 	email = models.EmailField()
 
-@receiver(post_save, sender=Properties)
+@receiver(pre_save, sender=Properties)
 def model_pre_change(sender, **kwargs):
 	Property_street=Property.street
 	Property_streetnumber=Property.housenumber
