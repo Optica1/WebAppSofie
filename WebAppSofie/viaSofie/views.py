@@ -160,5 +160,5 @@ def contact(request):
 			else:
 				# In reality we'd use a form class
 				# to get proper validation errors.
-        return HttpResponse('Make sure all fields are entered and valid.')
+        	return HttpResponse('Make sure all fields are entered and valid.')
 	return render(request, 'templates/contact.html', args)
