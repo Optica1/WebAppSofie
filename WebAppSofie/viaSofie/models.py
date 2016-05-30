@@ -177,6 +177,7 @@ class Newsletter(models.Model):
 
 @receiver(pre_save, sender=Properties)
 def model_pre_change(sender, **kwargs):
+	Property = Properties.objects.latest('date_modified')
 	Property_street=Property.street
 	Property_streetnumber=Property.housenumber
 	Property_postalcode=Property.postalcode
