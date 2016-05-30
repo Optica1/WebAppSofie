@@ -141,9 +141,11 @@ def ebook(request):
 	return render_to_response('templates/ebook.html', args)
 
 def contact(request):
+	args = {}
+	args.update(csrf(request))
+	args['form'] = ContactForm
 	if request.method == 'POST':
-			form = form_class(data=request.POST)
-
+		form = args['form'](data=request.POST)
 		if form.is_valid():
 			subject = request.POST.get('contact_name', '')
 			email = request.POST.get('contact_email', '')
@@ -159,8 +161,4 @@ def contact(request):
 				# In reality we'd use a form class
 				# to get proper validation errors.
         return HttpResponse('Make sure all fields are entered and valid.')
-
-	args = {}
-	args.update(csrf(request))
-	args['form'] = ContactForm
 	return render(request, 'templates/contact.html', args)
