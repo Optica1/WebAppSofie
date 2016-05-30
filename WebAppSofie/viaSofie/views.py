@@ -151,7 +151,7 @@ def contact(request):
 			email = request.POST.get('email', '')
 			content = request.POST.get('content', '')
 
-			if subject and message and from_email:
+			if subject and content and email:
 				try:
 					send_mail(subject, content, email, ['nick.vanheertum@student.ap.be'])
 				except BadHeaderError:
