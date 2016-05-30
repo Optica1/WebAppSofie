@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response #renders pages
 from django.shortcuts import render #renders pages
-from django.http import HttpResponseRedirect,Http404 #handles redirects
+from django.http import HttpResponseRedirect,Http404, HttpResponse #handles redirects
 from django.contrib import auth #handles the authantication
 from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf #anti crosssite scripting
