@@ -176,16 +176,12 @@ class Newsletter(models.Model):
 	email = models.EmailField()
 
 @receiver(post_save, sender=Properties)
-def model_pre_change(sender, Properties):
-	# Property = Properties.objects.latest('date_modified')
-	# Property_street=Property.street
-	# Property_streetnumber=Property.housenumber
-	# Property_postalcode=Property.postalcode
-	# Property_city=Property.city
-	Property_street=Properties.get('street')
-	Property_streetnumber=Properties.get('streetnumber')
-	Property_postalcode=Properties.get('postalcode')
-	Property_city=Properties.get('city')
+def model_pre_change(sender, **kwargs):
+	Property = Properties.objects.latest('date_modified')
+	Property_street=Property.street
+	Property_streetnumber=Property.housenumber
+	Property_postalcode=Property.postalcode
+	Property_city=Property.city
 
 	location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
 
