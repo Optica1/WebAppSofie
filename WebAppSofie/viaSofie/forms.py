@@ -79,7 +79,7 @@ class NewsletterForm(forms.Form):
 		email = self.cleaned_data['email']
     	if Newsletter.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
         	raise forms.ValidationError(u'email "%s" is already in use.' % email)
-    	return email
+    	return
 
 	def save(self, commit=True):
 		newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
