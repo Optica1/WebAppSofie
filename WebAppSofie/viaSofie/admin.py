@@ -17,18 +17,26 @@ class PropertiesAdmin(admin.ModelAdmin):
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
   can_delete = False
+
 class StatusInline(admin.StackedInline):
   model = Status
   can_delete = False
+
 class UserAdmin(UserAdmin):
 	inlines = (UserDetailsInline,StatusInline, )
 
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['user']
 
+class PropertiesAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
+
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(Properties, PropertiesAdmin)
+admin.site.register(PrivacyPage, PrivacyPageAdmin)
+
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
