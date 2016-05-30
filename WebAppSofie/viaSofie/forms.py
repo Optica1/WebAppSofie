@@ -94,7 +94,7 @@ class NewsletterUnsubscribeForm(forms.Form):
 
 	class Meta:
 		model = Newsletter
-		field = ('email')
+		fields = ('email')
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
