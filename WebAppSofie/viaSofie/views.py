@@ -32,7 +32,6 @@ def status(request):
 		else:
 			user = request.user
 			userInfo = User.objects.get(id=user.id)
-			userdetail = UserDetails.objects.get(id=user.id)
 			status = Status.objects.get(id=user.id)
 	except Status.DoesNotExist:
 		raise Http404('User does not exist')
