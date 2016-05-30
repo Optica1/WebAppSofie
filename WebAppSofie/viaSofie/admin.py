@@ -40,6 +40,9 @@ class PartnerAdmin(admin.ModelAdmin):
 class EbookAdmin(admin.ModelAdmin):
     list_display = ['name']
 
+class DisclaimerPageAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(Properties, PropertiesAdmin)
@@ -47,6 +50,8 @@ admin.site.register(PrivacyPage, PrivacyPageAdmin)
 admin.site.register(Faq, FaqAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Ebook, EbookAdmin)
+admin.site.register(DisclaimerPage, DisclaimerPageAdmin)
+
 
 # Re-register UserAdmin
 admin.site.unregister(User)
