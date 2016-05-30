@@ -177,11 +177,15 @@ class Newsletter(models.Model):
 
 @receiver(post_save, sender=Properties)
 def model_pre_change(sender, **kwargs):
-	Property = Properties.objects.latest('date_modified')
-	Property_street=Property.street
-	Property_streetnumber=Property.housenumber
-	Property_postalcode=Property.postalcode
-	Property_city=Property.city
+	# Property = Properties.objects.latest('date_modified')
+	# Property_street=Property.street
+	# Property_streetnumber=Property.housenumber
+	# Property_postalcode=Property.postalcode
+	# Property_city=Property.city
+	Property_street=kwargs.get('street')
+	Property_streetnumber=kwargs.get('streetnumber')
+	Property_postalcode=kwargs.get('postalcode')
+	Property_city=kwargs.get('city')
 
 	location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
 
