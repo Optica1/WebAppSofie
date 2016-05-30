@@ -28,7 +28,7 @@ class StatusAdmin(admin.ModelAdmin):
 
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
-admin.site.register(Properties)
+admin.site.register(Properties, PropertiesAdmin)
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
