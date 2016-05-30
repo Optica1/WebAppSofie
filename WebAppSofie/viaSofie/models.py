@@ -195,7 +195,9 @@ def model_pre_change(sender, **kwargs):
 	longitude = geocode_result[0]["geometry"]["location"]["lng"]
 
     # adding longitude and latitude to the database
-	Property=viaSofie_Properties(longitude=longitude, latitude=latitude)
-	Property.save()
+	SuperProperty = super(Properties, Property).save(commit=False)
+	SuperProperty.longitude = longitude
+	SuperProperty.latitude = latitude
+	SuperProperty.save()
 
     # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
