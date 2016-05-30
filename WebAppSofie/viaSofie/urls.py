@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^faq', views.faq),
     url(r'^info/privacy', views.privacy),
     url(r'^info/disclaimer', views.disclaimer),
+    url(r'^newsletter/subscribe', views.newsletterSubscribe),
+    url(r'^newsletter/unsubscribe', views.newsletterUnsubscribe),
 ]
