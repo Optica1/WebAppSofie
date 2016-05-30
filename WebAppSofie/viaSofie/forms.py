@@ -100,6 +100,6 @@ class NewsletterUnsubscribeForm(froms.Form):
 	def clean_email(self):
 		email = self.cleaned_data['email']
 		if Newsletter.objects.exclude(pk=self.instance.pk).filter(email).exists():
-
+			return email
 		else:
 			raise forms.ValidationError(u'email "%s" is not subscribed to the newsletter' % email)
