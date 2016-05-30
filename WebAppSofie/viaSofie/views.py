@@ -181,6 +181,6 @@ def newsletterUnsubscribe(request):
 	if request.method == 'POST':
 		form = NewsletterUnsubscribeForm
 		if form.is_valid():
-			NewsletterForm.objects.filter(email=email).delete()
+			Newsletter.objects.filter(email=email).delete()
 
 	render_to_response('templates/newsletter_unsubscribe.html, args')
