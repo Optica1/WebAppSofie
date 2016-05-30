@@ -33,8 +33,8 @@ def status(request):
 			user = request.user
 			userInfo = User.objects.get(id=user.id)
 			status = Status.objects.get(id=user.id)
-	except Status.DoesNotExist:
-		raise Http404('User does not exist')
+	except Exception as e:
+		raise Http404(e)
 	return render_to_response('templates/status.html' , {
 		'status': status.get_dossierStatus_display,
 		'info': userInfo,
