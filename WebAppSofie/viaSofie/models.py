@@ -175,27 +175,27 @@ class Faq(models.Model):
 class Newsletter(models.Model):
 	email = models.EmailField()
 
-@receiver(post_save, sender=Properties)
-def model_pre_change(sender, **kwargs):
-	Property = Properties.objects.all()		#.latest('date_modified')
-	Property_street=Property.street
-	Property_streetnumber=Property.housenumber
-	Property_postalcode=Property.postalcode
-	Property_city=Property.city
-
-	location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
-
-	gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
-
-    # Geocoding an address
-	geocode_result = gmaps.geocode(location)
-
-    # query json
-	latitude = geocode_result[0]["geometry"]["location"]["lat"]
-	longitude = geocode_result[0]["geometry"]["location"]["lng"]
-
-    # adding longitude and latitude to the database
-	Property=viaSofie_Properties(longitude=longitude, latitude=latitude)
-	Property.save()
-
-    # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
+# @receiver(post_save, sender=Properties)
+# def model_pre_change(sender, **kwargs):
+# 	Property = Properties.objects.all()		#.latest('date_modified')
+# 	Property_street=Property.street
+# 	Property_streetnumber=Property.housenumber
+# 	Property_postalcode=Property.postalcode
+# 	Property_city=Property.city
+#
+# 	location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
+#
+# 	gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
+#
+#     # Geocoding an address
+# 	geocode_result = gmaps.geocode(location)
+#
+#     # query json
+# 	latitude = geocode_result[0]["geometry"]["location"]["lat"]
+# 	longitude = geocode_result[0]["geometry"]["location"]["lng"]
+#
+#     # adding longitude and latitude to the database
+# 	Property=viaSofie_Properties(longitude=longitude, latitude=latitude)
+# 	Property.save()
+#
+#     # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
