@@ -77,7 +77,7 @@ class NewsletterForm(forms.Form):
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
-    	if Newsletter.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
+    	if Newsletter.objects.filter(email=email).exists():
     		raise forms.ValidationError(u'email "%s" is already in use.' % email)
 
 	def save(self, commit=True):
@@ -98,7 +98,7 @@ class NewsletterUnsubscribeForm(froms.Form):
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
-		if Newsletter.objects.exclude(pk=self.instance.pk).filter(email).exists():
-			return email
+		if Newsletter.objects.filter(email).exists():
+			pass
 		else:
 			raise forms.ValidationError(u'email "%s" is not subscribed to the newsletter' % email)
