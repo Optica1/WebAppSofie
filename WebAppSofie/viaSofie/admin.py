@@ -37,12 +37,16 @@ class FaqAdmin(admin.ModelAdmin):
 class PartnerAdmin(admin.ModelAdmin):
     list_display = ['name']
 
+class EbookAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(Properties, PropertiesAdmin)
 admin.site.register(PrivacyPage, PrivacyPageAdmin)
 admin.site.register(Faq, FaqAdmin)
 admin.site.register(Partner, PartnerAdmin)
+admin.site.register(Ebook, EbookAdmin)
 
 # Re-register UserAdmin
 admin.site.unregister(User)
