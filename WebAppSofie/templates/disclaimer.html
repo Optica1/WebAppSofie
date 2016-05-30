@@ -4,7 +4,7 @@
 
 		{% for disclaimer in Disclaimer %}
 		<h2>{{ disclaimer.title }}</h2>
-		<h3>{{ disclaimer.text }}</h3>
+		<h3>{{ disclaimer.text | safe}}</h3>
 		</bk>
 		{% endfor %}
 
