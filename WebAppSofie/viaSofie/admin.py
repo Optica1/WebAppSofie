@@ -32,7 +32,7 @@ class PrivacyPageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
 class FaqAdmin(admin.ModelAdmin):
-    list_display = ['title']
+    list_display = ['question']
 
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
