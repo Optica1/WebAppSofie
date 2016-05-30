@@ -147,8 +147,8 @@ def contact(request):
 	if request.method == 'POST':
 		form = args['form'](data=request.POST)
 		if form.is_valid():
-			subject = request.POST.get('contact_name', '')
-			email = request.POST.get('contact_email', '')
+			subject = request.POST.get('subject', '')
+			email = request.POST.get('email', '')
 			content = request.POST.get('content', '')
 
 			if subject and message and from_email:
