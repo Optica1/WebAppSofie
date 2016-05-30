@@ -31,11 +31,14 @@ class StatusAdmin(admin.ModelAdmin):
 class PrivacyPageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
+class FaqAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(Properties, PropertiesAdmin)
 admin.site.register(PrivacyPage, PrivacyPageAdmin)
-
+admin.site.register(Faq, FaqAdmin)
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
