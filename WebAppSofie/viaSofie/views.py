@@ -162,3 +162,25 @@ def contact(request):
 				# to get proper validation errors.
 				return HttpResponse('Make sure all fields are entered and valid.')
 	return render(request, 'templates/contact.html', args)
+
+def newsletterSubscribe(request):
+	args = {}
+	args.update(csrf(request))
+
+	if request.method = 'POST':
+		form = NewsletterForm
+		if form.is_valid():
+			form.save()
+
+	return render_to_response('templates/newsletter.html', args)
+
+def newsletterUnsubscribe(request):
+	args = {}
+	args.update(csrf(request))
+
+	if request.method = 'POST':
+		form = NewsletterUnsubscribeForm
+		if form.is_valid():
+			NewsletterForm.objects.filter(email=email).delete()
+
+	render_to_response('templates/newsletter_unsubscribe.html, args')
