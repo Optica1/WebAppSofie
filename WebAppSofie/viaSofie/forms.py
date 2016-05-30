@@ -89,7 +89,7 @@ class NewsletterForm(forms.Form):
 			Newsletter.save()
 		return
 
-class NewsletterUnsubscribeForm(froms.Form):
+class NewsletterUnsubscribeForm(forms.Form):
 	email = forms.EmailField(required=True)
 
 	class Meta:
