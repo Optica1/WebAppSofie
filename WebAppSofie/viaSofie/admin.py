@@ -11,6 +11,9 @@ class ClientAdmin(admin.ModelAdmin):
 class AboutpageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
+class PropertiesAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
   can_delete = False
