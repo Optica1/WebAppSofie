@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response #renders pages
 from django.shortcuts import render #renders pages
-from django.http import HttpResponseRedirect,Http404 #handles redirects
+from django.http import HttpResponseRedirect,Http404, HttpResponse #handles redirects
 from django.contrib import auth #handles the authantication
 from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf #anti crosssite scripting
@@ -141,15 +141,17 @@ def ebook(request):
 	return render_to_response('templates/ebook.html', args)
 
 def contact(request):
+	args = {}
+	args.update(csrf(request))
+	args['form'] = ContactForm
 	if request.method == 'POST':
-			form = form_class(data=request.POST)
-
+		form = args['form'](data=request.POST)
 		if form.is_valid():
-			subject = request.POST.get('contact_name', '')
-			email = request.POST.get('contact_email', '')
+			subject = request.POST.get('subject', '')
+			email = request.POST.get('email', '')
 			content = request.POST.get('content', '')
 
-			if subject and message and from_email:
+			if subject and content and email:
 				try:
 					send_mail(subject, content, email, ['nick.vanheertum@student.ap.be'])
 				except BadHeaderError:
@@ -158,9 +160,5 @@ def contact(request):
 			else:
 				# In reality we'd use a form class
 				# to get proper validation errors.
-        return HttpResponse('Make sure all fields are entered and valid.')
-
-	args = {}
-	args.update(csrf(request))
-	args['form'] = ContactForm
+				return HttpResponse('Make sure all fields are entered and valid.')
 	return render(request, 'templates/contact.html', args)
