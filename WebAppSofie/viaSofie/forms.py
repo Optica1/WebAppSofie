@@ -68,7 +68,7 @@ class ContactForm(forms.Form):
 		widget=forms.Textarea
 	)
 
-class NewsletterForm(forms.Form)
+class NewsletterForm(forms.Form):
 	email = forms.EmailField(required=True)
 
 	class Meta:
@@ -90,7 +90,7 @@ class NewsletterForm(forms.Form)
 			Newsletter.save()
 		return
 
-class NewsletterUnsubscribeForm(froms.Form)
+class NewsletterUnsubscribeForm(froms.Form):
 	email = forms.EmailField(required=True)
 
 	class Meta:
