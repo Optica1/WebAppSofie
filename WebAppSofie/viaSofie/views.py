@@ -8,6 +8,9 @@ from django.utils.translation import ugettext as _ #translation
 from django.contrib.auth.models import User
 from forms import *
 from .models import *
+from django.core.mail import send_mail, BadHeaderError
+#from collection.forms import ContactForm
+
 
 
 def index(request):
@@ -138,4 +141,26 @@ def ebook(request):
 	return render_to_response('templates/ebook.html', args)
 
 def contact(request):
-	return render_to_response('templates/contact.html')
+	if request.method == 'POST':
+			form = form_class(data=request.POST)
+
+		if form.is_valid():
+			subject = request.POST.get('contact_name', '')
+			email = request.POST.get('contact_email', '')
+			content = request.POST.get('content', '')
+
+			if subject and message and from_email:
+				try:
+					send_mail(subject, content, email, ['nick.vanheertum@student.ap.be'])
+				except BadHeaderError:
+					return HttpResponse('Invalid header found.')
+				return HttpResponseRedirect('/contact/thanks/')
+			else:
+				# In reality we'd use a form class
+				# to get proper validation errors.
+        return HttpResponse('Make sure all fields are entered and valid.')
+
+	args = {}
+	args.update(csrf(request))
+	args['form'] = ContactForm
+	return render(request, 'templates/contact.html', args)

@@ -59,3 +59,11 @@ class MyEbookForm(forms.Form):
 			EbookRegistration.save()
 
 		return
+
+class ContactForm(forms.Form):
+	subject = forms.CharField(required=True)
+	email = forms.EmailField(required=True)
+	content = forms.CharField(
+		required=True,
+		widget=forms.Textarea
+	)
