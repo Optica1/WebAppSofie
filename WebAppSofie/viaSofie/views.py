@@ -161,8 +161,7 @@ def contact(request):
 				# to get proper validation errors.
 				return HttpResponse('Make sure all fields are entered and valid.')
 	return render(request, 'templates/contact.html', args)
-<<<<<<< HEAD
-=======
+
 
 def newsletterSubscribe(request):
 	args = {}
@@ -185,4 +184,3 @@ def newsletterUnsubscribe(request):
 			NewsletterForm.objects.filter(email=email).delete()
 
 	render_to_response('templates/newsletter_unsubscribe.html, args')
->>>>>>> Nick---views
