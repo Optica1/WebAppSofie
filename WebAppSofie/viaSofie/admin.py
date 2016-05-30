@@ -12,7 +12,7 @@ class AboutpageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
 class PropertiesAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['title_dutch']
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
