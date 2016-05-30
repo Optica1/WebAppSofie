@@ -195,7 +195,7 @@ def model_pre_change(sender, **kwargs):
 	longitude = geocode_result[0]["geometry"]["location"]["lng"]
 
     # adding longitude and latitude to the database
-	SuperProperty = super(Properties, Property).save(commit=False)
+	SuperProperty = super(Properties, Property).save()
 	SuperProperty.longitude = longitude
 	SuperProperty.latitude = latitude
 	SuperProperty.save()
