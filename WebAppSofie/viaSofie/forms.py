@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth.hashers import make_password
 from .models import *
+from django.forms import ModelForm
 #from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
@@ -42,16 +43,17 @@ class MyRegistrationForm(UserCreationForm):
 			user.save()
 		return
 
-class MyEbookForm(ModelForm):
+class MyEbookForm(forms.Form):
 	email = forms.EmailField(required=True)
+	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).values_list('name', flat=True))
 
 	class Meta:
 		model = EbookRequests
-		fields =('email')#, 'ebook')
+		fields =('email', 'ebook')
 
 	def save(self, commit=True):
 		EbookRequests.email = self.cleaned_data['email']
-		EbookRequests.ebook = self.cleaned_data['ebook']
+		EbookRequests.ebook = self.cleaned_data['id_ebook']
 
 		if commit:
 			EbookRegistration.save()

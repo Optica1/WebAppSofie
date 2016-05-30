@@ -2,12 +2,15 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from tinymce.models import HTMLField
+from datetime import datetime
+import time
 import googlemaps
 import json
 import datetime
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from tinymce import models as tinymce_models
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -21,9 +24,15 @@ class UserDetails(models.Model):
 
 class Aboutpage(models.Model):
     title = models.CharField(max_length=60)
-    text = HTMLField()
+    text =  tinymce_models.HTMLField()
 	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
-
+class Status(models.Model):
+	user = models.OneToOneField(User)
+	STATUS = (
+			('R', 'Registered'),
+			('H', 'Handled'),
+		)
+	dossierStatus = models.CharField(max_length=1, choices=STATUS, default=STATUS[0][0])
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
@@ -96,13 +105,18 @@ class Properties(models.Model):
 	date_modified = models.DateTimeField(editable=False)
 	def save(self, *args, **kwargs):
 		if not self.id:
-			self.date_created = timezone.now()
-		self.date_modified = timezone.now()
+			self.date_created = datetime.datetime.now()
+		self.date_modified = datetime.datetime.now()
 		return super(Properties, self).save(*args, **kwargs)
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
 	path = models.FilePathField(max_length=100)
+	available = models.BooleanField()
+
+class Partner(models.Model):
+	name = models.CharField(max_length=30)
+	text = models.TextField()
 	available = models.BooleanField()
 
 class PropertyPictures(models.Model):
@@ -158,28 +172,30 @@ class Faq(models.Model):
 	answer = models.TextField()
 	visible = models.BooleanField()
 
-@receiver(pre_save, sender=Properties)
-def model_pre_change(sender, **kwargs):
-    Property_street=Properties.street
-    Property_streetnumber=Properties.housenumber
-    Property_postalcode=Properties.postalcode
-    Property_city=Properties.city
-    location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
-
-    gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
-
-    # Geocoding an address
-    geocode_result = gmaps.geocode(location)
-
-    # query json
-    latitude = geocode_result[0]["geometry"]["location"]["lat"]
-    longitude = geocode_result[0]["geometry"]["location"]["lng"]
-
-    # adding longitude and latitude to the database
-    Property=viaSofie_Properties(longitude=longitude, latitude=latitude)
-    Property.save()
-
-    # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
-
 class Newsletter(models.Model):
 	email = models.EmailField()
+
+@receiver(post_save, sender=Properties)
+def model_pre_change(sender, **kwargs):
+	Property = Properties.objects.all()		#.latest('date_modified')
+	Property_street=Property.street
+	Property_streetnumber=Property.housenumber
+	Property_postalcode=Property.postalcode
+	Property_city=Property.city
+
+	location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
+
+	gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
+
+    # Geocoding an address
+	geocode_result = gmaps.geocode(location)
+
+    # query json
+	latitude = geocode_result[0]["geometry"]["location"]["lat"]
+	longitude = geocode_result[0]["geometry"]["location"]["lng"]
+
+    # adding longitude and latitude to the database
+	Property=viaSofie_Properties(longitude=longitude, latitude=latitude)
+	Property.save()
+
+    # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M

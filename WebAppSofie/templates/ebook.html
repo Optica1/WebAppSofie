@@ -3,14 +3,24 @@
 {% block content %}
 
 
-	<h2>E-Book</h2>
-	<form role="form" action="/ebook" method="POST">
-		{{ field }}
-		<select id="id_ebook">
-			{% for ebook in Ebooks %}
-				<option value="{{ebook}}">{{ ebook.name }}</option>
-			{% endfor %}
-		</select>
+	<div class = "container"><!--hier start midden content-->
+	<h2>Ebook aanvragen:</h2>
+	<form action="/ebook" method="post" role="form" class="form-horizontal">{% csrf_token %}
+		<!-- {{form}} -->
+		{% for field in form %}
+			<div class="form-group">
+        		<label class="control-label col-sm-2" for="{{ field.name }}">{{ field.label }}</label>
+				<div class="col-sm-10">
+					{{ field }}
+				</div>
+			</div>
+    {% endfor %}
+		<div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+      	<input type="submit" value="Register" class="btn btn-default"/>
+    	</div>
+  	</div>
 	</form>
+</div><!--hier eindigt midden content-->
 
 {% endblock %}
