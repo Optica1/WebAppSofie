@@ -7,7 +7,18 @@
         height: 250px;
       }
   </style>
-	<h2>huis</h2>
+	{% for property in Property %}
+
+	{% for bedroomcount in Bedroomcount %}
+
+	{% for bathroomcount in Bathroomcount %}
+	{% for toilets in Toilets %}
+
+	{% for kitchencount in Kitchencount %}
+
+
+
+	<h2>{{ property.title_dutch }}</h2>
     </style>
 	<h3>Huis OB, 4slpkrs, 2bdkmrs, rustig gelegen, nieuwbouw</h3>
 
@@ -20,14 +31,14 @@
 
 	          	<div class ="col-md-3">
 	            	<h3>Eigenschappen</h3>
-	            	<p><span>Type bebouwing:</span> open</p>
-	            	<p><span>Aantal slaapkamers:</span> 4</p>
-	            	<p><span>Aantal badkamers:</span> 2</p>
-	            	<p><span>Oppervlakte:</span> 200m²</p>
-	            	<p><span>Bewoonbare oppervlakte:</span> 150m²</p>
-	            	<p><span>Bouwjaar:</span> 2000</p>
-	            	<p><span>Katastraal inkomen:</span> 800</p>
-	            	<p><span>ID:</span> 251</p>
+	            	<p><span>Type bebouwing:</span> {{ property.buildingtype }}</p>
+	            	<p><span>Aantal slaapkamers:</span> {{ bedroomcount }}</p>
+	            	<p><span>Aantal badkamers:</span> {{bathroomcount}}</p>
+	            	<p><span>Oppervlakte:</span> {{ property.area }}</p>
+	            	<p><span>Bewoonbare oppervlakte:</span> {{ property.livingarea }}</p>
+	            	<p><span>Bouwjaar:</span> {{ property.year }}</p>
+	            	<p><span>Katastraal inkomen:</span> Ungiven</p>
+	            	<p><span>ID:</span> wat moet hier?</p>
 	          	</div>
 			</center>
 		</div>
@@ -35,7 +46,7 @@
 			<center>
 				<div class="col-md-12">
 					<h3>Omschrijving</h3>
-					<p>Dit open bebouwing huis dat rustig gelegen is. Het huis is recent gebouwd en er is dus geen renovatie nodig. In het huis zijn 4 slaapkamers en 2 badkamers aanwezig. Er zijn garages voorzien voor 2 wagens en op de oprit kunnen nog eens 2 wagens staan zonder dat ze de garagepoorten blokkeren. Keuken is voorzien van apparatuur.</p>
+					<p>{{ property.description_dutch }}</p>
 				</div>
 			</center>
 		</div>
@@ -43,12 +54,12 @@
 			<center>
 				<div class="col-md-6">
 					<h3>Energy</h3>
-					<p><span>Energie label:</span> A+</p>
-					<p><span>Verwarming:</span> Stookolie</p>
+					<p><span>Energie label:</span> {{ property.energy_label }}</p>
+					<p><span>Verwarming:</span> {{ property.heating_type }}</p>
 				</div>
 				<div class="col-md-6">
 					<h3>Extra informatie</h3>
-					<p>Hier komt extra informatie te staan</p>
+					<p>{{ property.extra_information_dutch }}</p>
 				</div>
 			</center>
 		</div>
@@ -59,15 +70,17 @@
 					<div class="row">
 						<div class="col-md-4">
 							<p><span>Woonkamer:</span> <50/p>
-							<p><span>Keuken:</span> 20</p>
-							<p><span>Slaapkamer 1:</span> 25</p>
-							<p><span>Slaapkamer 2:</span> 20</p>
+							{% for kitchens in Kitchens %}
+							<p><span>Keuken:</span> {{ kitchens.area }}</p>
+							{%endfor%}
+							{% for bedrooms in Bedrooms %}
+							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
+							{%endfor%}
 						</div>
 						<div class="col-md-4 col-md-offset-1">
-							<p><span>Slaapkamer 3:</span> 15</p>
-							<p><span>Slaapkamer 4:</span> 18</p>
-							<p><span>Badkamer 1:</span> 15</p>
-							<p><span>Badkamer 2:</span> 8</p>
+							{% for bathrooms in Bathrooms %}
+							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
+							{%endfor%}
 						</div>
 					</div>
 				</div>
@@ -120,5 +133,10 @@
 		</div>
 	</div>
 
+{%endfor%}
+{%endfor%}
+{%endfor%}
+{%endfor%}
+{%endfor%}
 
 {% endblock %}
