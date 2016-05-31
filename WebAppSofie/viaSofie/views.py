@@ -103,7 +103,8 @@ def property(request, p_id='7'):
 	return render_to_response(request, 'templates/property.html', returned_values)
 
 def offer_sales(request):
-	return render_to_response('templates/offer.html')
+	p = Properties.objects.all()[:10]
+	return render_to_response('templates/offer.html', {'Properties':p})
 
 def about_sofie(request):
 	sofie = AboutSofiePage.objects.all()
