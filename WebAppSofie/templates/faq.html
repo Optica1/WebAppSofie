@@ -2,13 +2,24 @@
 
 {% block content %}
 
-	<h1>FAQ</h1>
-
+<div class="container">
+  <h2>FAQ</h2>
+  <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+  <div class="panel-group" id="accordion">
 		{% for faq in Faq %}
-		<h2>{{ faq.question }}</h2>
-		<h3>{{ faq.answer }}</h3>
-		</bk>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{ faq.question }}</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">{{ faq.answer }}</div>
+      </div>
+    </div>
 		{% endfor %}
+  </div>
+</div>
 	</br>
 	<h4>De inlichtingen zoals meegedeeld op deze pagina zijn louter van algemene aard en kunnen geenszins als sluitende professionele juridische adviesverlening aangepast aan specifieke of concrete persoonlijke omstandigheden worden beschouwd.</h4>
 	</br>
