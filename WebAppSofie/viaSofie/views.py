@@ -86,7 +86,7 @@ def register_user(request):
 def register_success(request):
 	return render_to_response('templates/register_success.html')
 
-def property(request, p_id):
+def property(request, p_id='7'):
 	try:
 		p = Properties.objects.get(p_id)
 		bedrooms = Bedroom.objects.filter(property_id = p.id)
