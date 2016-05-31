@@ -68,6 +68,9 @@ margin-left:5px;
 
 }
 
+.panel{
+  background-color:#0d3531;
+}
 
 .navbar{
   background-color:#0d3531;
@@ -79,7 +82,7 @@ margin-left:5px;
 .navbar-brand {
   padding: 0px;
   padding-top: 5px;
-  
+
 }
 
 .nav li{
