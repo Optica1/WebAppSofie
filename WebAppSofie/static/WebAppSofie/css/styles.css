@@ -68,7 +68,11 @@ margin-left:5px;
 
 }
 
-.panel-default{
+.panel-title{
+  background-color:#0d3531;
+}
+
+.panel-heading{
   background-color:#0d3531;
 }
 
