@@ -10,29 +10,29 @@ body{
 }
 
 .row li a{
-
  /*container die de containerS midden vast houdt*/
 color:#000;
 }
+
+.panel-heading{
+  color:#0d3531;
+}
+
 .row p{
 font-family: 'Montserrat', sans-serif;
 margin-top:10px;
-
 }
 
-.col-md-3{
+.col-md-3{}
 
-
-}
 .btn{
-
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 }
+
 .btn:hover{
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
-
 }
 
 .col-md-3 h3 a{
@@ -49,7 +49,6 @@ font-family: 'Montserrat', sans-serif;
 .footbox a{
 margin-top:30px;
 margin-left:5px;
-
 }
 
 .dropdown-menu li a{
@@ -57,15 +56,13 @@ margin-left:5px;
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:
-
 }
-.dropdown-menu li a:hover{
 
+.dropdown-menu li a:hover{
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:#b9d4ce;
   color:#000;
-
 }
 
 .navbar{
@@ -78,7 +75,6 @@ margin-left:5px;
 .navbar-brand {
   padding: 0px;
   padding-top: 5px;
-
 }
 
 .nav li{
@@ -86,22 +82,21 @@ margin-left:5px;
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 }
-.nav li:hover{
 
+.nav li:hover{
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 background-color:#b9d4ce;
-
 }
+
 .container a{
-
 color:#e8e8e8;
-
 }
-.row h3 a{
 
+.row h3 a{
   background-color:#fff;
 }
+
 .row a{
 font-family: 'Montserrat', sans-serif;
 color:#000;
@@ -109,22 +104,21 @@ background-color:#b9d9ce;
 }
 
 .jumbotron{
-
 width:100%;
-
 }
+
 .jumbotron p{
 /*container midden*/
 color:#000;
 font-family: 'Montserrat', sans-serif;
 font-size:16px;
 }
+
 .jumbotron a{
 /*container midden*/
 color:#000;
 background-color:#fff;
 font-family: 'Montserrat', sans-serif;
-
 }
 
 
@@ -137,6 +131,6 @@ font-family: 'Montserrat', sans-serif;
 
 .brand{
 max-height: 50px;
-
 }
+
 .footbox{}
