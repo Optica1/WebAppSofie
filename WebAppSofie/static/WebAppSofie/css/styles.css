@@ -2,13 +2,15 @@
 /* CSS Document */
 
 @font-face {
-    font-family: 'RopaSansSC'; /*a name to be used later*/
+    font-family: "RopaSansSC"; /*a name to be used later*/
     src: url('WebAppSofie/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
 body{
   padding-top: 90px;
+  font-family: "Helvetica Neue";
 }
+
 
 .logo {
 	background-image: url("static/WebAppSofie/images/def_logos_via_sofie-RGB-01.png");
@@ -25,7 +27,7 @@ color:#000;
 }
 
 .row p{
-font-family: 'RopaSansSC', sans-serif;
+font-family: "RopaSansSC", sans-serif;
 margin-top:10px;
 }
 
@@ -44,7 +46,7 @@ margin-top:10px;
 .col-md-3 h3 a{
 color:#000;
 text-decoration: none;
-font-family: 'RopaSansSC', sans-serif;
+font-family: "RopaSansSC", sans-serif;
 }
 
 .footer{
@@ -58,7 +60,7 @@ margin-left:5px;
 }
 
 .dropdown-menu li a{
-  font-family: 'RopaSansSC', sans-serif;
+  font-family: "RopaSansSC", sans-serif;
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:
@@ -84,7 +86,7 @@ margin-left:5px;
 }
 
 .nav li{
-  font-family: 'RopaSansSC', sans-serif;
+  font-family: "RopaSansSC", sans-serif;
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 }
@@ -100,7 +102,7 @@ color:#e8e8e8;
 }
 
 h2 {
-  font-family: 'RopaSansSC';
+  font-family: "RopaSansSC";
 }
 
 .row h3 a{
@@ -108,7 +110,7 @@ h2 {
 }
 
 .row a{
-font-family: 'RopaSansSC', sans-serif;
+font-family: "RopaSansSC", sans-serif;
 color:#000;
 background-color:#b9d9ce;
 }
@@ -120,7 +122,7 @@ width:100%;
 .jumbotron p{
 /*container midden*/
 color:#000;
-font-family: 'RopaSansSC', sans-serif;
+font-family: "RopaSansSC", sans-serif;
 font-size:16px;
 }
 
@@ -128,7 +130,7 @@ font-size:16px;
 /*container midden*/
 color:#000;
 background-color:#fff;
-font-family: 'RopaSansSC', sans-serif;
+font-family: "RopaSansSC", sans-serif;
 }
 
 
