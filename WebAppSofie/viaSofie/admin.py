@@ -15,8 +15,13 @@ class PlanningInfoInLine(admin.StackedInline):
     model = PlanningInfo
     can_delete = False
 
+class PropertyDocumentsInLine(admin.StackedInline):
+    model = PropertyDocuments
+    can_delete = False
+
 class PropertiesAdmin(admin.ModelAdmin):
-    inlines = (PlanningInfoInLine)
+    list_display = ['title_dutch']
+    inlines = (PlanningInfoInLine, PropertyDocumentsInLine)
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
