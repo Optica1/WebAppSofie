@@ -61,8 +61,6 @@ class EbookRequests(models.Model):
 	email = models.EmailField(max_length=70)
 	ebook_id = models.ForeignKey(Ebook, on_delete=models.PROTECT)
 	send = models.BooleanField()
-	class Meta:
-        verbose_name_plural = "EbookRequests"
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -108,8 +106,6 @@ class Properties(models.Model):
 	sold = models.BooleanField()
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
-	class Meta:
-        verbose_name_plural = "Properties"
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.date_created = datetime.datetime.now()
@@ -173,8 +169,6 @@ class Translations(models.Model):
 	english = models.CharField(max_length=30)
 	french = models.CharField(max_length=30)
 	dutch = models.CharField(max_length=30)
-	class Meta:
-        verbose_name_plural = "Translations"
 
 class Faq(models.Model):
 	question = models.TextField()
