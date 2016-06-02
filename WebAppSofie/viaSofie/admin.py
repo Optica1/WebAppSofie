@@ -32,7 +32,7 @@ class StatusInline(admin.StackedInline):
   can_delete = False
 
 class UserAdmin(UserAdmin):
-	inlines = (UserDetailsInline,StatusInline, )
+	inlines = (UserDetailsInline,StatusInline, PropertyDocumentsInLine, )
 
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['user']
