@@ -13,6 +13,11 @@ class AboutpageAdmin(admin.ModelAdmin):
 
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
+    inlines = (PlanningInfoInLine)
+
+class PlanningInfoInLine(admin.StackedInline):
+    model = PlanningInfo
+    can_delete = False
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
