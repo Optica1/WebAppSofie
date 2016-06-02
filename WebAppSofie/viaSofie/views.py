@@ -180,7 +180,7 @@ def newsletterSubscribe(request):
 	args['form'] = NewsletterForm
 
 	if request.method == 'POST':
-		form = NewsletterForm
+		form = NewsletterForm(request.POST)
 		if form.is_valid():
 			form.save()
 
@@ -192,7 +192,7 @@ def newsletterUnsubscribe(request):
 	args['form'] = Newsletterun
 
 	if request.method == 'POST':
-		form = NewsletterUnsubscribeForm
+		form = NewsletterUnsubscribeForm(request.POST)
 		if form.is_valid():
 			Newsletter.objects.filter(email=email).delete()
 
