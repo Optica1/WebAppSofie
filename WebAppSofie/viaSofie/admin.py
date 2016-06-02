@@ -20,6 +20,7 @@ class PropertyDocumentsInLine(admin.StackedInline):
     model = PropertyDocuments
     can_delete = False
     extra = 1
+    verbose_name_plural = "PropertyDocuments"
 
 class BathroomInLine(admin.StackedInline):
     model = Bathroom
