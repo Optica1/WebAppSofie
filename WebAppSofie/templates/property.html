@@ -2,18 +2,6 @@
 
 {% block content %}
 
-	<style>
-      #map {
-        height: 250px;
-      }
-  </style>
-	<!-- {% for bedroomcount in Bedroomcount %}
-	{% for bathroomcount in Bathroomcount %}
-	{% for toilets in Toilets %}
-	{% for kitchencount in Kitchencount %} -->
-
-
-
 	<h2>{{ Property.title_dutch }}</h2>
     </style>
 	<h3>Huis OB, 4slpkrs, 2bdkmrs, rustig gelegen, nieuwbouw</h3>
@@ -28,8 +16,6 @@
 	          	<div class ="col-md-3">
 	            	<h3>Eigenschappen</h3>
 	            	<p><span>Type bebouwing:</span> {{ Property.buildingtype }}</p>
-	            	<!-- <p><span>Aantal slaapkamers:</span> {{ bedroomcount }}</p>
-	            	<p><span>Aantal badkamers:</span> {{bathroomcount}}</p> -->
 	            	<p><span>Oppervlakte:</span> {{ Property.area }}</p>
 	            	<p><span>Bewoonbare oppervlakte:</span> {{ Property.livingarea }}</p>
 	            	<p><span>Bouwjaar:</span> {{ Property.year }}</p>
@@ -64,20 +50,15 @@
 				<div class="col-md-9">
 					<h3>Oppervlaktes</h3>
 					<div class="row">
-						<!-- <div class="col-md-4">
+						<div class="col-md-4">
 							<p><span>Woonkamer:</span> <50/p>
-							{% for kitchens in Kitchens %}
-							<p><span>Keuken:</span> {{ kitchens.area }}</p>
-							{%endfor%}
-							{% for bedrooms in Bedrooms %}
-							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
-							{%endfor%}
+
 						</div>
 						<div class="col-md-4 col-md-offset-1">
 							{% for bathrooms in Bathrooms %}
 							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
 							{%endfor%}
-						</div> -->
+						</div>
 					</div>
 				</div>
 			</center>
@@ -128,9 +109,4 @@
 			</center>
 		</div>
 	</div>
-<!--
-{%endfor%}
-{%endfor%}
-{%endfor%}
-{%endfor%} -->
 {% endblock %}

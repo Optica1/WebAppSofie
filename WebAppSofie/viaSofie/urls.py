@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^accounts/register_success', views.register_success),
     url(r'^sales/properties', views.offer_sales),
     # url(r'^sales/property(?P<p_id>[0-9]+)/$', views.property),
-    url(r'^sales/property/7/$', views.property),
+    url(r'^sales/property/1/$', views.property),
     url(r'^about/viaSofie$', views.about),
     url(r'^about/sofie', views.about_sofie),
     url(r'^ebook', views.ebook),

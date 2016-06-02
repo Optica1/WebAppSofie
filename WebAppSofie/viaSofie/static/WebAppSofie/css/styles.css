@@ -65,6 +65,9 @@ margin-left:5px;
 
 }
 
+#map {
+  height: 250px;
+}
 
 .navbar{
   background-color:#0d3531;
