@@ -1,12 +1,21 @@
 @charset "utf-8";
 /* CSS Document */
 
+@font-face {
+    font-family: 'RopaSansSCPro'; /*a name to be used later*/
+    src: url('fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
+}
+
 body{
   padding-top: 90px;
 }
 
 .logo {
 	background-image: url("static/WebAppSofie/images/def_logos_via_sofie-RGB-01.png");
+}
+
+h1 h2 h3 h4 h5 p{
+ font-family: 'RopaSansSCPro'
 }
 
 .row li a{
