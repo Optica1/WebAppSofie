@@ -6,6 +6,10 @@
     src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
+#map{
+heigth = 250px;
+}
+
 body{
   padding-top: 90px;
    font-family: 'RopaSansSCPro';
