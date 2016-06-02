@@ -33,6 +33,9 @@ class Status(models.Model):
 			('H', 'Handled'),
 		)
 	dossierStatus = models.CharField(max_length=1, choices=STATUS, default=STATUS[0][0])
+	class Meta:
+		verbose_name_plural = "Status"
+
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
@@ -61,6 +64,8 @@ class EbookRequests(models.Model):
 	email = models.EmailField(max_length=70)
 	ebook_id = models.ForeignKey(Ebook, on_delete=models.PROTECT)
 	send = models.BooleanField()
+	class Meta:
+		verbose_name_plural = "EbookRequests"
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -107,7 +112,7 @@ class Properties(models.Model):
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
 	class Meta:
-		verbose_name_plural = "Newsletter"
+		verbose_name_plural = "Propeties"
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.date_created = datetime.datetime.now()
