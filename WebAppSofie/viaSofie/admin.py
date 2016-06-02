@@ -22,30 +22,37 @@ class PropertyDocumentsInLine(admin.StackedInline):
 class BathroomInLine(admin.StackedInline):
     model = Bathroom
     can_delete = False
+    extra = 1
 
 class BedroomInLine(admin.StackedInline):
     model = Bedroom
     can_delete = False
+    extra = 1
 
 class GarageInLine(admin.StackedInline):
     model = Garage
     can_delete = False
+    extra = 1
 
 class ToiletInLine(admin.StackedInline):
     model = Toilet
     can_delete = False
+    extra = 1
 
 class KitchenInLine(admin.StackedInline):
     model = Kitchen
     can_delete = False
+    extra = 1
 
 class LivingroomInLine(admin.StackedInline):
     model = Livingroom
     can_delete = False
+    extra = 1
 
 class StorageroomInLine(admin.StackedInline):
     model = Storageroom
     can_delete = False
+    extra = 1
 
 class PropertyPicturesInLine(admin.StackedInline):
     model = PropertyPictures
