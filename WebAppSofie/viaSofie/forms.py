@@ -45,7 +45,7 @@ class MyRegistrationForm(UserCreationForm):
 
 class MyEbookForm(forms.Form):
 	email = forms.EmailField(required=True)
-	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).order_by('id'), required=False)
+	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).order_by('id'))
 
 	class Meta:
 		model = EbookRequests
@@ -53,7 +53,7 @@ class MyEbookForm(forms.Form):
 
 	def save(self, commit=True):
 		EbookRequests.email = self.cleaned_data['email']
-		EbookRequests.ebook = self.cleaned_data['id_ebook']
+		EbookRequests.ebook = self.cleaned_data['id_ebook'].id
 
 		if commit:
 			EbookRegistration.save()

@@ -189,7 +189,7 @@ def newsletterSubscribe(request):
 def newsletterUnsubscribe(request):
 	args = {}
 	args.update(csrf(request))
-	args.['form'] = NewsletterUnsubscribeForm
+	args.['form'] = Newsletterun
 
 	if request.method == 'POST':
 		form = NewsletterUnsubscribeForm
