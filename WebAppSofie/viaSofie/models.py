@@ -112,7 +112,7 @@ class Properties(models.Model):
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
 	class Meta:
-		verbose_name_plural = "Propeties"
+		verbose_name_plural = "Properties"
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.date_created = datetime.datetime.now()

@@ -115,7 +115,11 @@ def property(request, p_id='1'):
 	return render_to_response('templates/property.html', returned_values)
 
 def offer_sales(request):
-	p = Properties.objects.filter(sold = False, available = False).order_by('date_modified')[:10]
+	p = Properties.objects.filter(sale = True, sold = False, available = False).order_by('date_modified')[:10]
+	return render_to_response('templates/offer.html', {'Properties':p})
+
+def offer_rent(request):
+	p = Properties.objects.filter(sale = False, sold = False, available = False).order_by('date_modified')[:10]
 	return render_to_response('templates/offer.html', {'Properties':p})
 
 def about_sofie(request):
