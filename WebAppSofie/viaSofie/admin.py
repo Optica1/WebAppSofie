@@ -14,10 +14,12 @@ class AboutpageAdmin(admin.ModelAdmin):
 class PlanningInfoInLine(admin.StackedInline):
     model = PlanningInfo
     can_delete = False
+    max_num = 1
 
 class PropertyDocumentsInLine(admin.StackedInline):
     model = PropertyDocuments
     can_delete = False
+    extra = 1
 
 class BathroomInLine(admin.StackedInline):
     model = Bathroom
