@@ -13,6 +13,15 @@ class AboutpageAdmin(admin.ModelAdmin):
 
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
+    inlines = (PropertyDocumentsInLine, )
+
+class PlanningInfoInLine(admin.StackedInline):
+    model = PlanningInfo
+    can_delete = False
+
+class PropertyDocumentsInLine(admin.StackedInline):
+    model = PropertyDocuments
+    can_delete = False
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
