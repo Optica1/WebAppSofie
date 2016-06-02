@@ -2,36 +2,35 @@
 /* CSS Document */
 
 @font-face {
-    font-family: "RopaSansSC"; /*a name to be used later*/
-    src: url('fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
+    font-family: 'RopaSansSCPro'; /*a name to be used later*/
+    src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
 body{
   padding-top: 90px;
-  font-family: "Helvetica Neue";
+   font-family: 'RopaSansSCPro';
 }
-
 
 .logo {
 	background-image: url("static/WebAppSofie/images/def_logos_via_sofie-RGB-01.png");
 }
 
+h1, h2, h3, h4, h5, p {
+ font-family: 'RopaSansSCPro';
+}
+
 .row li a{
  /*container die de containerS midden vast houdt*/
-color:#000;
+ color:#000;
 }
-
-.panel > .panel-heading {
-    background-image: none;
-    background-color: #0d3531;
-}
-
 .row p{
-font-family: "RopaSansSC", sans-serif;
-margin-top:10px;
+  font-family: 'RopaSansSCPro';
+  margin-top:10px;
 }
 
-.col-md-3{}
+.col-md-3{
+
+}
 
 .btn{
   transition-duration: 0.4s;
@@ -44,9 +43,9 @@ margin-top:10px;
 }
 
 .col-md-3 h3 a{
-color:#000;
-text-decoration: none;
-font-family: "RopaSansSC", sans-serif;
+  color:#000;
+  text-decoration: none;
+  font-family: 'RopaSansSCPro';
 }
 
 .footer{
@@ -57,21 +56,25 @@ font-family: "RopaSansSC", sans-serif;
 .footbox a{
 margin-top:30px;
 margin-left:5px;
+
 }
 
 .dropdown-menu li a{
-  font-family: "RopaSansSC", sans-serif;
+  font-family: 'RopaSansSCPro';
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:
-}
 
+}
 .dropdown-menu li a:hover{
+
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:#b9d4ce;
   color:#000;
+
 }
+
 
 .navbar{
   background-color:#0d3531;
@@ -83,54 +86,49 @@ margin-left:5px;
 .navbar-brand {
   padding: 0px;
   padding-top: 5px;
+
 }
 
 .nav li{
-  font-family: "RopaSansSC", sans-serif;
+  font-family: 'RopaSansSCPro';
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 }
-
 .nav li:hover{
+
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 background-color:#b9d4ce;
-}
 
-.container a{
-color:#e8e8e8;
-}
-
-h2 {
-  font-family: "RopaSansSC";
 }
 
 .row h3 a{
+
   background-color:#fff;
 }
-
 .row a{
-font-family: "RopaSansSC", sans-serif;
+font-family: 'RopaSansSCPro';
 color:#000;
 background-color:#b9d9ce;
 }
 
 .jumbotron{
-width:100%;
-}
 
+width:100%;
+
+}
 .jumbotron p{
 /*container midden*/
 color:#000;
-font-family: "RopaSansSC", sans-serif;
+font-family: 'RopaSansSCPro';
 font-size:16px;
 }
-
 .jumbotron a{
 /*container midden*/
 color:#000;
 background-color:#fff;
-font-family: "RopaSansSC", sans-serif;
+font-family: 'RopaSansSCPro';
+
 }
 
 
@@ -143,6 +141,6 @@ font-family: "RopaSansSC", sans-serif;
 
 .brand{
 max-height: 50px;
-}
 
+}
 .footbox{}
