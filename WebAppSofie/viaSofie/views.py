@@ -177,6 +177,7 @@ def contact(request):
 def newsletterSubscribe(request):
 	args = {}
 	args.update(csrf(request))
+	args.['form'] = NewsletterForm
 
 	if request.method == 'POST':
 		form = NewsletterForm
@@ -188,6 +189,7 @@ def newsletterSubscribe(request):
 def newsletterUnsubscribe(request):
 	args = {}
 	args.update(csrf(request))
+	args.['form'] = Newsletterun
 
 	if request.method == 'POST':
 		form = NewsletterUnsubscribeForm
