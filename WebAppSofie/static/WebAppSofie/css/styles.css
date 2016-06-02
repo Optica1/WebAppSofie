@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: 'RopaSansSCPro'; /*a name to be used later*/
-    src: url('fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
+    src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
 body{
