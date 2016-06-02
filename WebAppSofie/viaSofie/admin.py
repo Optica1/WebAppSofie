@@ -12,7 +12,6 @@ class AboutpageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
 class PropertiesAdmin(admin.ModelAdmin):
-    list_display = ['title_dutch']
     inlines = (PlanningInfoInLine)
 
 class PlanningInfoInLine(admin.StackedInline):
