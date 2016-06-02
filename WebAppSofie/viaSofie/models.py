@@ -83,7 +83,7 @@ class Properties(models.Model):
 		('B', 'Bungalow'),
 		('CA', 'Caravan'),
 	)
-	buildingtype = models.CharField(max_length=1, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
+	buildingtype = models.CharField(max_length=2, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
 	sale = models.BooleanField()
 	area = models.CharField(max_length=10)
 	livingarea = models.CharField(max_length=10)

@@ -1,44 +1,55 @@
 @charset "utf-8";
 /* CSS Document */
 
+@font-face {
+    font-family: 'RopaSansSCPro'; /*a name to be used later*/
+    src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
+}
+
+#map{
+  heigth: 250px;
+}
+
 body{
   padding-top: 90px;
+   font-family: 'RopaSansSCPro';
 }
 
 .logo {
 	background-image: url("static/WebAppSofie/images/def_logos_via_sofie-RGB-01.png");
 }
 
-.row li a{
+h1, h2, h3, h4, h5, p {
+ font-family: 'RopaSansSCPro';
+}
 
+.row li a{
  /*container die de containerS midden vast houdt*/
-color:#000;
+ color:#000;
 }
 .row p{
-font-family: 'Montserrat', sans-serif;
-margin-top:10px;
-
+  font-family: 'RopaSansSCPro';
+  margin-top:10px;
 }
 
 .col-md-3{
 
-
 }
-.btn{
 
+.btn{
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 }
+
 .btn:hover{
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
-
 }
 
 .col-md-3 h3 a{
-color:#000;
-text-decoration: none;
-font-family: 'Montserrat', sans-serif;
+  color:#000;
+  text-decoration: none;
+  font-family: 'RopaSansSCPro';
 }
 
 .footer{
@@ -53,7 +64,7 @@ margin-left:5px;
 }
 
 .dropdown-menu li a{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'RopaSansSCPro';
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:
@@ -79,11 +90,11 @@ margin-left:5px;
 .navbar-brand {
   padding: 0px;
   padding-top: 5px;
-  
+
 }
 
 .nav li{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'RopaSansSCPro';
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
 }
@@ -94,17 +105,13 @@ margin-left:5px;
 background-color:#b9d4ce;
 
 }
-.container a{
 
-color:#e8e8e8;
-
-}
 .row h3 a{
 
   background-color:#fff;
 }
 .row a{
-font-family: 'Montserrat', sans-serif;
+font-family: 'RopaSansSCPro';
 color:#000;
 background-color:#b9d9ce;
 }
@@ -117,14 +124,14 @@ width:100%;
 .jumbotron p{
 /*container midden*/
 color:#000;
-font-family: 'Montserrat', sans-serif;
+font-family: 'RopaSansSCPro';
 font-size:16px;
 }
 .jumbotron a{
 /*container midden*/
 color:#000;
 background-color:#fff;
-font-family: 'Montserrat', sans-serif;
+font-family: 'RopaSansSCPro';
 
 }
 

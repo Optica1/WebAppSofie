@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 from forms import *
 from .models import *
 from django.core.mail import send_mail, BadHeaderError
+import sys
+import traceback
 #from collection.forms import ContactForm
 
 
@@ -86,16 +88,25 @@ def register_user(request):
 def register_success(request):
 	return render_to_response('templates/register_success.html')
 
-def property(request, property_id):
+def property(request, p_id='1'):
 	try:
-		p = Properties.objects.get(property_id)
-		room = Properties.objects.get(property_id = p.id)
+		p = Properties.objects.get(id = p_id)
+		# bedrooms = Bedroom.objects.filter(property_id = p.id)
+		# bedroomcount = bedrooms.count()
+		# bathrooms = Bathroom.objects.filter(property_id = p.id)
+		# bathroomcount = bathrooms.count()
+		# toiletcount = Toilet.objects.filter(property_id = p.id).count()
+		# kitchens = Kitchen.objects.filter(property_id = p.id)
+		# kitchencount = kitchens.count()
+		returned_values = {'Property':p}
+		# returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount, 'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 'Toilets':toiletcount, 'Kitchens':kitchens, 'Kitchencount':kitchencount}
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
-	return render_to_response(request, 'templates/property.html', {'Property':p})
+	return render_to_response('templates/property.html', {'Property': p})
 
 def offer_sales(request):
-	return render_to_response('templates/offer.html')
+	p = Properties.objects.all()[:10]
+	return render_to_response('templates/offer.html', {'Properties':p})
 
 def about_sofie(request):
 	sofie = AboutSofiePage.objects.all()
