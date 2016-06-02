@@ -91,22 +91,30 @@ def register_success(request):
 def property(request, p_id='1'):
 	try:
 		p = Properties.objects.get(id = p_id)
-		# bedrooms = Bedroom.objects.filter(property_id = p.id)
-		# bedroomcount = bedrooms.count()
+		bedrooms = Bedroom.objects.filter(property_id = p.id)
+		bedroomcount = bedrooms.count()
 		# bathrooms = Bathroom.objects.filter(property_id = p.id)
 		# bathroomcount = bathrooms.count()
 		# toiletcount = Toilet.objects.filter(property_id = p.id).count()
 		# kitchens = Kitchen.objects.filter(property_id = p.id)
 		# kitchencount = kitchens.count()
-		returned_values = {'Property':p}
+		# garages = Garage.objects.filter(property_id = p.id)
+		# garagecount = garages.count()
+		# livingrooms = Livingroom.objects.filter(property_id = p.id)
+		# livingroomcount = livingrooms.count()
+		# storagerooms = Storageroom.objects.filter(property_id = p.id)
+		# storageroomcount = storagerooms.count()
+		returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount}
 		# returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount, 'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 'Toilets':toiletcount, 'Kitchens':kitchens, 'Kitchencount':kitchencount}
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
-	return render_to_response('templates/property.html', {'Property': p})
+	return render_to_response('templates/property.html', returned_values)
 
 def offer_sales(request):
-	p = Properties.objects.all()[:10]
+	p = Properties.objects.filter(sold = False, available = False).order_by('date_modified')[:10]
 	return render_to_response('templates/offer.html', {'Properties':p})
+
+
 
 def about_sofie(request):
 	sofie = AboutSofiePage.objects.all()
