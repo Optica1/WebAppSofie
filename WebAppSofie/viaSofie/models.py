@@ -23,15 +23,14 @@ class UserDetails(models.Model):
 	country = models.CharField(max_length=30)
 
 class Aboutpage(models.Model):
-    title = models.CharField(max_length=60)
-    text =  tinymce_models.HTMLField()
-	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
+	title = models.CharField(max_length=60)
+	text = tinymce_models.HTMLField()
+	language = models.CharField(max_length=20, default='NL')
 
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
 	language = models.CharField(max_length=20)
-
 class DisclaimerPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
