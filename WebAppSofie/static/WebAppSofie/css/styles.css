@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: "RopaSansSC"; /*a name to be used later*/
-    src: url('WebAppSofie/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
+    src: url('fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
 body{
@@ -103,7 +103,6 @@ color:#e8e8e8;
 
 h2 {
   font-family: "RopaSansSC";
-  color: #b9d4ce;
 }
 
 .row h3 a{
