@@ -15,6 +15,7 @@ class PlanningInfoInLine(admin.StackedInline):
     model = PlanningInfo
     can_delete = False
     max_num = 1
+    verbose_name_plural = "PlanningInfo"
 
 class PropertyDocumentsInLine(admin.StackedInline):
     model = PropertyDocuments
@@ -61,10 +62,12 @@ class PropertyPicturesInLine(admin.StackedInline):
     model = PropertyPictures
     can_delete = False
     extra = 1
+    verbose_name_plural = "PropertyPictures"
 
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
     inlines = (PlanningInfoInLine, PropertyDocumentsInLine, BathroomInLine, BedroomInLine, GarageInLine, ToiletInLine, KitchenInLine, LivingroomInLine, StorageroomInLine, PropertyPicturesInLine)
+    verbose_name_plural = "Properties"
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
