@@ -19,9 +19,13 @@ class PropertyDocumentsInLine(admin.StackedInline):
     model = PropertyDocuments
     can_delete = False
 
+class BathroomInLine(admin.StackedInline):
+    model = Bathroom
+    can_delete = False
+
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
-    inlines = (PlanningInfoInLine, PropertyDocumentsInLine)
+    inlines = (PlanningInfoInLine, PropertyDocumentsInLine, BathroomInLine)
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
