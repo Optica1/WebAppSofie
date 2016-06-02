@@ -54,6 +54,9 @@ class Ebook(models.Model):
 	language = models.CharField(max_length=3)
 	available = models.BooleanField()
 
+	def __unicode__(self):
+		return u'{0}'.format(self.name)
+
 class EbookRequests(models.Model):
 	email = models.EmailField(max_length=70)
 	ebook_id = models.ForeignKey(Ebook, on_delete=models.PROTECT)
