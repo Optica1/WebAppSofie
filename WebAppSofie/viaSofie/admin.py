@@ -13,53 +13,43 @@ class AboutpageAdmin(admin.ModelAdmin):
 
 class PlanningInfoInLine(admin.StackedInline):
     model = PlanningInfo
-    can_delete =
-    extra = 0
+    can_delete = False
 
 class PropertyDocumentsInLine(admin.StackedInline):
     model = PropertyDocuments
     can_delete = False
-    extra = 0
 
 class BathroomInLine(admin.StackedInline):
     model = Bathroom
     can_delete = False
-    extra = 0
 
 class BedroomInLine(admin.StackedInline):
     model = Bedroom
     can_delete = False
-    extra = 0
 
 class GarageInLine(admin.StackedInline):
     model = Garage
     can_delete = False
-    extra = 0
 
 class ToiletInLine(admin.StackedInline):
     model = Toilet
     can_delete = False
-    extra = 0
 
 class KitchenInLine(admin.StackedInline):
     model = Kitchen
     can_delete = False
-    extra = 0
 
 class LivingroomInLine(admin.StackedInline):
     model = Livingroom
     can_delete = False
-    extra = 0
 
 class StorageroomInLine(admin.StackedInline):
     model = Storageroom
     can_delete = False
-    extra = 0
 
 class PropertyPicturesInLine(admin.StackedInline):
     model = PropertyPictures
     can_delete = False
-    extra = 0
 
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
