@@ -114,7 +114,7 @@ class Properties(models.Model):
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100)
+	path = models.FilePathField(max_length=100, blank=True, null=True)
 	available = models.BooleanField()
 
 class Partner(models.Model):
