@@ -23,9 +23,37 @@ class BathroomInLine(admin.StackedInline):
     model = Bathroom
     can_delete = False
 
+class BedroomInLine(admin.StackedInline):
+    model = Bedroom
+    can_delete = False
+
+class GarageInLine(admin.StackedInline):
+    model = Garage
+    can_delete = False
+
+class ToiletInLine(admin.StackedInline):
+    model = Toilet
+    can_delete = False
+
+class KitchenInLine(admin.StackedInline):
+    model = Kitchen
+    can_delete = False
+
+class LivingroomInLine(admin.StackedInline):
+    model = Livingroom
+    can_delete = False
+
+class StorageroomInLine(admin.StackedInline):
+    model = Storageroom
+    can_delete = False
+
+class PropertyPicturesInLine(admin.StackedInline):
+    model = PropertyPictures
+    can_delete = False
+
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
-    inlines = (PlanningInfoInLine, PropertyDocumentsInLine, BathroomInLine)
+    inlines = (PlanningInfoInLine, PropertyDocumentsInLine, BathroomInLine, BedroomInLine, GarageInLine, ToiletInLine, KitchenInLine, LivingroomInLine, StorageroomInLine, PropertyPicturesInLine)
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails

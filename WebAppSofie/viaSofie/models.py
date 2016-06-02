@@ -124,7 +124,7 @@ class Partner(models.Model):
 
 class PropertyPictures(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100)
+	path = models.FilePathField(max_length=100, blank=True, null=True)
 
 class PlanningInfo(models.Model): #moet nog vertaald worden
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
