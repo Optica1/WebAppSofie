@@ -50,6 +50,7 @@ class StorageroomInLine(admin.StackedInline):
 class PropertyPicturesInLine(admin.StackedInline):
     model = PropertyPictures
     can_delete = False
+    extra = 0
 
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
