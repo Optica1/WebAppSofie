@@ -106,6 +106,8 @@ class Properties(models.Model):
 	sold = models.BooleanField()
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
+	class Meta:
+		verbose_name_plural = "Newsletter"
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.date_created = datetime.datetime.now()
