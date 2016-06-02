@@ -178,7 +178,7 @@ class Faq(models.Model):
 class Newsletter(models.Model):
 	email = models.EmailField()
 	class Meta:
-        verbose_name_plural = "Newsletter"
+		verbose_name_plural = "Newsletter"
 
 
 # google maps geoloctation api.
