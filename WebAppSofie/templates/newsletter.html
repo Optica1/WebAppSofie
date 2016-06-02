@@ -6,7 +6,7 @@
 	<h1>Inschrijven nieuwsbrief</h1>
 	<form role="form" action="" method="post">
 		{% csrf_token %}
-		{{ form.as_p }}
+		{{ form }}
 		<button type="submit">Inschrijven</button>
 	</form>
 

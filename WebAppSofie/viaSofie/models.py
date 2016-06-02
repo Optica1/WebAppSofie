@@ -54,6 +54,9 @@ class Ebook(models.Model):
 	language = models.CharField(max_length=3)
 	available = models.BooleanField()
 
+	def __unicode__(self):
+		return u'{0}'.format(self.name)
+
 class EbookRequests(models.Model):
 	email = models.EmailField(max_length=70)
 	ebook_id = models.ForeignKey(Ebook, on_delete=models.PROTECT)
@@ -111,7 +114,7 @@ class Properties(models.Model):
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100)
+	path = models.FilePathField(max_length=100, blank=True, null=True)
 	available = models.BooleanField()
 
 class Partner(models.Model):
@@ -121,7 +124,7 @@ class Partner(models.Model):
 
 class PropertyPictures(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100)
+	path = models.FilePathField(max_length=100, blank=True, null=True)
 
 class PlanningInfo(models.Model): #moet nog vertaald worden
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
