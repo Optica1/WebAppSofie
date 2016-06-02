@@ -68,7 +68,7 @@ class ContactForm(forms.Form):
 		widget=forms.Textarea
 	)
 
-class NewsletterForm(forms.Form)
+class NewsletterForm(forms.Form):
 	email = forms.EmailField(required=True)
 
 	class Meta:
@@ -77,9 +77,8 @@ class NewsletterForm(forms.Form)
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
-    	if Newsletter.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
-        	raise forms.ValidationError(u'email "%s" is already in use.' % email)
-    	return email
+    	if Newsletter.objects.filter(email=email).exists():
+    		raise forms.ValidationError(u'email "%s" is already in use.' % email)
 
 	def save(self, commit=True):
 		newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
@@ -90,16 +89,16 @@ class NewsletterForm(forms.Form)
 			Newsletter.save()
 		return
 
-class NewsletterUnsubscribeForm(froms.Form)
+class NewsletterUnsubscribeForm(forms.Form):
 	email = forms.EmailField(required=True)
 
 	class Meta:
 		model = Newsletter
-		field = ('email')
+		fields = ('email')
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
-		if Newsletter.objects.exclude(pk=self.instance.pk).filter(email).exists():
-
+		if Newsletter.objects.filter(email).exists():
+			pass
 		else:
 			raise forms.ValidationError(u'email "%s" is not subscribed to the newsletter' % email)

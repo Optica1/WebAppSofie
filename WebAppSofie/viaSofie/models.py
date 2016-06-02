@@ -50,7 +50,7 @@ class AboutSofiePage(models.Model):
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
-	path = models.FilePathField(max_length=100)
+	path = models.FilePathField(max_length=100, editable=False)
 	language = models.CharField(max_length=3)
 	available = models.BooleanField()
 

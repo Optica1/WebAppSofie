@@ -32,10 +32,9 @@ def status(request):
 		else:
 			user = request.user
 			userInfo = User.objects.get(id=user.id)
-			userdetail = UserDetails.objects.get(id=user.id)
 			status = Status.objects.get(id=user.id)
-	except Status.DoesNotExist:
-		raise Http404('User does not exist')
+	except Exception as e:
+		raise Http404(e)
 	return render_to_response('templates/status.html' , {
 		'status': status.get_dossierStatus_display,
 		'info': userInfo,
@@ -163,11 +162,12 @@ def contact(request):
 				return HttpResponse('Make sure all fields are entered and valid.')
 	return render(request, 'templates/contact.html', args)
 
+
 def newsletterSubscribe(request):
 	args = {}
 	args.update(csrf(request))
 
-	if request.method = 'POST':
+	if request.method == 'POST':
 		form = NewsletterForm
 		if form.is_valid():
 			form.save()
@@ -178,9 +178,9 @@ def newsletterUnsubscribe(request):
 	args = {}
 	args.update(csrf(request))
 
-	if request.method = 'POST':
+	if request.method == 'POST':
 		form = NewsletterUnsubscribeForm
 		if form.is_valid():
-			NewsletterForm.objects.filter(email=email).delete()
+			Newsletter.objects.filter(email=email).delete()
 
-	render_to_response('templates/newsletter_unsubscribe.html, args')
+	render_to_response('templates/newsletter_unsubscribe.html', args)

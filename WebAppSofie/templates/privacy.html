@@ -4,7 +4,7 @@
 
 		{% for privacy in Privacy %}
 		<h2>{{ privacy.title }}</h2>
-		<h3>{{ privacy.text }}</h3>
+		<h3>{{ privacy.text | safe }}</h3>
 		</bk>
 		{% endfor %}
 
