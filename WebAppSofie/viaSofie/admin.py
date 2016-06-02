@@ -11,12 +11,12 @@ class ClientAdmin(admin.ModelAdmin):
 class AboutpageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
-class PropertiesAdmin(admin.ModelAdmin):
-    inlines = (PlanningInfoInLine)
-
 class PlanningInfoInLine(admin.StackedInline):
     model = PlanningInfo
     can_delete = False
+
+class PropertiesAdmin(admin.ModelAdmin):
+    inlines = (PlanningInfoInLine)
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
