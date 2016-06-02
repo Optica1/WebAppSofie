@@ -13,7 +13,7 @@ class AboutpageAdmin(admin.ModelAdmin):
 
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
-    inlines = (PropertyDocumentsInLine, )
+    inlines = (PropertyDocumentsInLine, PlanningInfoInLine)
 
 class PlanningInfoInLine(admin.StackedInline):
     model = PlanningInfo
