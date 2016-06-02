@@ -24,12 +24,12 @@ class PropertyDocumentsInLine(admin.StackedInline):
     can_delete = False
 
 class UserDetailsInline(admin.StackedInline):
-  model = UserDetails
-  can_delete = False
+    model = UserDetails
+    can_delete = False
 
 class StatusInline(admin.StackedInline):
-  model = Status
-  can_delete = False
+    model = Status
+    can_delete = False
 
 class UserAdmin(UserAdmin):
 	inlines = (UserDetailsInline,StatusInline, PropertyDocumentsInLine, )
