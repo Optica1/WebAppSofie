@@ -43,13 +43,6 @@ class DisclaimerPage(models.Model):
 	class Meta:
 		verbose_name_plural = "Disclaimer pagina"
 
-class AboutSofiePage(models.Model):
-	title = models.CharField(max_length=60)
-	text = HTMLField()
-	language = models.CharField(max_length=20)
-	class Meta:
-		verbose_name_plural = "Over Sofie pagina"
-
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
 	path = models.FilePathField(max_length=100, editable=False)

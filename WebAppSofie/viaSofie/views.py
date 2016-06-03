@@ -124,11 +124,6 @@ def offer_rent(request):
 	p = Properties.objects.filter(sale = False, sold = False, available = False).order_by('date_modified')[:10]
 	return render_to_response('templates/offer.html', {'Properties':p})
 
-def about_sofie(request):
-	sofie = AboutSofiePage.objects.all()
-	context = {'Sofie': sofie}
-	return render(request, 'templates/aboutSofie.html', context)
-
 def disclaimer(request):
 	disclaimer = DisclaimerPage.objects.all()
 	context = {'Disclaimer': disclaimer}
