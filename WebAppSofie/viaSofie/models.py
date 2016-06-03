@@ -188,7 +188,7 @@ class Status(models.Model):
 	]
 	datum = models.DateField(default=date.today)
 	dossierStatus = models.CharField(max_length=2, choices=STATUS, default=STATUS[0][0])
-	eigendom = models.ForeignKey(Properties,on_delete=models.CASCADE,default=1)
+	eigendom = models.ForeignKey(Properties,on_delete=models.CASCADE)
 	class Meta:
 		verbose_name_plural = "Status"
 
