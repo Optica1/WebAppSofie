@@ -63,8 +63,8 @@ class EbookRequests(models.Model):
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
-	title_dutch = models.CharField(max_length=50)
-	title_french = models.CharField(max_length=50)
+	title_dutch = models.CharField(max_length=100)
+	title_french = models.CharField(max_length=100)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
 	busnumber = models.CharField(max_length=3)
