@@ -45,7 +45,7 @@ class Ebook(models.Model):
 	name = models.CharField(max_length=20)
 	path = models.FilePathField(max_length=100, editable=False)
 	language = models.CharField(max_length=3)
-	available = models.BooleanField()
+	available = models.BooleanField(default=True)
 
 	def __unicode__(self):
 		return u'{0}'.format(self.name)
@@ -79,7 +79,7 @@ class Properties(models.Model):
 		('CA', 'Caravan'),
 	)
 	buildingtype = models.CharField(max_length=2, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
-	sale = models.BooleanField()
+	sale = models.BooleanField(default=True)
 	area = models.CharField(max_length=10)
 	livingarea = models.CharField(max_length=10)
 	year = models.CharField(max_length=4) #buildyear
@@ -97,7 +97,7 @@ class Properties(models.Model):
 	energy_label = models.CharField(max_length=5)
 	extra_information_dutch = models.TextField()
 	extra_information_french = models.TextField()
-	available = models.BooleanField()
+	available = models.BooleanField(default=True)
 	sold = models.BooleanField()
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
@@ -172,7 +172,7 @@ class Translations(models.Model):
 class Faq(models.Model):
 	question = models.TextField()
 	answer = models.TextField()
-	visible = models.BooleanField()
+	visible = models.BooleanField(default=True)
 
 class Newsletter(models.Model):
 	email = models.EmailField()
