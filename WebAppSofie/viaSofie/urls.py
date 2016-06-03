@@ -17,7 +17,6 @@ urlpatterns = [
     url(r'^sales/forSale', views.offer_sales),
     url(r'^sales/forRent', views.offer_rent),
     url(r'^sales/property/(?P<p_id>[0-9]+)/$', views.property),
-    url(r'^about/viaSofie$', views.about),
     url(r'^about/sofie', views.about_sofie),
     url(r'^ebook', views.ebook),
     url(r'^contact', views.contact),
