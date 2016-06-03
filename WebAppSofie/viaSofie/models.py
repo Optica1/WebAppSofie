@@ -26,26 +26,37 @@ class Aboutpage(models.Model):
 	title = models.CharField(max_length=60)
 	text = tinymce_models.HTMLField()
 	language = models.CharField(max_length=20, default='NL')
+	class Meta:
+		verbose_name_plural = "Over ons Pagina"
 
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
 	language = models.CharField(max_length=20)
+	class Meta:
+		verbose_name_plural = "Privacy pagina"
+
 class DisclaimerPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
 	language = models.CharField(max_length=20)
+	class Meta:
+		verbose_name_plural = "Disclaimer pagina"
 
 class AboutSofiePage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
 	language = models.CharField(max_length=20)
+	class Meta:
+		verbose_name_plural = "Over Sofie pagina"
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
 	path = models.FilePathField(max_length=100, editable=False)
 	language = models.CharField(max_length=3)
 	available = models.BooleanField(default=True)
+	class Meta:
+		verbose_name_plural = "Ebooks"
 
 	def __unicode__(self):
 		return u'{0}'.format(self.name)
@@ -102,7 +113,7 @@ class Properties(models.Model):
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
 	class Meta:
-		verbose_name_plural = "Properties"
+		verbose_name_plural = "Panden"
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.date_created = datetime.datetime.now()
@@ -120,6 +131,8 @@ class Partner(models.Model):
 	name = models.CharField(max_length=30)
 	text = models.TextField()
 	available = models.BooleanField()
+	class Meta:
+		verbose_name_plural = "Partners"
 
 class PropertyPictures(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -173,11 +186,13 @@ class Faq(models.Model):
 	question = models.TextField()
 	answer = models.TextField()
 	visible = models.BooleanField(default=True)
+	class Meta:
+		verbose_name_plural = "Faq's"
 
 class Newsletter(models.Model):
 	email = models.EmailField()
 	class Meta:
-		verbose_name_plural = "Newsletter"
+		verbose_name_plural = "Nieuwsbrief"
 
 class Status(models.Model):
 	STATUS = [
