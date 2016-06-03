@@ -16,7 +16,9 @@ import traceback
 
 
 def index(request):
-	return render_to_response('templates/home.html')
+	s = Properties.objects.filter(sale = True, sold = False, available = False).order_by('date_modified')[:4]
+	r = Properties.objects.filter(sale = False, sold = False, available = False).order_by('date_modified')[:4]
+	return render_to_response('templates/home.html', {'Sales':s, 'Rents':r})
 def about(request):
 	try:
 		pages = Aboutpage.objects.all()
