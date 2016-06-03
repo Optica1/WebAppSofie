@@ -67,7 +67,7 @@ class Properties(models.Model):
 	title_french = models.CharField(max_length=100)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
-	busnumber = models.CharField(max_length=3)
+	busnumber = models.CharField(max_length=3, blank=True)
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	longitude = models.CharField(max_length=10, editable=False)
