@@ -11,7 +11,7 @@ from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
-
+from datetime import date
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
 	phonenumber = models.CharField(max_length=12)
@@ -23,24 +23,14 @@ class UserDetails(models.Model):
 	country = models.CharField(max_length=30)
 
 class Aboutpage(models.Model):
-    title = models.CharField(max_length=60)
-    text =  tinymce_models.HTMLField()
-	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
-class Status(models.Model):
-	user = models.OneToOneField(User)
-	STATUS = (
-			('R', 'Registered'),
-			('H', 'Handled'),
-		)
-	dossierStatus = models.CharField(max_length=1, choices=STATUS, default=STATUS[0][0])
-	class Meta:
-		verbose_name_plural = "Status"
+	title = models.CharField(max_length=60)
+	text = tinymce_models.HTMLField()
+	language = models.CharField(max_length=20, default='NL')
 
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
 	language = models.CharField(max_length=20)
-
 class DisclaimerPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
@@ -118,6 +108,8 @@ class Properties(models.Model):
 			self.date_created = datetime.datetime.now()
 		self.date_modified = datetime.datetime.now()
 		return super(Properties, self).save(*args, **kwargs)
+	def __unicode__(self):
+		return  self.title_dutch
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -186,6 +178,19 @@ class Newsletter(models.Model):
 	email = models.EmailField()
 	class Meta:
 		verbose_name_plural = "Newsletter"
+
+class Status(models.Model):
+	STATUS = [
+		('', ''),
+		('WB', 'Word Behandeld'),
+		('C', 'Compromis'),
+		('F', 'Finale Akte'),
+	]
+	datum = models.DateField(default=date.today)
+	dossierStatus = models.CharField(max_length=2, choices=STATUS, default=STATUS[0][0])
+	eigendom = models.ForeignKey(Properties,on_delete=models.CASCADE,default=1)
+	class Meta:
+		verbose_name_plural = "Status"
 
 
 # google maps geoloctation api.
