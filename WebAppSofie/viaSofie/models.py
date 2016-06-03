@@ -27,7 +27,7 @@ class Aboutpage(models.Model):
 	text = tinymce_models.HTMLField()
 	language = models.CharField(max_length=20, default='NL')
 	class Meta:
-		verbose_name_plural = "Over ons Pagina"
+		verbose_name_plural = "Over ons pagina"
 
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
