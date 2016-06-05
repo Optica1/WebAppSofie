@@ -92,8 +92,6 @@ class UserDetailsInline(admin.StackedInline):
 class UserAdmin(UserAdmin):
 	inlines = (UserDetailsInline, )
 
-
-
 class PrivacyPageAdmin(admin.ModelAdmin):
     list_display = ['title']
 

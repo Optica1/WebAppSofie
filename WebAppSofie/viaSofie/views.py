@@ -12,9 +12,6 @@ from django.core.mail import send_mail, BadHeaderError
 import sys
 import traceback
 
-
-
-
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = False).order_by('date_modified')[:4]
 	r = Properties.objects.filter(sale = False, sold = False, available = False).order_by('date_modified')[:4]
@@ -42,6 +39,22 @@ def status(request):
 	return render_to_response('templates/status.html' , {
 		'status': status.get_dossierStatus_display,
 		'info': userInfo,
+	})
+def account(request):
+	try:
+		if not request.user.is_authenticated():
+			return HttpResponseRedirect('/accounts/login')
+		else:
+			user = request.user
+			userInfo = User.objects.get(id=user.id)
+			properties = Properties.objects.filter(user_id=user.id)
+			status = Status.objects.all()
+	except Exception as e:
+		raise Http404(e)
+	return render_to_response('templates/account.html' , {
+		'status': status,
+		'info': userInfo,
+		'properties': properties,
 	})
 def login(request):
 	c = {}
