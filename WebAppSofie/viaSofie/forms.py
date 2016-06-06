@@ -77,9 +77,8 @@ class NewsletterForm(forms.Form):
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
-		if Newsletter.exists():
-			if Newsletter.objects.filter(email=email).exists():
-				raise forms.ValidationError(u'email "%s" is already in use.' % email)
+		if Newsletter.objects.filter(email=email).exists():
+			raise forms.ValidationError(u'email "%s" is already in use.' % email)
 
 	def save(self, commit=True):
 		newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
