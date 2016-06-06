@@ -12,6 +12,10 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
 from datetime import date
+from django.core.files.storage import FileSystemStorage
+
+fs = FileSystemStorage(location='/media/photos')
+
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
 	phonenumber = models.CharField(max_length=12)
