@@ -204,10 +204,10 @@ def newsletterSubscribe(request):
 		form = NewsletterForm(request.POST)
 		if form.is_valid():
 			form.save()
-			
+
 	args = {}
 	args.update(csrf(request))
-	args['form'] = NewsletterForm
+	args['form'] = NewsletterForm()
 
 
 	return render_to_response('templates/newsletter.html', args)
@@ -215,7 +215,7 @@ def newsletterSubscribe(request):
 def newsletterUnsubscribe(request):
 	args = {}
 	args.update(csrf(request))
-	args['form'] = Newsletterun
+	args['form'] = NewsletterUnsubscribeForm()
 
 	if request.method == 'POST':
 		form = NewsletterUnsubscribeForm(request.POST)
