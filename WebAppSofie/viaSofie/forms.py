@@ -77,14 +77,12 @@ class NewsletterForm(forms.Form):
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
-		if Newsletter.exists():
-			if Newsletter.objects.filter(email=email).exists():
-				raise forms.ValidationError(u'email "%s" is already in use.' % email)
+		if Newsletter.objects.filter(email=email).exists():
+			raise forms.ValidationError(u'email "%s" is already in use.' % email)
 
 	def save(self, commit=True):
-		newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
 
-		newsletter.email = self.cleaned_data['email']#cleaned so all character are valid
+		Newsletter.email = self.cleaned_data['email']#cleaned so all character are valid
 
 		if commit:
 			Newsletter.save()
@@ -99,8 +97,7 @@ class NewsletterUnsubscribeForm(forms.Form):
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
-		if Newsletter.exists():
-			if Newsletter.objects.filter(email).exists():
-				pass
-			else:
-				raise forms.ValidationError(u'email "%s" is not subscribed to the newsletter' % email)
+		if Newsletter.objects.filter(email).exists():
+			pass
+		else:
+			raise forms.ValidationError(u'email "%s" is not subscribed to the newsletter' % email)
