@@ -82,7 +82,7 @@ class NewsletterForm(forms.Form):
 
 	def save(self, commit=True):
 
-		newsletter.email = self.cleaned_data['email']#cleaned so all character are valid
+		Newsletter.email = self.cleaned_data['email']#cleaned so all character are valid
 
 		if commit:
 			Newsletter.save()
