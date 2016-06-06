@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth.hashers import make_password
 from .models import *
-from django.forms import ModelForm
+from django import forms
 #from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
@@ -68,7 +68,7 @@ class ContactForm(forms.Form):
 		widget=forms.Textarea
 	)
 
-class NewsletterForm(forms.Form):
+class NewsletterForm(forms.ModelForm):
 	email = forms.EmailField(required=True)
 
 	class Meta:
