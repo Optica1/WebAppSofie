@@ -68,6 +68,10 @@ class StatusInline(admin.StackedInline):
 
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['eigendom']
+
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display = ['email']
+
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
     inlines = [
@@ -115,6 +119,7 @@ admin.site.register(Faq, FaqAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Ebook, EbookAdmin)
 admin.site.register(DisclaimerPage, DisclaimerPageAdmin)
+admin.site.register(Newsletter, NewsletterAdmin)
 
 
 # Re-register UserAdmin

@@ -200,14 +200,15 @@ def contact(request):
 
 
 def newsletterSubscribe(request):
-	args = {}
-	args.update(csrf(request))
-	args['form'] = NewsletterForm
-
 	if request.method == 'POST':
 		form = NewsletterForm(request.POST)
 		if form.is_valid():
 			form.save()
+			
+	args = {}
+	args.update(csrf(request))
+	args['form'] = NewsletterForm
+
 
 	return render_to_response('templates/newsletter.html', args)
 
