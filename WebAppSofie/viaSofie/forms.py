@@ -71,22 +71,22 @@ class ContactForm(forms.Form):
 	)
 
 class NewsletterForm(forms.ModelForm):
-	email = forms.EmailField(required=True)
+	mail = forms.EmailField(required=True)
 
 	class Meta:
 		model = Newsletter
-		fields = ['email']
+		fields = ['mail']
 
 	def clean_email(self):
-		email = self.cleaned_data['email']
-		print email
+		mail = self.cleaned_data['mail']
+		checkmail = Newsletter.objects.filter(email = mail)
 		if Newsletter.objects.filter(email=email).exists():
 			raise forms.ValidationError(u'email "%s" is already in use.' % email)
 
 	def save(self, commit=True):
 		Newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
 
-		Newsletter.email = self.cleaned_data['email']#cleaned so all character are valid
+		Newsletter.email = self.cleaned_data['mail']#cleaned so all character are valid
 		print Newsletter.email
 		if commit:
 			Newsletter.save()

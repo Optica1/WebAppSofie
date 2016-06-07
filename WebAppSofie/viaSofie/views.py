@@ -120,7 +120,6 @@ def property(request, p_id='1'):
 		storagerooms = Storageroom.objects.filter(property_id = p.id)
 		storageroomcount = storagerooms.count()
 
-
 		returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount,
 		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 'Toilets':toiletcount, 'Kitchens':kitchens, 'Kitchencount':kitchencount,
 		'Garagecount':garagecount, 'Garages':garages,
@@ -132,11 +131,11 @@ def property(request, p_id='1'):
 
 def offer_sales(request):
 	p = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:10]
-	return render_to_response('templates/offer.html', {'Properties':p})
+	return render(request, 'templates/offer.html', {'Properties':p})
 
 def offer_rent(request):
 	p = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:10]
-	return render_to_response('templates/offer.html', {'Properties':p})
+	return render(request, 'templates/offer.html', {'Properties':p})
 
 def disclaimer(request):
 	disclaimer = DisclaimerPage.objects.all()
@@ -204,12 +203,9 @@ def newsletterSubscribe(request):
 		form = NewsletterForm(request.POST)
 		if form.is_valid():
 			form.save()
-
 	args = {}
 	args.update(csrf(request))
 	args['form'] = NewsletterForm()
-
-
 	return render_to_response('templates/newsletter.html', args)
 
 def newsletterUnsubscribe(request):
