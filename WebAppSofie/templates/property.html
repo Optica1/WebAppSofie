@@ -57,9 +57,6 @@
 							{% for bedrooms in Bedrooms %}
 							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
 							{%endfor%}
-							{% for livingrooms in Livingrooms %}
-							<p><span>Woonkamer:</span> {{ livingrooms.area }}</p>
-							{%endfor%}
 							{% for kitchens in Kitchens %}
 							<p><span>Keuken:</span> {{ kitchens.area }}</p>
 							{%endfor%}
@@ -73,6 +70,9 @@
 							{%endfor%}
 							{% for bathrooms in Bathrooms %}
 							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
+							{%endfor%}
+							{% for livingrooms in Livingrooms %}
+							<p><span>Woonkamer:</span> {{ livingrooms.area }}</p>
 							{%endfor%}
 							{% for garages in Garages %}
 							<p><span>garage:</span> {{ garages.area }}</p>
