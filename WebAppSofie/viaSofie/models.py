@@ -128,6 +128,7 @@ class Properties(models.Model):
 	    # adding longitude and latitude to the database
 		self.longitude = longitude
 		self.latitude = latitude
+		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
 		if not self.id:
 			self.date_created = datetime.datetime.now()
 		self.date_modified = datetime.datetime.now()
@@ -219,32 +220,3 @@ class Status(models.Model):
 	eigendom = models.ForeignKey(Properties,on_delete=models.CASCADE)
 	class Meta:
 		verbose_name_plural = "Status"
-
-
-# google maps geoloctation api.
-# @receiver(post_save, sender=Properties)
-# def model_pre_change(sender, **kwargs):
-# 	Property = Properties.objects.latest('date_modified')
-# 	Property_street=Property.street
-# 	Property_streetnumber=Property.housenumber
-# 	Property_postalcode=Property.postalcode
-# 	Property_city=Property.city
-#
-# 	location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
-#
-# 	gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
-#
-#     # Geocoding an address
-# 	geocode_result = gmaps.geocode(location)
-#
-#     # query json
-# 	latitude = geocode_result[0]["geometry"]["location"]["lat"]
-# 	longitude = geocode_result[0]["geometry"]["location"]["lng"]
-#
-#     # adding longitude and latitude to the database
-# 	SuperProperty = super(Properties, Property).save()
-# 	SuperProperty.longitude = longitude
-# 	SuperProperty.latitude = latitude
-# 	SuperProperty.save()
-
-    # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
