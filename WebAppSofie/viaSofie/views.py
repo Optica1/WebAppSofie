@@ -110,7 +110,8 @@ def property(request, p_id='1'):
 		bedroomcount = bedrooms.count()
 		bathrooms = Bathroom.objects.filter(property_id = p.id)
 		bathroomcount = bathrooms.count()
-		toiletcount = Toilet.objects.filter(property_id = p.id).count()
+		toilets = Toilet.objects.filter(property_id = p.id)
+		toiletcount = toilets.count()
 		kitchens = Kitchen.objects.filter(property_id = p.id)
 		kitchencount = kitchens.count()
 		garages = Garage.objects.filter(property_id = p.id)
@@ -122,7 +123,9 @@ def property(request, p_id='1'):
 		planningInfo = PlanningInfo.objects.filter(property_id = p.id)
 
 		returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount,
-		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 'Toilets':toiletcount, 'Kitchens':kitchens, 'Kitchencount':kitchencount,
+		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 
+		'Toiletcount':toiletcount, 'Toilets': toilets,
+		'Kitchens':kitchens, 'Kitchencount':kitchencount,
 		'Garagecount':garagecount, 'Garages':garages,
 		'Livingroomcount':livingroomcount, 'Livingrooms':livingrooms,
 		'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms, 'PlanningInfo':planningInfo}
