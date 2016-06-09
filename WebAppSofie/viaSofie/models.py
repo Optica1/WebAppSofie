@@ -108,6 +108,26 @@ class Properties(models.Model):
 	class Meta:
 		verbose_name_plural = "Panden"
 	def save(self, *args, **kwargs):
+		Property_street=self.street
+		Property_streetnumber=self.housenumber
+		Property_postalcode=self.postalcode
+		Property_city=self.city
+
+		# making the url for the google maps.
+		location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
+
+		gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
+
+	    # Geocoding an address
+		geocode_result = gmaps.geocode(location)
+
+	    # query json
+		latitude = geocode_result[0]["geometry"]["location"]["lat"]
+		longitude = geocode_result[0]["geometry"]["location"]["lng"]
+
+	    # adding longitude and latitude to the database
+		self.longitude = longitude
+		self.latitude = latitude
 		if not self.id:
 			self.date_created = datetime.datetime.now()
 		self.date_modified = datetime.datetime.now()
