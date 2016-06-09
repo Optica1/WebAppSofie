@@ -76,11 +76,11 @@
 				<div class="col-md-6">
 					<h3>info</h3>
 					{% for planningInfo in PlanningInfo %}
-					<p><span>Voorkooprecht:</span> {{ planningInfo.voorkooprecht }}</p>
-					<p><span>Bouwvergunning:</span> {{ planningInfo.bouwvergunning }}</p>
-					<p><span>Dagvaarding:</span> {{ planningInfo.dagvaarding }}</p>
-					<p><span>Verkaveling:</span> {{ planningInfo.verkaveling }}</p>
-					<p><span>Juridische beslissing:</span> {{ planningInfo.juridische_beslissing }}</p>
+					<p><span>Voorkooprecht:</span> {{ planningInfo.voorkooprecht|yesno:"Ja,Nee" }}</p>
+					<p><span>Bouwvergunning:</span> {{ planningInfo.bouwvergunning|yesno:"Ja,Nee" }}</p>
+					<p><span>Dagvaarding:</span> {{ planningInfo.dagvaarding|yesno:"Ja,Nee" }}</p>
+					<p><span>Verkaveling:</span> {{ planningInfo.verkaveling|yesno:"Ja,Nee" }}</p>
+					<p><span>Juridische beslissing:</span> {{ planningInfo.juridische_beslissing|yesno:"Ja,Nee" }}</p>
 					<p><span>Co2 emissie:</span> {{ planningInfo.co2_emission }}</p>
 					<p><span>EPC:</span> {{ planningInfo.epc }}</p>
 					<p><span>Unique code:</span> {{ planningInfo.unique_code }}</p>
