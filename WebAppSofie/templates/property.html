@@ -40,7 +40,7 @@
 				<div class="col-md-6">
 					<h3>Energy</h3>
 					<p><span>Energie label:</span> {{ Property.energy_label }}</p>
-					<p><span>Verwarming:</span> {{ Property.heating_type }}</p>
+					<p><span>Verwarming:</span> {{ Property.get_heating_type_display }}</p>
 				</div>
 				<div class="col-md-6">
 					<h3>Extra informatie</h3>
@@ -75,14 +75,17 @@
 			<center>
 				<div class="col-md-6">
 					<h3>info</h3>
-					<p><span>Voorkooprecht:</span> Nee</p>
-					<p><span>Bouwvergunning:</span> Ja</p>
-					<p><span>Dagvaarding:</span> Nee</p>
-					<p><span>Verkaveling:</span> Ja</p>
-					<p><span>Juridische beslissing:</span> Nee</p>
-					<p><span>Co2 emissie:</span> 100g</p>
-					<p><span>EPC:</span> 2</p>
-					<p><span>Unique code:</span> 1456981</p>
+					{% for planningInfo in PlanningInfo %}
+					<p><span>Voorkooprecht:</span> {{ planningInfo.voorkooprecht }}</p>
+					<p><span>Bouwvergunning:</span> {{ planningInfo.bouwvergunning }}</p>
+					<p><span>Dagvaarding:</span> {{ planningInfo.dagvaarding }}</p>
+					<p><span>Verkaveling:</span> {{ planningInfo.Verkaveling }}</p>
+					<p><span>Juridische beslissing:</span> {{ planningInfo.juridische_beslissing }}</p>
+					<p><span>Co2 emissie:</span> {{ planningInfo.co2_emission }}</p>
+					<p><span>EPC:</span> {{ planningInfo.epc }}</p>
+					<p><span>Unique code:</span> {{ planningInfo.unique_code }}</p>
+					{%endfor%}
+
 				</div>
 				<div class="col-md-6">
 					<div id="map"></div>
