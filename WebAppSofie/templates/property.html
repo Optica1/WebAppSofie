@@ -16,7 +16,7 @@
 
 	          	<div class ="col-md-3">
 	            	<h3>Eigenschappen</h3>
-	            	<p><span>Type bebouwing:</span> {{ Property.buildingtype }}</p>
+	            	<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
 	            	<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
 	            	<p><span>Aantal badkamers:</span> {{Bathroomcount}}</p>
 	            	<p><span>Oppervlakte:</span> {{ Property.area }}</p>
