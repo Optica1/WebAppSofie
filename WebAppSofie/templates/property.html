@@ -2,9 +2,10 @@
 
 {% block content %}
 
+
 	<h2>{{ Property.title_dutch }}</h2>
     </style>
-	<h3>Huis OB, 4slpkrs, 2bdkmrs, rustig gelegen, nieuwbouw</h3>
+	<h4>{{  Property.title_dutch  }}</h4>
 
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
@@ -16,11 +17,13 @@
 	          	<div class ="col-md-3">
 	            	<h3>Eigenschappen</h3>
 	            	<p><span>Type bebouwing:</span> {{ Property.buildingtype }}</p>
+	            	<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
+	            	<p><span>Aantal badkamers:</span> {{Bathroomcount}}</p>
 	            	<p><span>Oppervlakte:</span> {{ Property.area }}</p>
 	            	<p><span>Bewoonbare oppervlakte:</span> {{ Property.livingarea }}</p>
 	            	<p><span>Bouwjaar:</span> {{ Property.year }}</p>
 	            	<p><span>Katastraal inkomen:</span> Ungiven</p>
-	            	<p><span>ID:</span> wat moet hier?</p>
+	            	<p><span>ID:</span> {{ Property.id }}</p>
 	          	</div>
 			</center>
 		</div>
@@ -52,7 +55,12 @@
 					<div class="row">
 						<div class="col-md-4">
 							<p><span>Woonkamer:</span> <50/p>
-
+								{% for kitchens in Kitchens %}
+								<p><span>Keuken:</span> {{ kitchens.area }}</p>
+								{%endfor%}
+							{% for bedrooms in Bedrooms %}
+							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
+							{%endfor%}
 						</div>
 						<div class="col-md-4 col-md-offset-1">
 							{% for bathrooms in Bathrooms %}

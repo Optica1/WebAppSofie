@@ -6,6 +6,7 @@ from django.contrib import admin
 from . import views
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'^account', views.account),
     url(r'^accounts/status', views.status),
     url(r'^accounts/login',  views.login),
     url(r'^accounts/auth',  views.auth_view),
@@ -14,10 +15,10 @@ urlpatterns = [
     url(r'^accounts/invalid', views.invalid_login),
     url(r'^accounts/register', views.register_user),
     url(r'^accounts/register_success', views.register_success),
-    url(r'^sales/properties', views.offer_sales),
+    url(r'^sales/forSale', views.offer_sales),
+    url(r'^sales/forRent', views.offer_rent),
     url(r'^sales/property/(?P<p_id>[0-9]+)/$', views.property),
     url(r'^about/viaSofie$', views.about),
-    url(r'^about/sofie', views.about_sofie),
     url(r'^ebook', views.ebook),
     url(r'^contact', views.contact),
     url(r'^partner', views.partner),

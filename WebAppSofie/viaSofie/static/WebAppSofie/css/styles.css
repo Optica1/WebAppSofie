@@ -71,17 +71,16 @@ margin-left:5px;
 
 }
 .dropdown-menu li a:hover{
-
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:#b9d4ce;
   color:#000;
-
 }
 
 
 .navbar{
   background-color:#0d3531;
+  max-height
   -webkit-box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
   -moz-box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
   box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);

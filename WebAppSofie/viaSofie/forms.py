@@ -4,7 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth.hashers import make_password
 from .models import *
-from django.forms import ModelForm
+from django import forms
+import sys
+import traceback
 #from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
@@ -68,23 +70,24 @@ class ContactForm(forms.Form):
 		widget=forms.Textarea
 	)
 
-class NewsletterForm(forms.Form):
-	email = forms.EmailField(required=True)
+class NewsletterForm(forms.ModelForm):
+	mail = forms.EmailField(required=True)
 
 	class Meta:
 		model = Newsletter
-		fields = ('email')
+		fields = ['mail']
 
 	def clean_email(self):
-		email = self.cleaned_data['email']
-    	if Newsletter.objects.filter(email=email).exists():
-    		raise forms.ValidationError(u'email "%s" is already in use.' % email)
+		mail = self.cleaned_data['mail']
+		checkmail = Newsletter.objects.filter(email = mail)
+		if Newsletter.objects.filter(email=email).exists():
+			raise forms.ValidationError(u'email "%s" is already in use.' % email)
 
 	def save(self, commit=True):
-		newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
+		Newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
 
-		newsletter.email = self.cleaned_data['email']#cleaned so all character are valid
-
+		Newsletter.email = self.cleaned_data['mail']#cleaned so all character are valid
+		print Newsletter.email
 		if commit:
 			Newsletter.save()
 		return

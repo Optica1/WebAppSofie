@@ -11,12 +11,11 @@ from .models import *
 from django.core.mail import send_mail, BadHeaderError
 import sys
 import traceback
-#from collection.forms import ContactForm
-
-
 
 def index(request):
-	return render_to_response('templates/home.html')
+	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:4]
+	r = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:4]
+	return render_to_response('templates/home.html', {'Sales':s, 'Rents':r})
 def about(request):
 	try:
 		pages = Aboutpage.objects.all()
@@ -40,6 +39,22 @@ def status(request):
 	return render_to_response('templates/status.html' , {
 		'status': status.get_dossierStatus_display,
 		'info': userInfo,
+	})
+def account(request):
+	try:
+		if not request.user.is_authenticated():
+			return HttpResponseRedirect('/accounts/login')
+		else:
+			user = request.user
+			userInfo = User.objects.get(id=user.id)
+			properties = Properties.objects.filter(user_id=user.id)
+			status = Status.objects.all()
+	except Exception as e:
+		raise Http404(e)
+	return render_to_response('templates/account.html' , {
+		'status': status,
+		'info': userInfo,
+		'properties': properties,
 	})
 def login(request):
 	c = {}
@@ -91,27 +106,36 @@ def register_success(request):
 def property(request, p_id='1'):
 	try:
 		p = Properties.objects.get(id = p_id)
-		# bedrooms = Bedroom.objects.filter(property_id = p.id)
-		# bedroomcount = bedrooms.count()
-		# bathrooms = Bathroom.objects.filter(property_id = p.id)
-		# bathroomcount = bathrooms.count()
-		# toiletcount = Toilet.objects.filter(property_id = p.id).count()
-		# kitchens = Kitchen.objects.filter(property_id = p.id)
-		# kitchencount = kitchens.count()
-		returned_values = {'Property':p}
-		# returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount, 'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 'Toilets':toiletcount, 'Kitchens':kitchens, 'Kitchencount':kitchencount}
+		bedrooms = Bedroom.objects.filter(property_id = p.id)
+		bedroomcount = bedrooms.count()
+		bathrooms = Bathroom.objects.filter(property_id = p.id)
+		bathroomcount = bathrooms.count()
+		toiletcount = Toilet.objects.filter(property_id = p.id).count()
+		kitchens = Kitchen.objects.filter(property_id = p.id)
+		kitchencount = kitchens.count()
+		garages = Garage.objects.filter(property_id = p.id)
+		garagecount = garages.count()
+		livingrooms = Livingroom.objects.filter(property_id = p.id)
+		livingroomcount = livingrooms.count()
+		storagerooms = Storageroom.objects.filter(property_id = p.id)
+		storageroomcount = storagerooms.count()
+
+		returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount,
+		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 'Toilets':toiletcount, 'Kitchens':kitchens, 'Kitchencount':kitchencount,
+		'Garagecount':garagecount, 'Garages':garages,
+		'Livingroomcount':livingroomcount, 'Livingrooms':livingrooms,
+		'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms}
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
-	return render_to_response('templates/property.html', {'Property': p})
+	return render_to_response('templates/property.html', returned_values)
 
 def offer_sales(request):
-	p = Properties.objects.all()[:10]
-	return render_to_response('templates/offer.html', {'Properties':p})
+	p = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:10]
+	return render(request, 'templates/offer.html', {'Properties':p})
 
-def about_sofie(request):
-	sofie = AboutSofiePage.objects.all()
-	context = {'Sofie': sofie}
-	return render(request, 'templates/aboutSofie.html', context)
+def offer_rent(request):
+	p = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:10]
+	return render(request, 'templates/offer.html', {'Properties':p})
 
 def disclaimer(request):
 	disclaimer = DisclaimerPage.objects.all()
@@ -175,24 +199,22 @@ def contact(request):
 
 
 def newsletterSubscribe(request):
-	args = {}
-	args.update(csrf(request))
-	args.['form'] = NewsletterForm
-
 	if request.method == 'POST':
-		form = NewsletterForm
+		form = NewsletterForm(request.POST)
 		if form.is_valid():
 			form.save()
-
+	args = {}
+	args.update(csrf(request))
+	args['form'] = NewsletterForm()
 	return render_to_response('templates/newsletter.html', args)
 
 def newsletterUnsubscribe(request):
 	args = {}
 	args.update(csrf(request))
-	args.['form'] = Newsletterun
+	args['form'] = NewsletterUnsubscribeForm()
 
 	if request.method == 'POST':
-		form = NewsletterUnsubscribeForm
+		form = NewsletterUnsubscribeForm(request.POST)
 		if form.is_valid():
 			Newsletter.objects.filter(email=email).delete()
 

@@ -11,7 +11,7 @@ from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
-
+from datetime import date
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
 	phonenumber = models.CharField(max_length=12)
@@ -23,36 +23,33 @@ class UserDetails(models.Model):
 	country = models.CharField(max_length=30)
 
 class Aboutpage(models.Model):
-    title = models.CharField(max_length=60)
-    text =  tinymce_models.HTMLField()
-	# text = HTMLField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30})) makes it bigger because you can't resize it to what you need.
-class Status(models.Model):
-	user = models.OneToOneField(User)
-	STATUS = (
-			('R', 'Registered'),
-			('H', 'Handled'),
-		)
-	dossierStatus = models.CharField(max_length=1, choices=STATUS, default=STATUS[0][0])
+	title = models.CharField(max_length=60)
+	text = tinymce_models.HTMLField()
+	language = models.CharField(max_length=20, default='NL')
+	class Meta:
+		verbose_name_plural = "Over ons pagina"
+
 class PrivacyPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
 	language = models.CharField(max_length=20)
+	class Meta:
+		verbose_name_plural = "Privacy pagina"
 
 class DisclaimerPage(models.Model):
 	title = models.CharField(max_length=60)
 	text = HTMLField()
 	language = models.CharField(max_length=20)
-
-class AboutSofiePage(models.Model):
-	title = models.CharField(max_length=60)
-	text = HTMLField()
-	language = models.CharField(max_length=20)
+	class Meta:
+		verbose_name_plural = "Disclaimer pagina"
 
 class Ebook(models.Model):
 	name = models.CharField(max_length=20)
 	path = models.FilePathField(max_length=100, editable=False)
 	language = models.CharField(max_length=3)
-	available = models.BooleanField()
+	available = models.BooleanField(default=True)
+	class Meta:
+		verbose_name_plural = "Ebooks"
 
 	def __unicode__(self):
 		return u'{0}'.format(self.name)
@@ -61,14 +58,16 @@ class EbookRequests(models.Model):
 	email = models.EmailField(max_length=70)
 	ebook_id = models.ForeignKey(Ebook, on_delete=models.PROTECT)
 	send = models.BooleanField()
+	class Meta:
+		verbose_name_plural = "EbookRequests"
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
-	title_dutch = models.CharField(max_length=50)
-	title_french = models.CharField(max_length=50)
+	title_dutch = models.CharField(max_length=100)
+	title_french = models.CharField(max_length=100)
 	street = models.CharField(max_length=50)
 	housenumber = models.CharField(max_length=4)
-	busnumber = models.CharField(max_length=3)
+	busnumber = models.CharField(max_length=3, blank=True)
 	postalcode = models.CharField(max_length=10)
 	city = models.CharField(max_length=30)
 	longitude = models.CharField(max_length=10, editable=False)
@@ -84,7 +83,7 @@ class Properties(models.Model):
 		('CA', 'Caravan'),
 	)
 	buildingtype = models.CharField(max_length=2, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
-	sale = models.BooleanField()
+	sale = models.BooleanField(default=True)
 	area = models.CharField(max_length=10)
 	livingarea = models.CharField(max_length=10)
 	year = models.CharField(max_length=4) #buildyear
@@ -102,29 +101,35 @@ class Properties(models.Model):
 	energy_label = models.CharField(max_length=5)
 	extra_information_dutch = models.TextField()
 	extra_information_french = models.TextField()
-	available = models.BooleanField()
+	available = models.BooleanField(default=True)
 	sold = models.BooleanField()
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
+	class Meta:
+		verbose_name_plural = "Panden"
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.date_created = datetime.datetime.now()
 		self.date_modified = datetime.datetime.now()
 		return super(Properties, self).save(*args, **kwargs)
+	def __unicode__(self):
+		return  self.title_dutch
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100)
+	path = models.FilePathField(max_length=100, blank=True, null=True)
 	available = models.BooleanField()
 
 class Partner(models.Model):
 	name = models.CharField(max_length=30)
 	text = models.TextField()
 	available = models.BooleanField()
+	class Meta:
+		verbose_name_plural = "Partners"
 
 class PropertyPictures(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100)
+	path = models.FilePathField(max_length=100, blank=True, null=True)
 
 class PlanningInfo(models.Model): #moet nog vertaald worden
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -173,10 +178,27 @@ class Translations(models.Model):
 class Faq(models.Model):
 	question = models.TextField()
 	answer = models.TextField()
-	visible = models.BooleanField()
+	visible = models.BooleanField(default=True)
+	class Meta:
+		verbose_name_plural = "Faq's"
 
 class Newsletter(models.Model):
 	email = models.EmailField()
+	class Meta:
+		verbose_name_plural = "Nieuwsbrief"
+
+class Status(models.Model):
+	STATUS = [
+		('', ''),
+		('WB', 'Word Behandeld'),
+		('C', 'Compromis'),
+		('F', 'Finale Akte'),
+	]
+	datum = models.DateField(default=date.today)
+	dossierStatus = models.CharField(max_length=2, choices=STATUS, default=STATUS[0][0])
+	eigendom = models.ForeignKey(Properties,on_delete=models.CASCADE)
+	class Meta:
+		verbose_name_plural = "Status"
 
 
 # google maps geoloctation api.

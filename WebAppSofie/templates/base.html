@@ -11,8 +11,7 @@
     <script src="{% static "WebAppSofie/css/jquery-2.0.0.min.js"%}"></script>
     <script src="{% get_static_prefix %}js/ajax.js"></script>
     <script src="{% static "WebAppSofie/js/bootstrap.js"%}"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>﻿
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>﻿ -->
 
 </head>
 
@@ -34,20 +33,13 @@
           {% block menubar %}
           <ul class ="nav navbar-nav navbar-right">
 
-            <li class = "dropdown">
-              <a href="#" class = "dropdown-toggle" data-toggle="dropdown">Over<b class ="caret"></b></a>
-              <ul class = "dropdown-menu">
-                <li><a href="/about/viaSofie">ViaSofie</a></li>
-                <li><a href="/about/sofie">Sofie</a></li>
-                <li><a href="/faq">Faq</a></li>
-              </ul>
-            </li>
+            <li><a href="/about/viaSofie">Over</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/partner">Partners</a></li>
-            <li><a href="/sales/properties">Kopen</a></li>
-            <li><a href="/sales/properties">Huren</a></li>
+            <li><a href="/sales/forSale">Kopen</a></li>
+            <li><a href="/sales/forRent">Huren</a></li>
             <li><a href="#">Referenties</a></li>
-            <li><a href="#">Advies</a></li>
+            <li><a href="/faq">Advies</a></li>
             <li><a href="/ebook">E_book</a></li>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class ="caret"></b></a>
               <form class = "dropdown-menu navbar-form" role="form">
@@ -88,6 +80,7 @@
     <div class = "container footer navbar-bottom"><!--hier start de footer-->
       <div class = "footbox">
         <ul>
+          <p class = "navbar-text pull-right">BIV 509141</p>
           <p class = "navbar-text pull-right">Copyright@2016 Via Sofie</p>
           <a href="/faq" class = "navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
           <a href="/info/disclaimer" class = "navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
