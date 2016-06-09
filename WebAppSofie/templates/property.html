@@ -54,28 +54,28 @@
 					<h3>Oppervlaktes</h3>
 					<div class="row">
 						<div class="col-md-6">
-							{% for kitchens in Kitchens %}
-							<p><span>Keuken:</span> {{ kitchens.area }}</p>
-							{%endfor%}
 							{% for bedrooms in Bedrooms %}
 							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
 							{%endfor%}
 							{% for livingrooms in Livingrooms %}
 							<p><span>Woonkamer:</span> {{ livingrooms.area }}</p>
 							{%endfor%}
-							{% for bathrooms in Bathrooms %}
-							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
+							{% for kitchens in Kitchens %}
+							<p><span>Keuken:</span> {{ kitchens.area }}</p>
+							{%endfor%}
+							{% for storagerooms in Storagerooms %}
+							<p><span>opslagruimte:</span> {{ storagerooms.area }}</p>
 							{%endfor%}
 						</div>
 						<div class="col-md-6">
 							{% for toilets in Toilets %}
 							<p><span>Toilet:</span> {{ toilets.area }}</p>
 							{%endfor%}
+							{% for bathrooms in Bathrooms %}
+							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
+							{%endfor%}
 							{% for garages in Garages %}
 							<p><span>garage:</span> {{ garages.area }}</p>
-							{%endfor%}
-							{% for storagerooms in Storagerooms %}
-							<p><span>opslagruimte:</span> {{ storagerooms.area }}</p>
 							{%endfor%}
 						</div>
 					</div>
