@@ -3,14 +3,19 @@
 {% block content %}
 
 	<h2>Aanbod</h2>
-			old stuff
 			{% for property in Properties %}
 	      <div class ="col-md-3 col-sm-3 vcenter">
+					<div class ="vcenter">
 		        <h4>{{ property.title_dutch }}</h4>
+					</div>
+					<div class ="vcenter">
 		        <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
+					</div>
+					<div class ="vcenter">
 		        <p>{{ property.description_dutch }}</p>
+					</div>
 		        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
-		      </div>
+		    </div>
 			{%endfor%}
     	</div>
 		</div>
