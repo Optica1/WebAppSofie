@@ -3,18 +3,13 @@
 {% block content %}
 
 	<h2>Aanbod</h2>
-
-		<div class="partner-row row">
-			<div class="partner-table">
-				{% for property in Properties %}
-		      <div class ="partner col-md-3 col-sm-3">
-			        <h4>{{ property.title_dutch }}</h4>
-			        <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
-			        <p>{{ property.description_dutch }}</p>
-			        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
-			      </div>
-				{%endfor%}
-    	</div>
-		</div>
+		{% for property in Properties %}
+      <div class ="partner col-md-3 col-sm-3">
+	        <h4>{{ property.title_dutch }}</h4>
+	        <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
+	        <p>{{ property.description_dutch }}</p>
+	        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
+	      </div>
+		{%endfor%}
 
 {% endblock %}
