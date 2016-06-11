@@ -12,6 +12,10 @@
     float: none;
 }
 
+.test123{
+  vertical-align: text-top;
+}
+
 #map{
   height: 250px;
   margin-top: 20px;

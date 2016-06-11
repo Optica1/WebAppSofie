@@ -7,10 +7,13 @@
 		<div class = "row inline-block-row">
 			{% for property in Properties %}
 	      <div class ="col-md-3 col-sm-3 pull-middle">
-	        <h4>{{ property.title_dutch }}</h4>
-	        <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
-	        <p>{{ property.description_dutch }}</p>
-	        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
+					<div class ="test123">
+		        <h4>{{ property.title_dutch }}</h4>
+					</div>
+		        <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
+		        <p>{{ property.description_dutch }}</p>
+		        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
+
 	      </div>
 			{%endfor%}
     	</div>
