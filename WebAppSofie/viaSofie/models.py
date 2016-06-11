@@ -12,6 +12,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
 from datetime import date
+
 from django.core.files.storage import FileSystemStorage
 
 fs = FileSystemStorage(location='/media/photos')
@@ -64,6 +65,7 @@ class EbookRequests(models.Model):
 	send = models.BooleanField()
 	class Meta:
 		verbose_name_plural = "EbookRequests"
+		verbose_name = "EbookRequest"
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -111,7 +113,30 @@ class Properties(models.Model):
 	date_modified = models.DateTimeField(editable=False)
 	class Meta:
 		verbose_name_plural = "Panden"
+		verbose_name = "Pand"
+
 	def save(self, *args, **kwargs):
+		Property_street=self.street
+		Property_streetnumber=self.housenumber
+		Property_postalcode=self.postalcode
+		Property_city=self.city
+
+		# making the url for the google maps.
+		location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
+
+		gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
+
+	    # Geocoding an address
+		geocode_result = gmaps.geocode(location)
+
+	    # query json
+		latitude = geocode_result[0]["geometry"]["location"]["lat"]
+		longitude = geocode_result[0]["geometry"]["location"]["lng"]
+
+	    # adding longitude and latitude to the database
+		self.longitude = longitude
+		self.latitude = latitude
+		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
 		if not self.id:
 			self.date_created = datetime.datetime.now()
 		self.date_modified = datetime.datetime.now()
@@ -130,6 +155,7 @@ class Partner(models.Model):
 	available = models.BooleanField()
 	class Meta:
 		verbose_name_plural = "Partners"
+		verbose_name = "Partner"
 
 class PropertyPictures(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -185,11 +211,13 @@ class Faq(models.Model):
 	visible = models.BooleanField(default=True)
 	class Meta:
 		verbose_name_plural = "Faq's"
+		verbose_name = "Faq"
 
 class Newsletter(models.Model):
 	email = models.EmailField()
 	class Meta:
 		verbose_name_plural = "Nieuwsbrief"
+		verbose_name = "Nieuwsbrief"
 
 class Status(models.Model):
 	STATUS = [
@@ -203,32 +231,3 @@ class Status(models.Model):
 	eigendom = models.ForeignKey(Properties,on_delete=models.CASCADE)
 	class Meta:
 		verbose_name_plural = "Status"
-
-
-# google maps geoloctation api.
-# @receiver(post_save, sender=Properties)
-# def model_pre_change(sender, **kwargs):
-# 	Property = Properties.objects.latest('date_modified')
-# 	Property_street=Property.street
-# 	Property_streetnumber=Property.housenumber
-# 	Property_postalcode=Property.postalcode
-# 	Property_city=Property.city
-#
-# 	location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
-#
-# 	gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
-#
-#     # Geocoding an address
-# 	geocode_result = gmaps.geocode(location)
-#
-#     # query json
-# 	latitude = geocode_result[0]["geometry"]["location"]["lat"]
-# 	longitude = geocode_result[0]["geometry"]["location"]["lng"]
-#
-#     # adding longitude and latitude to the database
-# 	SuperProperty = super(Properties, Property).save()
-# 	SuperProperty.longitude = longitude
-# 	SuperProperty.latitude = latitude
-# 	SuperProperty.save()
-
-    # full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M

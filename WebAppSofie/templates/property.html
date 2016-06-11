@@ -16,7 +16,7 @@
 
 	          	<div class ="col-md-3">
 	            	<h3>Eigenschappen</h3>
-	            	<p><span>Type bebouwing:</span> {{ Property.buildingtype }}</p>
+	            	<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
 	            	<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
 	            	<p><span>Aantal badkamers:</span> {{Bathroomcount}}</p>
 	            	<p><span>Oppervlakte:</span> {{ Property.area }}</p>
@@ -40,7 +40,7 @@
 				<div class="col-md-6">
 					<h3>Energy</h3>
 					<p><span>Energie label:</span> {{ Property.energy_label }}</p>
-					<p><span>Verwarming:</span> {{ Property.heating_type }}</p>
+					<p><span>Verwarming:</span> {{ Property.get_heating_type_display }}</p>
 				</div>
 				<div class="col-md-6">
 					<h3>Extra informatie</h3>
@@ -50,21 +50,32 @@
 		</div>
 		<div class="row">
 			<center>
-				<div class="col-md-9">
+				<div class="col-md-12">
 					<h3>Oppervlaktes</h3>
 					<div class="row">
-						<div class="col-md-4">
-							<p><span>Woonkamer:</span> <50/p>
-								{% for kitchens in Kitchens %}
-								<p><span>Keuken:</span> {{ kitchens.area }}</p>
-								{%endfor%}
+						<div class="col-md-6">
 							{% for bedrooms in Bedrooms %}
 							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
 							{%endfor%}
+							{% for kitchens in Kitchens %}
+							<p><span>Keuken:</span> {{ kitchens.area }}</p>
+							{%endfor%}
+							{% for storagerooms in Storagerooms %}
+							<p><span>opslagruimte:</span> {{ storagerooms.area }}</p>
+							{%endfor%}
 						</div>
-						<div class="col-md-4 col-md-offset-1">
+						<div class="col-md-6">
+							{% for toilets in Toilets %}
+							<p><span>Toilet:</span> {{ toilets.area }}</p>
+							{%endfor%}
 							{% for bathrooms in Bathrooms %}
 							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
+							{%endfor%}
+							{% for livingrooms in Livingrooms %}
+							<p><span>Woonkamer:</span> {{ livingrooms.area }}</p>
+							{%endfor%}
+							{% for garages in Garages %}
+							<p><span>garage:</span> {{ garages.area }}</p>
 							{%endfor%}
 						</div>
 					</div>
@@ -75,27 +86,30 @@
 			<center>
 				<div class="col-md-6">
 					<h3>info</h3>
-					<p><span>Voorkooprecht:</span> Nee</p>
-					<p><span>Bouwvergunning:</span> Ja</p>
-					<p><span>Dagvaarding:</span> Nee</p>
-					<p><span>Verkaveling:</span> Ja</p>
-					<p><span>Juridische beslissing:</span> Nee</p>
-					<p><span>Co2 emissie:</span> 100g</p>
-					<p><span>EPC:</span> 2</p>
-					<p><span>Unique code:</span> 1456981</p>
+					{% for planningInfo in PlanningInfo %}
+					<p><span>Voorkooprecht:</span> {{ planningInfo.voorkooprecht|yesno:"Ja,Nee" }}</p>
+					<p><span>Bouwvergunning:</span> {{ planningInfo.bouwvergunning|yesno:"Ja,Nee" }}</p>
+					<p><span>Dagvaarding:</span> {{ planningInfo.dagvaarding|yesno:"Ja,Nee" }}</p>
+					<p><span>Verkaveling:</span> {{ planningInfo.verkaveling|yesno:"Ja,Nee" }}</p>
+					<p><span>Juridische beslissing:</span> {{ planningInfo.juridische_beslissing|yesno:"Ja,Nee" }}</p>
+					<p><span>Co2 emissie:</span> {{ planningInfo.co2_emission }}</p>
+					<p><span>EPC:</span> {{ planningInfo.epc }}</p>
+					<p><span>Unique code:</span> {{ planningInfo.unique_code }}</p>
+					{%endfor%}
+
 				</div>
 				<div class="col-md-6">
 					<div id="map"></div>
 					    <script>
 					      function initMap() {
-					        var myLatLng = {lat: 51.0493098, lng: 4.304124};
+					        var myLatLng = {lat: {{ Property.latitude }}, lng: {{ Property.longitude }}};
 
 		        var map = new google.maps.Map(document.getElementById('map'), {
-		          zoom: 16,
+		          zoom: 15,
 		          center: myLatLng
 		        });
 					        var map = new google.maps.Map(document.getElementById('map'), {
-					          zoom: 10,
+					          zoom: 15,
 					          center: myLatLng
 					        });
 

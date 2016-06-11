@@ -6,8 +6,23 @@
     src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
+.pull-middle {
+    display: inline-block;
+    vertical-align: bottom;
+    float: none;
+}
+
+.test123{
+  vertical-align: top;
+}
+
+.test12{
+  vertical-align: middle;
+}
+
 #map{
   height: 250px;
+  margin-top: 20px;
 }
 
 body{

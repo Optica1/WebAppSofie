@@ -1,0 +1,31 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+  <h1>{{ info.first_name }} {{ info.last_name }}<h1>
+  <h3>Mijn Panden</h3>
+
+  <div class = ".container-fluid">
+		<div class = "row inline-block-row">
+			{% for property in properties %}
+          <div class ="col-md-3 col-sm-3">
+            <h4>{{ property.title_dutch }}</h4>
+            <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
+            <p>{{ property.description_dutch }}</p>
+              <p><b>Status:</b>
+                {% for e in status %}
+                  {% if e.eigendom_id = property.id %}
+                    {{ e.get_dossierStatus_display }}
+                  {% endif %}
+                {% endfor%}
+              </p>
+            <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
+            {%endfor%}
+          </div>
+
+
+
+    	</div>
+
+		</div>
+
+{% endblock %}

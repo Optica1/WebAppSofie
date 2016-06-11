@@ -110,7 +110,8 @@ def property(request, p_id='1'):
 		bedroomcount = bedrooms.count()
 		bathrooms = Bathroom.objects.filter(property_id = p.id)
 		bathroomcount = bathrooms.count()
-		toiletcount = Toilet.objects.filter(property_id = p.id).count()
+		toilets = Toilet.objects.filter(property_id = p.id)
+		toiletcount = toilets.count()
 		kitchens = Kitchen.objects.filter(property_id = p.id)
 		kitchencount = kitchens.count()
 		garages = Garage.objects.filter(property_id = p.id)
@@ -119,24 +120,26 @@ def property(request, p_id='1'):
 		livingroomcount = livingrooms.count()
 		storagerooms = Storageroom.objects.filter(property_id = p.id)
 		storageroomcount = storagerooms.count()
-
+		planningInfo = PlanningInfo.objects.filter(property_id = p.id)
 
 		returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount,
-		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 'Toilets':toiletcount, 'Kitchens':kitchens, 'Kitchencount':kitchencount,
+		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 
+		'Toiletcount':toiletcount, 'Toilets': toilets,
+		'Kitchens':kitchens, 'Kitchencount':kitchencount,
 		'Garagecount':garagecount, 'Garages':garages,
 		'Livingroomcount':livingroomcount, 'Livingrooms':livingrooms,
-		'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms}
+		'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms, 'PlanningInfo':planningInfo}
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
 	return render_to_response('templates/property.html', returned_values)
 
 def offer_sales(request):
 	p = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:10]
-	return render_to_response('templates/offer.html', {'Properties':p})
+	return render(request, 'templates/offer.html', {'Properties':p})
 
 def offer_rent(request):
 	p = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:10]
-	return render_to_response('templates/offer.html', {'Properties':p})
+	return render(request, 'templates/offer.html', {'Properties':p})
 
 def disclaimer(request):
 	disclaimer = DisclaimerPage.objects.all()
@@ -200,21 +203,19 @@ def contact(request):
 
 
 def newsletterSubscribe(request):
-	args = {}
-	args.update(csrf(request))
-	args['form'] = NewsletterForm
-
 	if request.method == 'POST':
 		form = NewsletterForm(request.POST)
 		if form.is_valid():
 			form.save()
-
+	args = {}
+	args.update(csrf(request))
+	args['form'] = NewsletterForm()
 	return render_to_response('templates/newsletter.html', args)
 
 def newsletterUnsubscribe(request):
 	args = {}
 	args.update(csrf(request))
-	args['form'] = Newsletterun
+	args['form'] = NewsletterUnsubscribeForm()
 
 	if request.method == 'POST':
 		form = NewsletterUnsubscribeForm(request.POST)
