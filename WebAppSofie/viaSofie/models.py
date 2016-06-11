@@ -12,6 +12,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
 from datetime import date
+
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
 	phonenumber = models.CharField(max_length=12)
@@ -60,6 +61,7 @@ class EbookRequests(models.Model):
 	send = models.BooleanField()
 	class Meta:
 		verbose_name_plural = "EbookRequests"
+		verbose_name = "EbookRequest"
 
 class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -107,6 +109,8 @@ class Properties(models.Model):
 	date_modified = models.DateTimeField(editable=False)
 	class Meta:
 		verbose_name_plural = "Panden"
+		verbose_name = "Pand"
+
 	def save(self, *args, **kwargs):
 		Property_street=self.street
 		Property_streetnumber=self.housenumber
@@ -147,6 +151,7 @@ class Partner(models.Model):
 	available = models.BooleanField()
 	class Meta:
 		verbose_name_plural = "Partners"
+		verbose_name = "Partner"
 
 class PropertyPictures(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -202,11 +207,13 @@ class Faq(models.Model):
 	visible = models.BooleanField(default=True)
 	class Meta:
 		verbose_name_plural = "Faq's"
+		verbose_name = "Faq"
 
 class Newsletter(models.Model):
 	email = models.EmailField()
 	class Meta:
 		verbose_name_plural = "Nieuwsbrief"
+		verbose_name = "Nieuwsbrief"
 
 class Status(models.Model):
 	STATUS = [
