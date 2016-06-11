@@ -16,6 +16,10 @@
   vertical-align: top;
 }
 
+.test12{
+  vertical-align: middle;
+}
+
 #map{
   height: 250px;
   margin-top: 20px;
