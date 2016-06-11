@@ -6,14 +6,10 @@
     src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
-.partner-table {
-	display: table;
-	height: 100%;
-}
-.partner {
-	display: table-cell;
-  	vertical-align: middle;
-	float: none;
+.pull-middle {
+    display: inline-block;
+    vertical-align: bottom;
+    float: none;
 }
 
 #map{
