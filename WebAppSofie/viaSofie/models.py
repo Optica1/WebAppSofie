@@ -13,10 +13,8 @@ from django.dispatch import receiver
 from tinymce import models as tinymce_models
 from datetime import date
 from django.http import HttpResponseRedirect
-
 from django.core.files.storage import FileSystemStorage
 
-fs = FileSystemStorage(location='/media/photos')
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -178,6 +176,7 @@ class PlanningInfo(models.Model): #moet nog vertaald worden
 
 class Photo(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	fs = FileSystemStorage()
 	photo = models.ImageField(storage = fs)
 	priority = models.BooleanField('Kies als hoofdfoto')
 	def image_thumb(self):
