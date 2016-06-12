@@ -172,6 +172,11 @@ class PlanningInfo(models.Model): #moet nog vertaald worden
 	epc = models.CharField(max_length=10)
 	unique_code = models.CharField(max_length=10)
 
+class Photo(models.Model):
+	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	photo = models.ImageField(storage = fs)
+	priority = models.BooleanField('Kies als hoofdfoto')
+
 class Room(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
 	area = models.CharField(max_length=8)

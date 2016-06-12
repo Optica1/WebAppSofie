@@ -61,10 +61,15 @@ class PropertyPicturesInLine(admin.StackedInline):
     extra = 1
     verbose_name_plural = "PropertyPictures"
 
-class StatusInline(admin.StackedInline):
+class StatusInLine(admin.StackedInline):
   model = Status
   can_delete = False
   extra = 0
+
+class PhotoInLine(admin.StackedInline):
+    model = Photo
+    can_delete = False
+    extra = 1
 
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['eigendom']
@@ -83,9 +88,9 @@ class PropertiesAdmin(admin.ModelAdmin):
         KitchenInLine, LivingroomInLine,
         StorageroomInLine,
         PropertyPicturesInLine,
-        StatusInline,
+        StatusInLine,
+        PhotoInLine
     ]
-    verbose_name_plural = "Properties"
 
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
