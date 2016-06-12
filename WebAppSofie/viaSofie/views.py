@@ -121,14 +121,17 @@ def property(request, p_id='1'):
 		storagerooms = Storageroom.objects.filter(property_id = p.id)
 		storageroomcount = storagerooms.count()
 		planningInfo = PlanningInfo.objects.filter(property_id = p.id)
+		photos = Photo.objects.filter(property_id = p.id)
+
 
 		returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount,
-		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount, 
+		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount,
 		'Toiletcount':toiletcount, 'Toilets': toilets,
 		'Kitchens':kitchens, 'Kitchencount':kitchencount,
 		'Garagecount':garagecount, 'Garages':garages,
 		'Livingroomcount':livingroomcount, 'Livingrooms':livingrooms,
-		'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms, 'PlanningInfo':planningInfo}
+		'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms, 'PlanningInfo':planningInfo,
+		'Photos':photos}
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
 	return render_to_response('templates/property.html', returned_values)

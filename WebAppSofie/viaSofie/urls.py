@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 #from django.contrib.auth.views import login, logout
 
 # Uncomment the next two lines to enable the admin:
@@ -27,4 +29,4 @@ urlpatterns = [
     url(r'^info/disclaimer', views.disclaimer),
     url(r'^newsletter/subscribe', views.newsletterSubscribe),
     url(r'^newsletter/unsubscribe', views.newsletterUnsubscribe),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
