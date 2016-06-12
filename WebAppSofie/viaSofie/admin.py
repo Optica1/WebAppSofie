@@ -70,7 +70,7 @@ class PhotoInLine(admin.StackedInline):
     model = Photo
     can_delete = False
     extra = 1
-
+    
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['eigendom']
 
@@ -95,8 +95,6 @@ class PropertiesAdmin(admin.ModelAdmin):
 class UserDetailsInline(admin.StackedInline):
   model = UserDetails
   can_delete = False
-
-
 
 class UserAdmin(UserAdmin):
 	inlines = (UserDetailsInline, )

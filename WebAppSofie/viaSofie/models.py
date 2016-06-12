@@ -176,6 +176,9 @@ class Photo(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
 	photo = models.ImageField(storage = fs)
 	priority = models.BooleanField('Kies als hoofdfoto')
+	def image_thumb(self):
+		return '<img src="/media/%s" width="100" height="100" />' % (self.photo)
+	image_thumb.allow_tags = True
 
 class Room(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
