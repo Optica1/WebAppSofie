@@ -7,6 +7,7 @@ import time
 import googlemaps
 import json
 import datetime
+import ssl
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
@@ -14,7 +15,6 @@ from tinymce import models as tinymce_models
 from datetime import date
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
-
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -123,21 +123,21 @@ class Properties(models.Model):
 		# making the url for the google maps.
 		location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
 
-		gmaps = googlemaps.Client(key='AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M')
+		gmaps = googlemaps.Client(key='AIzaSyDP2GIaLZod3VOwu9rh0fdyxbiNBAmNswE')
 
 	    # Geocoding an address
 		geocode_result = gmaps.geocode(location)
 
-		if (geocode_result):
-		    # query json
-			latitude = geocode_result[0]["geometry"]["location"]["lat"]
-			longitude = geocode_result[0]["geometry"]["location"]["lng"]
+		# if (geocode_result):
+	    # query json
+		latitude = geocode_result[0]["geometry"]["location"]["lat"]
+		longitude = geocode_result[0]["geometry"]["location"]["lng"]
 
-		    # adding longitude and latitude to the database
-			self.longitude = longitude
-			self.latitude = latitude
-		else:
-			HttpResponseRedirect('/accounts/invalid')
+	    # adding longitude and latitude to the database
+		self.longitude = longitude
+		self.latitude = latitude
+		# else:
+			# HttpResponseRedirect('/accounts/invalid')
 		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
 		if not self.id:
 			self.date_created = datetime.datetime.now()
