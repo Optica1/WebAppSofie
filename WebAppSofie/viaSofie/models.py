@@ -7,14 +7,16 @@ import time
 import googlemaps
 import json
 import datetime
+import ssl
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
 from datetime import date
 from django.http import HttpResponseRedirect
-
 from django.core.files.storage import FileSystemStorage
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 fs = FileSystemStorage(location='/media/photos')
 
