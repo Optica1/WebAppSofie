@@ -16,6 +16,8 @@ from datetime import date
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 
+ssl._create_default_https_context = ssl._create_unverified_context
+
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
 	phonenumber = models.CharField(max_length=12)
