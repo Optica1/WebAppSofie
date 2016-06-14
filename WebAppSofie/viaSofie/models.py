@@ -138,9 +138,9 @@ class Properties(models.Model):
 	    # adding longitude and latitude to the database
 		self.longitude = longitude
 		self.latitude = latitude
-		else:
-			HttpResponseRedirect('/accounts/invalid')
-		full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
+		# else:
+		# 	HttpResponseRedirect('/accounts/invalid')
+		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
 		if not self.id:
 			self.date_created = datetime.datetime.now()
 		self.date_modified = datetime.datetime.now()
