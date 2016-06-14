@@ -125,10 +125,10 @@ class Properties(models.Model):
 		# making the url for the google maps.
 		location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
 
-		gmaps = googlemaps.Client(key='AIzaSyDP2GIaLZod3VOwu9rh0fdyxbiNBAmNswE')
+		gmaps = googlemaps.Client(key='AIzaSyDP2GIaLZod3VOwu9rh0fdyxbiNBAmNswE', verify=False)
 
 	    # Geocoding an address
-		geocode_result = gmaps.geocode(location, verify=False)
+		geocode_result = gmaps.geocode(location)
 
 		# if (geocode_result):
 	    # query json
