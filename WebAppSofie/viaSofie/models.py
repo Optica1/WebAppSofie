@@ -128,7 +128,7 @@ class Properties(models.Model):
 		gmaps = googlemaps.Client(key='AIzaSyDP2GIaLZod3VOwu9rh0fdyxbiNBAmNswE')
 
 	    # Geocoding an address
-		geocode_result = gmaps.geocode(location)
+		geocode_result = gmaps.geocode(location, verify=False)
 
 		# if (geocode_result):
 	    # query json
