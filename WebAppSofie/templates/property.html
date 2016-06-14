@@ -101,29 +101,38 @@
 				</div>
 				<div class="col-md-6">
 					<div id="map"></div>
+
+							<script src="https://maps.googleapis.com/maps/api/js"></script>
 					    <script>
-					      function initMap() {
-					        var myLatLng = {lat: {{ Property.latitude }}, lng: {{ Property.longitude }}};
+								geocoder = new google.maps.Geocoder();
 
-		        var map = new google.maps.Map(document.getElementById('map'), {
-		          zoom: 15,
-		          center: myLatLng
-		        });
-					        var map = new google.maps.Map(document.getElementById('map'), {
-					          zoom: 15,
-					          center: myLatLng
-					        });
+								function initMap() {
 
-					        var marker = new google.maps.Marker({
-					          position: myLatLng,
-					          map: map,
-					          title: 'Hello World!'
-					        });
-					      }
-					    </script>
-					    <script async defer
-					    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M&callback=initMap">
-					    </script>
+    						var address = "{{ Property.street }} {{ Property.housenumber}} " ;
+
+    						geocoder.geocode( { 'address' : address }, function( results, status ) {
+        				if( status == google.maps.GeocoderStatus.OK ) {
+
+								var map = new google.maps.Map(document.getElementById('map'), {
+									zoom: 15,
+									center: results[0].geometry.location
+								});
+
+								map.setCenter( results[0].geometry.location );
+            		var marker = new google.maps.Marker( {
+                		map     : map,
+                		position: results[0].geometry.location
+            		} );
+        				} else {
+            		alert( 'Geocode was not successful for the following reason: ' + status );
+        				}
+    						} );
+								}
+
+
+								google.maps.event.addDomListener(window, 'load',  initMap);
+					  	</script>
+
 					</div>
 				<div class="col-md-6">
 					<h3>Documenten</h3>
