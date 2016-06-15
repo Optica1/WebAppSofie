@@ -118,27 +118,27 @@ class Properties(models.Model):
 		verbose_name = "Pand"
 
 	def save(self, *args, **kwargs):
-		Property_street=self.street
-		Property_streetnumber=self.housenumber
-		Property_postalcode=self.postalcode
-		Property_city=self.city
-
-		# making the url for the google maps.
-		location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
-
-		gmaps = googlemaps.Client(key='AIzaSyDP2GIaLZod3VOwu9rh0fdyxbiNBAmNswE')
-
-	    # Geocoding an address
-		geocode_result = gmaps.geocode(location)
-
-		# if (geocode_result):
-	    # query json
-		latitude = geocode_result[0]["geometry"]["location"]["lat"]
-		longitude = geocode_result[0]["geometry"]["location"]["lng"]
-
-	    # adding longitude and latitude to the database
-		self.longitude = longitude
-		self.latitude = latitude
+		# Property_street=self.street
+		# Property_streetnumber=self.housenumber
+		# Property_postalcode=self.postalcode
+		# Property_city=self.city
+		#
+		# # making the url for the google maps.
+		# location=Property_street+Property_streetnumber+','+Property_postalcode+Property_city
+		#
+		# gmaps = googlemaps.Client(key='AIzaSyDP2GIaLZod3VOwu9rh0fdyxbiNBAmNswE')
+		#
+	    # # Geocoding an address
+		# geocode_result = gmaps.geocode(location)
+		#
+		# # if (geocode_result):
+	    # # query json
+		# latitude = geocode_result[0]["geometry"]["location"]["lat"]
+		# longitude = geocode_result[0]["geometry"]["location"]["lng"]
+		#
+	    # # adding longitude and latitude to the database
+		# self.longitude = longitude
+		# self.latitude = latitude
 		# else:
 		# 	HttpResponseRedirect('/accounts/invalid')
 		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
