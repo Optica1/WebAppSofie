@@ -12,13 +12,13 @@ class PlanningInfoInLine(admin.StackedInline):
     model = PlanningInfo
     can_delete = False
     max_num = 1
-    verbose_name_plural = "PlanningInfo"
+    verbose_name_plural = "Planning Info"
 
 class PropertyDocumentsInLine(admin.StackedInline):
     model = PropertyDocuments
     can_delete = False
     extra = 1
-    verbose_name_plural = "PropertyDocuments"
+    verbose_name_plural = "Pand Documenten"
 
 class BathroomInLine(admin.StackedInline):
     model = Bathroom

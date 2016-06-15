@@ -151,8 +151,9 @@ class Properties(models.Model):
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100, blank=True, null=True)
-	available = models.BooleanField()
+	name = models.CharField(max_length=30, default = 'Pand Informatie')
+	document = models.FileField(storage = fs, upload_to = 'uploads/', null=True)
+	available = models.BooleanField('Bestand weergeven')
 
 class Partner(models.Model):
 	name = models.CharField(max_length=30)
