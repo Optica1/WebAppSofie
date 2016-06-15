@@ -1,11 +1,21 @@
 {% extends "templates/base.html" %}
 
 {% block content %}
-
+<div class = ".container-fluid">
+	<div class = "row inline-block-row">
 		{% for partner in Partner %}
-		<h2>{{ partner.name }}</h2>
-		<h4>{{ partner.text }}</h4>
+		<div class ="col-md-2 col-sm-2">
+			<div class ="test123">
+				<h3>{{ partner.name }}</h3>
+			</div>
+			<div class ="test12">
+				<img src="{{partner.photo.url}}" width="90%"height="10%"  class="img-rounded img-responsive"/>
+			</div>
+			<p>{{ partner.text }}
+		</div>
 		</bk>
 		{% endfor %}
+	</div>
+</div>
 
 {% endblock %}

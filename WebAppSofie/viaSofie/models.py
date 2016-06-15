@@ -16,7 +16,8 @@ from datetime import date
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 
-ssl._create_default_https_context = ssl._create_unverified_context
+# ssl._create_default_https_context = ssl._create_unverified_context
+fs = FileSystemStorage()
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
@@ -156,14 +157,11 @@ class PropertyDocuments(models.Model):
 class Partner(models.Model):
 	name = models.CharField(max_length=30)
 	text = models.TextField()
+	photo = models.ImageField(storage = fs, default='/media/partner.jpg')
 	available = models.BooleanField()
 	class Meta:
 		verbose_name_plural = "Partners"
 		verbose_name = "Partner"
-
-class PropertyPictures(models.Model):
-	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	path = models.FilePathField(max_length=100, blank=True, null=True)
 
 class PlanningInfo(models.Model): #moet nog vertaald worden
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
@@ -178,7 +176,6 @@ class PlanningInfo(models.Model): #moet nog vertaald worden
 
 class Photo(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	fs = FileSystemStorage()
 	photo = models.ImageField(storage = fs)
 	priority = models.BooleanField('Kies als hoofdfoto')
 	def image_thumb(self):
@@ -220,7 +217,7 @@ class Translations(models.Model):
 
 class Faq(models.Model):
 	question = models.TextField()
-	answer = models.TextField()
+	answer = tinymce_models.HTMLField()
 	visible = models.BooleanField(default=True)
 	class Meta:
 		verbose_name_plural = "Faq's"

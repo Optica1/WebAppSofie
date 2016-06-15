@@ -55,12 +55,6 @@ class StorageroomInLine(admin.StackedInline):
     can_delete = False
     extra = 1
 
-class PropertyPicturesInLine(admin.StackedInline):
-    model = PropertyPictures
-    can_delete = False
-    extra = 1
-    verbose_name_plural = "PropertyPictures"
-
 class StatusInLine(admin.StackedInline):
   model = Status
   can_delete = False
@@ -70,7 +64,7 @@ class PhotoInLine(admin.StackedInline):
     model = Photo
     can_delete = False
     extra = 1
-    
+
 class StatusAdmin(admin.ModelAdmin):
     list_display = ['eigendom']
 
@@ -87,7 +81,6 @@ class PropertiesAdmin(admin.ModelAdmin):
         GarageInLine, ToiletInLine,
         KitchenInLine, LivingroomInLine,
         StorageroomInLine,
-        PropertyPicturesInLine,
         StatusInLine,
         PhotoInLine
     ]
