@@ -244,4 +244,4 @@ def faqs(request):
     form = FaqsSearchForm(request.GET)
     faqs = form.search()
     context = {'faqs': faqs}
-    return render_to_response('notes.html', context)
+    return render_to_response('templates/notes.html', context)
