@@ -110,4 +110,4 @@ class NewsletterUnsubscribeForm(forms.Form):
 class FaqsSearchForm(SearchForm):
     def search(self):
 		def no_query_found(self):
-        	return self.searchqueryset.all()
+			return self.searchqueryset.all()
