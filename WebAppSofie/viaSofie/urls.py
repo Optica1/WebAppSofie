@@ -5,7 +5,7 @@ from django.conf.urls.i18n import i18n_patterns
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from . import views
-urlpatterns = i18n_patterns('',
+urlpatterns += i18n_patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^account', views.account, name='account'),
     url(r'^accounts/status', views.status, name='status'),
