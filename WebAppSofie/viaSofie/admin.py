@@ -84,8 +84,8 @@ class NewsletterAdmin(admin.ModelAdmin):
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
     inlines = [
-        PlanningInfoInLine,
         PhotoInLine,
+        PlanningInfoInLine,
         PropertyDocumentsInLine,
         BathroomInLine,
         BedroomInLine, LivingroomInLine,

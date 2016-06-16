@@ -7,7 +7,13 @@ from .models import *
 from django import forms
 import sys
 import traceback
+from haystack.forms import SearchForm
 #from passlib.hash import sha256_crypt
+
+class FaqsSearchForm(SearchForm):
+
+    def no_query_found(self):
+        return self.searchqueryset.all()
 
 class MyRegistrationForm(UserCreationForm):
 	email = forms.EmailField(required=True)

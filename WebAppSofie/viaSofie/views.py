@@ -12,6 +12,14 @@ from django.core.mail import send_mail, BadHeaderError
 import sys
 import traceback
 
+from .forms import NotesSearchForm
+
+
+def faqs(request):
+    form = FaqsSearchForm(request.GET)
+    faqs = form.search()
+    return render_to_response('notes.html', {'faqs': faqs})
+
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:4]
 	r = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:4]
