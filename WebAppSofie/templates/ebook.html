@@ -4,7 +4,7 @@
 
 
 	<div class = "container"><!--hier start midden content-->
-	<h2>Ebook aanvragen:</h2>
+	<h2>{% trans "request E_book" %}:</h2>
 	<form action="/ebook" method="post" role="form" class="form-horizontal">{% csrf_token %}
 		<!-- {{form}} -->
 		{% for field in form %}

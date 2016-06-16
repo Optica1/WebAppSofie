@@ -3,11 +3,11 @@
 {% block content %}
 
 
-	<h2>Inschrijven nieuwsbrief</h2>
+	<h2>{% trans "subscribe newsletter" %}</h2>
 	<form role="form" action="" method="post">
 		{% csrf_token %}
 		{{ form }}
-		<button type="submit">Inschrijven</button>
+		<button type="submit">{% trans "subscribe" %}</button>
 	</form>
 
 {% endblock %}

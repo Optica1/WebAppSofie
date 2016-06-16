@@ -1,3 +1,4 @@
+{% load i18n %}
 {% extends "templates/base.html" %}
 
 {% block content %}
@@ -15,14 +16,14 @@
 	          	</div>
 
 	          	<div class ="col-md-3">
-	            	<h3>Eigenschappen</h3>
-	            	<p><span>Type bebouwing:</span> {{ Property.buildingtype }}</p>
-	            	<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
-	            	<p><span>Aantal badkamers:</span> {{Bathroomcount}}</p>
-	            	<p><span>Oppervlakte:</span> {{ Property.area }}</p>
-	            	<p><span>Bewoonbare oppervlakte:</span> {{ Property.livingarea }}</p>
-	            	<p><span>Bouwjaar:</span> {{ Property.year }}</p>
-	            	<p><span>Katastraal inkomen:</span> Ungiven</p>
+	            	<h3>{% trans "properties" %}</h3>
+	            	<p><span>{% trans "building type" %}:</span> {{ Property.buildingtype }}</p>
+	            	<p><span>{% trans "bedrooms" %}:</span> {{ Bedroomcount }}</p>
+	            	<p><span>{% trans "bathrooms" %}:</span> {{Bathroomcount}}</p>
+	            	<p><span>{% trans "area" %}:</span> {{ Property.area }}</p>
+	            	<p><span>{% trans "livingarea" %}:</span> {{ Property.livingarea }}</p>
+	            	<p><span>{% trans "year" %}:</span> {{ Property.year }}</p>
+	            	<p><span>{% trans "kadastraal inkomen" %}:</span> Ungiven</p>
 	            	<p><span>ID:</span> {{ Property.id }}</p>
 	          	</div>
 			</center>
@@ -30,7 +31,7 @@
 		<div class="row">
 			<center>
 				<div class="col-md-12">
-					<h3>Omschrijving</h3>
+					<h3>{% trans "description" %}</h3>
 					<p>{{ Property.description_dutch }}</p>
 				</div>
 			</center>
@@ -38,12 +39,12 @@
 		<div class="row">
 			<center>
 				<div class="col-md-6">
-					<h3>Energy</h3>
-					<p><span>Energie label:</span> {{ Property.energy_label }}</p>
-					<p><span>Verwarming:</span> {{ Property.heating_type }}</p>
+					<h3>{% trans "energy %}</h3>
+					<p><span>{% trans "energy label" %}:</span> {{ Property.energy_label }}</p>
+					<p><span>{% trans heating %}:</span> {{ Property.heating_type }}</p>
 				</div>
 				<div class="col-md-6">
-					<h3>Extra informatie</h3>
+					<h3>{% trans "extra information" %}</h3>
 					<p>{{ Property.extra_information_dutch }}</p>
 				</div>
 			</center>
@@ -51,20 +52,22 @@
 		<div class="row">
 			<center>
 				<div class="col-md-9">
-					<h3>Oppervlaktes</h3>
+					<h3>{% trans "areas" %}</h3>
 					<div class="row">
 						<div class="col-md-4">
-							<p><span>Woonkamer:</span> <50/p>
-								{% for kitchens in Kitchens %}
-								<p><span>Keuken:</span> {{ kitchens.area }}</p>
-								{%endfor%}
+							{% for livingrooms in Livingrooms %}
+								<p><span>{% trans "livingroom"%}:</span> {{ livingrooms.area }}</p>
+							{% endfor %}
+							{% for kitchens in Kitchens %}
+								<p><span>{% trans "kitchen" %}:</span> {{ kitchens.area }}</p>
+							{%endfor%}
 							{% for bedrooms in Bedrooms %}
-							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
+								<p><span>{% trans "bedroom" %}:</span> {{ bedrooms.area }}</p>
 							{%endfor%}
 						</div>
 						<div class="col-md-4 col-md-offset-1">
 							{% for bathrooms in Bathrooms %}
-							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
+							<p><span>{% trans "bathroom" %}:</span> {{ bathrooms.area }}</p>
 							{%endfor%}
 						</div>
 					</div>
@@ -74,15 +77,15 @@
 		<div class="row">
 			<center>
 				<div class="col-md-6">
-					<h3>info</h3>
-					<p><span>Voorkooprecht:</span> Nee</p>
-					<p><span>Bouwvergunning:</span> Ja</p>
-					<p><span>Dagvaarding:</span> Nee</p>
-					<p><span>Verkaveling:</span> Ja</p>
-					<p><span>Juridische beslissing:</span> Nee</p>
-					<p><span>Co2 emissie:</span> 100g</p>
-					<p><span>EPC:</span> 2</p>
-					<p><span>Unique code:</span> 1456981</p>
+					<h3>Info</h3>
+					<p><span>{% trans "verkooprecht" %}:</span> Nee</p>
+					<p><span>{% trans "bouwvergunning" %}:</span> Ja</p>
+					<p><span>{% trans "dagvaarding" %}:</span> Nee</p>
+					<p><span>{% trans "verkaveling" %}:</span> Ja</p>
+					<p><span>{% trans "juridische beslissing" %}:</span> Nee</p>
+					<p><span>{% trans "co2 emmision" %}:</span> 100g</p>
+					<p><span>{% trans "EPC" %}:</span> 2</p>
+					<p><span>{% trans "unique id" %}:</span> 1456981</p>
 				</div>
 				<div class="col-md-6">
 					<div id="map"></div>
@@ -111,7 +114,7 @@
 					    </script>
 					</div>
 				<div class="col-md-6">
-					<h3>Documenten</h3>
+					<h3>{% trans "documents" %}</h3>
 					<p>hier zullen documenten opgelijst worden</p>
 				</div>
 			</center>

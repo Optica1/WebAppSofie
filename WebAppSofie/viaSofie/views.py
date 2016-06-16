@@ -9,9 +9,11 @@ from django.contrib.auth.models import User
 from forms import *
 from .models import *
 from django.core.mail import send_mail, BadHeaderError
+from django.utils.translation import ugettext as _
 import sys
 import traceback
 
+#default language
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:4]
 	r = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:4]

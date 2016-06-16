@@ -29,9 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'viaSofie',
     'django.contrib.admin',
@@ -54,6 +52,22 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.i18n', # this one
+)
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_PATH, 'locale/'),
+)
+LANGUAGE_CODE = 'nl'
+ # list of activated languages
+ugettext = lambda s: s
+LANGUAGES = (
+    ('nl', 'Dutch'),
+    ('fr', 'French'),
+)
+
 
 ROOT_URLCONF = 'WebAppSofie.urls'
 

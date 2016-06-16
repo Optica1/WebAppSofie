@@ -33,13 +33,13 @@
           {% block menubar %}
           <ul class ="nav navbar-nav navbar-right">
 
-            <li><a href="/about/viaSofie">Over</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/partner">Partners</a></li>
-            <li><a href="/sales/forSale">Kopen</a></li>
-            <li><a href="/sales/forRent">Huren</a></li>
-            <li><a href="#">Referenties</a></li>
-            <li><a href="/faq">Advies</a></li>
+            <li><a href="/about/viaSofie">{% trans "about" %}</a></li>
+            <li><a href="/contact">{% trans "contact" %}</a></li>
+            <li><a href="/partner">{% trans "partners" %}</a></li>
+            <li><a href="/sales/forSale">{% trans "buy" %}</a></li>
+            <li><a href="/sales/forRent">{% trans "rent" %}</a></li>
+            <li><a href="#">{% trans "references" %}</a></li>
+            <li><a href="/faq">{% trans "advice" %}</a></li>
             <li><a href="/ebook">E_book</a></li>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class ="caret"></b></a>
               <form class = "dropdown-menu navbar-form" role="form">
@@ -57,7 +57,6 @@
                 </div>
                 <button type="submit" class ="btn btn-succes btn-sm"><i class="fa fa-sign-in" aria-hidden="true"></i>login</button>
               </form><!--hier eindigt de login form-->
-            </li>
           </ul>
           {% endblock %}
         </div>
@@ -82,10 +81,10 @@
         <ul>
           <p class = "navbar-text pull-right">BIV 509141</p>
           <p class = "navbar-text pull-right">Copyright@2016 Via Sofie</p>
-          <a href="/faq" class = "navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
-          <a href="/info/disclaimer" class = "navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
+          <a href="/faq" class = "navbar-btn btn btn-default pull-right btn-xs">{% trans "real estate & advice"%}</a>
+          <a href="/info/disclaimer" class = "navbar-btn btn btn-default pull-right btn-xs">{% trans "disclaimer" %}</a>
           <a href="" class = "navbar-btn btn btn-default pull-right btn-xs">Sitemap</a>
-          <a href="/info/privacy" class = "navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
+          <a href="/info/privacy" class = "navbar-btn btn btn-default pull-right btn-xs">{% trans "privacy" %}</a>
         </ul>
       </div>
     </div><!--hier eindigt de footer-->

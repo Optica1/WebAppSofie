@@ -117,12 +117,14 @@ class Properties(models.Model):
 
 class PropertyDocuments(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	language = models.CharField(max_length=3)
 	path = models.FilePathField(max_length=100, blank=True, null=True)
 	available = models.BooleanField()
 
 class Partner(models.Model):
 	name = models.CharField(max_length=30)
 	text = models.TextField()
+	language = models.CharField(max_length=3)
 	available = models.BooleanField()
 	class Meta:
 		verbose_name_plural = "Partners"
@@ -178,6 +180,7 @@ class Translations(models.Model):
 class Faq(models.Model):
 	question = models.TextField()
 	answer = models.TextField()
+	language = models.CharField(max_length=3)
 	visible = models.BooleanField(default=True)
 	class Meta:
 		verbose_name_plural = "Faq's"
