@@ -54,7 +54,7 @@ class Ebook(models.Model):
 	name = models.CharField(max_length=20)
 	path = models.FilePathField(max_length=100, editable=False)
 	language = models.CharField(max_length=3)
-	available = models.BooleanField(default=True)
+	available = models.BooleanField('Beschikbaar', default=True)
 	class Meta:
 		verbose_name_plural = "Ebooks"
 
@@ -109,7 +109,7 @@ class Properties(models.Model):
 	energy_label = models.CharField(max_length=5)
 	extra_information_dutch = models.TextField()
 	extra_information_french = models.TextField()
-	available = models.BooleanField(default=True)
+	available = models.BooleanField('Beschikbaar', default=True)
 	sold = models.BooleanField()
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
@@ -162,7 +162,7 @@ class Partner(models.Model):
 	name = models.CharField(max_length=30)
 	text = models.TextField()
 	photo = models.ImageField(storage = fs, default='/media/partner.jpg')
-	available = models.BooleanField()
+	available = models.BooleanField('zichtbaar')
 	class Meta:
 		verbose_name_plural = "Partners"
 		verbose_name = "Partner"
@@ -214,6 +214,12 @@ class Livingroom(Room):
 class Storageroom(Room):
 	pass
 
+class Basement(Room):
+	pass
+
+class Attic(Room):
+	pass
+
 class Translations(models.Model):
 	english = models.CharField(max_length=30)
 	french = models.CharField(max_length=30)
@@ -222,7 +228,7 @@ class Translations(models.Model):
 class Faq(models.Model):
 	question = models.TextField()
 	answer = tinymce_models.HTMLField()
-	visible = models.BooleanField(default=True)
+	visible = models.BooleanField('zichtbaar', default=True)
 	class Meta:
 		verbose_name_plural = "Faq's"
 		verbose_name = "Faq"

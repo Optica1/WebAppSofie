@@ -35,6 +35,16 @@ class GarageInLine(admin.StackedInline):
     can_delete = False
     extra = 1
 
+class BasementInLine(admin.StackedInline):
+    model = Basement
+    can_delete = False
+    extra = 1
+
+class AtticInLine(admin.StackedInline):
+    model = Attic
+    can_delete = False
+    extra = 1
+
 class ToiletInLine(admin.StackedInline):
     model = Toilet
     can_delete = False
