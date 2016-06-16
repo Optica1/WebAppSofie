@@ -7,15 +7,14 @@
 		<div class = "row inline-block-row">
 			{% for property in Properties %}
 	      <div class ="col-md-3">
-					<div class ="test123">
-		        <h4>{{ property.title_dutch }}</h4>
+					<div class="card">
+					  <img class="card-img-top test12 img-rounded img-responsive" data-src="../../static/WebAppSofie/images/light-house-night-photography.jpg" alt="Card image cap">
+					  <div class="card-block text-xs-center">
+					    <h4 class="card-title test123">{{ property.title_dutch }}</h4>
+					    <p class="card-text test12">{{ property.description_dutch }}</p>
+					    <a href="/sales/property/{{ property.id }}/" class="btn btn-primary">Read More</a>
+					  </div>
 					</div>
-					<div class ="test12">
-		        <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
-					</div>
-		        <p>{{ property.description_dutch }}</p>
-		        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
-
 	      </div>
 				{% if forloop.counter|divisibleby:"4" %}
 					<div class="clearfix visible-md-block"></div>
