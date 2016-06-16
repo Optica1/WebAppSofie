@@ -13,11 +13,11 @@ from django.core.mail import send_mail, BadHeaderError
 import sys
 import traceback
 
-def faqs(request):
-    form = FaqsSearchForm(request.GET)
-    faqs = form.search()
-    context = {'faqs': faqs}
-    return render_to_response('templates/notes.html', context)
+# def faqs(request):
+#     form = FaqsSearchForm(request.GET)
+#     faqs = form.search()
+#     context = {'faqs': faqs}
+#     return render_to_response('templates/notes.html', context)
 
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:4]
