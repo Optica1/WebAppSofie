@@ -242,6 +242,8 @@ class Faq(models.Model):
 	class Meta:
 		verbose_name_plural = "Faq's"
 		verbose_name = "Faq"
+	def __unicode__(self):
+        return self.answer
 
 class Newsletter(models.Model):
 	email = models.EmailField()
