@@ -119,6 +119,9 @@ margin-left:5px;
   color: #fff;
   background-color: #2aa599;
 }
+.btn-house:hover, .btn-house:active, .btn-house:focus {
+  background-color: #227c73;
+}
 
 .jumbotron{
   width:100%;
