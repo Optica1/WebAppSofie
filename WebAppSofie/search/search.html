@@ -1,4 +1,4 @@
-{% extends 'template/base.html' %}
+{% extends 'templates/base.html' %}
 
 {% block content %}
 <form type="get" action=".">
@@ -6,7 +6,7 @@
     <button type="submit">Search</button>
 </form>
 
-{% for faq in fags %}
+{% for faq in faqs %}
 <h1>{{ faq.question }}</h1>
 <p>
     {{ faq.answer }}
