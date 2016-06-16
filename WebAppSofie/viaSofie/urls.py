@@ -6,7 +6,9 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from . import views
 
-urlpatterns = ''
+urlpatterns = [
+    url(r'^sitemap\.xml$', views.index, name='sitemap-xml'),
+]
 
 urlpatterns += i18n_patterns('',
     url(r'^$', views.index, name='index'),
