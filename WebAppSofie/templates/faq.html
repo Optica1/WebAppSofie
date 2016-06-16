@@ -2,21 +2,23 @@
 
 {% block content %}
 <h4>Wilt u een woning kopen/huren of verkopen/verhuren dan moet u rekening houden met een hele hoop zaken. Hieronder vindt u een aantal algemene begrippen en FAQ’s van belang bij de verkoop of verhuur. Hebt u vragen over onderstaande topics of staat uw vraag hier niet tussen, aarzel niet om me te contacteren, ik help u graag verder.</h4>
-<div class="container" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="container">
+<div id="accordion" role="tablist" aria-multiselectable="true">
   {% for faq in Faq %}
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="h{{ faq.id }}">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#{{ faq.id }}" aria-expanded="true" aria-controls="{{ faq.id }}">
+          <a data-toggle="collapse" data-parent="#accordion" href="#c{{ faq.id }}" aria-expanded="false" aria-controls="c{{ faq.id }}">
             {{ faq.question }}
           </a>
         </h4>
       </div>
-      <div id="{{ faq.id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="h{{ faq.id }}">
+      <div id="c{{ faq.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h{{ faq.id }}">
         {{ faq.answer }}
       </div>
     </div>
   {% endfor %}
+</div>
 </div>
 	</br>
   <h4>Hebt u vragen over het te koop stellen van een onroerend goed? Wilt u er zeker van zijn dat uw verkoopdossier volledig is? Neem vrijblijvend contact op!</h4>
