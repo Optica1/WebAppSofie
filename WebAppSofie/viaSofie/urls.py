@@ -7,10 +7,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^sitemap\.xml$', views.index, name='sitemap-xml'),
-]
-
-urlpatterns += i18n_patterns(
     url(r'^$', views.index, name='index'),
     url(r'^account', views.account, name='account'),
     url(r'^accounts/status', views.status, name='status'),
@@ -33,4 +29,4 @@ urlpatterns += i18n_patterns(
     url(r'^info/disclaimer', views.disclaimer, name='disclaimer'),
     url(r'^newsletter/subscribe', views.newsletterSubscribe, name='subscribe'),
     url(r'^newsletter/unsubscribe', views.newsletterUnsubscribe, name='unsubscribe'),
-)
+]
