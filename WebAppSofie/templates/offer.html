@@ -6,7 +6,7 @@
 	<div class = ".container-fluid">
 		<div class = "row inline-block-row">
 			{% for property in Properties %}
-	      <div class ="col-md-3 col-sm-3">
+	      <div class ="col-md-3">
 					<div class ="test123">
 		        <h4>{{ property.title_dutch }}</h4>
 					</div>
@@ -17,6 +17,9 @@
 		        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
 
 	      </div>
+				{% if forloop.counter%4 == 0 %}
+					<div class="clearfix visible-md-block"></div>
+				{% endif %}
 			{%endfor%}
     	</div>
 		</div>
