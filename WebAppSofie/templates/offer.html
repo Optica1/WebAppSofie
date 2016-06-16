@@ -2,25 +2,25 @@
 
 {% block content %}
 
-	<h2>Aanbod</h2>
-	<div class = ".container-fluid">
-		<div class = "row inline-block-row">
-			{% for property in Properties %}
-	      <div class ="col-md-3">
-					<div class="card">
-					  <img class="card-img-top test12 img-rounded img-fluid" src="../../static/WebAppSofie/images/light-house-night-photography.jpg" alt="Card image cap">
-					  <div class="card-block text-xs-center">
-					    <h4 class="card-title test123">{{ property.title_dutch }}</h4>
-					    <p class="card-text test12">{{ property.description_dutch }}</p>
-					    <a href="/sales/property/{{ property.id }}/" class="btn btn-primary">Read More</a>
-					  </div>
-					</div>
-	      </div>
-				{% if forloop.counter|divisibleby:"4" %}
-					<div class="clearfix visible-md-block"></div>
-				{% endif %}
-			{%endfor%}
-    	</div>
-		</div>
+<h2>Aanbod</h2>
+<div class = ".container-fluid">
+	<div class = "row inline-block-row">
+		{% for property in Properties %}
+      <div class ="col-md-3">
+				<div class="card">
+				  <img class="card-img-top test12 img-rounded img-fluid" src="../../static/WebAppSofie/images/light-house-night-photography.jpg" alt="Card image cap">
+				  <div class="card-block text-xs-center">
+				    <h4 class="card-title test123">{{ property.title_dutch }}</h4>
+				    <p class="card-text test12">{{ property.description_dutch }}</p>
+				    <a href="/sales/property/{{ property.id }}/" class="btn btn-house">Read More</a>
+				  </div>
+				</div>
+      </div>
+			{% if forloop.counter|divisibleby:"4" %}
+				<div class="clearfix visible-md-block"></div>
+			{% endif %}
+		{%endfor%}
+	</div>
+</div>
 
 {% endblock %}

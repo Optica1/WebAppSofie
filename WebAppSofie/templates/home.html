@@ -18,12 +18,19 @@
 	<div class="row">
 		<center>
 			{% for sale in Sales %}
-				<div class ="col-md-3 col-sm-3">
-					<h3><a href ="#">{{ sale.title_dutch }}</a></h3>
-					<img src="{{ SalePictures }}" width="90%"height="10%"  class="img-rounded img-fluid"/>
-					<p>{{ sale.description_dutch }}</p>
-					<a href = "/sales/property/{{ sale.id }}/" class = "btn btn-house">Read More</a>
+			<div class ="col-md-3">
+				<div class="card">
+					<img class="card-img-top test12 img-rounded img-fluid" src="/static/WebAppSofie/images/light-house-night-photography.jpg" alt="Card image cap">
+					<div class="card-block text-xs-center">
+						<h4 class="card-title test123">{{ sale.title_dutch }}</h4>
+						<p class="card-text test12">{{ sale.description_dutch }}</p>
+						<a href="/sales/property/{{ property.id }}/" class="btn btn-primary">Read More</a>
+					</div>
 				</div>
+			</div>
+			{% if forloop.counter|divisibleby:"4" %}
+				<div class="clearfix visible-md-block"></div>
+			{% endif %}
 			{%endfor%}
 		</center>
 	</div>
@@ -31,12 +38,19 @@
 	<div class="row">
 		<center>
 			{% for rent in Rents %}
-				<div class ="col-md-3 col-sm-3">
-					<h3><a href ="#">{{ rent.title_dutch }}</a></h3>
-					<img src="/static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-fluid"/>
-					<p>{{ rent.description_dutch }}</p>
-					<a href = "/sales/property/{{ rent.id }}/" class = "btn btn-house">Read More</a>
+			<div class ="col-md-3">
+				<div class="card">
+					<img class="card-img-top test12 img-rounded img-fluid" src="/static/WebAppSofie/images/light-house-night-photography.jpg" alt="Card image cap">
+					<div class="card-block text-xs-center">
+						<h4 class="card-title test123">{{ rent.title_dutch }}</h4>
+						<p class="card-text test12">{{ rent.description_dutch }}</p>
+						<a href="/sales/property/{{ property.id }}/" class="btn btn-primary">Read More</a>
+					</div>
 				</div>
+			</div>
+			{% if forloop.counter|divisibleby:"4" %}
+				<div class="clearfix visible-md-block"></div>
+			{% endif %}
 			{%endfor%}
 		</center>
 	</div>
