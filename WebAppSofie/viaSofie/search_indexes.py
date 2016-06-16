@@ -12,6 +12,6 @@ class FaqIndex(indexes.SearchIndex, indexes.Indexable):
     def get_model(self):
         return Faq
 
-    def index_queryset(self, using=None):
-        """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(timestamp__lte=timezone.now())
+    # def index_queryset(self, using=None):
+    #     """Used when the entire index for model is updated."""
+    #     return self.get_model().objects.filter(timestamp__lte=timezone.now())
