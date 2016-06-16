@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, p {
 
 .panel-title .a {
  font-family: 'RopaSansSCPro';
- color: #2aa599;
+ color: #2aa599 !important;
  text-underline: none !important;
 }
 
