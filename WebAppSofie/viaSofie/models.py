@@ -195,27 +195,36 @@ class Room(models.Model):
 
 class Bathroom(Room):
 	bath_type = models.CharField(max_length=15)
+	class Meta:
+		verbose_name = "Badkamer"
 
 class Bedroom(Room):
-	pass
+	class Meta:
+		verbose_name = "Slaapkamer"
 
 class Garage(Room):
 	pass
 
 class Toilet(Room):
-	pass
+	class Meta:
+		verbose_name_plural = "Toiletten"
 
 class Kitchen(Room):
-	pass
+	class Meta:
+		verbose_name = "Keuken"
 
 class Livingroom(Room):
-	pass
+	class Meta:
+		verbose_name = "Woonkamer"
 
 class Storageroom(Room):
-	pass
+	class Meta:
+		verbose_name_plural = "Bergingen"
+		verbose_name = "Berging"
 
 class Basement(Room):
-	pass
+	class Meta:
+		verbose_name = "Kelder"
 
 class Attic(Room):
 	class Meta:
