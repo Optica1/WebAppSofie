@@ -90,7 +90,8 @@ class PropertiesAdmin(admin.ModelAdmin):
         BedroomInLine,
         GarageInLine, ToiletInLine,
         KitchenInLine, LivingroomInLine,
-        StorageroomInLine,
+        StorageroomInLine, AtticInLine,
+        BasementInLine,
         StatusInLine,
         PhotoInLine
     ]
