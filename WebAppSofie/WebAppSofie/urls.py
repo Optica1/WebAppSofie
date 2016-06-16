@@ -35,8 +35,8 @@ urlpatterns =[
     # user auth urls
 
 viaSofie_patterns = ([
-    url(r'^$', viaSofie_views.index, name='index'),
-], 'news')
+    url(r'^$', viaSofie_views.index, name='index')
+], 'viaSofie')
 
 ]
 urlpatterns += i18n_patterns(
