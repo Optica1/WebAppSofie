@@ -15,7 +15,20 @@ import traceback
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:4]
 	r = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:4]
-	return render_to_response('templates/home.html', {'Sales':s, 'Rents':r})
+	salePictures = []
+	rentPictures = []
+
+	if s.exists():
+		for sale in s:
+			pic = Photo.objects.filter(property_id = sale.id, priority = True)
+			salePictures[sale.id] = pic.photo.url
+	if r.exists():
+		for rent in r:
+			pic = Photo.objects.filter(property_id = rent.id, priority = True)
+			rentPictures[rent.id] = pic.photo.url
+
+	return render_to_response('templates/home.html', {'Sales':s, 'Rents':r, 'SalePictures':salePictures, 'RentPictures':rentPictures})
+
 def about(request):
 	try:
 		pages = Aboutpage.objects.all()

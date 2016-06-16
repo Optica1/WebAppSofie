@@ -22,7 +22,7 @@
 		{% for sale in Sales %}
 				<div class ="col-md-3 col-sm-3">
 					<h3><a href ="#">{{ sale.title_dutch }}</a></h3>
-					<img src="/static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
+					<img src="{{ SalePictures }}" width="90%"height="10%"  class="img-rounded img-responsive"/>
 					<p>{{ sale.description_dutch }}</p>
 					<a href = "/sales/property/{{ sale.id }}/" class = "btn btn-default">Read More</a>
 				</div>
