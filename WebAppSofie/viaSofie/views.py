@@ -8,17 +8,10 @@ from django.utils.translation import ugettext as _ #translation
 from django.contrib.auth.models import User
 from forms import *
 from .models import *
+from .forms import NotesSearchForm
 from django.core.mail import send_mail, BadHeaderError
 import sys
 import traceback
-
-from .forms import NotesSearchForm
-
-
-def faqs(request):
-    form = FaqsSearchForm(request.GET)
-    faqs = form.search()
-    return render_to_response('notes.html', {'faqs': faqs})
 
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:4]
@@ -245,5 +238,10 @@ def newsletterUnsubscribe(request):
 		form = NewsletterUnsubscribeForm(request.POST)
 		if form.is_valid():
 			Newsletter.objects.filter(email=email).delete()
-
 	render_to_response('templates/newsletter_unsubscribe.html', args)
+
+def faqs(request):
+    form = FaqsSearchForm(request.GET)
+    faqs = form.search()
+    context = {'faqs': faqs}
+    return render_to_response('notes.html', context)
