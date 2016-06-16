@@ -108,6 +108,6 @@ class NewsletterUnsubscribeForm(forms.Form):
 			raise forms.ValidationError(u'email "%s" is not subscribed to the newsletter' % email)
 
 class FaqsSearchForm(SearchForm):
-    def search(self):
-		def no_query_found(self):
-			return self.searchqueryset.all()
+	# def search(self):
+	def no_query_found(self):
+		return self.searchqueryset.all()
