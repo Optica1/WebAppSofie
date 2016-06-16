@@ -140,7 +140,10 @@ class Properties(models.Model):
 		# self.longitude = longitude
 		# self.latitude = latitude
 		# else:
-		# 	HttpResponseRedirect('/accounts/invalid')
+			# raise ValidationError({'street': 'controleer straatnaam'}
+			# raise ValidationError({'housenumber': 'controleer huisnumber'}
+			# raise ValidationError({'postalcode': 'controleer postcode'}
+			# raise ValidationError({'city': 'controleer gemeente'}
 		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
 		if not self.id:
 			self.date_created = datetime.datetime.now()
