@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^about/viaSofie$', views.about),
     url(r'^ebook', views.ebook),
     url(r'^contact', views.contact),
-    url(r'^search', views.faqs),
+    url(r'^search/', include('haystack.urls')),
     url(r'^partner', views.partner),
     url(r'^faq', views.faq),
     url(r'^info/privacy', views.privacy),
