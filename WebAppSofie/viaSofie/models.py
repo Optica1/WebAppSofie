@@ -218,7 +218,8 @@ class Basement(Room):
 	pass
 
 class Attic(Room):
-	pass
+	class Meta:
+		verbose_name = "Zolder"
 
 class Translations(models.Model):
 	english = models.CharField(max_length=30)
