@@ -14,4 +14,4 @@ class FaqIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(timestamp__lte=timezone.now())
+        return self.get_model().objects.filter(pub_date__lte=datetime.datetime.now())
