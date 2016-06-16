@@ -85,15 +85,14 @@ class PropertiesAdmin(admin.ModelAdmin):
     list_display = ['title_dutch']
     inlines = [
         PlanningInfoInLine,
+        PhotoInLine,
         PropertyDocumentsInLine,
         BathroomInLine,
-        BedroomInLine,
-        GarageInLine, ToiletInLine,
-        KitchenInLine, LivingroomInLine,
-        StorageroomInLine, AtticInLine,
-        BasementInLine,
-        StatusInLine,
-        PhotoInLine
+        BedroomInLine, LivingroomInLine,
+        ToiletInLine, KitchenInLine,
+        GarageInLine, StorageroomInLine,
+        AtticInLine, BasementInLine,
+        StatusInLine
     ]
 
 class UserDetailsInline(admin.StackedInline):
