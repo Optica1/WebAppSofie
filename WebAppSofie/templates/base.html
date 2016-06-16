@@ -19,9 +19,7 @@
   <div class="container">
     <div class="header clearfix">
       <nav id="header" class ="navbar navbar-dark bg-inverse navbar-fixed-top">
-       <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
-         &#9776;
-       </button>
+       <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">&#9776;</button>
        <div class="collapse navbar-toggleable-xs" id="navbar-header">
          <a class="navbar-brand" href="/"><img src="{% static "WebAppSofie/images/ViaSofie-horizontal.png" %}" style="max-height: 1.5rem;" class="img-rounded"></a>
          {% block menubar %}
@@ -58,24 +56,24 @@
     </div>
     <div class="content">
       {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-      </ul>
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
       {% endif %}
       {% block content %}
       {% endblock %}
     </div>
-    <footer class="footer">
-      <div class = "footbox">
+    <footer class="footer pull-right">
+      <div>
         <ul>
-          <p class = "navbar-text pull-right">BIV 509141</p>
-          <p class = "navbar-text pull-right">Copyright@2016 Via Sofie</p>
-          <a href="/faq" class = "navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
-          <a href="/info/disclaimer" class = "navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
-          <a href="" class = "navbar-btn btn btn-default pull-right btn-xs">Sitemap</a>
-          <a href="/info/privacy" class = "navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
+          <p class="navbar-text pull-right">BIV 509141</p>
+          <p class="navbar-text pull-right">Copyright@2016 Via Sofie</p>
+          <a href="/faq" class="navbar-btn btn btn-default pull-right btn-xs">Vastgoed & advies</a>
+          <a href="/info/disclaimer" class="navbar-btn btn btn-default pull-right btn-xs">Disclaimer</a>
+          <a href="" class="navbar-btn btn btn-default btn-xs">Sitemap</a>
+          <a href="/info/privacy" class="navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
         </ul>
       </div>
     </footer>
