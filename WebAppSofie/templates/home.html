@@ -2,52 +2,45 @@
 {% load static %}
 {% block content %}
 
-
 <div class = "container"><!--hier begint de boven content-->
 	<div class = "jumbotron jumbotron-static-top" >
 		<center>
-		<img src="{% static "WebAppSofie/images/def_logos_via_sofie-RGB-01.png" %}" width="20%" height="5%"  class="img-rounded">
-		<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-		<a class = "btn btn-default">extra button!</a>
-		<a class = "btn btn-default">second extra button!</a>
-	</center>
+			<img src="{% static "WebAppSofie/images/def_logos_via_sofie-RGB-01.png" %}" width="20%" height="5%"  class="img-rounded"/>
+			<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<a class = "btn btn-default">extra button!</a>
+			<a class = "btn btn-default">second extra button!</a>
+		</center>
 	</div>
 </div><!--hier eindigt de boven content-->
 
 <div class = "container"><!--hier start midden content-->
 	<h3>Te koop</h3>
-	<div class = "row">
+	<div class="row">
 		<center>
-
-		{% for sale in Sales %}
+			{% for sale in Sales %}
 				<div class ="col-md-3 col-sm-3">
 					<h3><a href ="#">{{ sale.title_dutch }}</a></h3>
 					<img src="{{ SalePictures }}" width="90%"height="10%"  class="img-rounded img-responsive"/>
 					<p>{{ sale.description_dutch }}</p>
 					<a href = "/sales/property/{{ sale.id }}/" class = "btn btn-default">Read More</a>
 				</div>
-		{%endfor%}
+			{%endfor%}
 		</center>
 	</div>
 	<h3>Te Huur</h3>
-	<div class = "row">
+	<div class="row">
 		<center>
-
-		{% for rent in Rents %}
+			{% for rent in Rents %}
 				<div class ="col-md-3 col-sm-3">
 					<h3><a href ="#">{{ rent.title_dutch }}</a></h3>
 					<img src="/static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
 					<p>{{ rent.description_dutch }}</p>
 					<a href = "/sales/property/{{ rent.id }}/" class = "btn btn-default">Read More</a>
 				</div>
-		{%endfor%}
+			{%endfor%}
 		</center>
 	</div>
 </div>
-
-</div><!--hier eindigt midden content-->
-
- <div class="clearfix"></div>
-</div>
+<div class="clearfix"></div>
 
 {% endblock %}
