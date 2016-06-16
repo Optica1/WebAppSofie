@@ -58,7 +58,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 LOCALE_PATHS = (
-    os.path.join(PROJECT_PATH, 'locale/'),
+    os.path.join(PROJECT_DIRECTORY, 'locale/'),
 )
 LANGUAGE_CODE = 'nl'
  # list of activated languages
