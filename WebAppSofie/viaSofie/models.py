@@ -239,7 +239,8 @@ class Faq(models.Model):
 	question = models.TextField()
 	answer = tinymce_models.HTMLField()
 	visible = models.BooleanField('zichtbaar', default=True)
-	
+	pub_date = models.DateTimeField()
+
 	def __unicode__(self):
 		return self.question
 
