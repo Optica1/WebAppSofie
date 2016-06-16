@@ -118,6 +118,7 @@ margin-left:5px;
   font-family: 'RopaSansSCPro';
   color: #fff;
   background-color: #2aa599;
+  text-decoration: none !important;
 }
 .btn-house:hover, .btn-house:active, .btn-house:focus {
   background-color: #227c73;
