@@ -23,6 +23,12 @@ h1, h2, h3, h4, h5, p {
  font-family: 'RopaSansSCPro';
 }
 
+.panel-title .a {
+ font-family: 'RopaSansSCPro';
+ color: #2aa599;
+ text-underline: none !important;
+}
+
 .row li a{
  /*container die de containerS midden vast houdt*/
  color:#000;
