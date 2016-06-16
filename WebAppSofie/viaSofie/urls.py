@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^sitemap\.xml$', views.index, name='sitemap-xml'),
 ]
 
-urlpatterns += i18n_patterns('',
+urlpatterns += i18n_patterns(
     url(r'^$', views.index, name='index'),
     url(r'^account', views.account, name='account'),
     url(r'^accounts/status', views.status, name='status'),
