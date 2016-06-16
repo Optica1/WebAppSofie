@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf.urls import patterns, include, url
+from viaSofie import views as viaSofie_views
 # from viaSofie.admin import admin_site
 
 # Uncomment the next two lines to enable the admin:
@@ -33,7 +34,14 @@ urlpatterns =[
     url(r'^', include('viaSofie.urls')),
     # user auth urls
 
+viaSofie_patterns = ([
+    url(r'^$', viaSofie_views.index, name='index'),
+], 'news')
+
 ]
+urlpatterns += i18n_patterns(
+    url(r'^viaSofie/', include(viaSofie_patterns, namespace='viaSofie')),
+)
 
 
 
