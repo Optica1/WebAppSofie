@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 from forms import *
 from .models import *
 from django.core.mail import send_mail, BadHeaderError
+from datetime import date
+from haystack.generic_views import SearchView
 import sys
 import traceback
 
