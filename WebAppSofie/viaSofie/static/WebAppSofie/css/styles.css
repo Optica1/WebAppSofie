@@ -98,48 +98,43 @@ margin-left:5px;
   -webkit-transition-duration:0.4s;
 }
 .nav li:hover{
-
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
-background-color:#b9d4ce;
-
+  background-color:#b9d4ce;
 }
 
 .row h3 a{
-
   background-color:#fff;
 }
 .row a{
-font-family: 'RopaSansSCPro';
-color:#000;
-background-color:#b9d9ce;
+  font-family: 'RopaSansSCPro';
+  color: #000;
+  text-decoration: underline;
+  /*background-color:#b9d9ce;*/
 }
 
 .jumbotron{
-
-width:100%;
-
+  width:100%;
 }
-.jumbotron p{
-/*container midden*/
-color:#000;
-font-family: 'RopaSansSCPro';
-font-size:16px;
+.jumbotron p {
+  /*container midden*/
+  color:#000;
+  font-family: 'RopaSansSCPro';
+  font-size:16px;
 }
-.jumbotron a{
-/*container midden*/
-color:#000;
-background-color:#fff;
-font-family: 'RopaSansSCPro';
-
+.jumbotron a {
+  /*container midden*/
+  color:#000;
+  background-color:#fff;
+  font-family: 'RopaSansSCPro';
 }
 
 
-@media (max-width:768px){
-.input-group{
-  margin-bottom:5px;
-  padding-bottom: 5px;
-}
+@media (max-width:768px) {
+  .input-group{
+    margin-bottom:5px;
+    padding-bottom: 5px;
+  }
 }
 
 .brand{
