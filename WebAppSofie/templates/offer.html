@@ -17,7 +17,7 @@
 		        <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
 
 	      </div>
-				{% if forloop.counter%4 == 0 %}
+				{% if forloop.counter|divisibleby:4 %}
 					<div class="clearfix visible-md-block"></div>
 				{% endif %}
 			{%endfor%}
