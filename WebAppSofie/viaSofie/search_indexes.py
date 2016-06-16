@@ -8,6 +8,7 @@ class FaqIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     question = indexes.CharField(model_attr='question')
     answer = indexes.CharField(model_attr='answer')
+    visible = indexes.CharField(model_attr='visible')
 
     def get_model(self):
         return Faq
