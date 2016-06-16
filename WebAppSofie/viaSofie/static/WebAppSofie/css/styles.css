@@ -113,6 +113,13 @@ margin-left:5px;
   /*background-color:#b9d9ce;*/
 }
 
+.btn-house {
+  border: 0;
+  font-family: 'RopaSansSCPro';
+  color: #fff;
+  background-color: #2aa599;
+}
+
 .jumbotron{
   width:100%;
 }
