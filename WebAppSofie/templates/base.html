@@ -17,60 +17,57 @@
 
 <body>
   <div class="container">
-
-  <nav id="header" class ="navbar navbar-dark bg-inverse navbar-fixed-top">
-   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
-     &#9776;
-   </button>
-   <div class="collapse navbar-toggleable-xs" id="navbar-header">
-     <a class="navbar-brand" href="/"><img src="{% static "WebAppSofie/images/ViaSofie-horizontal.png" %}" style="max-height: 1.5rem;" class="img-rounded"></a>
-     {% block menubar %}
-     <ul class="nav navbar-nav nav-pills pull-xs-right">
-       <li class="nav-item"><a class="nav-link" href="/about/viaSofie">Over</a></li>
-       <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-       <li class="nav-item"><a class="nav-link" href="/partner">Partners</a></li>
-       <li class="nav-item"><a class="nav-link" href="/sales/forSale">Kopen</a></li>
-       <li class="nav-item"><a class="nav-link" href="/sales/forRent">Huren</a></li>
-       <li class="nav-item"><a class="nav-link" href="#">Referenties</a></li>
-       <li class="nav-item"><a class="nav-link" href="/faq">Advies</a></li>
-       <li class="nav-item"><a class="nav-link" href="/ebook">E_book</a></li>
-       <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class ="caret"></b></a>
-         <form class="dropdown-menu navbar-form" role="form">
-           <div class="input-group">
-             <span class="input-group-addon">
-               <span class="glyphicon glyphicon-user"></span>
-             </span>
-             <input type="text" class="form-control" placeholder="Username"/>
-           </div>
-           <div class="input-group">
-             <span class="input-group-addon">
-             <span class="glyphicon glyphicon-lock"></span>
-             </span>
-             <input type="password" class="form-control" placeholder="Password"/>
-           </div>
-           <button type="submit" class ="btn btn-succes btn-sm"><i class="fa fa-sign-in" aria-hidden="true"></i>login</button>
-         </form><!--hier eindigt de login form-->
-       </li>
-     </ul>
-     {% endblock %}
-   </div>
- </nav>
- </div>
-  <div id="content" class="container">
-
-    	{% if messages %}
-    	<ul class="messages">
-    	    {% for message in messages %}
-    	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    	    {% endfor %}
-    	</ul>
-    	{% endif %}
-
-      {% block content %}
-
-    {% endblock %}
+    <div class="header clearfix">
+      <nav id="header" class ="navbar navbar-dark bg-inverse navbar-fixed-top">
+       <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+         &#9776;
+       </button>
+       <div class="collapse navbar-toggleable-xs" id="navbar-header">
+         <a class="navbar-brand" href="/"><img src="{% static "WebAppSofie/images/ViaSofie-horizontal.png" %}" style="max-height: 1.5rem;" class="img-rounded"></a>
+         {% block menubar %}
+         <ul class="nav navbar-nav nav-pills pull-xs-right">
+           <li class="nav-item"><a class="nav-link" href="/about/viaSofie">Over</a></li>
+           <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+           <li class="nav-item"><a class="nav-link" href="/partner">Partners</a></li>
+           <li class="nav-item"><a class="nav-link" href="/sales/forSale">Kopen</a></li>
+           <li class="nav-item"><a class="nav-link" href="/sales/forRent">Huren</a></li>
+           <li class="nav-item"><a class="nav-link" href="#">Referenties</a></li>
+           <li class="nav-item"><a class="nav-link" href="/faq">Advies</a></li>
+           <li class="nav-item"><a class="nav-link" href="/ebook">E_book</a></li>
+           <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class ="caret"></b></a>
+             <form class="dropdown-menu navbar-form" role="form">
+               <div class="input-group">
+                 <span class="input-group-addon">
+                   <span class="glyphicon glyphicon-user"></span>
+                 </span>
+                 <input type="text" class="form-control" placeholder="Username"/>
+               </div>
+               <div class="input-group">
+                 <span class="input-group-addon">
+                 <span class="glyphicon glyphicon-lock"></span>
+                 </span>
+                 <input type="password" class="form-control" placeholder="Password"/>
+               </div>
+               <button type="submit" class ="btn btn-succes btn-sm"><i class="fa fa-sign-in" aria-hidden="true"></i>login</button>
+             </form><!--hier eindigt de login form-->
+           </li>
+         </ul>
+         {% endblock %}
+       </div>
+     </nav>
     </div>
-    <div class = "container footer navbar-bottom"><!--hier start de footer-->
+    <div class="content">
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% block content %}
+      {% endblock %}
+    </div>
+    <footer class="footer">
       <div class = "footbox">
         <ul>
           <p class = "navbar-text pull-right">BIV 509141</p>
@@ -81,6 +78,7 @@
           <a href="/info/privacy" class = "navbar-btn btn btn-default pull-right btn-xs">Privacybeleid</a>
         </ul>
       </div>
-    </div><!--hier eindigt de footer-->
+    </footer>
+  </div>
 </body>
 </html>
