@@ -8,7 +8,6 @@ from django.utils.translation import ugettext as _ #translation
 from django.contrib.auth.models import User
 from forms import *
 from .models import *
-from .forms import FaqsSearchForm
 from django.core.mail import send_mail, BadHeaderError
 import sys
 import traceback
