@@ -9,6 +9,8 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     postalcode = indexes.CharField(model_attr='postalcode')
     city = indexes.CharField(model_attr='city')
     price = indexes.CharField(model_attr='price')
+    title_dutch = indexes.CharField(model_attr='title_dutch')
+    description_dutch = indexes.CharField(model_attr='description_dutch')
 
     def get_model(self):
         return Properties
