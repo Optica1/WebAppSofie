@@ -109,5 +109,5 @@ class NewsletterUnsubscribeForm(forms.Form):
 
 class PandenSearchForm(SearchForm):
 	# def search(self):
-	def no_query_found(self
+	def no_query_found(self):
 		return self.searchqueryset.all()
