@@ -38,7 +38,7 @@ urlpatterns =[
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^', include('viaSofie.urls')),
     url(r'^jsi18n/$', javascript_catalog, js_info_dict),
-    url(r'^$', include('phone.urls')),
+    url(r'^$', include('viaSofie.urls')),
     # user auth urls
 ]
 
