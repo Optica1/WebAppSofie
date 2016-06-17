@@ -129,9 +129,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'nl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+1'
 
 USE_I18N = True
 
@@ -165,3 +165,13 @@ TINYMCE_DEFAULT_CONFIG = {
     'max-height': 800,
     'resize': 'both',
 }
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_DIRECTORY, 'locale/'),
+)
+
+ugettext = lamba s: s
+LANGUAGES = (
+    ('nl', ugettext('Dutch')),
+    ('fr', ugettext('French')),
+)

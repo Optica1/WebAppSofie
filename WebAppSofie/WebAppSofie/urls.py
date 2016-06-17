@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf.urls import patterns, include, url
+from django.conf.urls.i18n import i18n_patterns
 # from viaSofie.admin import admin_site
 
 # Uncomment the next two lines to enable the admin:
@@ -31,6 +32,7 @@ urlpatterns =[
     # url(r'^myadmin', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^', include('viaSofie.urls')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     # user auth urls
 
 ]
