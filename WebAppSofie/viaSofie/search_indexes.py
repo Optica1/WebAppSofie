@@ -11,7 +11,7 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     price = indexes.CharField(model_attr='price')
     title_dutch = indexes.CharField(model_attr='title_dutch')
     description_dutch = indexes.CharField(model_attr='description_dutch')
-    pand_id = indexes.CharField(model_attr='id')
+    pand_id = indexes.AutoField(model_attr='id')
 
     def get_model(self):
         return Properties
