@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
+from django.views.i18n import javascript_catalog
 # from viaSofie.admin import admin_site
 
 # Uncomment the next two lines to enable the admin:
@@ -26,13 +27,18 @@ admin.site.site_header = 'Via Sofie Administratie'
 
 import settings
 
+js_info_dict = {
+    'packages': ('viaSofie',),
+}
+
 urlpatterns =[
 
     url(r'^admin', include(admin.site.urls)),
     # url(r'^myadmin', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^', include('viaSofie.urls')),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^jsi18n/$', javascript_catalog, js_info_dict),
+    url(r'^$', include('phone.urls')),
     # user auth urls
 ]
 
