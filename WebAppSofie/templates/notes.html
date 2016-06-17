@@ -6,10 +6,10 @@
     <button type="submit">Search</button>
   </form>
 
-  {% for faq in faqs %}
-    <h1>{{ faq.question }}</h1>
+  {% for pand in panden %}
+    <h1>{{ pand.question }}</h1>
     <p>
-      {{ faq.answer }}
+      {{ pand.answer }}
     </p>
   {% endfor %}
 {% endblock %}
