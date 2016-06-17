@@ -14,7 +14,7 @@
         </h4>
       </div>
       <div id="c{{ faq.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h{{ faq.id }}">
-        {{ faq.answer }}
+        {{ faq.answer | safe }}
       </div>
     </div>
   {% endfor %}

@@ -25,7 +25,7 @@ def index(request):
 	r = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:4]
 	salePictures = []
 	rentPictures = []
-    #
+    # salePictures.extend(list(Photo.objects.filter(property_id = sale.id, priority = True)))
 	# if s.exists():
 	# 	for sale in s:
 	# 		pic = Photo.objects.filter(property_id = sale.id, priority = True)
