@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^ebook', views.ebook),
     url(r'^contact', views.contact),
     # url(r'^search/', include('haystack.urls')),
-    url(r'^search/', views.pandensearch),
+    # url(r'^search/', views.pandensearch),
     url(r'^partner', views.partner),
     url(r'^faq', views.faq),
     url(r'^info/privacy', views.privacy),

@@ -15,6 +15,8 @@ from tinymce import models as tinymce_models
 from datetime import date
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
+import sys
+import traceback
 
 # ssl._create_default_https_context = ssl._create_unverified_context
 fs = FileSystemStorage()
@@ -117,6 +119,10 @@ class Properties(models.Model):
 	class Meta:
 		verbose_name_plural = "Panden"
 		verbose_name = "Pand"
+
+	def get_priorityImage(self):
+		priorityImage = Photo.objects.filter(property_id = self, priority = True)
+		return priorityImage
 
 	def save(self, *args, **kwargs):
 		# Property_street=self.street
