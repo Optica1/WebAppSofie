@@ -34,9 +34,9 @@ urlpatterns =[
     url(r'^', include('viaSofie.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     # user auth urls
-
 ]
 
+urlpatterns += i18n_patterns([url(r'^$', 'viaSofie.views.index', name='home')])
 
 
 if not settings.DEBUG:
