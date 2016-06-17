@@ -1,4 +1,2 @@
 {{ object.title_dutch }}
 {{ object.description_dutch }}
-{{ object.photo }}
-{{ object.priority }}
