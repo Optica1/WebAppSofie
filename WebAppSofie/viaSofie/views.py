@@ -14,12 +14,12 @@ from haystack.generic_views import SearchView
 import sys
 import traceback
 
-def faqs(request):
-    form = FaqsSearchForm(request.GET)
-    faqs = form.search()
-    context = {'faqs': faqs}
+def pandensearch(request):
+    form = PandenSearchForm(request.GET)
+    panden = form.search()
+    context = {'panden': panden}
     return render_to_response('templates/notes.html', context)
-
+    
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:4]
 	r = Properties.objects.filter(sale = False, sold = False, available = True).order_by('date_modified')[:4]
