@@ -35,7 +35,7 @@ urlpatterns =[
     # user auth urls
 
 viaSofie_patterns = ([
-    url(r'^$', viaSofie_views.index, name='index')
+    url(r'^$', viaSofie_views.index, name='index'),
 ], 'viaSofie')
 
 ]
