@@ -28,7 +28,7 @@ SECRET_KEY = 'c$h#jo3tjg(!^s8)8!je&mendsugm1(b^uv!ay6v%6+yd9x70l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -175,3 +175,4 @@ LANGUAGES = [
     ('nl', _('Dutch')),
     ('fr', _('French')),
 ]
+
