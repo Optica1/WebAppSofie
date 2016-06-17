@@ -21,4 +21,4 @@ class PictureIndex(indexes.SearchIndex, indexes.Indexable):
     priority = indexes.CharField(model_attr='priority')
 
     def get_model(self):
-        return Properties
+        return Photo
