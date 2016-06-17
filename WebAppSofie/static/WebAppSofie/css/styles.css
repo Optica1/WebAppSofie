@@ -6,23 +6,8 @@
     src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
-.pull-middle {
-    display: inline-block;
-    vertical-align: bottom;
-    float: none;
-}
-
-.test123{
-  vertical-align: top;
-}
-
-.test12{
-  vertical-align: middle;
-}
-
 #map{
   height: 250px;
-  margin-top: 20px;
 }
 
 body{
@@ -36,6 +21,24 @@ body{
 
 h1, h2, h3, h4, h5, p {
  font-family: 'RopaSansSCPro';
+}
+
+.panel-title .a {
+ font-family: 'RopaSansSCPro';
+ color: #2aa599 !important;
+ text-underline: none !important;
+}
+
+.panel-title {
+ font-family: 'RopaSansSCPro';
+ color: #2aa599 !important;
+ text-underline: none !important;
+}
+
+.panel-heading {
+ font-family: 'RopaSansSCPro';
+ color: #2aa599 !important;
+ text-underline: none !important;
 }
 
 .row li a{
@@ -86,17 +89,16 @@ margin-left:5px;
 
 }
 .dropdown-menu li a:hover{
-
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
   background-color:#b9d4ce;
   color:#000;
-
 }
 
 
 .navbar{
   background-color:#0d3531;
+  max-height
   -webkit-box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
   -moz-box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
   box-shadow: 0px 7px 5px -6px rgba(0,0,0,0.64);
@@ -114,52 +116,56 @@ margin-left:5px;
   -webkit-transition-duration:0.4s;
 }
 .nav li:hover{
-
   transition-duration: 0.4s;
   -webkit-transition-duration:0.4s;
-background-color:#b9d4ce;
-
+  background-color:#b9d4ce;
 }
 
 .row h3 a{
-
   background-color:#fff;
 }
 .row a{
-font-family: 'RopaSansSCPro';
-color:#000;
-background-color:#b9d9ce;
+  font-family: 'RopaSansSCPro';
+  color: #000;
+  text-decoration: underline;
+  /*background-color:#b9d9ce;*/
+}
+
+.btn-house {
+  border: 0;
+  font-family: 'RopaSansSCPro';
+  color: #fff;
+  background-color: #2aa599;
+  text-decoration: none !important;
+}
+.btn-house:hover, .btn-house:active, .btn-house:focus {
+  background-color: #227c73;
 }
 
 .jumbotron{
-
-width:100%;
-
+  width:100%;
 }
-.jumbotron p{
-/*container midden*/
-color:#000;
-font-family: 'RopaSansSCPro';
-font-size:16px;
+.jumbotron p {
+  /*container midden*/
+  color:#000;
+  font-family: 'RopaSansSCPro';
+  font-size:16px;
 }
-.jumbotron a{
-/*container midden*/
-color:#000;
-background-color:#fff;
-font-family: 'RopaSansSCPro';
-
+.jumbotron a {
+  /*container midden*/
+  color:#000;
+  background-color:#fff;
+  font-family: 'RopaSansSCPro';
 }
 
 
-@media (max-width:768px){
-.input-group{
-  margin-bottom:5px;
-  padding-bottom: 5px;
-}
+@media (max-width:768px) {
+  .input-group{
+    margin-bottom:5px;
+    padding-bottom: 5px;
+  }
 }
 
 .brand{
-max-height: 50px;
-
+  max-height: 50px;
 }
-.footbox{}
