@@ -21,7 +21,14 @@
   				  <div class="card-block text-xs-center">
   				    <h4 class="card-title test123">{{ pand.title_dutch }}</h4>
   				    <p class="card-text test12">{{ pand.description_dutch }}</p>
-  				    <a href="/sales/property/{{ pand.id }}/" class="btn btn-house">Read More</a>
+              <script>
+                  var str = "How are you doing today?";
+                  var res = str.split(".");
+                  var res1 = res[2]
+                  var a = document.getElementById("test1");
+                  a.href = "/sales/property/"+res1"/";
+              </script>
+  				    <a id="test1" href="/sales/property/{{ pand.id }}/" class="btn btn-house">Read More</a>
   				  </div>
   				</div>
         </div>
