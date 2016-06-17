@@ -131,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'nl'
 
-TIME_ZONE = 'UTC+1'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -170,7 +170,6 @@ LOCALE_PATHS = (
     os.path.join(PROJECT_DIRECTORY, 'locale/'),
 )
 
-ugettext = lamba s: s
 LANGUAGES = (
     ('nl', ugettext('Dutch')),
     ('fr', ugettext('French')),
