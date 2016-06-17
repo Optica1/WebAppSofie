@@ -24,6 +24,10 @@
          <a class="navbar-brand" href="/"><img src="{% static "WebAppSofie/images/ViaSofie-horizontal.png" %}" style="max-height: 1.5rem;" class="img-rounded"></a>
          {% block menubar %}
          <ul class="nav navbar-nav nav-pills pull-xs-right">
+           <form type="get" action=".">
+             <input type="text" name="q">
+             <button type="submit">Search</button>
+           </form>
            <li class="nav-item"><a class="nav-link" href="/about/viaSofie">Over</a></li>
            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
            <li class="nav-item"><a class="nav-link" href="/partner">Partners</a></li>
