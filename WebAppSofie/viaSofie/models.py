@@ -23,13 +23,13 @@ fs = FileSystemStorage()
 
 class UserDetails(models.Model):
 	user = models.OneToOneField(User)
-	phonenumber = models.CharField(max_length=12)
-	street = models.CharField(max_length=50)
-	housenumber = models.CharField(max_length=4)
-	busnumber = models.CharField(max_length=3, null=True, blank=True)
-	postalcode = models.CharField(max_length=10)
-	city = models.CharField(max_length=30)
-	country = models.CharField(max_length=30)
+	phonenumber = models.CharField('Telefoonnummer', max_length=12)
+	street = models.CharField('Straat', max_length=50)
+	housenumber = models.CharField('Huisnummer', max_length=4)
+	busnumber = models.CharField('Busnummer', max_length=3, null=True, blank=True)
+	postalcode = models.CharField('Postcode', max_length=10)
+	city = models.CharField('Plaats', max_length=30)
+	country = models.CharField('Land', max_length=30)
 
 class Aboutpage(models.Model):
 	title = models.CharField(max_length=60)
