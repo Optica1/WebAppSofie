@@ -5,11 +5,24 @@
     <input type="text" name="q">
     <button type="submit">Search</button>
   </form>
-
-  {% for faq in faqs %}
-    <h1>{{ faq.question }}</h1>
-    <p>
-      {{ faq.answer }}
-    </p>
-  {% endfor %}
+  <h2>Aanbod</h2>
+  <div class = ".container-fluid">
+  	<div class = "row inline-block-row">
+  		{% for pand in panden %}
+        <div class ="col-md-3">
+  				<div class="card">
+  				  <img class="card-img-top test12 img-rounded img-fluid" src="../../static/WebAppSofie/images/light-house-night-photography.jpg" alt="Card image cap">
+  				  <div class="card-block text-xs-center">
+  				    <h4 class="card-title test123">{{ result.pand.title_dutch }}</h4>
+  				    <p class="card-text test12">{{ result.pand.description_dutch }}</p>
+  				    <a href="/sales/property/{{ property.id }}/" class="btn btn-house">Read More</a>
+  				  </div>
+  				</div>
+        </div>
+  			{% if forloop.counter|divisibleby:"4" %}
+  				<div class="clearfix visible-md-block"></div>
+  			{% endif %}
+  		{%endfor%}
+  	</div>
+  </div>
 {% endblock %}

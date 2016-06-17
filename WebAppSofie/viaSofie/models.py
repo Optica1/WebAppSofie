@@ -113,6 +113,7 @@ class Properties(models.Model):
 	sold = models.BooleanField()
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
+	pub_date = models.DateTimeField()
 	class Meta:
 		verbose_name_plural = "Panden"
 		verbose_name = "Pand"

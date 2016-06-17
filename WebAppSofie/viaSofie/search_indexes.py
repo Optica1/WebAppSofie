@@ -4,13 +4,14 @@ from haystack import indexes
 from .models import *
 
 
-class FaqIndex(indexes.SearchIndex, indexes.Indexable):
+class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    question = indexes.CharField(model_attr='question')
-    answer = indexes.CharField(model_attr='answer')
+    postalcode = indexes.CharField(model_attr='postalcode')
+    city = indexes.CharField(model_attr='city')
+    price = indexes.CharField(model_attr='price')
 
     def get_model(self):
-        return Faq
+        return Properties
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
