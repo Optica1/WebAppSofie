@@ -3,3 +3,4 @@
 {{ object.postalcode }}
 {{ object.city }}
 {{ object.price }}
+{{ object.pand_id }}

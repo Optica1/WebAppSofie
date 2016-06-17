@@ -1,2 +1,6 @@
 {{ object.title_dutch }}
 {{ object.description_dutch }}
+{{ object.postalcode }}
+{{ object.city }}
+{{ object.price }}
+{{ object.pand_id }}
