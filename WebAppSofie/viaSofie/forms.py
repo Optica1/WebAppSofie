@@ -111,4 +111,4 @@ class NewsletterUnsubscribeForm(forms.Form):
 class PandenSearchForm(SearchForm):
 	# def search(self):
 	def no_query_found(self):
-		return self.searchqueryset.all().order_by('city')
+		return self.searchqueryset.all().models(Properties).order_by('city')
