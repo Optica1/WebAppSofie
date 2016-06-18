@@ -8,6 +8,7 @@ from django import forms
 import sys
 import traceback
 from haystack.forms import SearchForm
+from haystack.query import SearchQuerySet
 #from passlib.hash import sha256_crypt
 
 class MyRegistrationForm(UserCreationForm):
@@ -110,4 +111,4 @@ class NewsletterUnsubscribeForm(forms.Form):
 class PandenSearchForm(SearchForm):
 	# def search(self):
 	def no_query_found(self):
-		return self.searchqueryset.all()
+		return self.searchqueryset.all().order_by('date_modified')
