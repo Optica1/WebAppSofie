@@ -17,7 +17,7 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
         return Properties
 
     def get_priorityImage(self):
-		priorityImage = PictureIndex.filter(property_id = self, priority = True)
+		priorityImage = Photo.filter(property_id = self, priority = True)
 		return priorityImage
 
 class PictureIndex(indexes.SearchIndex, indexes.Indexable):
