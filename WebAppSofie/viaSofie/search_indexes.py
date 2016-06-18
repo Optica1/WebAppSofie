@@ -16,6 +16,10 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     def get_model(self):
         return Properties
 
+    def get_priorityImage(self):
+		priorityImage = PictureIndex.filter(property_id = self, priority = True)
+		return priorityImage
+
 class PictureIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     photo = indexes.CharField(model_attr='photo')
