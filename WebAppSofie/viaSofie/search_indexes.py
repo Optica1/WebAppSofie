@@ -12,8 +12,8 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     title_dutch = indexes.CharField(model_attr='title_dutch')
     description_dutch = indexes.CharField(model_attr='description_dutch')
     pand_id = indexes.IntegerField(model_attr='id')
-    photo = models.CharField()
-    priority = models.IntegerField()
+    photo = models.ImageField()
+    priority = models.BooleanField()
 
     def get_model(self):
         return Properties
