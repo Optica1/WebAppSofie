@@ -11,10 +11,12 @@
   		{% for pand in panden %}
         <div class ="col-md-3">
   				<div class="card">
-            {% if pand.get_priorityImage %}
-  					{% for image in pand.get_priorityImage %}
-  					<img class="card-img-top test12 img-rounded img-fluid" src="{{ image.photo.url }}" alt="Card image cap">
-  					{%endfor%}
+            {% if pand.photo %}
+    					{% for image in pand.photo %}
+                {% if image.available = 1 %}
+      					<img class="card-img-top test12 img-rounded img-fluid" src="{{ image.photo.url }}" alt="Card image cap">
+                {%endif%}
+    					{%endfor%}
   					{%else%}
   					<img class="card-img-top test12 img-rounded img-fluid" src="/media/nophoto.png" alt="Card image cap">
   					{%endif%}

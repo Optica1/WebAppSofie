@@ -12,18 +12,19 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     title_dutch = indexes.CharField(model_attr='title_dutch')
     description_dutch = indexes.CharField(model_attr='description_dutch')
     pand_id = indexes.IntegerField(model_attr='id')
+    photo = models.ImageField()
+    priority = models.BooleanField()
 
     def get_model(self):
         return Properties
 
-    def get_priorityImage(self):
-		priorityImage = PictureIndex.filter(property_id = self, priority = True)
-		return priorityImage
+    def prepare(self, object):
+        """
+        Prepare the search data
+        """
+        self.prepared_data = super(PropertiesIndex, self).prepare(object)
 
-class PictureIndex(indexes.SearchIndex, indexes.Indexable):
-    text = indexes.CharField(document=True, use_template=True)
-    photo = indexes.CharField(model_attr='photo')
-    priority = indexes.CharField(model_attr='priority')
-
-    def get_model(self):
-        return Photo
+        # Retrieve the tutorial metas and return the prepared data
+        meta = get_Photo(property_id_id=object.pand_id)
+        self.prepared_data['photo'] = meta.photo
+        self.prepared_data['priority'] = meta.priority

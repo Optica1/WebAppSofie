@@ -4,3 +4,5 @@
 {{ object.city }}
 {{ object.price }}
 {{ object.pand_id }}
+{{ object.photo }}
+{{ object.priority }}
