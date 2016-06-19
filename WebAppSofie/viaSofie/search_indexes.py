@@ -12,20 +12,20 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     title_dutch = indexes.CharField(model_attr='title_dutch')
     description_dutch = indexes.CharField(model_attr='description_dutch')
     pand_id = indexes.IntegerField(model_attr='id')
-    photo = models.ImageField()
-    priority = models.BooleanField()
+    # photo = models.ImageField()
+    # priority = models.BooleanField()
 
     def get_model(self):
         return Properties
 
-    # def prepare(self, object):
-    #     """
-    #     Prepare the search data
-    #     """
-    #     self.prepared_data = super(PropertiesIndex, self).prepare(object)
-    #
-    #     # Retrieve the photo url and priority
-    #     p = Photo.objects.get(property_id = object.pand_id)
-    #     # meta = get_Photo(property_id=object.id)
-    #     self.prepared_data['photo'] = p.photo
-    #     self.prepared_data['priority'] = p.priority
+    def prepare(self, object):
+        """
+        Prepare the search data
+        """
+        self.prepared_data = super(PropertiesIndex, self).prepare(object)
+
+        # Retrieve the photo url and priority
+        p = Photo.objects.get(property_id = object.pand_id)
+        # meta = get_Photo(property_id=object.id)
+        self.prepared_data['photo'] = p.photo
+        self.prepared_data['priority'] = p.priority
