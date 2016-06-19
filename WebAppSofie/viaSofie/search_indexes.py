@@ -19,7 +19,7 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
         return Properties
 
     def prepare(self, object):
-        
+
         self.prepared_data = super(PropertiesIndex, self).prepare(object)
 
         # Retrieve the photo url and priority
@@ -27,3 +27,5 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
         # meta = get_Photo(property_id=object.id)
         self.prepared_data['photo'] = p.photo
         self.prepared_data['priority'] = p.priority
+
+        return self.prepared_data
