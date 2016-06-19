@@ -25,6 +25,6 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
         self.prepared_data = super(PropertiesIndex, self).prepare(object)
 
         # Retrieve the tutorial metas and return the prepared data
-        meta = get_Photo(property_id_id=object.pand_id)
+        meta = get_Photo(property_id_id=object.id)
         self.prepared_data['photo'] = meta.photo
         self.prepared_data['priority'] = meta.priority
