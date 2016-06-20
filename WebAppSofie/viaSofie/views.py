@@ -10,6 +10,7 @@ from .forms import *
 from .models import *
 from django.core.mail import send_mail, BadHeaderError
 from datetime import date
+from django.utils import translation
 from haystack.generic_views import SearchView
 import sys
 import traceback
