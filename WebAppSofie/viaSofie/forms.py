@@ -56,6 +56,9 @@ class MyEbookForm(forms.Form):
 		fields =('email', 'ebook')
 
 	def save(self, commit=True):
+		EbookRequests = super(MyEbookForm, self).save(commit=False)# commit false because we do this at end of var assignments
+
+		
 		EbookRequests.email = self.cleaned_data['email']
 		EbookRequests.ebook = self.cleaned_data['ebook']
 		EbookRequests.send	= 0
