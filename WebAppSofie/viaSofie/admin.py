@@ -117,6 +117,9 @@ class EbookAdmin(admin.ModelAdmin):
 class DisclaimerPageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
+class EbookRegistrationAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
 admin.site.register(Properties, PropertiesAdmin)
@@ -126,6 +129,7 @@ admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Ebook, EbookAdmin)
 admin.site.register(DisclaimerPage, DisclaimerPageAdmin)
 admin.site.register(Newsletter, NewsletterAdmin)
+admin.site.register(EbookRegistration, EbookRegistrationAdmin)
 
 
 # Re-register UserAdmin
