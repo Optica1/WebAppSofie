@@ -5,4 +5,3 @@
 {{ object.price }}
 {{ object.pand_id }}
 {{ object.priority }}
-{{ object.sale }}
