@@ -129,7 +129,7 @@ admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Ebook, EbookAdmin)
 admin.site.register(DisclaimerPage, DisclaimerPageAdmin)
 admin.site.register(Newsletter, NewsletterAdmin)
-admin.site.register(EbookRegistration, EbookRegistrationAdmin)
+admin.site.register(EbookRequests, EbookRegistrationAdmin)
 
 
 # Re-register UserAdmin
