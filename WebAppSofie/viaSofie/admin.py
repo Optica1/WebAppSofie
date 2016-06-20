@@ -118,7 +118,7 @@ class DisclaimerPageAdmin(admin.ModelAdmin):
     list_display = ['title']
 
 class EbookRegistrationAdmin(admin.ModelAdmin):
-    list_display = ['email']
+    list_display = ['email', 'ebook_id', 'send']
 
 admin.site.register(Status,StatusAdmin)
 admin.site.register(Aboutpage,AboutpageAdmin)
