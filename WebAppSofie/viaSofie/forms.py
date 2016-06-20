@@ -47,7 +47,7 @@ class MyRegistrationForm(UserCreationForm):
 			user.save()
 		return
 
-class MyEbookForm(forms.Form):
+class MyEbookForm(forms.ModelForm):
 	email = forms.EmailField(required=True)
 	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).order_by('id'))
 
@@ -58,7 +58,7 @@ class MyEbookForm(forms.Form):
 	def save(self, commit=True):
 		EbookRequests = super(MyEbookForm, self).save(commit=False)# commit false because we do this at end of var assignments
 
-		
+
 		EbookRequests.email = self.cleaned_data['email']
 		EbookRequests.ebook = self.cleaned_data['ebook']
 		EbookRequests.send	= 0
