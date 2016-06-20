@@ -14,6 +14,7 @@ from django.utils import translation
 from haystack.generic_views import SearchView
 import sys
 import traceback
+from django.utils.translation import activate
 
 def faqs(request):
     form = FaqsSearchForm(request.GET)
