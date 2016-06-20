@@ -84,9 +84,8 @@ class NewsletterForm(forms.ModelForm):
 
 		mail = self.cleaned_data['mail']
 
-		print Newsletter.email
 		if Newsletter.objects.filter(email=mail).exists():
-			raise forms.ValidationError(u'email "%s" is already in use.' % Newsletter.email)
+			raise forms.ValidationError(u'email "%s" is already in use.' % mail)
 		else:
 			Newsletter.email = mail
 			if commit:
