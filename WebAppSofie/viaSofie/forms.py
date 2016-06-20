@@ -90,8 +90,8 @@ class NewsletterForm(forms.ModelForm):
 
 		Newsletter.email = self.cleaned_data['mail']#cleaned so all character are valid
 		print Newsletter.email
-		if Newsletter.objects.filter(email=email).exists():
-			raise forms.ValidationError(u'email "%s" is already in use.' % email)
+		if Newsletter.objects.filter(email=Newsletter.email).exists():
+			raise forms.ValidationError(u'email "%s" is already in use.' % Newsletter.email)
 		else:
 			if commit:
 				Newsletter.save()
