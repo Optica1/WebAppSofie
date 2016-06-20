@@ -65,7 +65,7 @@ class Ebook(models.Model):
 
 class EbookRequests(models.Model):
 	email = models.EmailField(max_length=70)
-	ebook_id = models.ForeignKey(Ebook, on_delete=models.PROTECT)
+	ebook_id = models.ForeignKey(Ebook, blank=True, null=True, on_delete=models.PROTECT)
 	send = models.BooleanField()
 	class Meta:
 		verbose_name_plural = "EbookRequests"
