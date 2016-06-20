@@ -12,19 +12,20 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     title_dutch = indexes.CharField(model_attr='title_dutch')
     description_dutch = indexes.CharField(model_attr='description_dutch')
     pand_id = indexes.IntegerField(model_attr='id')
+    sale = indexes.BooleanField(model_attr='sale')
     # photo = models.ImageField()
-    priority = indexes.IntegerField(model_attr='id')
+    # priority = indexes.IntegerField(model_attr='id')
 
     def get_model(self):
         return Properties
 
-    def prepare(self, object):
-        self.prepared_data = super(PropertiesIndex, self).prepare(object)
-        # Retrieve the photo url and priority
-        p = Photo.objects.get(property_id = object.pand_id)
-        # meta = get_Photo(property_id=object.id)
-        # self.prepared_data['photo'] = [photo.photo for photo in object.photo.filter(property_id = object.pand_id).filter(priority=1)]
-        # self.prepared_data['priority'] = [photo.priority for photo in object.photo.filter(property_id = object.pand_id)]
-        # self.prepared_data['photo'] = p.photo
-        self.prepared_data['priority'] = p.priority
-        return self.prepared_data
+    # def prepare(self, object):
+    #     self.prepared_data = super(PropertiesIndex, self).prepare(object)
+    #     # Retrieve the photo url and priority
+    #     p = Photo.objects.get(property_id = object.pand_id)
+    #     # meta = get_Photo(property_id=object.id)
+    #     # self.prepared_data['photo'] = [photo.photo for photo in object.photo.filter(property_id = object.pand_id).filter(priority=1)]
+    #     # self.prepared_data['priority'] = [photo.priority for photo in object.photo.filter(property_id = object.pand_id)]
+    #     # self.prepared_data['photo'] = p.photo
+    #     self.prepared_data['priority'] = p.priority
+    #     return self.prepared_data
