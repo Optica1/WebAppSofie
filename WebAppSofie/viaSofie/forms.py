@@ -96,7 +96,7 @@ class NewsletterUnsubscribeForm(forms.Form):
 		model = Newsletter
 		fields = ('email')
 
-	def clean_email(self):
+	def save(self):
 		email = self.cleaned_data['email']
 		if Newsletter.objects.filter(email).exists():
 			pass
