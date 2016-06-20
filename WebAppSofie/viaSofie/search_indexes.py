@@ -19,13 +19,12 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
         return Properties
 
     def prepare_priority(self, object):
-        return obj.propertyid.priority
         # self.prepared_data = super(PropertiesIndex, self).prepare(object)
-        # # Retrieve the photo url and priority
-        # p = Photo.objects.get(property_id = object.pand_id)
-        # # meta = get_Photo(property_id=object.id)
-        # # self.prepared_data['photo'] = [photo.photo for photo in object.photo.filter(property_id = object.pand_id).filter(priority=1)]
-        # # self.prepared_data['priority'] = [photo.priority for photo in object.photo.filter(property_id = object.pand_id)]
-        # # self.prepared_data['photo'] = p.photo
-        # self.prepared_data['priority'] = p.priority
-        # return self.prepared_data
+        # Retrieve the photo url and priority
+        p = Photo.objects.get(property_id = object.id)
+        # meta = get_Photo(property_id=object.id)
+        # self.prepared_data['photo'] = [photo.photo for photo in object.photo.filter(property_id = object.pand_id).filter(priority=1)]
+        # self.prepared_data['priority'] = [photo.priority for photo in object.photo.filter(property_id = object.pand_id)]
+        # self.prepared_data['photo'] = p.photo
+        self.prepared_data['priority'] = p.priority
+        return self.prepared_data
