@@ -13,13 +13,13 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     description_dutch = indexes.CharField(model_attr='description_dutch')
     pand_id = indexes.IntegerField(model_attr='id')
     # photo = models.ImageField()
-    priority = models.IntegerField()
+    # priority = indexes.IntegerField(model_attr='id')
 
     def get_model(self):
         return Properties
 
-    def prepare_priority(self, object):
-        # self.prepared_data = super(PropertiesIndex, self).prepare(object)
+    def prepare(self, object):
+        self.prepared_data = super(PropertiesIndex, self).prepare(object)
         # Retrieve the photo url and priority
         p = Photo.objects.get(property_id = object.pand_id)
         # meta = get_Photo(property_id=object.id)
