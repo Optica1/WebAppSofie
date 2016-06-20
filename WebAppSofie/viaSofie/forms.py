@@ -79,17 +79,14 @@ class NewsletterForm(forms.ModelForm):
 		model = Newsletter
 		fields = ['mail']
 
+
 	def save(self, commit=True):
 		Newsletter = super(NewsletterForm, self).save(commit=False)# commit false because we do this at end of var assignments
 
-		mail = self.cleaned_data['mail']
-
-		if Newsletter.objects.filter(email=mail).exists():
-			raise forms.ValidationError(u'email "%s" is already in use.' % mail)
-		else:
-			Newsletter.email = mail
-			if commit:
-				Newsletter.save()
+		Newsletter.email = self.cleaned_data['mail']#cleaned so all character are valid
+		print Newsletter.email
+		if commit:
+			Newsletter.save()
 		return
 
 class NewsletterUnsubscribeForm(forms.Form):

@@ -219,7 +219,11 @@ def newsletterSubscribe(request):
 	if request.method == 'POST':
 		form = NewsletterForm(request.POST)
 		if form.is_valid():
-			form.save()
+			mail = form.cleaned_data['mail']
+			if Newsletter.objects.filter(email=mail).exists():
+				raise forms.ValidationError(u'email "%s" is already in use.' % mail)
+			else:
+				form.save()
 	args = {}
 	args.update(csrf(request))
 	args['form'] = NewsletterForm()
