@@ -13,7 +13,11 @@ class PropertiesIndex(indexes.SearchIndex, indexes.Indexable):
     description_dutch = indexes.CharField(model_attr='description_dutch')
     pand_id = indexes.IntegerField(model_attr='id')
     # photo = models.ImageField()
+<<<<<<< HEAD
     priority = models.BooleanField()
+=======
+    # priority = indexes.IntegerField(model_attr='id')
+>>>>>>> parent of 496f3f8... editing search_indexes
 
     def get_model(self):
         return Properties
