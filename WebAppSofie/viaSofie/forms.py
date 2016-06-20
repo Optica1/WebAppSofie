@@ -72,7 +72,7 @@ class ContactForm(forms.Form):
 		widget=forms.Textarea
 	)
 
-class NewsletterForm(forms.ModelForm):
+class NewsletterForm(forms.Form):
 	mail = forms.EmailField(required=True)
 
 	class Meta:
