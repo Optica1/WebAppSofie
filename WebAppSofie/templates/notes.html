@@ -12,11 +12,11 @@
         <div class ="col-md-3">
   				<div class="card">
             {% if pand.photo %}
-    					{% for image in pand.photo %}
-                {% if image.available = 1 %}
+    					<!-- {% for image in pand.photo %} -->
+                <!-- {% if image.available = 1 %} -->
       					<img class="card-img-top test12 img-rounded img-fluid" src="{{ image.photo.url }}" alt="Card image cap">
-                {%endif%}
-    					{%endfor%}
+                <!-- {%endif%} -->
+    					<!-- {%endfor%} -->
   					{%else%}
   					<img class="card-img-top test12 img-rounded img-fluid" src="/media/nophoto.png" alt="Card image cap">
   					{%endif%}
