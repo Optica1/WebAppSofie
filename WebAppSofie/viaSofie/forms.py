@@ -58,6 +58,7 @@ class MyEbookForm(forms.Form):
 	def save(self, commit=True):
 		EbookRequests.email = self.cleaned_data['email']
 		EbookRequests.ebook = self.cleaned_data['ebook']
+		EbookRequests.send	= 0
 
 		if commit:
 			EbookRequests.save()
