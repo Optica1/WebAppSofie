@@ -60,7 +60,7 @@ class MyEbookForm(forms.ModelForm):
 
 
 		EbookRequests.email = self.cleaned_data['email']
-		EbookRequests.ebook = self.cleaned_data['ebook']
+		EbookRequests.ebook_id = self.cleaned_data['ebook']
 		EbookRequests.send	= 0
 
 		if commit:
