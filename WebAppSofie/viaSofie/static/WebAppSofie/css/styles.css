@@ -20,14 +20,17 @@ body{
 }
 
 #priorityImage {
-  width: auto;
-  max-width: inherit;
   max-height: inherit;
+  max-width: 100%;
+
+}
+
+#photolist {
+  overflow-y: auto;
 }
 
 .propertyPhotos {
   max-height: 300px;
-  overflow:auto;
 }
 
 h1, h2, h3, h4, h5, p {

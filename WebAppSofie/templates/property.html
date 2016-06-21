@@ -10,7 +10,7 @@
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
           	<center>
-	          	<div class ="propertyPhotos col-md-8"> <!-- carousel foto's niet automatisch -->
+	          	<div class ="propertyPhotos col-md-8 card"> <!-- carousel foto's niet automatisch -->
 								{% if Property.get_priorityImage %}
 								{% for image in Property.get_priorityImage %}
 	            	<img id="priorityImage" title="{{image.photo.name}}" src="{{image.photo.url}}" class="img-rounded"/>
@@ -19,7 +19,7 @@
 								<img id="priorityImage" title="No Image Found" src="/media/nophoto.png" alt="Card image cap">
 								{%endif%}
 	          	</div>
-							<div id="photolist" class = "propertyPhotos col-md-4">
+							<div id="photolist" class = "propertyPhotos col-md-4 card">
 								{% for photo in Photos %}
 								<div class = "col-md-6" >
 									<img src="{{photo.photo.url}}" onclick="selectPicture(this)" title="{{photo.photo.name}}" width="100%" height="100%" class="img-rounded"/>
