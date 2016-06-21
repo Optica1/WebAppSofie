@@ -19,6 +19,17 @@ body{
 	background-image: url("static/WebAppSofie/images/def_logos_via_sofie-RGB-01.png");
 }
 
+#priorityImage {
+  width: auto;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.propertyPhotos {
+  max-height: 300px;
+  overflow:auto;
+}
+
 h1, h2, h3, h4, h5, p {
  font-family: 'RopaSansSCPro';
 }

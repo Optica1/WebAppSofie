@@ -1,5 +1,5 @@
 {% extends "templates/base.html" %}
-
+{% load static %}
 {% block content %}
 
 
@@ -10,35 +10,39 @@
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
           	<center>
-							{% for image in Property.get_priorityImage %}
-	          	<div class ="col-md-9"> <!-- carousel foto's niet automatisch -->
-	            	<img src="{{image.photo.url}}" width="100%"height="10%"  class="img-rounded"/>
-								<div class="row">
-									{% for photo in Photos %}
-								<div class = "col-md-1">
-									<img src="{{photo.photo.url}}" width="100%"height="10%"  class="img-rounded"/>
+	          	<div class ="propertyPhotos col-md-8"> <!-- carousel foto's niet automatisch -->
+								{% if Property.get_priorityImage %}
+								{% for image in Property.get_priorityImage %}
+	            	<img id="priorityImage" title="{{image.photo.name}}" src="{{image.photo.url}}" class="img-rounded"/>
+								{% endfor %}
+								{% else %}
+								<img id="priorityImage" title="No Image Found" src="/media/nophoto.png" alt="Card image cap">
+								{%endif%}
+	          	</div>
+							<div id="photolist" class = "propertyPhotos col-md-4">
+								{% for photo in Photos %}
+								<div class = "col-md-6" >
+									<img src="{{photo.photo.url}}" onclick="selectPicture(this)" title="{{photo.photo.name}}" width="100%" height="100%" class="img-rounded"/>
 								</div>
 								{% endfor %}
 							</div>
-	          	</div>
-							{% endfor %}
-
-	          	<div class ="col-md-3">
-	            	<h3>Eigenschappen</h3>
-	            	<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
-	            	<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
-	            	<p><span>Aantal badkamers:</span> {{Bathroomcount}}</p>
-	            	<p><span>Oppervlakte:</span> {{ Property.area }}</p>
-	            	<p><span>Bewoonbare oppervlakte:</span> {{ Property.livingarea }}</p>
-	            	<p><span>Bouwjaar:</span> {{ Property.year }}</p>
-	            	<p><span>Kadastraal inkomen:</span> {{ Property.rateable_value }}</p>
-	            	<p><span>ID:</span> {{ Property.id }}</p>
-	          	</div>
+							<script src="{% static "WebAppSofie/js/photoControl.js"%}"></script>
 			</center>
 		</div>
 		<div class="row">
 			<center>
-				<div class="col-md-12">
+				<div class ="col-md-3">
+					<h3>Eigenschappen</h3>
+					<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
+					<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
+					<p><span>Aantal badkamers:</span> {{Bathroomcount}}</p>
+					<p><span>Oppervlakte:</span> {{ Property.area }}</p>
+					<p><span>Bewoonbare oppervlakte:</span> {{ Property.livingarea }}</p>
+					<p><span>Bouwjaar:</span> {{ Property.year }}</p>
+					<p><span>Kadastraal inkomen:</span> {{ Property.rateable_value }}</p>
+					<p><span>ID:</span> {{ Property.id }}</p>
+				</div>
+				<div class="col-md-9">
 					<h3>Omschrijving</h3>
 					<p>{{ Property.description_dutch }}</p>
 				</div>
