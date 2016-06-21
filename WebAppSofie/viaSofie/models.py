@@ -152,6 +152,7 @@ class Properties(models.Model):
 			# raise ValidationError({'postalcode': 'controleer postcode'}
 			# raise ValidationError({'city': 'controleer gemeente'}
 		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
+
 		if not self.id:
 			self.date_created = datetime.datetime.now()
 		self.date_modified = datetime.datetime.now()
@@ -189,9 +190,16 @@ class Photo(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
 	photo = models.ImageField(storage = fs)
 	priority = models.BooleanField('Kies als hoofdfoto')
+	remove_the_file = models.BooleanField('Verwijder foto')
 	def image_thumb(self):
 		return '<img src="/media/%s" width="100" height="100" />' % (self.photo)
 	image_thumb.allow_tags = True
+
+	def save(self):
+		if self.remove_the_file:
+			super(Photo, self).delete()
+			return
+		super(Photo, self).save()
 
 class Room(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
