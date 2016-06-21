@@ -6,7 +6,7 @@
 	<h2>{{ Property.title_dutch }}</h2>
     </style>
 	<h4>{{  Property.title_dutch  }}</h4>
-
+	<script src="{% static "WebAppSofie/js/photoControl.js"%}"></script>
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
           	<center>
@@ -16,7 +16,7 @@
 	            	<img id="priorityImage" title="{{image.photo.name}}" src="{{image.photo.url}}" class="img-rounded"/>
 								{% endfor %}
 								{% else %}
-								<img id="priorityImage" title="No Image Found" src="/media/nophoto.png" alt="Card image cap">
+								<img id="priorityImage" title="No Image Found" src="/media/nophoto.png" alt="Card image cap" class="img-rounded">
 								{%endif%}
 	          	</div>
 							<div id="photolist" class = "propertyPhotos col-md-4 card">
@@ -26,12 +26,12 @@
 								</div>
 								{% endfor %}
 							</div>
-							<script src="{% static "WebAppSofie/js/photoControl.js"%}"></script>
+							<script>imageSelected()</script>
 			</center>
 		</div>
 		<div class="row">
 			<center>
-				<div class ="col-md-3">
+				<div class ="col-md-3 card">
 					<h3>Eigenschappen</h3>
 					<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
 					<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
@@ -42,7 +42,7 @@
 					<p><span>Kadastraal inkomen:</span> {{ Property.rateable_value }}</p>
 					<p><span>ID:</span> {{ Property.id }}</p>
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-9 card">
 					<h3>Omschrijving</h3>
 					<p>{{ Property.description_dutch }}</p>
 				</div>
