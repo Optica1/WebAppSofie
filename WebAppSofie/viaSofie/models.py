@@ -32,30 +32,30 @@ class UserDetails(models.Model):
 	country = models.CharField('Land', max_length=30)
 
 class Aboutpage(models.Model):
-	title = models.CharField(max_length=60)
+	title = models.CharField('titel', max_length=60)
 	text = tinymce_models.HTMLField()
-	language = models.CharField(max_length=20, default='NL')
+	language = models.CharField('taal', max_length=20, default='NL')
 	class Meta:
 		verbose_name_plural = "Over ons pagina"
 
 class PrivacyPage(models.Model):
-	title = models.CharField(max_length=60)
+	title = models.CharField('titel', max_length=60)
 	text = HTMLField()
-	language = models.CharField(max_length=20)
+	language = models.CharField('taal', max_length=20)
 	class Meta:
 		verbose_name_plural = "Privacy pagina"
 
 class DisclaimerPage(models.Model):
-	title = models.CharField(max_length=60)
+	title = models.CharField('titel', max_length=60)
 	text = HTMLField()
-	language = models.CharField(max_length=20)
+	language = models.CharField('taal', max_length=20)
 	class Meta:
 		verbose_name_plural = "Disclaimer pagina"
 
 class Ebook(models.Model):
-	name = models.CharField(max_length=20)
+	name = models.CharField('naam', max_length=20)
 	path = models.FilePathField(max_length=100, editable=False)
-	language = models.CharField(max_length=3)
+	language = models.CharField('taal', max_length=3)
 	available = models.BooleanField('Beschikbaar', default=True)
 	class Meta:
 		verbose_name_plural = "Ebooks"
@@ -75,14 +75,14 @@ class Properties(models.Model):
 	user = models.ForeignKey(User, on_delete=models.PROTECT)
 	title_dutch = models.CharField(max_length=100)
 	title_french = models.CharField(max_length=100)
-	street = models.CharField(max_length=50)
-	housenumber = models.CharField(max_length=4)
-	busnumber = models.CharField(max_length=3, blank=True)
-	postalcode = models.CharField(max_length=10)
-	city = models.CharField(max_length=30)
+	street = models.CharField('straat', max_length=50)
+	housenumber = models.CharField('huisnummer', max_length=4)
+	busnumber = models.CharField('busnummer', max_length=3, blank=True)
+	postalcode = models.CharField('postcode', max_length=10)
+	city = models.CharField('dorp/stad', max_length=30)
 	longitude = models.CharField(max_length=10, editable=False)
 	latitude = models.CharField(max_length=10, editable=False)
-	price = models.CharField(max_length=8)
+	price = models.CharField('prijs', max_length=8)
 	BUILDINGTYPE = (
 		('O', 'Open'),
 		('H', 'Half'),
@@ -92,12 +92,12 @@ class Properties(models.Model):
 		('B', 'Bungalow'),
 		('CA', 'Caravan'),
 	)
-	buildingtype = models.CharField(max_length=2, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
-	sale = models.BooleanField(default=True)
-	area = models.CharField(max_length=10)
-	livingarea = models.CharField(max_length=10)
-	year = models.CharField(max_length=4) #buildyear
-	rateable_value = models.CharField(max_length=8) #kadastraal inkomen
+	buildingtype = models.CharField('gebouwtype', max_length=2, choices=BUILDINGTYPE, default=BUILDINGTYPE[0][0])
+	sale = models.BooleanField('verkopen', default=True)
+	area = models.CharField('oppervlakte', max_length=10)
+	livingarea = models.CharField('leef oppervlakte', max_length=10)
+	year = models.CharField('bouwjaar', max_length=4) #buildyear
+	rateable_value = models.CharField('kadastraal inkomen', max_length=8) #kadastraal inkomen
 	description_dutch = models.TextField()
 	description_french = models.TextField()
 	HEATING_TYPE = (
@@ -107,12 +107,12 @@ class Properties(models.Model):
 		('H', 'Heat pump'),
 		('S', 'Special'),
 	)
-	heating_type = models.CharField(max_length=1, choices=HEATING_TYPE, default=HEATING_TYPE[0][0])
-	energy_label = models.CharField(max_length=5)
+	heating_type = models.CharField('verwarmingstype', max_length=1, choices=HEATING_TYPE, default=HEATING_TYPE[0][0])
+	energy_label = models.CharField('energie label', max_length=5)
 	extra_information_dutch = models.TextField()
 	extra_information_french = models.TextField()
 	available = models.BooleanField('Beschikbaar', default=True)
-	sold = models.BooleanField()
+	sold = models.BooleanField('verkocht')
 	date_created = models.DateTimeField(editable=False)
 	date_modified = models.DateTimeField(editable=False)
 	pub_date = models.DateTimeField()
@@ -195,13 +195,13 @@ class Photo(models.Model):
 
 class Room(models.Model):
 	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
-	area = models.CharField(max_length=8)
+	area = models.CharField('oppervlakte', max_length=8)
 
 	class meta:
 		abstract = True
 
 class Bathroom(Room):
-	bath_type = models.CharField(max_length=15)
+	bath_type = models.CharField('type bad', max_length=15)
 	class Meta:
 		verbose_name = "Badkamer"
 
@@ -243,8 +243,8 @@ class Translations(models.Model):
 	dutch = models.CharField(max_length=30)
 
 class Faq(models.Model):
-	question = models.TextField()
-	answer = tinymce_models.HTMLField()
+	question = models.TextField('vraag')
+	answer = tinymce_models.HTMLField('antwoord')
 	visible = models.BooleanField('zichtbaar', default=True)
 	pub_date = models.DateTimeField()
 
