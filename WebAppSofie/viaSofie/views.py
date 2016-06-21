@@ -186,10 +186,10 @@ def ebook(request):
 			form.save()
 		else:
 			return HttpResponseRedirect('/ebook')
-	else:
-		args = {}
-		args.update(csrf(request))
-		args['form'] = MyEbookForm()
+	
+	args = {}
+	args.update(csrf(request))
+	args['form'] = MyEbookForm()
 
 	return render_to_response('templates/ebook.html', args)
 
