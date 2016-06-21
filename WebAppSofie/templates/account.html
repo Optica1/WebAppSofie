@@ -11,13 +11,14 @@
   				<div class="card">
   				  <div class="card-block text-xs-center">
   				    <h4 class="card-title test123">{{ property.title_dutch }}</h4>
-              <p class="card-text test12"><b>Status:</b>
-                {% for e in status %}
-                  {% if e.eigendom_id = property.id %}
-                    {{ e.get_dossierStatus_display }}
-                  {% endif %}
-                {% endfor%}
-              </p>
+              <p>{{ property.description_dutch }}</p>
+                <p class="card-text test12">
+                  {% for e in status %}
+                    {% if e.eigendom_id = property.id %}
+                      {{ e.get_dossierStatus_display }}
+                    {% endif %}
+                  {% endfor%}
+                </p>
   				    <a href="/sales/property/{{ property.id }}/" class="btn btn-house">Read More</a>
   				  </div>
   				</div>
@@ -33,7 +34,6 @@
 	{% for property in properties %}
     <div class ="col-md-3 col-sm-3">
       <h4>{{ property.title_dutch }}</h4>
-      <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
       <p>{{ property.description_dutch }}</p>
         <p><b>Status:</b>
           {% for e in status %}
