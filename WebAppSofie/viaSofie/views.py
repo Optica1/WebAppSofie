@@ -182,10 +182,13 @@ def ebook(request):
 		if form.is_valid():
 			mail = form.cleaned_data['email']
 			newsletter = Newsletter(email=mail)
-			newsletter.save()
+			if Newsletter.objects.filter(email=mail).exists():
+				pass
+			else:
+				newsletter.save()
 			form.save()
 		else:
-			return HttpResponseRedirect('/ebook')
+
 	
 	args = {}
 	args.update(csrf(request))
