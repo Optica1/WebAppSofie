@@ -10,11 +10,19 @@
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
           	<center>
-							{% for photo in Photos %}
+							{% for image in Property.get_priorityImage %}
 	          	<div class ="col-md-9"> <!-- carousel foto's niet automatisch -->
-	            	<img src="{{photo.photo.url}}" width="100%"height="10%"  class="img-rounded"/>
+	            	<img src="{{image.photo.url}}" width="100%"height="10%"  class="img-rounded"/>
+								<div class="row">
+									{% for photo in Photos %}
+								<div class = "col-md-1">
+									<img src="{{photo.photo.url}}" width="100%"height="10%"  class="img-rounded"/>
+								</div>
+								{% endfor %}
+							</div>
 	          	</div>
 							{% endfor %}
+
 	          	<div class ="col-md-3">
 	            	<h3>Eigenschappen</h3>
 	            	<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
