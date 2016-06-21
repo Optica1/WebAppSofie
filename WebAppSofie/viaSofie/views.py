@@ -227,7 +227,7 @@ def newsletterSubscribe(request):
 		if form.is_valid():
 			mail = form.cleaned_data['mail']
 			if Newsletter.objects.filter(email=mail).exists():
-				raise forms.ValidationError(u'email "%s" is already in use.' % mail)
+				pass #raise forms.ValidationError(u'email "%s" is already in use.' % mail)
 			else:
 				form.save()
 	args = {}
