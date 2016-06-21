@@ -5,23 +5,34 @@
   <h3>Mijn Panden</h3>
 
   <div class = ".container-fluid">
-	<div class = "row inline-block-row">
-	{% for property in properties %}
-          <div class ="col-md-3 col-sm-3">
-            <h4>{{ property.title_dutch }}</h4>
-            <img src="../../static/WebAppSofie/images/light-house-night-photography.jpg" width="90%"height="10%"  class="img-rounded img-responsive"/>
-            <p>{{ property.description_dutch }}</p>
-              <p><b>Status:</b>
+  	<div class = "row inline-block-row">
+  		{% for property in Properties %}
+        <div class ="col-md-3">
+  				<div class="card">
+  					{% if property.get_priorityImage %}
+  					{% for image in property.get_priorityImage %}
+  					<img class="card-img-top test12 img-rounded img-fluid" src="{{ image.photo.url }}" alt="Card image cap">
+  					{%endfor%}
+  					{%else%}
+  					<img class="card-img-top test12 img-rounded img-fluid" src="/media/nophoto.png" alt="Card image cap">
+  					{%endif%}
+  				  <div class="card-block text-xs-center">
+  				    <h4 class="card-title test123">{{ property.title_dutch }}</h4>
+              <p class="card-text test12"><b>Status:</b>
                 {% for e in status %}
                   {% if e.eigendom_id = property.id %}
                     {{ e.get_dossierStatus_display }}
                   {% endif %}
                 {% endfor%}
               </p>
-            <a href = "/sales/property/{{ property.id }}/" class = "btn btn-default">Read More</a>
-          </div>
-        {%endfor%}
-
-    	</div>
-   </div>
+  				    <a href="/sales/property/{{ property.id }}/" class="btn btn-house">Read More</a>
+  				  </div>
+  				</div>
+        </div>
+  			{% if forloop.counter|divisibleby:"4" %}
+  				<div class="clearfix visible-md-block"></div>
+  			{% endif %}
+  		{%endfor%}
+  	</div>
+  </div>
 {% endblock %}
