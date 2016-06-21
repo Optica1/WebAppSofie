@@ -180,10 +180,12 @@ def ebook(request):
 	if request.method == 'POST':
 		form = MyEbookForm(request.POST)
 		if form.is_valid():
+			mail = form.cleaned_data['email']
+			newsletter = Newsletter(email=mail)
+			newsletter.save()
 			form.save()
-			return HttpResponseRedirect('/')
 		else:
-			return HttpResponseRedirect('/partner')
+			return HttpResponseRedirect('/ebook')
 	else:
 		args = {}
 		args.update(csrf(request))
