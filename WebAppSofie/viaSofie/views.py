@@ -56,15 +56,12 @@ def account(request):
 			return HttpResponseRedirect('/accounts/login')
 		else:
 			user = request.user
-			userInfo = User.objects.get(id=user.id)
+			userInfo = auth_user.objects.get(id=user.id)
 			properties = Properties.objects.filter(user_id=user.id)
 			status = Status.objects.all()
 	except Exception as e:
 		raise Http404(e)
-	return render_to_response('templates/account.html' , {
-		'status': status,
-		'info': userInfo,
-		'properties': properties,
+    return render(request, 'templates/account.html', {'status':status, 'info':userInfo, 'properties': properties,})
 	})
 def login(request):
 	c = {}
@@ -190,7 +187,7 @@ def ebook(request):
 			form.save()
 		else:
 			forms.ValidationError(_('Fill in all fields'), code='invalid')
-	
+
 	args = {}
 	args.update(csrf(request))
 	args['form'] = MyEbookForm()
