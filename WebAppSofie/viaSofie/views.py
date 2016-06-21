@@ -62,7 +62,6 @@ def account(request):
 	except Exception as e:
 		raise Http404(e)
     return render(request, 'templates/account.html', {'status':status, 'info':userInfo, 'properties': properties})
-	})
 def login(request):
 	c = {}
 	c.update(csrf(request))
