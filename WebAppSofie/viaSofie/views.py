@@ -190,7 +190,7 @@ def ebook(request):
 			form.save()
 		else:
 			forms.ValidationError(_('Fill in all fields'), code='invalid')
-	
+
 	args = {}
 	args.update(csrf(request))
 	args['form'] = MyEbookForm()
