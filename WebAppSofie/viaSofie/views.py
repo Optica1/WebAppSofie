@@ -61,7 +61,7 @@ def account(request):
 			status = Status.objects.all()
 	except Exception as e:
 		raise Http404(e)
-    return render(request, 'templates/account.html', {'status':status, 'info':userInfo, 'properties': properties,})
+    return render(request, 'templates/account.html', {'status':status, 'info':userInfo, 'properties': properties})
 	})
 def login(request):
 	c = {}
