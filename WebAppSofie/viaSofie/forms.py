@@ -50,10 +50,11 @@ class MyRegistrationForm(UserCreationForm):
 class MyEbookForm(forms.ModelForm):
 	email = forms.EmailField(required=True)
 	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).order_by('id'))
+	newsletter = forms.Booleanfield(required=False)
 
 	class Meta:
 		model = EbookRequests
-		fields =('email', 'ebook')
+		fields =('email', 'ebook', 'newsletter')
 
 	def save(self, commit=True):
 		EbookRequests = super(MyEbookForm, self).save(commit=False)# commit false because we do this at end of var assignments

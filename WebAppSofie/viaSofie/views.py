@@ -180,15 +180,16 @@ def ebook(request):
 	if request.method == 'POST':
 		form = MyEbookForm(request.POST)
 		if form.is_valid():
-			mail = form.cleaned_data['email']
-			newsletter = Newsletter(email=mail)
-			if Newsletter.objects.filter(email=mail).exists():
-				pass
-			else:
-				newsletter.save()
+			if form.cleaned_data['newsletter']
+				mail = form.cleaned_data['email']
+				newsletter = Newsletter(email=mail)
+				if Newsletter.objects.filter(email=mail).exists():
+					pass
+				else:
+					newsletter.save()
 			form.save()
 		else:
-			forms.ValidationError(u'Fill in all fields')
+			forms.ValidationError(_('Fill in all fields'), code='invalid')
 	
 	args = {}
 	args.update(csrf(request))
