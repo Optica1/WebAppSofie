@@ -56,7 +56,7 @@ def account(request):
 			return HttpResponseRedirect('/accounts/login')
 		else:
 			user = request.user
-			userInfo = auth_user.objects.get(id=user.id)
+			userInfo = User.objects.get(id=user.id)
 			properties = Properties.objects.filter(user_id=user.id)
 			status = Status.objects.all()
 	except Exception as e:
