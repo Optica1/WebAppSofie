@@ -188,7 +188,7 @@ def ebook(request):
 				newsletter.save()
 			form.save()
 		else:
-			forms.ValidationError(u'Vul het formulier volledig in')
+			forms.ValidationError(self.error_messages['Vul alle velden in'])
 	
 	args = {}
 	args.update(csrf(request))
