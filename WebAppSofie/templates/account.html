@@ -18,7 +18,12 @@
           {%endif%}
           <div class="card-block text-xs-center">
 				    <h4 class="card-title test123">{{ property.title_dutch }}</h4>
-				    <p class="card-text test12">{{ property.description_dutch }}</p>
+				    <!-- <p class="card-text test12">{{ property.description_dutch }}</p> -->
+            {% for e in status %}
+              {% if e.eigendom_id = property.id %}
+                <p class="card-text test12"><b>Status:</b>{{ e.get_dossierStatus_display }}</p>
+              {% endif %}
+            {% endfor%}
 				    <a href="/sales/property/{{ property.id }}/" class="btn btn-house">Read More</a>
 				  </div>
         </div>
