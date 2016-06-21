@@ -50,7 +50,7 @@ class MyRegistrationForm(UserCreationForm):
 class MyEbookForm(forms.ModelForm):
 	email = forms.EmailField(required=True)
 	ebook = forms.ModelChoiceField(queryset=Ebook.objects.filter(available=1).order_by('id'))
-	newsletter = forms.Booleanfield(required=False)
+	newsletter = forms.BooleanField(required=False)
 
 	class Meta:
 		model = EbookRequests
