@@ -17,17 +17,12 @@
 
 <body>
   <div class="container">
-    <div class="header clearfix">
       <nav id="header" class ="navbar navbar-dark bg-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/"><img src="{% static "WebAppSofie/img/def_logos_via_sofie-RGB-01.png" %}" style="max-height: 100px; max-width: 100px;" class="img-rounded"></a>
        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">&#9776;</button>
        <div class="collapse navbar-toggleable-xs" id="navbar-header">
-         <a class="navbar-brand" href="/"><img src="{% static "WebAppSofie/images/ViaSofie-horizontal.png" %}" style="max-height: 1.5rem;" class="img-rounded"></a>
          {% block menubar %}
          <ul class="nav navbar-nav nav-pills pull-xs-right">
-           <form type="get" action="http://193.191.187.253:8093/search/.">
-             <input type="text" name="q">
-             <button type="submit">Search</button>
-           </form>
            <li class="nav-item"><a class="nav-link" href="/sales/forSale">Kopen</a></li>
            <li class="nav-item"><a class="nav-link" href="/sales/forRent">Huren</a></li>
            <li class="nav-item"><a class="nav-link" href="/about/viaSofie">Over</a></li>
@@ -54,10 +49,14 @@
              </form><!--hier eindigt de login form-->
            </li>
          </ul>
+
+         <form id="searchform" class="form-inline pull-xs-right" type="get" action="http://193.191.187.253:8093/search/.">
+            <input class="form-control" type="text" placeholder="Search" name="q">
+            <button class="btn btn-success-outline" type="submit">Search</button>
+          </form>
          {% endblock %}
-       </div>
+      </div>
      </nav>
-    </div>
     <div class="content">
       {% if messages %}
         <ul class="messages">
