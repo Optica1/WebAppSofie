@@ -180,7 +180,7 @@ def ebook(request):
 	if request.method == 'POST':
 		form = MyEbookForm(request.POST)
 		if form.is_valid():
-			if form.cleaned_data['newsletter']
+			if form.cleaned_data['newsletter']:
 				mail = form.cleaned_data['email']
 				newsletter = Newsletter(email=mail)
 				if Newsletter.objects.filter(email=mail).exists():
