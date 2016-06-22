@@ -182,7 +182,7 @@ def ebook(request):
 	args['form'] = MyEbookForm(request.POST or None)
 
 	if request.method == 'POST':
-		if form.is_valid():
+		if args['form'].is_valid():
 			if args['form'].cleaned_data['newsletter']:
 				mail = args['form'].cleaned_data['email']
 				newsletter = Newsletter(email=mail)
