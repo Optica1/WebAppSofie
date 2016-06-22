@@ -9,5 +9,48 @@
 		{{ form.as_p }}
 		<button type="submit">Submit</button>
 	</form>
+	<div class="row">
+		<div class="col-md-6 card">
+				<h3>contactinformatie</h3>
+				<h3>sofie@yahoo.com</h3>
+				<h3>Mussenhoevelaan 101, 2530 Boechout</h3>
+				<h3>+32 (0)483 71 37 10</h3>
+		</div>
+		<div class="col-md-6 card">
+			<div id="map"></div>
+
+					<script src="https://maps.googleapis.com/maps/api/js?api=AIzaSyDUmF8BiIKmIMKRLbvE1RBCSaktba0Y3g0"></script>
+					<script>
+						geocoder = new google.maps.Geocoder();
+
+						function initMap() {
+
+						var address = "{{ Property.street }} {{ Property.housenumber}} " ;
+
+						geocoder.geocode( { 'address' : address }, function( results, status ) {
+						if( status == google.maps.GeocoderStatus.OK ) {
+
+						var map = new google.maps.Map(document.getElementById('map'), {
+							zoom: 15,
+							center: results[0].geometry.location
+						});
+
+						map.setCenter( results[0].geometry.location );
+						var marker = new google.maps.Marker( {
+								map     : map,
+								position: results[0].geometry.location
+						} );
+						} else {
+						alert( 'Geocode was not successful for the following reason: ' + status );
+						}
+						} );
+						}
+
+
+						google.maps.event.addDomListener(window, 'load',  initMap);
+					</script>
+
+			</div>
+		</div>
 
 {% endblock %}
