@@ -11,10 +11,10 @@
 	</form>
 	<div class="row">
 		<div class="col-md-6 card">
-				<h3>contactinformatie</h3>
-				<h3>sofie@yahoo.com</h3>
-				<h3>Mussenhoevelaan 101, 2530 Boechout</h3>
-				<h3>+32 (0)483 71 37 10</h3>
+				<h4>contactinformatie</h4>
+				<h4>sofie@yahoo.com</h4>
+				<h4>Mussenhoevelaan 101, 2530 Boechout</h4>
+				<h4>+32 (0)483 71 37 10</h4>
 		</div>
 		<div class="col-md-6 card">
 			<div id="map"></div>
@@ -25,7 +25,7 @@
 
 						function initMap() {
 
-						var address = "{{ Property.street }} {{ Property.housenumber}} " ;
+						var address = "Mussenhoevelaan 101" ;
 
 						geocoder.geocode( { 'address' : address }, function( results, status ) {
 						if( status == google.maps.GeocoderStatus.OK ) {
