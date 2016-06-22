@@ -177,8 +177,11 @@ def partner(request):
 	return render(request, 'templates/partner.html', context)
 
 def ebook(request):
+	args = {}
+	args.update(csrf(request))
+	args['form'] = MyEbookForm(request.POST or None)
+
 	if request.method == 'POST':
-		form = MyEbookForm(request.POST)
 		if form.is_valid():
 			if form.cleaned_data['newsletter']:
 				mail = form.cleaned_data['email']
@@ -191,9 +194,7 @@ def ebook(request):
 		else:
 			forms.ValidationError(_('Fill in all fields'), code='invalid')
 
-	args = {}
-	args.update(csrf(request))
-	args['form'] = MyEbookForm()
+	
 
 	return render_to_response('templates/ebook.html', args)
 
