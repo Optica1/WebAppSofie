@@ -31,7 +31,7 @@
 		</div>
 		<div class="row">
 			<center>
-				<div class ="col-md-3 card">
+				<div class ="col-md-4 card">
 					<h3>Eigenschappen</h3>
 					<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
 					<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
@@ -42,20 +42,18 @@
 					<p><span>Kadastraal inkomen:</span> {{ Property.rateable_value }}</p>
 					<p><span>ID:</span> {{ Property.id }}</p>
 				</div>
-				<div class="col-md-9 card">
+				<div class="col-md-8 card">
 					<h3>Omschrijving</h3>
 					<p>{{ Property.description_dutch }}</p>
 				</div>
 			</center>
-		</div>
-		<div class="row">
 			<center>
-				<div class="col-md-6 card">
+				<div class="col-md-4 card">
 					<h3>Energy</h3>
 					<p><span>Energie label:</span> {{ Property.energy_label }}</p>
 					<p><span>Verwarming:</span> {{ Property.get_heating_type_display }}</p>
 				</div>
-				<div class="col-md-6 card">
+				<div class="col-md-4 card">
 					<h3>Extra informatie</h3>
 					<p>{{ Property.extra_information_dutch }}</p>
 				</div>

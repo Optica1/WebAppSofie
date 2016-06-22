@@ -10,6 +10,7 @@ import datetime
 import ssl
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from tinymce import models as tinymce_models
 from datetime import date
@@ -165,6 +166,14 @@ class PropertyDocuments(models.Model):
 	name = models.CharField(max_length=30, default = 'Pand Informatie')
 	document = models.FileField(storage = fs, upload_to = 'uploads/', null=True)
 	available = models.BooleanField('Bestand weergeven')
+	remove_the_file = models.BooleanField('Verwijder document')
+
+	def save(self):
+		if self.remove_the_file:
+			super(PropertyDocuments, self).delete()
+			return
+		super(PropertyDocuments, self).save()
+
 
 class Partner(models.Model):
 	name = models.CharField(max_length=30)
@@ -281,3 +290,15 @@ class Status(models.Model):
 	eigendom = models.ForeignKey(Properties,on_delete=models.CASCADE)
 	class Meta:
 		verbose_name_plural = "Status"
+
+@receiver(post_delete, sender=Photo)
+def photo_post_delete_handler(sender, **kwargs):
+	picture = kwargs['instance']
+	storage, path = picture.photo.storage, picture.photo.path
+	storage.delete(path)
+
+@receiver(post_delete, sender=PropertyDocuments)
+def photo_post_delete_handler(sender, **kwargs):
+	storedFile = kwargs['instance']
+	storage, path = storedFile.document.storage, storedFile.document.path
+	storage.delete(path)
