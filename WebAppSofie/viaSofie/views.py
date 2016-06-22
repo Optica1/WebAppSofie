@@ -191,6 +191,11 @@ def ebook(request):
 				else:
 					newsletter.save()
 			form.save()
+		else:
+			forms.ValidationError(_('Fill in all fields'), code='invalid')
+
+	
+
 	return render_to_response('templates/ebook.html', args)
 
 def contact(request):
