@@ -211,10 +211,10 @@ def ebook(request):
 def contact(request):
 	args = {}
 	args.update(csrf(request))
-	args['form'] = ContactForm
+	args['form'] = ContactForm(request.POST or None)
+
 	if request.method == 'POST':
-		form = args['form'](data=request.POST)
-		if form.is_valid():
+		if args['form'].is_valid():
 			subject = request.POST.get('subject', '')
 			email = request.POST.get('email', '')
 			content = request.POST.get('content', '')
