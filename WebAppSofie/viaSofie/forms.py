@@ -59,14 +59,17 @@ class MyEbookForm(forms.ModelForm):
 	def save(self, commit=True):
 		EbookRequests = super(MyEbookForm, self).save(commit=False)# commit false because we do this at end of var assignments
 
-
+		mail = self.cleaned_data['email']
+		ebook = self.cleaned_data['ebook']
 		EbookRequests.email = self.cleaned_data['email']
 		EbookRequests.ebook_id = self.cleaned_data['ebook']
 		EbookRequests.send	= 0
 
 		if commit:
-			EbookRequests.save()
-
+			if Newsletter.objects.filter(email=mail, ebook_id=ebook, send=0).exists():
+				raise forms.ValidationError(u'Aanvraag reeds in verwerking')
+			else:
+				EbookRequests.save()
 		return
 
 class ContactForm(forms.Form):
