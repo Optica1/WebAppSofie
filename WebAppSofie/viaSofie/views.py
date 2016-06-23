@@ -256,4 +256,5 @@ def newsletterUnsubscribe(request):
 		if args['form'].is_valid():
 			email = args['form'].cleaned_data['email']
 			Newsletter.objects.filter(email=email).delete()
+			return HttpResponseRedirect('/')
 	return render(request, 'templates/newsletter_unsubscribe.html', args)
