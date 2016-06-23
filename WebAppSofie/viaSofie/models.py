@@ -162,7 +162,7 @@ class Properties(models.Model):
 		return  self.title_dutch
 
 class PropertyDocuments(models.Model):
-	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	property_id = models.ForeignKey(Properties, on_delete=models.CASCADE)
 	name = models.CharField(max_length=30, default = 'Pand Informatie')
 	document = models.FileField(storage = fs, upload_to = 'uploads/', null=True)
 	available = models.BooleanField('Bestand weergeven')
@@ -185,7 +185,7 @@ class Partner(models.Model):
 		verbose_name = "Partner"
 
 class PlanningInfo(models.Model): #moet nog vertaald worden
-	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	property_id = models.ForeignKey(Properties, on_delete=models.CASCADE)
 	voorkooprecht = models.BooleanField()
 	bouwvergunning = models.BooleanField()
 	dagvaarding = models.BooleanField()
@@ -196,7 +196,7 @@ class PlanningInfo(models.Model): #moet nog vertaald worden
 	unique_code = models.CharField(max_length=10)
 
 class Photo(models.Model):
-	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	property_id = models.ForeignKey(Properties, on_delete=models.CASCADE)
 	photo = models.ImageField(storage = fs)
 	priority = models.BooleanField('Kies als hoofdfoto')
 	remove_the_file = models.BooleanField('Verwijder foto')
@@ -211,7 +211,7 @@ class Photo(models.Model):
 		super(Photo, self).save()
 
 class Room(models.Model):
-	property_id = models.ForeignKey(Properties, on_delete=models.PROTECT)
+	property_id = models.ForeignKey(Properties, on_delete=models.CASCADE)
 	area = models.CharField('oppervlakte', max_length=8)
 
 	class meta:
