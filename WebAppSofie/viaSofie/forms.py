@@ -63,14 +63,14 @@ class MyEbookForm(forms.ModelForm):
 
 		if commit:
 			ebook_id = self.cleaned_data['ebook']
-			ebook = Ebook.objects.filter(id=self.cleaned_data['ebook'])
+			ebook = Ebook.objects.filter(id=ebook_id)
 			mail = self.cleaned_data['email']
 
 			EbookRequests.email = self.cleaned_data['email']
 			EbookRequests.ebook_id = self.cleaned_data['ebook']
 			EbookRequests.send	= 0
 
-			if Newsletter.objects.filter(email=mail, ebook_id=ebook_id, send=0).exists():
+			if Newsletter.objects.filter(email=mail, ebook_id=ebook['name'], send=0).exists():
 				raise forms.ValidationError(u'Aanvraag reeds in verwerking')
 			else:
 				EbookRequests.save()
