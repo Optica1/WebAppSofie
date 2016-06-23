@@ -6,9 +6,8 @@
     src: url('/fonts/RopaSansSCPro-Regular.otf'); /*URL to font*/
 }
 
-.navbar-toggler {
+#navbar-toggler {
   float: right;
-  height: 50px;
 }
 
 #map{
