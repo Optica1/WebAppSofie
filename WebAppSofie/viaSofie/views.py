@@ -115,37 +115,46 @@ def register_success(request):
 	return render(request, 'templates/register_success.html')
 
 def property(request, p_id='1'):
-	try:
-		p = Properties.objects.get(id = p_id)
-		bedrooms = Bedroom.objects.filter(property_id = p.id)
-		bedroomcount = bedrooms.count()
-		bathrooms = Bathroom.objects.filter(property_id = p.id)
-		bathroomcount = bathrooms.count()
-		toilets = Toilet.objects.filter(property_id = p.id)
-		toiletcount = toilets.count()
-		kitchens = Kitchen.objects.filter(property_id = p.id)
-		kitchencount = kitchens.count()
-		garages = Garage.objects.filter(property_id = p.id)
-		garagecount = garages.count()
-		livingrooms = Livingroom.objects.filter(property_id = p.id)
-		livingroomcount = livingrooms.count()
-		storagerooms = Storageroom.objects.filter(property_id = p.id)
-		storageroomcount = storagerooms.count()
-		planningInfo = PlanningInfo.objects.filter(property_id = p.id)
-		photos = Photo.objects.filter(property_id = p.id)
-		documents = PropertyDocuments.objects.filter(property_id = p.id)
+    try:
+        p = Properties.objects.get(id = p_id)
+        bedrooms = Bedroom.objects.filter(property_id = p.id)
+        bedroomcount = bedrooms.count()
+        bathrooms = Bathroom.objects.filter(property_id = p.id)
+        bathroomcount = bathrooms.count()
+        toilets = Toilet.objects.filter(property_id = p.id)
+        toiletcount = toilets.count()
+        kitchens = Kitchen.objects.filter(property_id = p.id)
+        kitchencount = kitchens.count()
+        garages = Garage.objects.filter(property_id = p.id)
+        garagecount = garages.count()
+        bergingen = Storageroom.objects.filter(property_id = p.id)
+        bergingcount = bergingen.count()
+        basements = Basement.objects.filter(property_id = p.id)
+        basementcount = basements.count()
+        attics = Attic.objects.filter(property_id = p.id)
+        atticcount = attics.count()
+        livingrooms = Livingroom.objects.filter(property_id = p.id)
+        livingroomcount = livingrooms.count()
+        storagerooms = Storageroom.objects.filter(property_id = p.id)
+        storageroomcount = storagerooms.count()
+        planningInfo = PlanningInfo.objects.filter(property_id = p.id)
+        photos = Photo.objects.filter(property_id = p.id)
+        documents = PropertyDocuments.objects.filter(property_id = p.id)
 
-		returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount,
-		'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount,
-		'Toiletcount':toiletcount, 'Toilets': toilets,
-		'Kitchens':kitchens, 'Kitchencount':kitchencount,
-		'Garagecount':garagecount, 'Garages':garages,
-		'Livingroomcount':livingroomcount, 'Livingrooms':livingrooms,
-		'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms, 'PlanningInfo':planningInfo,
-		'Photos':photos, 'Documents':documents}
-	except Properties.DoesNotExist:
-		raise Http404("Property does not exist.")
-	return render(request, 'templates/property.html', returned_values)
+        returned_values = {'Property':p, 'Bedrooms':bedrooms, 'Bedroomcount':bedroomcount,
+        'Bathrooms':bathrooms, 'Bathroomcount':bathroomcount,
+        'Toiletcount':toiletcount, 'Toilets': toilets,
+        'Kitchens':kitchens, 'Kitchencount':kitchencount,
+        'Garagecount':garagecount, 'Garages':garages,
+        'Bergingcount':bergingcount, 'Bergingen':bergingen,
+        'Basementcount':basementcount, 'Basements':basements,
+        'Atticcount':atticcount, 'Attics':attics,
+        'Livingroomcount':livingroomcount, 'Livingrooms':livingrooms,
+        'Storageroomcount':storageroomcount, 'Storagerooms':storagerooms, 'PlanningInfo':planningInfo,
+        'Photos':photos, 'Documents':documents}
+    except Properties.DoesNotExist:
+        raise Http404("Property does not exist.")
+    return render(request, 'templates/property.html', returned_values)
 
 def offer_sales(request):
 	p = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:10]

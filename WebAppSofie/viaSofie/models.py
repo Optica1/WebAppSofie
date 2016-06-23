@@ -139,19 +139,19 @@ class Properties(models.Model):
 	    # # Geocoding an address
 		# geocode_result = gmaps.geocode(location)
 		#
-		# # if (geocode_result):
+		# if (geocode_result):
 	    # # query json
-		# latitude = geocode_result[0]["geometry"]["location"]["lat"]
-		# longitude = geocode_result[0]["geometry"]["location"]["lng"]
+		# 	latitude = geocode_result[0]["geometry"]["location"]["lat"]
+		# 	longitude = geocode_result[0]["geometry"]["location"]["lng"]
 		#
-	    # # adding longitude and latitude to the database
-		# self.longitude = longitude
-		# self.latitude = latitude
+		#     # adding longitude and latitude to the database
+		# 	self.longitude = longitude
+		# 	self.latitude = latitude
 		# else:
-			# raise ValidationError({'street': 'controleer straatnaam'}
-			# raise ValidationError({'housenumber': 'controleer huisnumber'}
-			# raise ValidationError({'postalcode': 'controleer postcode'}
-			# raise ValidationError({'city': 'controleer gemeente'}
+		# 	raise ValidationError({'street': 'controleer straatnaam'})
+		# 	raise ValidationError({'housenumber': 'controleer huisnummer'})
+		# 	raise ValidationError({'postalcode': 'controleer postcode'})
+		# 	raise ValidationError({'city': 'controleer gemeente'})
 		# full link to google maps geolocation api with right key: https://maps.googleapis.com/maps/api/geocode/json?address=Lindelei35,2620Hemiksem&key=AIzaSyCpFy6NnC1cbEvM8bLRAgzGskxYUeTL-_M
 
 		if not self.id:

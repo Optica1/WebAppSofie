@@ -31,11 +31,14 @@
 			<center>
 				<div class ="col-md-4 card">
 					<h3>Eigenschappen</h3>
+					p><span>Prijs:</span>{{ Property.price }} EURO</p>
+					<p><span>Adres:</span>{{ Property.street }} {{ Property.housenumber }}</p>
+					<p><span>Plaats:</span>{{ Property.city }} {{ Property.postalcode }}</p>
 					<p><span>Type bebouwing:</span> {{ Property.get_buildingtype_display }}</p>
 					<p><span>Aantal slaapkamers:</span> {{ Bedroomcount }}</p>
 					<p><span>Aantal badkamers:</span> {{Bathroomcount}}</p>
-					<p><span>Oppervlakte:</span> {{ Property.area }}</p>
-					<p><span>Bewoonbare oppervlakte:</span> {{ Property.livingarea }}</p>
+					<p><span>Oppervlakte:</span> {{ Property.area }} m²</p>
+					<p><span>Bewoonbare oppervlakte:</span> {{ Property.livingarea }} m²</p>
 					<p><span>Bouwjaar:</span> {{ Property.year }}</p>
 					<p><span>Kadastraal inkomen:</span> {{ Property.rateable_value }}</p>
 					<p><span>ID:</span> {{ Property.id }}</p>
@@ -64,27 +67,36 @@
 					<div class="row">
 						<div class="col-md-6 card">
 							{% for bedrooms in Bedrooms %}
-							<p><span>Slaapkamer:</span> {{ bedrooms.area }}</p>
+							<p><span>Slaapkamer:</span> {{ bedrooms.area }} m²</p>
 							{%endfor%}
 							{% for kitchens in Kitchens %}
-							<p><span>Keuken:</span> {{ kitchens.area }}</p>
+							<p><span>Keuken:</span> {{ kitchens.area }} m²</p>
 							{%endfor%}
 							{% for storagerooms in Storagerooms %}
-							<p><span>opslagruimte:</span> {{ storagerooms.area }}</p>
+							<p><span>opslagruimte:</span> {{ storagerooms.area }} m²</p>
 							{%endfor%}
 						</div>
 						<div class="col-md-6 card">
 							{% for toilets in Toilets %}
-							<p><span>Toilet:</span> {{ toilets.area }}</p>
+							<p><span>Toilet:</span> {{ toilets.area }} m²</p>
 							{%endfor%}
 							{% for bathrooms in Bathrooms %}
-							<p><span>Badkamer:</span> {{ bathrooms.area }}</p>
+							<p><span>Badkamer:</span> {{ bathrooms.area }} m²</p>
 							{%endfor%}
 							{% for livingrooms in Livingrooms %}
-							<p><span>Woonkamer:</span> {{ livingrooms.area }}</p>
+							<p><span>Woonkamer:</span> {{ livingrooms.area }} m²</p>
 							{%endfor%}
 							{% for garages in Garages %}
-							<p><span>garage:</span> {{ garages.area }}</p>
+							<p><span>garage:</span> {{ garages.area }} m²</p>
+							{%endfor%}
+							{% for berging in Bergingen %}
+							<p><span>Berging:</span> {{ berging.area }} m²</p>
+							{%endfor%}
+							{% for basement in Basements %}
+							<p><span>Kelder:</span> {{ basement.area }} m²</p>
+							{%endfor%}
+							{% for attic in Attics %}
+							<p><span>Zolder:</span> {{ attic.area }} m²</p>
 							{%endfor%}
 						</div>
 					</div>
@@ -101,8 +113,8 @@
 					<p><span>Dagvaarding:</span> {{ planningInfo.dagvaarding|yesno:"Ja,Nee" }}</p>
 					<p><span>Verkaveling:</span> {{ planningInfo.verkaveling|yesno:"Ja,Nee" }}</p>
 					<p><span>Juridische beslissing:</span> {{ planningInfo.juridische_beslissing|yesno:"Ja,Nee" }}</p>
-					<p><span>Co2 emissie:</span> {{ planningInfo.co2_emission }}</p>
-					<p><span>EPC:</span> {{ planningInfo.epc }}</p>
+					<p><span>Co2 emissie:</span> {{ planningInfo.co2_emission }} ton co2/jaar</p>
+					<p><span>EPC:</span> {{ planningInfo.epc }} kWh/m²/jaar</p>
 					<p><span>Unique code:</span> {{ planningInfo.unique_code }}</p>
 					{%endfor%}
 
