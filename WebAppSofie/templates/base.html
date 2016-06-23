@@ -17,12 +17,13 @@
   <div class="container">
       <nav id="header" class ="navbar navbar-dark bg-inverse navbar-fixed-top">
         <a class="navbar-brand" href="/"><img src="{% static "WebAppSofie/img/def_logos_via_sofie-RGB-01.png" %}" style="max-height: 100px; max-width: 100px;" class="img-rounded"></a>
-       <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">&#9776;</button>
+       <button class="navbar-toggler hidden-sm-up hidden-md-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">&#9776;</button>
        <div class="collapse navbar-toggleable-xs" id="navbar-header">
          {% block menubar %}
          <ul class="nav navbar-nav nav-pills pull-xs-right">
            {% if user.is_authenticated %}
            <li class="nav-item">Welkom {{user.username}}</li>
+           <li class="nav-item"><a class="nav-link" href="/accounts/status">Mijn panden</a></li>
            <li class="nav-item"><a class="nav-link" href="/accounts/logout">Logout</a></li>
            {% else %}
            <li class="nav-item"><a class="nav-link" href="/accounts/login">Login</a></li>
