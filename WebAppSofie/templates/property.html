@@ -4,8 +4,6 @@
 
 
 	<h2>{{ Property.title_dutch }}</h2>
-    </style>
-	<h4>{{  Property.title_dutch  }}</h4>
 	<script src="{% static "WebAppSofie/js/photoControl.js"%}"></script>
 	<div class = "container"><!--hier start midden content-->
         <div class = "row">
@@ -19,9 +17,9 @@
 								<img id="priorityImage" title="No Image Found" src="/media/nophoto.png" alt="Card image cap" class="img-rounded">
 								{%endif%}
 	          	</div>
-							<div id="photolist" class = "propertyPhotos col-md-4 card">
+							<div id="photolist" class = "propertyPhotos col-xs-12 col-sm-12 col-md-4 card">
 								{% for photo in Photos %}
-								<div class = "col-md-6" >
+								<div class = "col-xs-4 col-sm-4 col-md-6" >
 									<img src="{{photo.photo.url}}" onclick="selectPicture(this)" title="{{photo.photo.name}}" width="100%" height="100%" class="img-rounded"/>
 								</div>
 								{% endfor %}
