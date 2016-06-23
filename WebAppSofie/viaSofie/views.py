@@ -233,27 +233,27 @@ def contact(request):
 
 
 def newsletterSubscribe(request):
+	args = {}
+	args.update(csrf(request))
+	args['form'] = NewsletterForm(request.POST or None)
+
 	if request.method == 'POST':
-		form = NewsletterForm(request.POST)
-		if form.is_valid():
-			mail = form.cleaned_data['mail']
+		if args['form'].is_valid():
+			mail = args['form'].cleaned_data['mail']
 			if Newsletter.objects.filter(email=mail).exists():
 				pass #raise forms.ValidationError(u'email "%s" is already in use.' % mail)
 			else:
-				form.save()
-	args = {}
-	args.update(csrf(request))
-	args['form'] = NewsletterForm()
+				args['form'].save()
+	
 	return render(request, 'templates/newsletter.html', args)
 
 def newsletterUnsubscribe(request):
 	args = {}
 	args.update(csrf(request))
-	args['form'] = NewsletterUnsubscribeForm()
+	args['form'] = NewsletterUnsubscribeForm(request.POST or None)
 
 	if request.method == 'POST':
-		form = NewsletterUnsubscribeForm(request.POST)
-		if form.is_valid():
+		if args['form'].is_valid():
 			email = form.cleaned_data['email']
 			Newsletter.objects.filter(email=email).delete()
 	return render(request, 'templates/newsletter_unsubscribe.html', args)
