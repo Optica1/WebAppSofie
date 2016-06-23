@@ -1,14 +1,27 @@
 {% extends "templates/base.html" %}
 
 {% block content %}
-
-
+	
 	<h2>Contact</h2>
-	<form role="form" action="" method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Submit</button>
-	</form>
+	<div class="row">
+		<form role="form" action="" method="post">
+			{% csrf_token %}
+			{% for field in form %}
+			<div class="form-group">
+				<div class='row'>
+	        		<label class="control-label col-md-2" for="{{ field.name }}">{{ field.label }}</label>
+					<div class="col-md-7">
+						{{ field }} {{ field.errors }}
+					</div>
+				</div>
+			</div>
+    	{% endfor %}
+		<div class="form-group">
+    	<div class="col-sm-offset-1 col-sm-7">
+      	<input type="submit" value="Register" class="btn btn-default"/>
+    	</div>
+		</form>
+	</div>
 	<div class="row">
 		<div class="col-md-6 card">
 				<h4>contactinformatie</h4>
