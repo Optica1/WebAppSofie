@@ -19,13 +19,13 @@ def pandensearch(request):
     form = PandenSearchForm(request.GET)
     panden = form.search()
     context = {'panden': panden}
-    return render_to_response('templates/notes.html', context)
+    return render(request, 'templates/notes.html', context)
 
 def index(request):
 	s = Properties.objects.filter(sale = True, sold = False, available = True).order_by('-date_modified')[:4]
 	r = Properties.objects.filter(sale = False, sold = False, available = True).order_by('-date_modified')[:4]
 
-	return render_to_response('templates/home.html', {'Sales':s, 'Rents':r})
+	return render(request, 'templates/home.html', {'Sales':s, 'Rents':r})
 
 def about(request):
 	try:
@@ -33,7 +33,7 @@ def about(request):
 		page = pages[0]
 	except Aboutpage.DoesNotExist:
 		raise Http404('page does not exist')
-	return render_to_response('templates/about.html', {
+	return render(request, 'templates/about.html', {
 		'pageTitle': _(page.title),
 		'pageContent': _(page.text),
 	})
@@ -47,7 +47,7 @@ def status(request):
 			status = Status.objects.get(id=user.id)
 	except Exception as e:
 		raise Http404(e)
-	return render_to_response('templates/status.html' , {
+	return render(request, 'templates/status.html' , {
 		'status': status.get_dossierStatus_display,
 		'info': userInfo,
 	})
@@ -62,7 +62,7 @@ def account(request):
 			status = Status.objects.all()
 	except Exception as e:
 		raise Http404(e)
-	return render_to_response('templates/account.html' , {
+	return render(request, 'templates/account.html' , {
 		'status': status,
 		'info': userInfo,
 		'properties': properties,
@@ -70,7 +70,7 @@ def account(request):
 def login(request):
 	c = {}
 	c.update(csrf(request))
-	return render_to_response('templates/login.html', c)
+	return render(request, 'templates/login.html', c)
 
 def auth_view(request):
     username = request.POST.get('username', '')
@@ -87,15 +87,15 @@ def loggedin(request):
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/accounts/login')
 	else:
-		return render_to_response('templates/loggedin.html',
+		return render(request, 'templates/loggedin.html',
 								{'full_name': request.user.username}) #passes full_name to template
 
 def invalid_login(request):
-	return render_to_response('templates/invalid_login.html')
+	return render(request, 'templates/invalid_login.html')
 
 def logout(request):
 	auth.logout(request)
-	return render_to_response('templates/logout.html')
+	return render(request, 'templates/logout.html')
 
 def register_user(request):
 	if request.method == 'POST':
@@ -109,10 +109,10 @@ def register_user(request):
 
 	args['form'] = MyRegistrationForm()
 
-	return render_to_response('templates/register.html', args)
+	return render(request, 'templates/register.html', args)
 
 def register_success(request):
-	return render_to_response('templates/register_success.html')
+	return render(request, 'templates/register_success.html')
 
 def property(request, p_id='1'):
 	try:
@@ -145,7 +145,7 @@ def property(request, p_id='1'):
 		'Photos':photos, 'Documents':documents}
 	except Properties.DoesNotExist:
 		raise Http404("Property does not exist.")
-	return render_to_response('templates/property.html', returned_values)
+	return render(request, 'templates/property.html', returned_values)
 
 def offer_sales(request):
 	p = Properties.objects.filter(sale = True, sold = False, available = True).order_by('date_modified')[:10]
@@ -197,7 +197,7 @@ def ebook(request):
 
 
 
-	return render_to_response('templates/ebook.html', args)
+	return render(request, 'templates/ebook.html', args)
 
 def contact(request):
 	args = {}
@@ -235,7 +235,7 @@ def newsletterSubscribe(request):
 	args = {}
 	args.update(csrf(request))
 	args['form'] = NewsletterForm()
-	return render_to_response('templates/newsletter.html', args)
+	return render(request, 'templates/newsletter.html', args)
 
 def newsletterUnsubscribe(request):
 	args = {}
@@ -247,4 +247,4 @@ def newsletterUnsubscribe(request):
 		if form.is_valid():
 			email = form.cleaned_data['email']
 			Newsletter.objects.filter(email=email).delete()
-	return render_to_response('templates/newsletter_unsubscribe.html', args)
+	return render(request, 'templates/newsletter_unsubscribe.html', args)
