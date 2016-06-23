@@ -4,7 +4,7 @@
 
 	<h2>Contact</h2>
 	<div class="row">
-		<form role="form" action="" method="post">
+		<form role="form" class="form-horizontal" action="" method="post">
 			{% csrf_token %}
 			{% for field in form %}
 			<div class="form-group">
@@ -17,8 +17,8 @@
 			</div>
     	{% endfor %}
 		<div class="form-group">
-    	<div class="col-sm-offset-2 col-sm-7">
-      	<input type="submit" value="Verstuur" class="btn btn-default"/>
+    	<div class="col-sm-offset-2 col-sm-6">
+      	<input type="submit" value="Verstuur" class="form-control"/>
     	</div>
 		</form>
 	</div>
