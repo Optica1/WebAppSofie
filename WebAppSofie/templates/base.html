@@ -21,6 +21,12 @@
        <div class="collapse navbar-toggleable-xs" id="navbar-header">
          {% block menubar %}
          <ul class="nav navbar-nav nav-pills pull-xs-right">
+           {% if user.is_authenticated %}
+           <li class="nav-item">Welkom {{user.username}}</li>
+           <li class="nav-item"><a class="nav-link" href="/accounts/logout">Logout</a></li>
+           {% else %}
+           <li class="nav-item"><a class="nav-link" href="/accounts/login">Login</a></li>
+           {% endif %}
            <li class="nav-item"><a class="nav-link" href="/sales/forSale">Kopen</a></li>
            <li class="nav-item"><a class="nav-link" href="/sales/forRent">Huren</a></li>
            <li class="nav-item"><a class="nav-link" href="/about/viaSofie">Over</a></li>
@@ -29,17 +35,6 @@
            <li class="nav-item"><a class="nav-link" href="/partner">Partners</a></li>
            <li class="nav-item"><a class="nav-link" href="/newsletter/subscribe">Nieuwsbrief</a></li>
            <li class="nav-item"><a class="nav-link" href="/ebook">E_book</a></li>
-           <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Login<b class ="caret"></b></a>
-             <form class="dropdown-menu navbar-form" role="form" >
-               <div class="input-group">
-                 <input type="text" class="form-control" placeholder="Username"/>
-               </div>
-               <div class="input-group">
-                 <input type="password" class="form-control" placeholder="Password"/>
-               </div>
-               <button type="submit" class ="btn btn-succes"><i class="fa fa-sign-in" aria-hidden="true"></i>login</button>
-             </form><!--hier eindigt de login form-->
-           </li>
          </ul>
 
          <form id="searchform" class="form-inline pull-xs-right" type="get" action="http://193.191.187.253:8093/search/.">
