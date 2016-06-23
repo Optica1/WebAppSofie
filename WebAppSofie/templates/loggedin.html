@@ -1,8 +1,10 @@
 {% extends "templates/base.html" %}
 
 {% block content %}
-
+<div class="container">
 	<h2>Hi {{full_name}} you're now logged in!</h2>
 	<p>Click <a href="/accounts/logout/">here</a> to logout.</p>
+	<p>Click <a href="/accounts/status/">here</a> to go to your account page.</p>
+</div>
 
 {% endblock %}
