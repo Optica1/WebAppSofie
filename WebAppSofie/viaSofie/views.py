@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect,Http404, HttpResponse #handles redi
 from django.contrib import auth #handles the authantication
 from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf #anti crosssite scripting
+from django.template import RequestContext
 from django.utils.translation import ugettext as _ #translation
 from django.contrib.auth.models import User
 from .forms import *
@@ -194,7 +195,7 @@ def ebook(request):
 		else:
 			forms.ValidationError(_('Fill in all fields'), code='invalid')
 
-	
+
 
 	return render_to_response('templates/ebook.html', args)
 
